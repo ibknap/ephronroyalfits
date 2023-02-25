@@ -13,7 +13,7 @@ export default function CollapsedNavbar() {
 
     return (
         <>
-            <div className="container fixed-top shadow-sm">
+            <div className="container fixed-top bg-white shadow-sm">
                 <div className="row justify-content-between">
                     <div className="col">
                         <div className="d-flex justify-content-between align-items-center">
@@ -107,7 +107,7 @@ export default function CollapsedNavbar() {
                             </Link>
                         </li>
                         <li className="m-2 text-center">
-                            <Link className="grey_dark text-decoration-none" href="#">
+                            <Link className="grey_dark text-decoration-none" href="/">
                                 All rights reserved © www.northeastfoodbank.org
                             </Link>
                         </li>

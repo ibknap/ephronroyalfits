@@ -1,0 +1,11 @@
+.btn_nav,
+.btn_nav:hover,
+.btn_nav:focus {
+    background: #f8c12a !important;
+    border: none;
+    padding: 0.8rem 2.5rem !important;
+}
+
+.form_field {
+    padding: 1rem .75rem;
+}

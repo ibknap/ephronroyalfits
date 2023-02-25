@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Navbar from '@/components/nav/navbar/navbar';
 import Footer from '@/components/nav/footer/footer';
 import { getHomeWSSchema, getHomeWPSchema, getHomeLBSchema } from '@/components/home/schema';
+import { Information } from 'iconsax-react';
 
 export default function Home() {
   // page default data
@@ -76,8 +77,11 @@ export default function Home() {
       </Head>
       <div className="bottom_spacer" />
 
-      <div className='text-dark'>
-        Hollo
+      <div className='text-dark text-center my-4'>
+        <Information size="300" className="grey_dark" variant="Bold" />
+        <h3 className="grey_dark">
+          Under development
+        </h3>
       </div>
 
       <Navbar />
