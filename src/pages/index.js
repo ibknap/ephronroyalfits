@@ -1,7 +1,7 @@
-import Head from 'next/head'
-// import Footer from '@/components/navigation/footer/footer'
-import { getHomeWSSchema, getHomeWPSchema, getHomeLBSchema } from '@/pages/home/schema';
-import Navbar from '@/components/nav/navbar';
+import Head from 'next/head';
+import Navbar from '@/components/nav/navbar/navbar';
+import Footer from '@/components/nav/footer/footer';
+import { getHomeWSSchema, getHomeWPSchema, getHomeLBSchema } from '@/components/home/schema';
 
 export default function Home() {
   // page default data
@@ -74,9 +74,14 @@ export default function Home() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeWPSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeLBSchema) }} />
       </Head>
-      
+      <div className="bottom_spacer" />
+
+      <div className='text-dark'>
+        Hollo
+      </div>
+
       <Navbar />
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

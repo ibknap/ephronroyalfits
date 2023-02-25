@@ -1,0 +1,52 @@
+.bottom_spacer {
+    height: 8rem;
+}
+
+/* color, theme */
+.primary {
+    color: #f8c12a !important;
+}
+
+.bg_primary {
+    background: #f8c12a !important;
+}
+
+.secondary {
+    color: #0c1a2a !important;
+}
+
+.bg_secondary {
+    background: #0c1a2a !important;
+}
+
+.grey {
+    color: #f0f0f0 !important;
+}
+
+.bg_grey {
+    background: #f0f0f0 !important;
+}
+
+.grey_dark {
+    color: #898989 !important;
+}
+
+.bg_grey_dark {
+    background: #898989 !important;
+}
+
+.white {
+    color: white !important;
+}
+
+.bg_white {
+    background: white !important;
+}
+
+.trans {
+    background: transparent !important;
+}
+
+.border_none {
+    border: none !important;
+}
