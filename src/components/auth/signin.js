@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Signin() {
     return (
         <>
-            <div class="d-flex h-100 text-center text-white bg-dark">
+            {/* <div class="d-flex h-100 text-center text-white bg-dark">
 
                 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
                     <header class="mb-auto">
@@ -36,7 +36,7 @@ export default function Signin() {
 
 
 
-            </div>
+            </div> */}
         </>
     )
 }
