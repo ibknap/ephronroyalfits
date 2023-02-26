@@ -54,13 +54,13 @@ export default function UnCollapsedNavbar() {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="accountMenu">
                                         <li className="m-2">
-                                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`} href="#">
+                                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`} href="/auth/signin">
                                                 Sign In
                                             </Link>
                                         </li>
                                         <li><hr className="dropdown-divider" /></li>
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="#">
+                                            <Link className={styles.dropdown_item} href="/account">
                                                 <span className="d-flex ">
                                                     <User className="mx-1" variant="Bold" />
                                                     <span className={styles.show_nav_text}>My Account</span>
@@ -68,7 +68,7 @@ export default function UnCollapsedNavbar() {
                                             </Link>
                                         </li>
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="#">
+                                            <Link className={styles.dropdown_item} href="/account/order">
                                                 <span className="d-flex ">
                                                     <Bag2 className="mx-1" variant="Bold" />
                                                     <span className={styles.show_nav_text}>Orders</span>
@@ -76,7 +76,7 @@ export default function UnCollapsedNavbar() {
                                             </Link>
                                         </li>
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="#">
+                                            <Link className={styles.dropdown_item} href="/account/saved">
                                                 <span className="d-flex ">
                                                     <Heart className="mx-1" variant="Bold" />
                                                     <span className={styles.show_nav_text}>Saved Items</span>

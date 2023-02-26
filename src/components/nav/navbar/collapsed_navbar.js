@@ -81,7 +81,7 @@ export default function CollapsedNavbar() {
                             Account
                         </li>
                         <li className="m-2">
-                            <Link className={styles.dropdown_item} href="#">
+                            <Link className={styles.dropdown_item} href="/account">
                                 <span className="d-flex ">
                                     <User className="mx-1" variant="Bold" />
                                     My Account
@@ -89,7 +89,7 @@ export default function CollapsedNavbar() {
                             </Link>
                         </li>
                         <li className="m-2">
-                            <Link className={styles.dropdown_item} href="#">
+                            <Link className={styles.dropdown_item} href="/account/order">
                                 <span className="d-flex ">
                                     <Bag2 className="mx-1" variant="Bold" />
                                     Orders
@@ -97,7 +97,7 @@ export default function CollapsedNavbar() {
                             </Link>
                         </li>
                         <li className="m-2">
-                            <Link className={styles.dropdown_item} href="#">
+                            <Link className={styles.dropdown_item} href="/account/saved">
                                 <span className="d-flex ">
                                     <Heart className="mx-1" variant="Bold" />
                                     Saved Items
@@ -105,7 +105,7 @@ export default function CollapsedNavbar() {
                             </Link>
                         </li>
                         <li className="m-2">
-                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`} href="#">
+                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`} href="/auth/signin">
                                 Sign In
                             </Link>
                         </li>
