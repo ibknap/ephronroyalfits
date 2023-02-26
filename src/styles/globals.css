@@ -79,3 +79,7 @@
         transform: rotate(360deg);
     }
 }
+
+.form-control:focus {
+    border-color: #f8c12a !important;
+}
