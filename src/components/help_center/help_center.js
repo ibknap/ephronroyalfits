@@ -73,7 +73,7 @@ export default function HelpCenter() {
                             <Link href="help_center/privacy">
                                 <h4>Privacy</h4>
                                 <p>
-                                    View our current privacy policies, dos' and donts'.
+                                    View our current privacy policies, dos&apos; and donts&apos;.
                                 </p>
                             </Link>
                         </div>
