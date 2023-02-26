@@ -2,15 +2,15 @@ import Head from 'next/head';
 import Navbar from '@/components/nav/navbar/navbar';
 import Footer from '@/components/nav/footer/footer';
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
-import HowToOrder from '@/components/help_center/how_to_order';
+import HowToDonate from '@/components/help_center/how_to_donate';
 
-export default function HowToOrderPage() {
+export default function HowToDonatePage() {
     // page default data
-    const pageName = "NEFB - How To Order";
+    const pageName = "NEFB - How To Donate";
     const pageDesc = "Learn Step-by-Step process of ordering on NEFB.";
     const baseURL = "https://northeastfoodbank.org";
     const parentURL = "https://northeastfoodbank.org/help_center";
-    const pageURL = "https://northeastfoodbank.org/help_center/how_to_order";
+    const pageURL = "https://northeastfoodbank.org/help_center/how_to_donate";
 
     // web site schema
     const wSSchema = getWSSchema(pageURL);
@@ -94,7 +94,7 @@ export default function HowToOrderPage() {
             {/* page content */}
             <Navbar />
             <div className="bottom_spacer" />
-            <HowToOrder />
+            <HowToDonate />
             <Footer />
         </>
     )

@@ -2,7 +2,7 @@ import styles from '@/components/help_center/HelpCenter.module.css'
 import { ShoppingCart } from 'iconsax-react';
 import Link from 'next/link';
 
-export default function HowToOrder() {
+export default function HowToDonate() {
     return (
         <>
             <div className="container">
@@ -11,7 +11,7 @@ export default function HowToOrder() {
                         <ShoppingCart size="300" variant="Bold" />
                     </div>
                     <div className="text-center grey_dark">
-                        <h3>How To Order</h3>
+                        <h3>How To Donate</h3>
                         <p>Pending content...</p>
                     </div>
                 </div>

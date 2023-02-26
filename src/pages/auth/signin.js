@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import Navbar from '@/components/nav/navbar/navbar';
-import Footer from '@/components/nav/footer/footer';
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
 import Signin from '@/components/auth/signin';
 
@@ -9,7 +7,7 @@ export default function SigninPage() {
     const pageName = "NEFB - Signin";
     const pageDesc = "Signin to your North East Food Bank account and start marketing orders.";
     const baseURL = "https://northeastfoodbank.org";
-    const pageURL = "https://northeastfoodbank.org/auth/login";
+    const pageURL = "https://northeastfoodbank.org/auth/signin";
 
     // web site schema
     const wSSchema = getWSSchema(pageURL);
@@ -85,10 +83,7 @@ export default function SigninPage() {
             </Head>
 
             {/* page content */}
-            {/* <Navbar /> */}
-            {/* <div className="bottom_spacer" /> */}
             <Signin />
-            {/* <Footer /> */}
         </>
     )
 }

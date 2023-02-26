@@ -39,8 +39,8 @@ export default function HelpCenter() {
                     </div>
                     <div className="col-sm-6">
                         <div className={`m-2 ${styles.help_card} shadow-sm`}>
-                            <Link href="help_center/how_to_order">
-                                <h4>How To Order</h4>
+                            <Link href="help_center/how_to_donate">
+                                <h4>How To Donate</h4>
                                 <p>
                                     Learn Step-by-Step process of ordering on NEFB.
                                 </p>
@@ -53,7 +53,7 @@ export default function HelpCenter() {
                             <Link href="help_center/contact">
                                 <h4>Contact Us</h4>
                                 <p>
-                                    Want to send us a message or get on a call with one of the agents?.
+                                    Want to send us a message or get on a call with one of the staffs?.
                                 </p>
                             </Link>
                         </div>
@@ -61,9 +61,9 @@ export default function HelpCenter() {
                     <div className="col-sm-6">
                         <div className={`m-2 ${styles.help_card} shadow-sm`}>
                             <a href="#!" onClick={liveChat}>
-                                <h4>Talk To Live Agent</h4>
+                                <h4>Talk To Live Staffs</h4>
                                 <p>
-                                    Talk to a live agent from the chat box at the bottom right of your device.
+                                    Talk to a live staffs from the chat box at the bottom right of your device.
                                 </p>
                             </a>
                         </div>
