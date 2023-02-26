@@ -3,13 +3,21 @@ import Link from 'next/link'
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from '@/components/nav/navbar/Navbar.module.css'
-import { Bag2, CloseSquare, Heart, Menu, People, SearchNormal, ShoppingCart, User } from 'iconsax-react'
+import { Bag2, CloseSquare, Heart, Home, Menu, People, SearchNormal, ShoppingCart, User } from 'iconsax-react'
 
 export default function CollapsedNavbar() {
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
 
+    // toggle slide navbar
     const toggleNavbar = () => setIsOpen(!isOpen);
+
+    // toggle live chat 
+    const liveChat = () => {
+        if (typeof window !== 'undefined' && window.Tawk_API) {
+            window.Tawk_API.toggle();
+        }
+    };
 
     return (
         <>
@@ -59,6 +67,17 @@ export default function CollapsedNavbar() {
 
                     <ul className={styles.collapsed_menu}>
                         <li className={`m-2 ${styles.collapsed_menu_header}`}>
+                            NEFB
+                        </li>
+                        <li className="m-2">
+                            <Link className={styles.dropdown_item} href="/">
+                                <span className="d-flex ">
+                                    <Home className="mx-1" variant="Bold" />
+                                    Home
+                                </span>
+                            </Link>
+                        </li>
+                        <li className={`m-2 ${styles.collapsed_menu_header}`}>
                             Account
                         </li>
                         <li className="m-2">
@@ -94,7 +113,7 @@ export default function CollapsedNavbar() {
                             Help
                         </li>
                         <li className="m-2">
-                            <Link className={styles.dropdown_item} href="#">
+                            <Link className={styles.dropdown_item} href="/help_center">
                                 <span className="d-flex ">
                                     <People className="mx-1" variant="Bold" />
                                     Help Center
@@ -102,9 +121,12 @@ export default function CollapsedNavbar() {
                             </Link>
                         </li>
                         <li className="m-2">
-                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`} href="#">
+                            <a
+                                className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
+                                href="#!" onClick={liveChat}
+                            >
                                 Live Chat
-                            </Link>
+                            </a>
                         </li>
                         <li className="m-2 text-center">
                             <Link className="grey_dark text-decoration-none" href="/">

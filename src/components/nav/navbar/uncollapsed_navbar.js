@@ -7,6 +7,13 @@ import { ArrowDown3, Bag2, Heart, People, SearchNormal, ShoppingCart, User, Warn
 export default function UnCollapsedNavbar() {
     const router = useRouter();
 
+    // toggle live chat 
+    const liveChat = () => {
+        if (typeof window !== 'undefined' && window.Tawk_API) {
+            window.Tawk_API.toggle();
+        }
+    };
+
     return (
         <>
             <nav className={`${styles.navbar} navbar navbar-expand-md navbar-light fixed-top shadow-sm`}>
@@ -90,7 +97,7 @@ export default function UnCollapsedNavbar() {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="helpMenu">
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="#">
+                                            <Link className={styles.dropdown_item} href="/help_center">
                                                 <span className="d-flex ">
                                                     <People className="mx-1" variant="Bold" />
                                                     <span className={styles.show_nav_text}>Help Center</span>
@@ -99,9 +106,12 @@ export default function UnCollapsedNavbar() {
                                         </li>
                                         <li><hr className="dropdown-divider" /></li>
                                         <li className="m-2">
-                                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`} href="#">
+                                            <a
+                                                className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
+                                                href="#!" onClick={liveChat}
+                                            >
                                                 Live Chat
-                                            </Link>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>

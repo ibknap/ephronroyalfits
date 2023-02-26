@@ -1,5 +1,5 @@
 // page default data
-export const getHomeWSSchema = (url) => {
+export const getWSSchema = (url) => {
     return {
         "@context": "http://schema.org",
         "@type": "WebSite",
@@ -13,7 +13,7 @@ export const getHomeWSSchema = (url) => {
 };
 
 // web page schema
-export const getHomeWPSchema = (name, description, url, breadcrumb = []) => {
+export const getWPSchema = (name, description, url, breadcrumb = []) => {
     return {
         "@context": "http://schema.org",
         "@type": "WebPage",
@@ -28,7 +28,7 @@ export const getHomeWPSchema = (name, description, url, breadcrumb = []) => {
 };
 
 // local business schema
-export const getHomeLBSchema = (name, address, telephone, email, url, image, paymentAccepted, currenciesAccepted, openingHours, geo) => {
+export const getLBSchema = (name, address, telephone, email, url, image, paymentAccepted, currenciesAccepted, openingHours, geo) => {
     return {
         "@context": "http://schema.org",
         "@type": "LocalBusiness",
