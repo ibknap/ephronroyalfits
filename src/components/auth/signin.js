@@ -21,17 +21,17 @@ export default function Signin() {
 
                         <form className="col-md-4 mt-4">
                             <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label for="floatingInput">Email address</label>
+                                <input type="email" required className="form-control" id="emailAddr" placeholder="name@example.com" />
+                                <label htmlFor="emailAddr">Email address</label>
                             </div>
                             <div className="form-floating">
-                                <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" required className="form-control" id="password" placeholder="Password" />
+                                <label htmlFor="password">Password</label>
                             </div>
                             <button className={`btn btn-lg btn-success ${styles.auth_btn} col-md-8 mt-4`}>Signin</button>
                             <p className="mt-4">
                                 Want to do something different? Reset your password
-                                <Link href="/auth/reset_password" className="text-decoration-none primary"> here</Link> or 
+                                <Link href="/auth/reset_password" className="text-decoration-none primary"> here</Link> or
                                 <Link href="/auth/signup" className="text-decoration-none primary"> signup</Link> a new account.
                             </p>
                         </form>

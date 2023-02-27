@@ -21,8 +21,8 @@ export default function ResetPassword() {
 
                         <form className="col-md-4 mt-4">
                             <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label for="floatingInput">Email address</label>
+                                <input type="email" required className="form-control" id="emailAddr" placeholder="name@example.com" />
+                                <label htmlFor="emailAddr">Email address</label>
                             </div>
                             <button className={`btn btn-lg btn-success ${styles.auth_btn} col-md-8 mt-4`}>Send Email</button>
                             <p className="mt-4">
