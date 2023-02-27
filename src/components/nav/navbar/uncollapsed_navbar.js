@@ -68,10 +68,10 @@ export default function UnCollapsedNavbar() {
                                             </Link>
                                         </li>
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="/account/order">
+                                            <Link className={styles.dropdown_item} href="/account/donate">
                                                 <span className="d-flex ">
                                                     <Bag2 className="mx-1" variant="Bold" />
-                                                    <span className={styles.show_nav_text}>Orders</span>
+                                                    <span className={styles.show_nav_text}>Donate</span>
                                                 </span>
                                             </Link>
                                         </li>

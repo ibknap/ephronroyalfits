@@ -37,10 +37,10 @@ export default function Account() {
                                         </Link>
                                     </li>
                                     <li className="my-5">
-                                        <Link className="secondary text-decoration-none" href="/account/order">
+                                        <Link className="secondary text-decoration-none" href="/account/donate">
                                             <span className="d-flex ">
                                                 <Bag2 className="mx-1" variant="Bold" />
-                                                Orders
+                                                Donate
                                             </span>
                                         </Link>
                                     </li>

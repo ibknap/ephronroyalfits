@@ -5,7 +5,7 @@ import Signup from '@/components/auth/signup';
 export default function SignupPage() {
     // page default data
     const pageName = "NEFB - Signup";
-    const pageDesc = "Signup for your North East Food Bank account and start marketing orders.";
+    const pageDesc = "Signup for your North East Food Bank account and start marketing Donate.";
     const baseURL = "https://northeastfoodbank.org";
     const pageURL = "https://northeastfoodbank.org/auth/signup";
 

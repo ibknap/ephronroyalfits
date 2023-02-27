@@ -5,7 +5,7 @@ import Signin from '@/components/auth/signin';
 export default function SigninPage() {
     // page default data
     const pageName = "NEFB - Signin";
-    const pageDesc = "Signin to your North East Food Bank account and start marketing orders.";
+    const pageDesc = "Signin to your North East Food Bank account and start marketing Donate.";
     const baseURL = "https://northeastfoodbank.org";
     const pageURL = "https://northeastfoodbank.org/auth/signin";
 

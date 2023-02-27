@@ -5,7 +5,7 @@ import ResetPassword from '@/components/auth/reset_password';
 export default function ResetPasswordPage() {
     // page default data
     const pageName = "NEFB - Reset Password";
-    const pageDesc = "Reset Password for your North East Food Bank account and start marketing orders.";
+    const pageDesc = "Reset Password for your North East Food Bank account and start marketing Donate.";
     const baseURL = "https://northeastfoodbank.org";
     const pageURL = "https://northeastfoodbank.org/auth/reset_password";
 

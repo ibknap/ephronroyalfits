@@ -42,7 +42,7 @@ export default function HelpCenter() {
                             <Link href="help_center/how_to_donate">
                                 <h4>How To Donate</h4>
                                 <p>
-                                    Learn Step-by-Step process of ordering on NEFB.
+                                    Learn Step-by-Step process of donating on NEFB.
                                 </p>
                             </Link>
                         </div>

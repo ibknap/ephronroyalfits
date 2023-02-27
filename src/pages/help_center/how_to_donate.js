@@ -7,7 +7,7 @@ import HowToDonate from '@/components/help_center/how_to_donate';
 export default function HowToDonatePage() {
     // page default data
     const pageName = "NEFB - How To Donate";
-    const pageDesc = "Learn Step-by-Step process of ordering on NEFB.";
+    const pageDesc = "Learn Step-by-Step process of donating on NEFB.";
     const baseURL = "https://northeastfoodbank.org";
     const parentURL = "https://northeastfoodbank.org/help_center";
     const pageURL = "https://northeastfoodbank.org/help_center/how_to_donate";

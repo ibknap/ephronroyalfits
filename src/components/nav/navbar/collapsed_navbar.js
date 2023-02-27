@@ -89,10 +89,10 @@ export default function CollapsedNavbar() {
                             </Link>
                         </li>
                         <li className="m-2">
-                            <Link className={styles.dropdown_item} href="/account/order">
+                            <Link className={styles.dropdown_item} href="/account/donate">
                                 <span className="d-flex ">
                                     <Bag2 className="mx-1" variant="Bold" />
-                                    Orders
+                                    Donate
                                 </span>
                             </Link>
                         </li>
