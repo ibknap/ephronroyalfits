@@ -48,12 +48,12 @@ export default function Signup() {
                                         <input type="text" required className="form-control" id="phoneNumber" placeholder="Jon" />
                                         <label htmlFor="phoneNumber">Phone Number</label>
                                     </div>
-                                    <div class="form-floating">
-                                        <select class="form-select" required id="gender">
+                                    <div className="form-floating">
+                                        <select className="form-select" required id="gender">
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
-                                        <label for="gender">Gender</label>
+                                        <label htmlFor="gender">Gender</label>
                                     </div>
                                 </>
                             )}
