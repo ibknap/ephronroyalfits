@@ -9,6 +9,7 @@ export default function SavedPage() {
     const pageName = "NEFB - Saved";
     const pageDesc = "North East Food Bank seeks to eliminate hunger and malnutrition among vulnerable populations in the Northeast. It is a livelihood programme developed by Big Family 360 Foundation Nigeria.";
     const baseURL = "https://northeastfoodbank.org";
+    const parentURL = "https://northeastfoodbank.org/account";
     const pageURL = "https://northeastfoodbank.org/account/saved";
 
     // web site schema
@@ -29,6 +30,12 @@ export default function SavedPage() {
             {
                 "@type": "ListItem",
                 "position": 2,
+                "name": "My Account",
+                "item": parentURL
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
                 "name": pageName,
                 "item": pageURL
             }

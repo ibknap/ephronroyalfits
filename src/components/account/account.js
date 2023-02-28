@@ -1,7 +1,8 @@
 import styles from '@/components/account/Account.module.css'
 import { Edit } from 'iconsax-react';
-import Link from 'next/link';
 import AccountNavbar from '@/components/account/navbar';
+import Newsletter from '@/components/account/newsletter';
+import AddressBook from '@/components/account/address_book';
 
 export default function Account() {
     return (
@@ -30,9 +31,14 @@ export default function Account() {
                                     <div className="my-2 p-2 card">
                                         <div className="d-flex justify-content-between">
                                             ADDRESS BOOK
-                                            <Link href="#" className="primary">
+                                            <button
+                                                type="button"
+                                                className="primary trans border_none"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#addressBookModal"
+                                            >
                                                 <Edit />
-                                            </Link>
+                                            </button>
                                         </div>
                                         <hr />
                                         <span className="text-muted mb-2">Ibukunoluwa Naphtali</span>
@@ -57,12 +63,22 @@ export default function Account() {
                                         <div>NEWSLETTER</div>
                                         <hr />
                                         <span className="text-muted mb-2">You are currently not subscribed to any of our newsletters.</span>
-                                        <Link href="#" className="primary text-decoration-none mt-3">EDIT NEWSLETTER PREFERENCES</Link>
+                                        <button
+                                            type="button"
+                                            className="primary text-decoration-none mt-3 text-start trans border_none"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#newsletterModal"
+                                        >
+                                            EDIT NEWSLETTER PREFERENCES
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <Newsletter />
+                    <AddressBook />
                 </div>
             </div>
         </>

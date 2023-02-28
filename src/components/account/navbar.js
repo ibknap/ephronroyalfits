@@ -52,15 +52,25 @@ export default function AccountNavbar() {
                                 </Link>
                             </li>
                             <hr />
-                            <li className={`pb-2 rounded ${router.asPath == "/account/address_book" ? "bg_primary_50" : ""}`}>
-                                <Link className="secondary text-decoration-none" href="/account/address_book">
+                            <li className="p-2">
+                                <button
+                                    type="button"
+                                    className="secondary trans border_none"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#addressBookModal"
+                                >
                                     Address Book
-                                </Link>
+                                </button>
                             </li>
-                            <li className={`pt-2 rounded ${router.asPath == "/account/newsletter" ? "bg_primary_50" : ""}`}>
-                                <Link className="secondary text-decoration-none" href="/account/newsletter">
+                            <li className="p-2">
+                                <button
+                                    type="button"
+                                    className="secondary trans border_none"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#newsletterModal"
+                                >
                                     Newsletter
-                                </Link>
+                                </button>
                             </li>
                             <li className="mt-2">
                                 <hr />

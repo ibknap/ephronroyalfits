@@ -1,5 +1,7 @@
 import styles from '@/components/account/Account.module.css'
 import AccountNavbar from '@/components/account/navbar';
+import Newsletter from '@/components/account/newsletter';
+import AddressBook from '@/components/account/address_book';
 import Image from 'next/image';
 
 export default function Saved() {
@@ -38,6 +40,9 @@ export default function Saved() {
                             </div>
                         </div>
                     </div>
+
+                    <Newsletter />
+                    <AddressBook />
                 </div>
             </div>
         </>
