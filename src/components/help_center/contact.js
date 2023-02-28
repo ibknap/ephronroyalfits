@@ -91,7 +91,7 @@ export default function Contact() {
                 </div>
             </div>
 
-            <div className="row mt-5">
+            <div className="w-100 mt-5">
                 <div className="col-12">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3938.455465530535!2d12.386678014872695!3d9.203492393399955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMTInMTIuNiJOIDEywrAyMycxOS45IkU!5e0!3m2!1sen!2sus!4v1677565896302!5m2!1sen!2sus" width="100%" height="400" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
