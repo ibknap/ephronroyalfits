@@ -117,7 +117,9 @@ export default function UnCollapsedNavbar() {
                                 </div>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link ${router.asPath == "/cart" ? "nav-link primary bg_grey rounded" : "secondary"}`} href="#">
+                                <Link className={`nav-link ${router.asPath == "/cart" ? "nav-link primary bg_grey rounded" : "secondary"}`}
+                                    href="/cart"
+                                >
                                     <ShoppingCart className="mx-1" variant="Bold" />
                                     <span className={styles.show_nav_text}>Cart</span>
                                 </Link>

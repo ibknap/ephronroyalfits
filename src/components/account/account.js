@@ -7,7 +7,7 @@ import AddressBook from '@/components/account/address_book';
 export default function Account() {
     return (
         <>
-            <div className="container ">
+            <div className="container">
                 <div className="row justify-content-center">
                     <AccountNavbar />
 
@@ -16,6 +16,7 @@ export default function Account() {
                             <div className={styles.card_header}>
                                 My Account
                             </div>
+                            
                             <div className="row mt-2">
                                 <div className="col-sm-6">
                                     <div className="my-2 p-2 card">

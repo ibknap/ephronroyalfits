@@ -1,4 +1,3 @@
-import styles from '@/components/help_center/HelpCenter.module.css'
 import { Call, DirectSend, Location } from 'iconsax-react';
 import Link from 'next/link';
 

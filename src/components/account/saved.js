@@ -28,7 +28,7 @@ export default function Saved() {
                                                 height={100}
                                                 priority
                                             />
-                                            <div className="mx-2 d-flex flex-column justify-content-between">
+                                            <div className="w-75 mx-2 d-flex flex-column justify-content-between">
                                                 <span className="secondary">Bag of rice 50kg</span>
                                                 <span className="text-muted">₦ 25,000</span>
                                                 <span className="text-muted">On: 27-02-2023</span>
