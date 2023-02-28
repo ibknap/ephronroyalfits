@@ -51,7 +51,7 @@ export default function AddressBook() {
                                 <div className="col-12 mt-3">
                                     <div className="form-floating">
                                         <textarea className="form-control" required placeholder="Enter Additional Information" id="additionalInfo" style={{ height: "100px" }}></textarea>
-                                        <label for="additionalInfo">Additional Information</label>
+                                        <label htmlFor="additionalInfo">Additional Information</label>
                                     </div>
                                 </div>
                             </form>

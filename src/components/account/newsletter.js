@@ -14,13 +14,13 @@ export default function Newsletter() {
                             <form>
                                 <div className="form-check form-switch mb-3">
                                     <input className="form-check-input" type="checkbox" id="subscribed" />
-                                    <label className="form-check-label" for="subscribed">
+                                    <label className="form-check-label" htmlFor="subscribed">
                                         I want to receive occasional newsletters
                                     </label>
                                 </div>
                                 <div className="form-check form-switch mt-3">
                                     <input className="form-check-input" type="checkbox" id="unsubscribed" />
-                                    <label className="form-check-label" for="unsubscribed">
+                                    <label className="form-check-label" htmlFor="unsubscribed">
                                         I don't want to receive occasional newsletters
                                     </label>
                                 </div>

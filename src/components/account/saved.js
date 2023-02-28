@@ -26,6 +26,7 @@ export default function Saved() {
                                                 className="rounded border"
                                                 width={100}
                                                 height={100}
+                                                priority
                                             />
                                             <div className="mx-2 d-flex flex-column justify-content-between">
                                                 <span className="secondary">Bag of rice 50kg</span>
