@@ -21,7 +21,7 @@ export default function Newsletter() {
                                 <div className="form-check form-switch mt-3">
                                     <input className="form-check-input" type="checkbox" id="unsubscribed" />
                                     <label className="form-check-label" htmlFor="unsubscribed">
-                                        I don't want to receive occasional newsletters
+                                        I don&apos;t want to receive occasional newsletters
                                     </label>
                                 </div>
                             </form>
