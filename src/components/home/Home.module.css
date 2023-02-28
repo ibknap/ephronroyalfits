@@ -1,0 +1,56 @@
+.hero {
+    min-height: 350px;
+}
+
+.hero_badge {
+    height: 350px;
+    background: #fffaee;
+}
+
+.hero_badge_sm {
+    height: calc(175px - 1rem);
+}
+
+.hero_text_container {
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    width: 50%;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 99;
+}
+
+.hero_text {
+    font-weight: bold;
+    font-size: calc(1.475rem + 2.7vw);
+}
+
+.hero_img {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    width: 50%;
+    height: 294px;
+    transform: translate(0, -50%);
+}
+
+@media (max-width: 968px) {
+    .hero_text_container {
+        width: 100%;
+        text-align: center;
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    .hero_text {
+        font-weight: bold;
+        font-size: calc(1.625rem + 4.5vw);
+    }
+
+    .hero_img {
+        width: 100%;
+        height: 294px;
+    }
+}

@@ -27,7 +27,7 @@ export default function Cart() {
             {hasItem &&
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-8 ">
+                        <div className="col-sm-8">
                             <div className="m-2 shadow-sm p-3 rounded">
                                 <div className={styles.card_header}>
                                     Shopping Cart

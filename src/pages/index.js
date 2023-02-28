@@ -2,9 +2,9 @@ import Head from 'next/head';
 import Navbar from '@/components/nav/navbar/navbar';
 import Footer from '@/components/nav/footer/footer';
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
-import { Information } from 'iconsax-react';
+import Home from '@/components/home/home';
 
-export default function Home() {
+export default function HomePage() {
   // page default data
   const pageName = "North East Food Bank | Fighting Hunger and Poverty in Nigeria";
   const pageDesc = "North East Food Bank seeks to eliminate hunger and malnutrition among vulnerable populations in the Northeast. It is a livelihood programme developed by Big Family 360 Foundation Nigeria.";
@@ -80,12 +80,7 @@ export default function Home() {
       {/* page content */}
       <Navbar />
       <div className="bottom_spacer" />
-      <div className='text-dark text-center my-4'>
-        <Information size="300" className="grey_dark" variant="Bold" />
-        <h3 className="grey_dark">
-          Under development
-        </h3>
-      </div>
+      <Home />
       <Footer />
     </>
   )
