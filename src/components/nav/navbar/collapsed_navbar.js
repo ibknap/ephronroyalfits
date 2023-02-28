@@ -92,7 +92,7 @@ export default function CollapsedNavbar() {
                             <Link className={styles.dropdown_item} href="/account/donate">
                                 <span className="d-flex ">
                                     <Bag2 className="mx-1" variant="Bold" />
-                                    Donate
+                                    My Donations
                                 </span>
                             </Link>
                         </li>

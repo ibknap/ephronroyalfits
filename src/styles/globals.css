@@ -11,6 +11,10 @@
     background: #f8c12a !important;
 }
 
+.bg_primary_50 {
+    background: #f8c12a80 !important;
+}
+
 .secondary {
     color: #0c1a2a !important;
 }

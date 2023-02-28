@@ -14,3 +14,30 @@
     background: #0c1a2a !important;
     border: none;
 }
+
+.donate_status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+}
+
+.saved_donate {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+    border-radius: 0.25rem;
+    background: #f8c12a !important;
+    border: none !important;
+}
+
+.saved_remove, .saved_remove:hover {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    background: transparent !important;
+    border: none !important;
+    color: red !important;
+}
