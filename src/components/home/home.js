@@ -2,11 +2,12 @@ import styles from '@/components/home/Home.module.css'
 import { Add, Heart, Minus, ShoppingCart, Trash } from 'iconsax-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import MostDonated from '@/components/home/most_donated';
 
 export default function Home() {
     return (
         <>
-            <div className={`container ${styles.hero}`}>
+            <div className={`container mb-5 ${styles.hero}`}>
                 <div className="row">
                     <div className="col-sm-8">
                         <div className={`m-2 p-3 shadow-sm rounded ${styles.hero_badge} position-relative`}>
@@ -20,6 +21,7 @@ export default function Home() {
                                         src="/images/hero.png"
                                         alt="NEFB"
                                         fill
+                                        sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
                                         priority
                                     />
                                 </div>
@@ -29,17 +31,21 @@ export default function Home() {
                     <div className="col-sm-4">
                         <div className="m-2">
                             <div className="d-flex flex-column justify-content-between">
-                                <div className={`mb-2 bg_primary secondary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
-                                    Under
-                                </div>
-                                <div className={`mt-2 bg_secondary primary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
-                                    Development
-                                </div>
+                                <Link href="/#foodBank"
+                                    className={`mb-2 bg_primary secondary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}
+                                >
+                                    <h3 className="fw-light">Looking for a tasty food bank marketplace?</h3>
+                                </Link>
+                                <Link href="/#healthBank" className={`mt-2 bg_secondary primary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
+                                    <h3 className="fw-light">Come explore our health bank marketplace.</h3>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <MostDonated />
         </>
     )
 }

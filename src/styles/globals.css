@@ -87,3 +87,8 @@
 .form-control:focus {
     border-color: #f8c12a !important;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #0c1a2a !important;
+}
