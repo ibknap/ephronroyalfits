@@ -55,7 +55,7 @@ export default function AccountNavbar() {
                             <li className="p-2">
                                 <button
                                     type="button"
-                                    className="secondary trans border_none"
+                                    className="w-100 text-start secondary trans border_none"
                                     data-bs-toggle="modal"
                                     data-bs-target="#addressBookModal"
                                 >
@@ -65,7 +65,7 @@ export default function AccountNavbar() {
                             <li className="p-2">
                                 <button
                                     type="button"
-                                    className="secondary trans border_none"
+                                    className="w-100 text-start secondary trans border_none"
                                     data-bs-toggle="modal"
                                     data-bs-target="#newsletterModal"
                                 >
