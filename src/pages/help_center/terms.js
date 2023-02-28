@@ -72,7 +72,7 @@ export default function TermsPage() {
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content={pageDesc} />
                 <meta name="keywords" content="Food bank, Donations, Charity, Nonprofit, Nigeria, Hunger, Poverty, North East, Community support, Food insecurity, Volunteer opportunities, Social impact, Humanitarian aid, Relief organization, Sustainable development" />
-                <meta name="theme-color" content="#f8c129" />
+                <meta name="theme-color" content="#ffffff" />
                 <link rel="icon" type="image/x-icon" href="/images/fav_logo_trans.png" />
                 <meta name="author" content="North East Food Bank" />
                 <title>{pageName}</title>

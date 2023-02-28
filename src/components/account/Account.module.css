@@ -32,7 +32,8 @@
     border: none !important;
 }
 
-.saved_remove, .saved_remove:hover {
+.saved_remove,
+.saved_remove:hover {
     position: absolute;
     bottom: 10px;
     right: 10px;
