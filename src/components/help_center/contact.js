@@ -46,7 +46,11 @@ export default function Contact() {
                     <div className="col-sm-6">
                         <div className="row">
                             <div className="col-sm-6">
-                                <Link className="text-decoration-none secondary card m-3 p-2 bg_primary_50" href="tel:+2347033180897" target="_blank">
+                                <Link className="text-decoration-none secondary card m-3 p-2 bg_primary_50"
+                                    href="tel:+2347033180897"
+                                    as="tel:+2347033180897"
+                                    target="_blank"
+                                >
                                     <Call className="mx-1" size="32" variant="Bold" />
                                     <div className="d-flex flex-column mx-1">
                                         call us
@@ -56,7 +60,11 @@ export default function Contact() {
                                 </Link>
                             </div>
                             <div className="col-sm-6">
-                                <Link className="text-decoration-none secondary card card m-3 p-2 bg_primary_50" href="mailto:info@northeastfoodbank.org" target="_blank">
+                                <Link className="text-decoration-none secondary card card m-3 p-2 bg_primary_50"
+                                    href="mailto:info@northeastfoodbank.org"
+                                    as="mailto:info@northeastfoodbank.org"
+                                    target="_blank"
+                                >
                                     <DirectSend className="mx-1" size="32" variant="Bold" />
                                     <div className="d-flex flex-column mx-1">
                                         email use
@@ -76,7 +84,11 @@ export default function Contact() {
                                 </div>
                             </div>
                             <div className="col-sm-6">
-                                <Link className="text-decoration-none secondary card card m-3 p-2 bg_primary_50" href="https://www.linkedin.com/company/smartrrproject/" target="_blank">
+                                <Link className="text-decoration-none secondary card card m-3 p-2 bg_primary_50"
+                                    href="https://www.linkedin.com/company/smartrrproject/"
+                                    as="https://www.linkedin.com/company/smartrrproject/"
+                                    target="_blank"
+                                >
                                     <DirectSend className="mx-1" size="32" variant="Bold" />
                                     <div className="d-flex flex-column mx-1">
                                         follow us

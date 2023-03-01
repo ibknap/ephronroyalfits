@@ -16,7 +16,7 @@ export default function Cart() {
                             <ShoppingCart className="primary" size="200" />
                             <h4>Your cart is empty!</h4>
                             <p className="text-muted">Browse and start donating!</p>
-                            <Link href="/" className="my-4 btn btn-lg bg_primary white shadow border_none">
+                            <Link href="/" as="/" className="my-4 btn btn-lg bg_primary white shadow border_none">
                                 Start Donating
                             </Link>
                         </div>
@@ -86,7 +86,7 @@ export default function Cart() {
                                     <small className="text-muted">Delivery fees not included</small>
                                 </div>
 
-                                <Link href="#" className={`w-100 my-3 btn btn-lg btn-success ${styles.btn_nav}`}>
+                                <Link href="#" as="#" className={`w-100 my-3 btn btn-lg btn-success ${styles.btn_nav}`}>
                                     <Heart variant="Bold" />
                                     Donate
                                 </Link>

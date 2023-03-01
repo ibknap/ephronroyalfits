@@ -18,7 +18,7 @@ export default function UnCollapsedNavbar() {
         <>
             <nav className={`${styles.navbar} navbar navbar-expand-md navbar-light fixed-top shadow-sm`}>
                 <div className="container">
-                    <Link className="navbar-brand" href="/">
+                    <Link className="navbar-brand" href="/" as="/">
                         <Image
                             src="/images/logo_trans_long.png"
                             alt="logo"
@@ -54,13 +54,16 @@ export default function UnCollapsedNavbar() {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="accountMenu">
                                         <li className="m-2">
-                                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`} href="/auth/signin">
+                                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
+                                                href="/auth/signin"
+                                                as="/auth/signin"
+                                            >
                                                 Sign In
                                             </Link>
                                         </li>
                                         <li><hr className="dropdown-divider" /></li>
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="/account">
+                                            <Link className={styles.dropdown_item} href="/account" as="/account">
                                                 <span className="d-flex ">
                                                     <User className="mx-1" variant="Bold" />
                                                     <span className={styles.show_nav_text}>My Account</span>
@@ -68,7 +71,7 @@ export default function UnCollapsedNavbar() {
                                             </Link>
                                         </li>
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="/account/donate">
+                                            <Link className={styles.dropdown_item} href="/account/donate" as="/account/donate">
                                                 <span className="d-flex ">
                                                     <Bag2 className="mx-1" variant="Bold" />
                                                     <span className={styles.show_nav_text}>My Donations</span>
@@ -76,7 +79,7 @@ export default function UnCollapsedNavbar() {
                                             </Link>
                                         </li>
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="/account/saved">
+                                            <Link className={styles.dropdown_item} href="/account/saved" as="/account/saved">
                                                 <span className="d-flex ">
                                                     <Heart className="mx-1" variant="Bold" />
                                                     <span className={styles.show_nav_text}>Saved Items</span>
@@ -97,7 +100,7 @@ export default function UnCollapsedNavbar() {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="helpMenu">
                                         <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="/help_center">
+                                            <Link className={styles.dropdown_item} href="/help_center" as="/help_center">
                                                 <span className="d-flex ">
                                                     <People className="mx-1" variant="Bold" />
                                                     <span className={styles.show_nav_text}>Help Center</span>
@@ -119,6 +122,7 @@ export default function UnCollapsedNavbar() {
                             <li className="nav-item">
                                 <Link className={`nav-link ${router.asPath == "/cart" ? "nav-link primary bg_grey rounded" : "secondary"}`}
                                     href="/cart"
+                                    as="/cart"
                                 >
                                     <ShoppingCart className="mx-1" variant="Bold" />
                                     <span className={styles.show_nav_text}>Cart</span>

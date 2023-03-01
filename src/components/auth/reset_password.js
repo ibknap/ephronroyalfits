@@ -8,7 +8,7 @@ export default function ResetPassword() {
                 <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
                     <header className="mb-auto">
                         <h4 className="float-md-start mb-0">
-                            <Link className="text-decoration-none primary" href="/">
+                            <Link className="text-decoration-none primary" href="/" as="/">
                                 NEFB
                             </Link>
                         </h4>
@@ -27,13 +27,13 @@ export default function ResetPassword() {
                             <button className={`btn btn-lg btn-success ${styles.auth_btn} col-md-8 mt-4`}>Send Email</button>
                             <p className="mt-4">
                                 Have account already?
-                                <Link href="/auth/signin" className="text-decoration-none primary"> signin</Link>.
+                                <Link href="/auth/signin" as="/auth/signin" className="text-decoration-none primary"> signin</Link>.
                             </p>
                         </form>
                     </div>
 
                     <footer className="mt-auto text-muted">
-                        For further support, you may visit the <Link href="/help_center" className="text-decoration-none primary">Help Center.</Link>
+                        For further support, you may visit the <Link href="/help_center" as="/help_center" className="text-decoration-none primary">Help Center.</Link>
                     </footer>
                 </div>
             </div>

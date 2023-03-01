@@ -25,7 +25,11 @@ export default function Footer() {
                                 <Call className="mx-1" size="32" variant="Bold" />
                                 <div className="d-flex flex-column mx-1">
                                     call us
-                                    <Link className="text-decoration-none primary" href="tel:+2347033180897" target="_blank">
+                                    <Link className="text-decoration-none primary"
+                                        href="tel:+2347033180897"
+                                        as="tel:+2347033180897"
+                                        target="_blank"
+                                    >
                                         +234-703-318-0897
                                     </Link>
                                 </div>
@@ -34,7 +38,11 @@ export default function Footer() {
                                 <DirectSend className="mx-1" size="32" variant="Bold" />
                                 <div className="d-flex flex-column mx-1">
                                     email us
-                                    <Link className="text-decoration-none primary" href="mailto:info@northeastfoodbank.org" target="_blank">
+                                    <Link className="text-decoration-none primary"
+                                        href="mailto:info@northeastfoodbank.org"
+                                        as="mailto:info@northeastfoodbank.org"
+                                        target="_blank"
+                                    >
                                         info@northeastfoodbank.org
                                     </Link>
                                 </div>
@@ -52,7 +60,11 @@ export default function Footer() {
                                 <Camera className="mx-1" size="32" variant="Bold" />
                                 <div className="d-flex flex-column mx-1">
                                     follow us
-                                    <Link className="text-decoration-none primary" href="https://www.linkedin.com/company/smartrrproject/" target="_blank">
+                                    <Link className="text-decoration-none primary"
+                                        href="https://www.linkedin.com/company/smartrrproject/"
+                                        as="https://www.linkedin.com/company/smartrrproject/"
+                                        target="_blank"
+                                    >
                                         linkedin
                                     </Link>
                                 </div>
@@ -115,7 +127,7 @@ export default function Footer() {
 
                     <div className="row mt-5">
                         <div className="col text-center">
-                            <Link className="grey_dark text-decoration-none" href="/">
+                            <Link className="grey_dark text-decoration-none" href="/" as="/">
                                 All rights reserved © www.northeastfoodbank.org
                             </Link>
                         </div>

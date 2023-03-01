@@ -28,7 +28,7 @@ export default function AccountNavbar() {
                     <div className="m-2 p-2 shadow rounded">
                         <ul className="list-unstyled">
                             <li className={`py-3 rounded ${router.asPath == "/account" ? "bg_primary_50" : ""}`}>
-                                <Link className="secondary text-decoration-none" href="/account">
+                                <Link className="secondary text-decoration-none" href="/account" as="/account">
                                     <span className="d-flex ">
                                         <User className="mx-1" variant="Bold" />
                                         My Account
@@ -36,7 +36,7 @@ export default function AccountNavbar() {
                                 </Link>
                             </li>
                             <li className={`py-3 rounded ${router.asPath == "/account/donate" ? "bg_primary_50" : ""}`}>
-                                <Link className="secondary text-decoration-none" href="/account/donate">
+                                <Link className="secondary text-decoration-none" href="/account/donate" as="/account/donate">
                                     <span className="d-flex ">
                                         <Bag2 className="mx-1" variant="Bold" />
                                         My Donations
@@ -44,7 +44,7 @@ export default function AccountNavbar() {
                                 </Link>
                             </li>
                             <li className={`py-3 rounded ${router.asPath == "/account/saved" ? "bg_primary_50" : ""}`}>
-                                <Link className="secondary text-decoration-none" href="/account/saved">
+                                <Link className="secondary text-decoration-none" href="/account/saved" as="/account/saved">
                                     <span className="d-flex ">
                                         <Heart className="mx-1" variant="Bold" />
                                         Saved Items
@@ -74,7 +74,10 @@ export default function AccountNavbar() {
                             </li>
                             <li className="mt-2">
                                 <hr />
-                                <Link className={`w-100 btn btn-success ${styles.btn_nav} text-center white shadow-sm py-3`} href="#">
+                                <Link className={`w-100 btn btn-success ${styles.btn_nav} text-center white shadow-sm py-3`}
+                                    href="#"
+                                    as="#"
+                                >
                                     Sign Out
                                 </Link>
                             </li>
