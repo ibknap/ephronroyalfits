@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Navbar from '@/components/nav/navbar/navbar';
 import Footer from '@/components/nav/footer/footer';
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
-import Home from '@/components/home/home';
+import Home, { getStaticProps } from '@/components/home/home';
 
 export default function HomePage() {
   // page default data
@@ -85,3 +85,5 @@ export default function HomePage() {
     </>
   )
 }
+
+export { getStaticProps };

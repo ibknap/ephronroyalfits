@@ -2,9 +2,21 @@ import styles from '@/components/home/Home.module.css'
 import { Add, Heart, Minus, ShoppingCart, Trash } from 'iconsax-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import MostDonated from '@/components/home/most_donated';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import 'swiper/css/navigation';
+import { getProducts } from '@/pages/api/get_products';
+import { getMostDonated } from '@/pages/api/get_most_donated';
+import Loader from '@/components/loader/loader';
+import toCurrency from '@/components/utils/toCurrency'
+import { getHealth } from '@/pages/api/get_health';
 
 export default function Home() {
+    const products = getProducts();
+    const mdProducts = getMostDonated();
+    const healths = getHealth();
+
     return (
         <>
             <div className={`container mb-5 ${styles.hero}`}>
@@ -44,331 +56,123 @@ export default function Home() {
                 </div>
             </div>
 
-            <MostDonated />
+            {/* most donated */}
+            <div className={`w-100 ${styles.slider_container}`}>
+                <span className="h4 fw-normal">Most Donated</span>
+                <Swiper
+                    modules={[Navigation]}
+                    navigation={true}
+                    slidesPerView={2}
+                    spaceBetween={10}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 10,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 10,
+                        },
+                        986: {
+                            slidesPerView: 5,
+                            spaceBetween: 10,
+                        }
+                    }}
+                >
 
+                    {mdProducts ? mdProducts.map((product) => (
+                        <SwiperSlide key={product.id} className={styles.slider}>
+                            <Link href={`/product/${product.id}`} as={`/product/${product.id}`} className="secondary">
+                                <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    crossOrigin="anonymous"
+                                />
+                                <div className={styles.slider_body}>
+                                    <span className={styles.slider_header}>{product.name}</span>
+                                    <b>{toCurrency(product.price)}</b>
+                                </div>
+                            </Link>
+                        </SwiperSlide>
+                    ))
+                        : <div className="my-5">
+                            <Loader />
+                        </div>
+                    }
+                </Swiper>
+            </div>
+
+            {/* food bank */}
             <div id="foodBank" className="container-fluid py-5 px-lg-5 bg_grey">
                 <div className="row">
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
+                    {products ? products.map((product) => (
+                        <div key={product.id} className="col-6 col-md-3 col-lg-2">
+                            <div className="product_card">
+                                <Link href={`/product/${product.id}`}>
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        crossOrigin="anonymous"
+                                    />
+                                </Link>
 
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
+                                <div className="product_body">
+                                    <span className="product_header">{product.name}</span>
+                                    <b>{toCurrency(product.price)}</b>
+                                    <button className="product_add_btn">
+                                        <Add /> Add To Cart
+                                    </button>
+                                </div>
+
+                                <button className="product_saved_btn">
+                                    <Heart variant="Bold" />
                                 </button>
                             </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
                         </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
+                    ))
+                        : <div className="my-5">
+                            <Loader />
                         </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
 
+            {/* health bank */}
             <div id="healthBank" className="container-fluid py-5 px-lg-5 bg_grey">
                 <div className="row">
                     <div className="col-12">
                         <h4>Health Bank</h4>
                     </div>
 
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
+                    {healths ? healths.map((health) => (
+                        <div key={health.id} className="col-6 col-md-3 col-lg-2">
+                            <div className="product_card">
+                                <Link href={`/product/${health.id}`}>
+                                    <img
+                                        src={health.image}
+                                        alt={health.name}
+                                        crossOrigin="anonymous"
+                                    />
+                                </Link>
 
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
+                                <div className="product_body">
+                                    <span className="product_header">{health.name}</span>
+                                    <b>{toCurrency(health.price)}</b>
+                                    <button className="product_add_btn">
+                                        <Add /> Add To Cart
+                                    </button>
+                                </div>
+
+                                <button className="product_saved_btn">
+                                    <Heart variant="Bold" />
                                 </button>
                             </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
                         </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
+                    ))
+                        : <div className="my-5">
+                            <Loader />
                         </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-6 col-md-3 col-lg-2">
-                        <div className="product_card">
-                            <Link href="#" className="">
-                                <Image
-                                    src="/images/hero.png"
-                                    alt="NEFB"
-                                    style={{ objectFit: "cover" }}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                    priority
-                                />
-                            </Link>
-
-                            <div className="product_body">
-                                <span className="product_header">Bag of oranges from hong here is a test</span>
-                                <b>₦ 104,129</b>
-                                <button className="product_add_btn">
-                                    <Add /> Add To Cart
-                                </button>
-                            </div>
-
-                            <button className="product_saved_btn">
-                                <Heart className="" variant="Bold" />
-                            </button>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </>
