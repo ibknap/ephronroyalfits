@@ -2,7 +2,7 @@ import { collection, query, orderBy, onSnapshot, where } from 'firebase/firestor
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
 
-export function getProducts() {
+export default function getProducts() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {

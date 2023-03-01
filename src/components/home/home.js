@@ -6,11 +6,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import 'swiper/css/navigation';
-import { getProducts } from '@/pages/api/get_products';
-import { getMostDonated } from '@/pages/api/get_most_donated';
+import getProducts from '@/pages/api/get_products';
+import getMostDonated from '@/pages/api/get_most_donated';
+import getHealth from '@/pages/api/get_health';
 import Loader from '@/components/loader/loader';
 import toCurrency from '@/components/utils/toCurrency'
-import { getHealth } from '@/pages/api/get_health';
 
 export default function Home() {
     const products = getProducts();

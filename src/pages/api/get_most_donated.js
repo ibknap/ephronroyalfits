@@ -2,7 +2,7 @@ import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
 
-export function getMostDonated() {
+export default function getMostDonated() {
     const [mdProducts, setMdProducts] = useState([]);
 
     useEffect(() => {
