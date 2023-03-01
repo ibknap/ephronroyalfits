@@ -206,6 +206,170 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            <div id="healthBank" className="py-5 px-lg-5 bg_grey">
+                <div className="row">
+                    <div className="col-12">
+                        <h4>Health Bank</h4>
+                    </div>
+                    <div className="col-6 col-md-3 col-lg-2">
+                        <div className="product_card">
+                            <Link href="#" className="">
+                                <Image
+                                    src="/images/hero.png"
+                                    alt="NEFB"
+                                    style={{ objectFit: "cover" }}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+                                    priority
+                                />
+                            </Link>
+
+                            <div className="product_body">
+                                <span className="product_header">Bag of oranges from hong here is a test</span>
+                                <b>₦ 104,129</b>
+                                <button className="product_add_btn">
+                                    <Add /> Add To Cart
+                                </button>
+                            </div>
+
+                            <button className="product_saved_btn">
+                                <Heart className="" variant="Bold" />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="col-6 col-md-3 col-lg-2">
+                        <div className="product_card">
+                            <Link href="#" className="">
+                                <Image
+                                    src="/images/hero.png"
+                                    alt="NEFB"
+                                    style={{ objectFit: "cover" }}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+                                    priority
+                                />
+                            </Link>
+
+                            <div className="product_body">
+                                <span className="product_header">Bag of oranges from hong here is a test</span>
+                                <b>₦ 104,129</b>
+                                <button className="product_add_btn">
+                                    <Add /> Add To Cart
+                                </button>
+                            </div>
+
+                            <button className="product_saved_btn">
+                                <Heart className="" variant="Bold" />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="col-6 col-md-3 col-lg-2">
+                        <div className="product_card">
+                            <Link href="#" className="">
+                                <Image
+                                    src="/images/hero.png"
+                                    alt="NEFB"
+                                    style={{ objectFit: "cover" }}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+                                    priority
+                                />
+                            </Link>
+
+                            <div className="product_body">
+                                <span className="product_header">Bag of oranges from hong here is a test</span>
+                                <b>₦ 104,129</b>
+                                <button className="product_add_btn">
+                                    <Add /> Add To Cart
+                                </button>
+                            </div>
+
+                            <button className="product_saved_btn">
+                                <Heart className="" variant="Bold" />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="col-6 col-md-3 col-lg-2">
+                        <div className="product_card">
+                            <Link href="#" className="">
+                                <Image
+                                    src="/images/hero.png"
+                                    alt="NEFB"
+                                    style={{ objectFit: "cover" }}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+                                    priority
+                                />
+                            </Link>
+
+                            <div className="product_body">
+                                <span className="product_header">Bag of oranges from hong here is a test</span>
+                                <b>₦ 104,129</b>
+                                <button className="product_add_btn">
+                                    <Add /> Add To Cart
+                                </button>
+                            </div>
+
+                            <button className="product_saved_btn">
+                                <Heart className="" variant="Bold" />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="col-6 col-md-3 col-lg-2">
+                        <div className="product_card">
+                            <Link href="#" className="">
+                                <Image
+                                    src="/images/hero.png"
+                                    alt="NEFB"
+                                    style={{ objectFit: "cover" }}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+                                    priority
+                                />
+                            </Link>
+
+                            <div className="product_body">
+                                <span className="product_header">Bag of oranges from hong here is a test</span>
+                                <b>₦ 104,129</b>
+                                <button className="product_add_btn">
+                                    <Add /> Add To Cart
+                                </button>
+                            </div>
+
+                            <button className="product_saved_btn">
+                                <Heart className="" variant="Bold" />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="col-6 col-md-3 col-lg-2">
+                        <div className="product_card">
+                            <Link href="#" className="">
+                                <Image
+                                    src="/images/hero.png"
+                                    alt="NEFB"
+                                    style={{ objectFit: "cover" }}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+                                    priority
+                                />
+                            </Link>
+
+                            <div className="product_body">
+                                <span className="product_header">Bag of oranges from hong here is a test</span>
+                                <b>₦ 104,129</b>
+                                <button className="product_add_btn">
+                                    <Add /> Add To Cart
+                                </button>
+                            </div>
+
+                            <button className="product_saved_btn">
+                                <Heart className="" variant="Bold" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
