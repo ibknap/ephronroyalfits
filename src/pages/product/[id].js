@@ -2,19 +2,33 @@ import Head from 'next/head';
 import Navbar from '@/components/nav/navbar/navbar';
 import Footer from '@/components/nav/footer/footer';
 import { getWSSchema, getWPSchema } from '@/components/schema';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/firebase/fire_config';
+import Product from '@/components/product/product';
 
 export async function getServerSideProps({ params }) {
     const id = params.id;
-    const product = await fetch(`/api/products/${id}`).then(res => res.json());
-    return { props: { product } };
+    let product = {};
+    const docRef = doc(db, "products", id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) product = docSnap.data();
+    return {
+        props: {
+            product: {
+                id: id,
+                ...product,
+                addedOn: product.addedOn.toDate().toLocaleTimeString()
+            },
+        }
+    };
 }
 
 export default function ProductDetailPage({ product }) {
     // page default data
     const pageName = `NEFB - ${product.name}`;
-    const pageDesc = "North East Food Bank's help center desk answering all question and live chatting 24 hours 7 days including holidays.";
+    const pageDesc = product.description;
     const baseURL = "https://northeastfoodbank.org";
-    const pageURL = `https://northeastfoodbank.org/product/${id}`;
+    const pageURL = `https://northeastfoodbank.org/product/${product.id}`;
 
     // web site schema
     const wSSchema = getWSSchema(pageURL);
@@ -68,9 +82,7 @@ export default function ProductDetailPage({ product }) {
             {/* page content */}
             <Navbar />
             <div className="bottom_spacer" />
-            Product ID: {id}
-            <br />
-            <b>Product Name:</b> {name}
+            <Product product={product} />
             <Footer />
         </>
     )

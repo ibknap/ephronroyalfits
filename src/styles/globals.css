@@ -47,6 +47,28 @@
     background: white !important;
 }
 
+.outline-primary {
+    border: 1px #f8c12a solid !important;
+    color: #f8c12a !important;
+}
+
+.outline-secondary {
+    border: 1px #0c1a2a solid !important;
+    color: #0c1a2a !important;
+}
+
+.outline-primary:hover {
+    border: 1px #f8c12a solid !important;
+    background: #f8c12a !important;
+    color: white !important;
+}
+
+.outline-secondary:hover {
+    border: 1px #0c1a2a solid !important;
+    background: #0c1a2a !important;
+    color: white !important;
+}
+
 .trans {
     background: transparent !important;
 }
@@ -119,7 +141,6 @@
     object-fit: cover;
     color: transparent;
     border-radius: 0.375rem;
-    pointer-events: none;
 }
 
 .product_body {
