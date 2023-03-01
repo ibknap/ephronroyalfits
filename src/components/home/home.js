@@ -46,7 +46,7 @@ export default function Home() {
 
             <MostDonated />
 
-            <div id="foodBank" className="py-5 px-lg-5 bg_grey">
+            <div id="foodBank" className="container-fluid py-5 px-lg-5 bg_grey">
                 <div className="row">
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="product_card">
@@ -207,11 +207,12 @@ export default function Home() {
                 </div>
             </div>
 
-            <div id="healthBank" className="py-5 px-lg-5 bg_grey">
+            <div id="healthBank" className="container-fluid py-5 px-lg-5 bg_grey">
                 <div className="row">
                     <div className="col-12">
                         <h4>Health Bank</h4>
                     </div>
+
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="product_card">
                             <Link href="#" className="">
