@@ -1,21 +1,72 @@
 import styles from '@/components/home/Home.module.css'
-import { Add, Heart, Minus, ShoppingCart, Trash } from 'iconsax-react';
+import { Add, Heart } from 'iconsax-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import 'swiper/css/navigation';
-import getProducts from '@/pages/api/get_products';
-import getMostDonated from '@/pages/api/get_most_donated';
-import getHealth from '@/pages/api/get_health';
+import { collection, query, orderBy, onSnapshot, where } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
+import { db } from '@/firebase/fire_config';
 import Loader from '@/components/loader/loader';
 import toCurrency from '@/components/utils/toCurrency'
 
 export default function Home() {
-    const products = getProducts();
-    const mdProducts = getMostDonated();
-    const healths = getHealth();
+    const [products, setProducts] = useState([]);
+    const [mdProducts, setMdProducts] = useState([]);
+    const [healths, setHealths] = useState([]);
+
+    // listening to product
+    useEffect(() => {
+        const q = query(collection(db, "products"), where('isHealth', '==', false), orderBy("addedOn", "desc"));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const data = snapshot.docs.map((doc) => {
+                return {
+                    id: doc.id,
+                    ...doc.data(),
+                    addedOn: doc.data().addedOn.toDate().toISOString()
+                };
+            });
+            setProducts(data);
+        });
+
+        return () => { unsubscribe(); };
+    }, []);
+
+    // listening to most donated
+    useEffect(() => {
+        const q = query(collection(db, "products"), orderBy("numOfDonation", "desc"));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const data = snapshot.docs.map((doc) => {
+                return {
+                    id: doc.id,
+                    ...doc.data(),
+                    addedOn: doc.data().addedOn.toDate().toISOString()
+                };
+            });
+            setMdProducts(data);
+        });
+
+        return () => { unsubscribe(); };
+    }, []);
+
+    // listening to health
+    useEffect(() => {
+        const q = query(collection(db, "products"), where('isHealth', '==', true), orderBy("addedOn", "desc"));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const data = snapshot.docs.map((doc) => {
+                return {
+                    id: doc.id,
+                    ...doc.data(),
+                    addedOn: doc.data().addedOn.toDate().toISOString()
+                };
+            });
+            setHealths(data);
+        });
+
+        return () => { unsubscribe(); };
+    }, []);
 
     return (
         <>
