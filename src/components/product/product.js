@@ -1,7 +1,7 @@
 import { Heart, ShoppingCart } from "iconsax-react";
 import Link from "next/link";
 import toCurrency from '@/components/utils/toCurrency'
-import { useCart } from '@/pages/cart/cart_context';
+import { useCart } from '@/components/cart/cart_context';
 
 export default function Product({ product }) {
     const { addItem } = useCart();

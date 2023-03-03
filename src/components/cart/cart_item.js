@@ -1,5 +1,5 @@
 import { Add, Minus, Trash } from 'iconsax-react';
-import { useCart } from '@/pages/cart/cart_context';
+import { useCart } from '@/components/cart/cart_context';
 import toCurrency from '@/components/utils/toCurrency'
 import Link from 'next/link';
 

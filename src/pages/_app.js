@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import '@/styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css' // add bootstrap css
-import { CartProvider } from '@/pages/cart/cart_context';
+import { CartProvider } from '@/components/cart/cart_context';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

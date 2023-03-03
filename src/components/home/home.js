@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { db } from '@/firebase/fire_config';
 import Loader from '@/components/loader/loader';
 import toCurrency from '@/components/utils/toCurrency'
-import { useCart } from '@/pages/cart/cart_context';
+import { useCart } from '@/components/cart/cart_context';
 
 export default function Home() {
     const { addItem } = useCart();

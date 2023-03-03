@@ -1,7 +1,7 @@
 import styles from '@/components/cart/Cart.module.css'
 import { Heart, ShoppingCart } from 'iconsax-react';
 import Link from 'next/link';
-import { useCart } from '@/pages/cart/cart_context';
+import { useCart } from '@/components/cart/cart_context';
 import CartItem from '@/components/cart/cart_item';
 import toCurrency from '@/components/utils/toCurrency'
 
