@@ -1,30 +1,34 @@
 import styles from '@/components/cart/Cart.module.css'
-import { Add, Heart, Minus, ShoppingCart, Trash } from 'iconsax-react';
-import Image from 'next/image';
+import { Heart, ShoppingCart } from 'iconsax-react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useCart } from '@/pages/cart/cart_context';
+import CartItem from '@/components/cart/cart_item';
+import toCurrency from '@/components/utils/toCurrency'
 
 export default function Cart() {
-    const [hasItem, setHasItem] = useState(true);
+    const { items } = useCart();
+    const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     return (
         <>
-            {!hasItem &&
+            {items.length == 0 &&
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-sm-10 shadow my-5 p-3 text-center rounded">
-                            <ShoppingCart className="primary" size="200" />
-                            <h4>Your cart is empty!</h4>
-                            <p className="text-muted">Browse and start donating!</p>
-                            <Link href="/" as="/" className="my-4 btn btn-lg bg_primary white shadow border_none">
-                                Start Donating
-                            </Link>
+                        <div className="col-sm-10">
+                            <div className="shadow my-5 mx-2 p-2 text-center rounded">
+                                <ShoppingCart className="primary" size="200" />
+                                <h4>Your cart is empty!</h4>
+                                <p className="text-muted">Browse and start donating!</p>
+                                <Link href="/" as="/" className="my-4 btn btn-lg bg_primary white shadow border_none">
+                                    Start Donating
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
             }
 
-            {hasItem &&
+            {items.length > 0 &&
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-8">
@@ -33,42 +37,9 @@ export default function Cart() {
                                     Shopping Cart
                                 </div>
                                 <div className="row mt-2">
-                                    <div className="col-12">
-                                        <ul className="list-unstyled ">
-                                            <li className="my-2 p-2 card">
-                                                <div className="d-flex my-2 p-2 position-relative">
-                                                    <Image
-                                                        src="/images/logo.png"
-                                                        alt="donation item image"
-                                                        className="rounded border"
-                                                        width={100}
-                                                        height={100}
-                                                        priority
-                                                    />
-                                                    <div className="d-flex flex-column w-75 px-2">
-                                                        <span className="secondary ">Bag of adamawa beans from hong LGA 50kg</span>
-                                                        <span><b>₦ 20,000.00</b></span>
-                                                        <span>Qty: <b>1</b></span>
-                                                    </div>
-                                                </div>
-
-                                                <div className="d-flex justify-content-between">
-                                                    <button className="border_none trans text-danger">
-                                                        <Trash />
-                                                        Remove
-                                                    </button>
-                                                    <div className="d-flex">
-                                                        <button className="border_none mx-2 bg_primary rounded white shadow-sm">
-                                                            <Minus />
-                                                        </button>
-                                                        <button className="border_none mx-2 bg_primary rounded white shadow-sm">
-                                                            <Add />
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    {items.map((item) => (
+                                        <CartItem key={item.id} item={item} />
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -81,7 +52,7 @@ export default function Cart() {
                                 <div className="d-flex flex-column py-3 border-bottom justify-content-between">
                                     <div className="d-flex justify-content-between">
                                         <b>Total</b>
-                                        <b>₦ 20,000.00</b>
+                                        <b>{toCurrency(totalPrice)}</b>
                                     </div>
                                     <small className="text-muted">Delivery fees not included</small>
                                 </div>

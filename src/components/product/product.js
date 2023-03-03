@@ -1,8 +1,11 @@
 import { Heart, ShoppingCart } from "iconsax-react";
 import Link from "next/link";
 import toCurrency from '@/components/utils/toCurrency'
+import { useCart } from '@/pages/cart/cart_context';
 
 export default function Product({ product }) {
+    const { addItem } = useCart();
+
     return (
         <>
             <div className="container my-5">
@@ -37,7 +40,7 @@ export default function Product({ product }) {
                                     </div>
 
                                     <div className="d-flex justify-content-between my-2">
-                                        <button className="btn btn-lg btn-success bg_secondary shadow border_none">
+                                        <button className="btn btn-lg btn-success bg_secondary shadow border_none" onClick={() => addItem(product)}>
                                             <ShoppingCart /> Add To Cart
                                         </button>
                                         <button className="btn btn-lg btn-success trans border_none secondary">

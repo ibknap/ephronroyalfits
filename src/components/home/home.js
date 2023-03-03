@@ -11,8 +11,10 @@ import { useState, useEffect } from 'react';
 import { db } from '@/firebase/fire_config';
 import Loader from '@/components/loader/loader';
 import toCurrency from '@/components/utils/toCurrency'
+import { useCart } from '@/pages/cart/cart_context';
 
 export default function Home() {
+    const { addItem } = useCart();
     const [products, setProducts] = useState([]);
     const [mdProducts, setMdProducts] = useState([]);
     const [healths, setHealths] = useState([]);
@@ -170,7 +172,7 @@ export default function Home() {
                                 <div className="product_body">
                                     <span className="product_header">{product.name}</span>
                                     <b>{toCurrency(product.price)}</b>
-                                    <button className="product_add_btn">
+                                    <button className="product_add_btn" onClick={() => addItem(product)}>
                                         <Add /> Add To Cart
                                     </button>
                                 </div>
@@ -209,7 +211,7 @@ export default function Home() {
                                 <div className="product_body">
                                     <span className="product_header">{health.name}</span>
                                     <b>{toCurrency(health.price)}</b>
-                                    <button className="product_add_btn">
+                                    <button className="product_add_btn" onClick={() => addItem(health)}>
                                         <Add /> Add To Cart
                                     </button>
                                 </div>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import styles from '@/components/nav/navbar/Navbar.module.css'
 import { Bag2, CloseSquare, Heart, Home, Menu, People, SearchNormal, ShoppingCart, User } from 'iconsax-react'
 
-export default function CollapsedNavbar() {
+export default function CollapsedNavbar({ totalCart }) {
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
 
@@ -41,6 +41,7 @@ export default function CollapsedNavbar() {
                                 >
                                     <ShoppingCart className="mx-1" variant="Bold" />
                                     <span className={styles.show_nav_text}>Cart</span>
+                                    <span className="secondary mx-2 text-danger fw-bold">{totalCart}</span>
                                 </Link>
                                 <Menu className={`mx-3 ${styles.toggler}`} variant="Bold" onClick={toggleNavbar} />
                             </div>
