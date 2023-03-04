@@ -2,9 +2,11 @@ import { Heart, ShoppingCart } from "iconsax-react";
 import Link from "next/link";
 import toCurrency from '@/components/utils/toCurrency'
 import { useCart } from '@/components/cart/cart_context';
+import { useSaved } from "@/components/account/saved/saved_context";
 
 export default function Product({ product }) {
     const { addItem } = useCart();
+    const { addSavedItem } = useSaved();
 
     return (
         <>
@@ -43,7 +45,7 @@ export default function Product({ product }) {
                                         <button className="btn btn-lg btn-success bg_secondary shadow border_none" onClick={() => addItem(product)}>
                                             <ShoppingCart /> Add To Cart
                                         </button>
-                                        <button className="btn btn-lg btn-success trans border_none secondary">
+                                        <button className="btn btn-lg btn-success trans border_none secondary" onClick={() => addSavedItem(product)}>
                                             <small><Heart /> Save</small>
                                         </button>
                                     </div>

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Navbar from '@/components/nav/navbar/navbar';
 import Footer from '@/components/nav/footer/footer';
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
-import Saved from '@/components/account/saved';
+import Saved from '@/components/account/saved/saved';
 
 export default function SavedPage() {
     // page default data

@@ -12,9 +12,11 @@ import { db } from '@/firebase/fire_config';
 import Loader from '@/components/loader/loader';
 import toCurrency from '@/components/utils/toCurrency'
 import { useCart } from '@/components/cart/cart_context';
+import { useSaved } from "@/components/account/saved/saved_context";
 
 export default function Home() {
     const { addItem } = useCart();
+    const { addSavedItem } = useSaved();
     const [products, setProducts] = useState([]);
     const [mdProducts, setMdProducts] = useState([]);
     const [healths, setHealths] = useState([]);
@@ -177,7 +179,7 @@ export default function Home() {
                                     </button>
                                 </div>
 
-                                <button className="product_saved_btn">
+                                <button className="product_saved_btn" onClick={() => addSavedItem(product)}>
                                     <Heart variant="Bold" />
                                 </button>
                             </div>
@@ -216,7 +218,7 @@ export default function Home() {
                                     </button>
                                 </div>
 
-                                <button className="product_saved_btn">
+                                <button className="product_saved_btn" onClick={() => addSavedItem(health)}>
                                     <Heart variant="Bold" />
                                 </button>
                             </div>
