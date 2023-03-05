@@ -3,9 +3,11 @@ import Link from 'next/link'
 import { useRouter } from "next/router";
 import styles from '@/components/nav/navbar/Navbar.module.css'
 import { ArrowDown3, Bag2, Heart, People, SearchNormal, ShoppingCart, User, Warning2 } from 'iconsax-react'
+import { useAuth } from '@/firebase/fire_auth_context';
 
 export default function UnCollapsedNavbar({ totalCart }) {
     const router = useRouter();
+    const { loading, authUser, logOut } = useAuth();
 
     // toggle live chat 
     const liveChat = () => {
@@ -54,38 +56,49 @@ export default function UnCollapsedNavbar({ totalCart }) {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="accountMenu">
                                         <li className="m-2">
-                                            <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
-                                                href="/auth/signin"
-                                                as="/auth/signin"
-                                            >
-                                                Sign In
-                                            </Link>
+                                            {!loading && authUser
+                                                ? <button className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
+                                                    onClick={logOut}
+                                                >
+                                                    Log Out
+                                                </button>
+                                                : <Link className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
+                                                    href="/auth/signin"
+                                                    as="/auth/signin"
+                                                >
+                                                    Sign In
+                                                </Link>
+                                            }
                                         </li>
-                                        <li><hr className="dropdown-divider" /></li>
-                                        <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="/account" as="/account">
-                                                <span className="d-flex ">
-                                                    <User className="mx-1" variant="Bold" />
-                                                    <span className={styles.show_nav_text}>My Account</span>
-                                                </span>
-                                            </Link>
-                                        </li>
-                                        <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="/account/donate" as="/account/donate">
-                                                <span className="d-flex ">
-                                                    <Bag2 className="mx-1" variant="Bold" />
-                                                    <span className={styles.show_nav_text}>My Donations</span>
-                                                </span>
-                                            </Link>
-                                        </li>
-                                        <li className="m-2">
-                                            <Link className={styles.dropdown_item} href="/account/saved" as="/account/saved">
-                                                <span className="d-flex ">
-                                                    <Heart className="mx-1" variant="Bold" />
-                                                    <span className={styles.show_nav_text}>Saved Items</span>
-                                                </span>
-                                            </Link>
-                                        </li>
+                                        {!loading && authUser &&
+                                            <>
+                                                <li><hr className="dropdown-divider" /></li>
+                                                <li className="m-2">
+                                                    <Link className={styles.dropdown_item} href="/account" as="/account">
+                                                        <span className="d-flex ">
+                                                            <User className="mx-1" variant="Bold" />
+                                                            <span className={styles.show_nav_text}>My Account</span>
+                                                        </span>
+                                                    </Link>
+                                                </li>
+                                                <li className="m-2">
+                                                    <Link className={styles.dropdown_item} href="/account/donate" as="/account/donate">
+                                                        <span className="d-flex ">
+                                                            <Bag2 className="mx-1" variant="Bold" />
+                                                            <span className={styles.show_nav_text}>My Donations</span>
+                                                        </span>
+                                                    </Link>
+                                                </li>
+                                                <li className="m-2">
+                                                    <Link className={styles.dropdown_item} href="/account/saved" as="/account/saved">
+                                                        <span className="d-flex ">
+                                                            <Heart className="mx-1" variant="Bold" />
+                                                            <span className={styles.show_nav_text}>Saved Items</span>
+                                                        </span>
+                                                    </Link>
+                                                </li>
+                                            </>
+                                        }
                                     </ul>
                                 </div>
                             </li>

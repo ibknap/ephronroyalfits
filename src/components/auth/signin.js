@@ -1,7 +1,56 @@
 import styles from '@/components/auth/Auth.module.css'
 import Link from 'next/link';
+import Cookies from 'js-cookie';
+import { db } from "@/firebase/fire_config";
+import { useState } from 'react';
+import { useAuth } from '@/firebase/fire_auth_context';
+import { toast } from "react-toastify";
+import Loader from '@/components/loader/loader';
+import { doc, getDoc } from 'firebase/firestore';
+import { useRouter } from 'next/router';
 
 export default function Signin() {
+    const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { signIn } = useAuth();
+    const router = useRouter();
+
+    const onSignin = async event => {
+        event.preventDefault();
+        setLoading(true);
+
+        await signIn(email, password)
+            .then((data) => {
+                setLoading(false);
+
+                const profileRef = doc(db, "users", data.user.email);
+                getDoc(profileRef)
+                    .then((docSnapshot) => {
+                        if (docSnapshot.exists()) {
+                            Cookies.set("SignedIn", true, { expires: 7 });
+                            router.push("/");
+                        } else {
+                            toast.error("User not found");
+                        }
+                    })
+                    .catch((error) => {
+                        toast.error(`Error while getting User data: ${error}`);
+                    });
+            })
+            .catch(error => {
+                setLoading(false);
+                if (error.code === "auth/user-not-found") {
+                    toast.error("User not found");
+                } else if (error.code === "auth/wrong-password") {
+                    toast.error("Wrong password");
+                }
+                else {
+                    toast.error(`Something is wrong: ${error.code}`);
+                }
+            });
+    };
+
     return (
         <>
             <div className={styles.container}>
@@ -19,16 +68,34 @@ export default function Signin() {
                         <p>What&apos;s your email address</p>
                         <p className="text-muted">Type your email address to login to your account</p>
 
-                        <form className="col-md-4 mt-4">
+                        <form className="col-md-4 mt-4" onSubmit={onSignin}>
                             <div className="form-floating mb-3">
-                                <input type="email" required className="form-control" id="emailAddr" placeholder="name@example.com" />
+                                <input
+                                    type="email"
+                                    required
+                                    className="form-control"
+                                    id="emailAddr"
+                                    placeholder="name@example.com"
+                                    onChange={(event) => setEmail(event.target.value)}
+                                />
                                 <label htmlFor="emailAddr">Email address</label>
                             </div>
                             <div className="form-floating">
-                                <input type="password" required className="form-control" id="password" placeholder="Password" />
+                                <input
+                                    type="password"
+                                    required
+                                    className="form-control"
+                                    id="password"
+                                    placeholder="Password"
+                                    onChange={(event) => setPassword(event.target.value)}
+                                />
                                 <label htmlFor="password">Password</label>
                             </div>
-                            <button className={`btn btn-lg btn-success ${styles.auth_btn} col-md-8 mt-4`}>Signin</button>
+
+                            <button type="submit" className={`btn btn-lg btn-success ${styles.auth_btn} col-md-8 mt-4`}>
+                                {loading ? <Loader /> : "Signin"}
+                            </button>
+
                             <p className="mt-4">
                                 Want to do something different? Reset your password
                                 <Link href="/auth/reset_password" as="/auth/reset_password" className="text-decoration-none primary"> here</Link> or

@@ -18,11 +18,15 @@
     "firebase": "^9.17.1",
     "framer-motion": "^10.0.0",
     "iconsax-react": "^0.0.8",
+    "js-cookie": "^3.0.1",
     "next": "13.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-toastify": "^9.1.1",
     "swiper": "^9.0.5",
     "tiny-slider": "^2.9.4"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.6"
   }
 }

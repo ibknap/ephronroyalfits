@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from 'react';
 import styles from '@/components/nav/footer/Footer.module.css'
 import { Call, Camera, DirectSend, Location } from "iconsax-react";
+import Loader from '@/components/loader/loader';
 
 export default function Footer() {
     const [sending, setSending] = useState(false);
@@ -115,7 +116,7 @@ export default function Footer() {
                                 <div className="mt-4 col-sm-6 d-flex justify-content-between" style={{ border: "none" }}>
                                     {
                                         sending
-                                            ? <div className="loading" />
+                                            ? <Loader />
                                             : <button type="submit" className={`btn btn-lg btn-success ${styles.btn_nav} shadow px-3 py-2`}>
                                                 Submit
                                             </button>
