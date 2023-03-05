@@ -1,14 +1,78 @@
 import styles from '@/components/auth/Auth.module.css'
-import { useState } from 'react';
 import Link from 'next/link';
+import { db } from "@/firebase/fire_config";
+import { useState } from 'react';
+import { useAuth } from '@/firebase/fire_auth_context';
+import { toast } from "react-toastify";
+import Loader from '@/components/loader/loader';
+import { doc, setDoc, collection } from 'firebase/firestore';
+import { useRouter } from 'next/router';
+import { Back } from 'iconsax-react';
 
 export default function Signup() {
     const [formIndex, setFormIndex] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [gender, setGender] = useState("male");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { signUp } = useAuth();
+    const router = useRouter();
 
-    const signupUser = async event => {
+    const onSignup = async event => {
         event.preventDefault();
-
         if (formIndex < 2) setFormIndex(formIndex + 1);
+        if (formIndex == 2) {
+            setLoading(true);
+
+            await signUp(email, password)
+                .then(() => {
+                    const collRef = collection(db, "users");
+                    const userDoc = {
+                        firstName: firstName,
+                        lastName: lastName,
+                        phoneNumber: phoneNumber,
+                        gender: gender,
+                        email: email,
+                        myDonations: [],
+                        addressBook: {
+                            firstName: firstName,
+                            lastName: lastName,
+                            phoneNumber: phoneNumber,
+                            additionalPhoneNumber: "",
+                            address: "",
+                            additionalInformation: "",
+                        }
+                    };
+
+                    setDoc(doc(collRef, email), userDoc)
+                        .then(() => {
+                            setLoading(false);
+                            router.push('/auth/signin');
+                            toast.success("User signed up");
+                        })
+                        .catch((error) => {
+                            toast.error(`Error while signing User up: ${error}`);
+                        });
+
+                }).catch(error => {
+                    setLoading(false);
+                    if (error.code === "auth/weak-password") {
+                        toast.error("Weak password");
+                    } else if (error.code === "auth/email-already-in-use") {
+                        toast.error("User already exists");
+                    }
+                    else {
+                        toast.error(`Error while signing User up: ${error.code}`);
+                    }
+                });
+        }
+    }
+
+    const onBack = () => {
+        if (formIndex > 0) setFormIndex(formIndex - 1);
     }
 
     return (
@@ -28,15 +92,29 @@ export default function Signup() {
                         <p>Create an account to get started</p>
                         <p className="text-muted">Input your details below to complete.</p>
 
-                        <form className="col-md-4 mt-4" onSubmit={signupUser}>
+                        <form className="col-md-4 mt-4" onSubmit={onSignup}>
                             {formIndex == 0 && (
                                 <>
                                     <div className="form-floating mb-3">
-                                        <input type="text" required className="form-control" id="firstName" placeholder="Jon" />
+                                        <input
+                                            type="text"
+                                            required
+                                            className="form-control"
+                                            id="firstName"
+                                            placeholder="Jon"
+                                            onChange={(event) => setFirstName(event.target.value)}
+                                        />
                                         <label htmlFor="firstName">First Name</label>
                                     </div>
                                     <div className="form-floating">
-                                        <input type="text" required className="form-control" id="lastName" placeholder="Doe" />
+                                        <input
+                                            type="text"
+                                            required
+                                            className="form-control"
+                                            id="lastName"
+                                            placeholder="Doe"
+                                            onChange={(event) => setLastName(event.target.value)}
+                                        />
                                         <label htmlFor="lastName">Last Name</label>
                                     </div>
                                 </>
@@ -45,11 +123,23 @@ export default function Signup() {
                             {formIndex == 1 && (
                                 <>
                                     <div className="form-floating mb-3">
-                                        <input type="text" required className="form-control" id="phoneNumber" placeholder="Jon" />
+                                        <input
+                                            type="text"
+                                            required
+                                            className="form-control"
+                                            id="phoneNumber"
+                                            placeholder="Jon"
+                                            onChange={(event) => setPhoneNumber(event.target.value)}
+                                        />
                                         <label htmlFor="phoneNumber">Phone Number</label>
                                     </div>
                                     <div className="form-floating">
-                                        <select className="form-select" required id="gender">
+                                        <select
+                                            className="form-select"
+                                            required
+                                            id="gender"
+                                            onChange={(event) => setGender(event.target.value)}
+                                        >
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
@@ -61,19 +151,46 @@ export default function Signup() {
                             {formIndex == 2 && (
                                 <>
                                     <div className="form-floating mb-3">
-                                        <input type="email" required className="form-control" id="emailAddr" placeholder="name@example.com" />
+                                        <input
+                                            type="email"
+                                            required
+                                            className="form-control"
+                                            id="emailAddr"
+                                            placeholder="name@example.com"
+                                            onChange={(event) => setEmail(event.target.value)}
+                                        />
                                         <label htmlFor="emailAddr">Email address</label>
                                     </div>
                                     <div className="form-floating">
-                                        <input type="password" required className="form-control" id="password" placeholder="Password" />
+                                        <input
+                                            type="password"
+                                            required
+                                            className="form-control"
+                                            id="password"
+                                            placeholder="Password"
+                                            onChange={(event) => setPassword(event.target.value)}
+                                        />
                                         <label htmlFor="password">Password</label>
                                     </div>
                                 </>
                             )}
 
-                            <button className={`btn btn-lg btn-success ${styles.auth_btn} col-md-8 mt-4`}>
-                                {formIndex != 2 ? "Next" : "Signup"}
-                            </button>
+                            <div className="w-100 mt-4 d-flex justify-content-around">
+                                {formIndex > 0 &&
+                                    <button type="button"
+                                        className="w-100 btn btn-lg border_none trans secondary"
+                                        onClick={onBack}
+                                    >
+                                        <Back />
+                                    </button>
+                                }
+
+                                <button type="submit" className={`w-100 btn btn-lg btn-success ${styles.auth_btn}`}>
+                                    {formIndex != 2 && !loading && "Next"}
+                                    {formIndex == 2 && loading && <Loader />}
+                                    {formIndex == 2 && !loading && "Signup"}
+                                </button>
+                            </div>
 
                             <p className="mt-4">
                                 Have account already?

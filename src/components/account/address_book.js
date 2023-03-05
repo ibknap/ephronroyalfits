@@ -23,9 +23,9 @@ export default function AddressBook({ user }) {
 
         const docRef = doc(db, "users", authUser.email);
         await updateDoc(docRef, {
-            "addressBook.firstName": firstName,
-            "addressBook.lastName": lastName,
-            "addressBook.phoneNumber": phoneNumber,
+            "addressBook.firstName": firstName.length === 0 && user.firstName,
+            "addressBook.lastName": lastName.length === 0 && user.lastName,
+            "addressBook.phoneNumber": phoneNumber.length === 0 && user.phoneNumber,
             "addressBook.additionalPhoneNumber": additionalPhoneNumber,
             "addressBook.address": address,
             "addressBook.additionalInformation": additionalInformation,
@@ -58,7 +58,6 @@ export default function AddressBook({ user }) {
                                 <div className="col-sm-6">
                                     <div className="form-floating mx-2">
                                         <input type="text"
-                                            required
                                             className="form-control"
                                             id="firstName"
                                             placeholder={user.firstName}
@@ -70,7 +69,6 @@ export default function AddressBook({ user }) {
                                 <div className="col-sm-6">
                                     <div className="form-floating mx-2">
                                         <input type="text"
-                                            required
                                             className="form-control"
                                             id="lastName"
                                             placeholder={user.lastName}
@@ -85,7 +83,6 @@ export default function AddressBook({ user }) {
                                 <div className="col-sm-6">
                                     <div className="form-floating mx-2">
                                         <input type="text"
-                                            required
                                             className="form-control"
                                             id="phoneNumber"
                                             placeholder={user.phoneNumber}

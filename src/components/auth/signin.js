@@ -30,6 +30,7 @@ export default function Signin() {
                         if (docSnapshot.exists()) {
                             Cookies.set("SignedIn", true, { expires: 7 });
                             router.push("/");
+                            toast.success("User signed in");
                         } else {
                             toast.error("User not found");
                         }

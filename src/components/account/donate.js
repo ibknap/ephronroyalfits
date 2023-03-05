@@ -108,9 +108,9 @@ export default function Donate() {
                                                                 </div>
                                                             </Link>
 
-                                                            {donation.status == "pending" && <span className={`bg-warning white py-1 px-2 rounded ${styles.donate_status}`}>Pending</span>}
-                                                            {donation.status == "delivered" && < span className={`bg-success white py-1 px-2 rounded ${styles.donate_status}`}>Delivered</span>}
-                                                            {donation.status == "cancelled" && <span className={`bg-danger white py-1 px-2 rounded ${styles.donate_status}`}>Cancelled</span>}
+                                                            {donation.status.toLowerCase() == "pending" && <span className={`bg-warning white py-1 px-2 rounded ${styles.donate_status}`}>Pending</span>}
+                                                            {donation.status.toLowerCase() == "delivered" && < span className={`bg-success white py-1 px-2 rounded ${styles.donate_status}`}>Delivered</span>}
+                                                            {donation.status.toLowerCase() == "cancelled" && <span className={`bg-danger white py-1 px-2 rounded ${styles.donate_status}`}>Cancelled</span>}
                                                         </li>
                                                     ))}
                                                 </ul>

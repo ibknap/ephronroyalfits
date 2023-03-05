@@ -1,7 +1,29 @@
 import styles from '@/components/auth/Auth.module.css'
 import Link from 'next/link';
+import { auth } from "@/firebase/fire_config";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { useState } from 'react';
+import { toast } from "react-toastify";
+import Loader from '@/components/loader/loader';
 
 export default function ResetPassword() {
+    const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState("");
+
+    const onForgotPassword = async event => {
+        event.preventDefault();
+        setLoading(true);
+
+        try {
+            await sendPasswordResetEmail(auth, email);
+            toast.success("An email with a password reset link has been sent to your email address.");
+            setLoading(false);
+        } catch (error) {
+            toast.error(`Something is wrong: ${error.message}`);
+            setLoading(false);
+        }
+    };
+
     return (
         <>
             <div className={styles.container}>
@@ -19,12 +41,23 @@ export default function ResetPassword() {
                         <p>What&apos;s your email address</p>
                         <p className="text-muted">Type your email address to reset your account</p>
 
-                        <form className="col-md-4 mt-4">
+                        <form className="col-md-4 mt-4" onSubmit={onForgotPassword}>
                             <div className="form-floating mb-3">
-                                <input type="email" required className="form-control" id="emailAddr" placeholder="name@example.com" />
+                                <input
+                                    type="email"
+                                    required
+                                    className="form-control"
+                                    id="emailAddr"
+                                    placeholder="name@example.com"
+                                    onChange={(event) => setEmail(event.target.value)}
+                                />
                                 <label htmlFor="emailAddr">Email address</label>
                             </div>
-                            <button className={`btn btn-lg btn-success ${styles.auth_btn} col-md-8 mt-4`}>Send Email</button>
+
+                            <button type="submit" className={`btn btn-lg btn-success ${styles.auth_btn} col-md-8 mt-4`}>
+                                {loading ? <Loader /> : "Send Email"}
+                            </button>
+
                             <p className="mt-4">
                                 Have account already?
                                 <Link href="/auth/signin" as="/auth/signin" className="text-decoration-none primary"> signin</Link>.
