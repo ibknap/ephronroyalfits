@@ -37,6 +37,7 @@ export default function Signup() {
                         gender: gender,
                         email: email,
                         myDonations: [],
+                        isAdmin: false,
                         addressBook: {
                             firstName: firstName,
                             lastName: lastName,
