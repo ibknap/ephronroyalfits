@@ -8,12 +8,13 @@ import { toast } from "react-toastify";
 import Loader from '@/components/loader/loader';
 import { doc, getDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
+import { Information } from 'iconsax-react';
 
 export default function Signin() {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { signIn } = useAuth();
+    const { authUser, signIn } = useAuth();
     const router = useRouter();
 
     const onSignin = async event => {
@@ -51,6 +52,22 @@ export default function Signin() {
                 }
             });
     };
+
+    if (authUser) {
+        return (
+            <div className="container">
+                <div className="row my-5 justify-content-center">
+                    <div className="col-12 text-muted text-center">
+                        <Information variant="Bold" size={200} />
+                        <p>You logged in already.</p>
+                    </div>
+                    <Link href="/" className={`btn btn-lg btn-success ${styles.auth_btn} w-50 my-5`}>
+                        Go Back Home
+                    </Link>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>

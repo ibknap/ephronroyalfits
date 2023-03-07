@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import Loader from '@/components/loader/loader';
 import { doc, setDoc, collection } from 'firebase/firestore';
 import { useRouter } from 'next/router';
-import { Back } from 'iconsax-react';
+import { Back, Information } from 'iconsax-react';
 
 export default function Signup() {
     const [formIndex, setFormIndex] = useState(0);
@@ -18,7 +18,7 @@ export default function Signup() {
     const [gender, setGender] = useState("male");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { signUp } = useAuth();
+    const { authUser, signUp } = useAuth();
     const router = useRouter();
 
     const onSignup = async event => {
@@ -74,6 +74,22 @@ export default function Signup() {
 
     const onBack = () => {
         if (formIndex > 0) setFormIndex(formIndex - 1);
+    }
+
+    if (authUser) {
+        return (
+            <div className="container">
+                <div className="row my-5 justify-content-center">
+                    <div className="col-12 text-muted text-center">
+                        <Information variant="Bold" size={200} />
+                        <p>You logged in already.</p>
+                    </div>
+                    <Link href="/" className={`btn btn-lg btn-success ${styles.auth_btn} w-50 my-5`}>
+                        Go Back Home
+                    </Link>
+                </div>
+            </div>
+        );
     }
 
     return (
