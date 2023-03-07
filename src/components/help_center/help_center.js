@@ -12,7 +12,7 @@ export default function HelpCenter() {
 
     return (
         <>
-            <div className="container">
+            <div className="container my-5">
                 <div className="row">
                     <div className="col-12 text-center primary">
                         <Warning2 size="200" variant="Bold" />

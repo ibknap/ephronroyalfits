@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Terms() {
     return (
         <>
-            <div className="container">
+            <div className="container my-5">
                 <div className="row">
                     <div className="col-12 text-center grey_dark">
                         <Document size="300" variant="Bold" />

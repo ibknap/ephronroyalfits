@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Privacy() {
     return (
         <>
-            <div className="container">
+            <div className="container my-5">
                 <div className="row">
                     <div className="col-12 text-center grey_dark">
                         <Lock size="300" variant="Bold" />

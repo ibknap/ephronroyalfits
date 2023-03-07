@@ -99,10 +99,10 @@ export default function Home() {
                         <div className="m-2">
                             <div className="d-flex flex-column justify-content-between">
                                 <Link href="#foodBank" className={`mb-2 bg_primary secondary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
-                                    <h3 className="fw-light">Looking for a tasty food bank marketplace?</h3>
+                                    <h3 className="fw-light">Looking for healthy food?</h3>
                                 </Link>
 
-                                <Link href="#healthBank" className={`mt-2 bg_secondary primary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
+                                <Link href="#nutrition" className={`mt-2 bg_secondary primary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
                                     <h3 className="fw-light">Come explore our health bank marketplace.</h3>
                                 </Link>
                             </div>
@@ -112,124 +112,130 @@ export default function Home() {
             </div>
 
             {/* most donated */}
-            <div className={`w-100 ${styles.slider_container}`}>
-                <span className="h4 fw-normal">Most Donated</span>
-                <Swiper
-                    modules={[Navigation]}
-                    navigation={true}
-                    slidesPerView={2}
-                    spaceBetween={10}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 2,
-                            spaceBetween: 10,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 10,
-                        },
-                        986: {
-                            slidesPerView: 5,
-                            spaceBetween: 10,
-                        }
-                    }}
-                >
+            {mdProducts &&
+                <div className={`w-100 ${styles.slider_container}`}>
+                    <span className="h4 fw-normal">Most Donated</span>
+                    <Swiper
+                        modules={[Navigation]}
+                        navigation={true}
+                        slidesPerView={2}
+                        spaceBetween={10}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 2,
+                                spaceBetween: 10,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 10,
+                            },
+                            986: {
+                                slidesPerView: 5,
+                                spaceBetween: 10,
+                            }
+                        }}
+                    >
 
-                    {mdProducts ? mdProducts.map((product) => (
-                        <SwiperSlide key={product.id} className={styles.slider}>
-                            <Link href={`/product/${product.id}`} as={`/product/${product.id}`} className="secondary">
-                                <img
-                                    src={product.image}
-                                    alt={product.name}
-                                    crossOrigin="anonymous"
-                                />
-                                <div className={styles.slider_body}>
-                                    <span className={styles.slider_header}>{product.name}</span>
-                                    <b>{toCurrency(product.price)}</b>
-                                </div>
-                            </Link>
-                        </SwiperSlide>
-                    ))
-                        : <div className="my-5">
-                            <Loader />
-                        </div>
-                    }
-                </Swiper>
-            </div>
-
-            {/* food bank */}
-            <div id="foodBank" className="container-fluid py-5 px-lg-5 bg_grey">
-                <div className="row">
-                    {products ? products.map((product) => (
-                        <div key={product.id} className="col-6 col-md-3 col-lg-2">
-                            <div className="product_card">
-                                <Link href={`/product/${product.id}`}>
+                        {mdProducts.length > 0 ? mdProducts.map((product) => (
+                            <SwiperSlide key={product.id} className={styles.slider}>
+                                <Link href={`/product/${product.id}`} as={`/product/${product.id}`} className="secondary">
                                     <img
                                         src={product.image}
                                         alt={product.name}
                                         crossOrigin="anonymous"
                                     />
+                                    <div className={styles.slider_body}>
+                                        <span className={styles.slider_header}>{product.name}</span>
+                                        <b>{toCurrency(product.price)}</b>
+                                    </div>
                                 </Link>
+                            </SwiperSlide>
+                        ))
+                            : <div className="my-5">
+                                <Loader />
+                            </div>
+                        }
+                    </Swiper>
+                </div>
+            }
 
-                                <div className="product_body">
-                                    <span className="product_header">{product.name}</span>
-                                    <b>{toCurrency(product.price)}</b>
-                                    <button className="product_add_btn" onClick={() => addItem(product)}>
-                                        <Add /> Add To Cart
+            {/* food bank */}
+            {products &&
+                <div id="foodBank" className="container-fluid py-5 px-lg-5 bg_grey">
+                    <div className="row">
+                        {products.length > 0 ? products.map((product) => (
+                            <div key={product.id} className="col-6 col-md-3 col-lg-2">
+                                <div className="product_card">
+                                    <Link href={`/product/${product.id}`}>
+                                        <img
+                                            src={product.image}
+                                            alt={product.name}
+                                            crossOrigin="anonymous"
+                                        />
+                                    </Link>
+
+                                    <div className="product_body">
+                                        <span className="product_header">{product.name}</span>
+                                        <b>{toCurrency(product.price)}</b>
+                                        <button className="product_add_btn" onClick={() => addItem(product)}>
+                                            <Add /> Add To Cart
+                                        </button>
+                                    </div>
+
+                                    <button className="product_saved_btn" onClick={() => addSavedItem(product)}>
+                                        <Heart variant="Bold" />
                                     </button>
                                 </div>
-
-                                <button className="product_saved_btn" onClick={() => addSavedItem(product)}>
-                                    <Heart variant="Bold" />
-                                </button>
                             </div>
-                        </div>
-                    ))
-                        : <div className="my-5">
-                            <Loader />
-                        </div>
-                    }
-                </div>
-            </div>
-
-            {/* health bank */}
-            <div id="healthBank" className="container-fluid py-5 px-lg-5 bg_grey">
-                <div className="row">
-                    <div className="col-12">
-                        <h4>Health Bank</h4>
+                        ))
+                            : <div className="my-5">
+                                <Loader />
+                            </div>
+                        }
                     </div>
+                </div>
+            }
 
-                    {healths ? healths.map((health) => (
-                        <div key={health.id} className="col-6 col-md-3 col-lg-2">
-                            <div className="product_card">
-                                <Link href={`/product/${health.id}`}>
-                                    <img
-                                        src={health.image}
-                                        alt={health.name}
-                                        crossOrigin="anonymous"
-                                    />
-                                </Link>
+            {/* nutrition (health bank) */}
+            {healths &&
+                <div id="nutrition" className="container-fluid py-5 px-lg-5 bg_grey">
+                    <div className="row">
+                        <div className="col-12">
+                            <h4>Nutrition</h4>
+                        </div>
 
-                                <div className="product_body">
-                                    <span className="product_header">{health.name}</span>
-                                    <b>{toCurrency(health.price)}</b>
-                                    <button className="product_add_btn" onClick={() => addItem(health)}>
-                                        <Add /> Add To Cart
+                        {healths.length > 0 ? healths.map((health) => (
+                            <div key={health.id} className="col-6 col-md-3 col-lg-2">
+                                <div className="product_card">
+                                    <Link href={`/product/${health.id}`}>
+                                        <img
+                                            src={health.image}
+                                            alt={health.name}
+                                            crossOrigin="anonymous"
+                                        />
+                                    </Link>
+
+                                    <div className="product_body">
+                                        <span className="product_header">{health.name}</span>
+                                        <b>{toCurrency(health.price)}</b>
+                                        <button className="product_add_btn" onClick={() => addItem(health)}>
+                                            <Add /> Add To Cart
+                                        </button>
+                                    </div>
+
+                                    <button className="product_saved_btn" onClick={() => addSavedItem(health)}>
+                                        <Heart variant="Bold" />
                                     </button>
                                 </div>
-
-                                <button className="product_saved_btn" onClick={() => addSavedItem(health)}>
-                                    <Heart variant="Bold" />
-                                </button>
                             </div>
-                        </div>
-                    ))
-                        : <div className="my-5">
-                            <Loader />
-                        </div>
-                    }
+                        ))
+                            : <div className="my-5">
+                                <Loader />
+                            </div>
+                        }
+                    </div>
                 </div>
-            </div>
+            }
         </>
     )
 }

@@ -1,10 +1,42 @@
-import { Call, DirectSend, Location } from 'iconsax-react';
-import Link from 'next/link';
+import Link from "next/link";
+import { useState } from 'react';
+import { Call, DirectSend, Location } from "iconsax-react";
+import Loader from '@/components/loader/loader';
+import { doc, setDoc, collection } from 'firebase/firestore';
+import { db } from "@/firebase/fire_config";
+import { toast } from "react-toastify";
 
 export default function Contact() {
+    const [sending, setSending] = useState(false);
+    const [email, setEmail] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [message, setMessage] = useState("");
+
+    const onSendMessage = async event => {
+        event.preventDefault();
+        setSending(true);
+
+        const collRef = collection(db, "contactUs");
+        const contactDoc = {
+            fullName: fullName,
+            email: email,
+            message: message,
+        };
+
+        setDoc(doc(collRef, email), contactDoc)
+            .then(() => {
+                setSending(false);
+                toast.success("Message sent.");
+            })
+            .catch((error) => {
+                setSending(false);
+                toast.error(`Error while sending message: ${error}`);
+            });
+    }
+
     return (
         <>
-            <div className="container">
+            <div className="container my-5">
                 <div className="row mb-5">
                     <div className="col-12 text-center primary">
                         <DirectSend size="100" variant="Bold" />
@@ -14,18 +46,34 @@ export default function Contact() {
 
                 <div className="row">
                     <div className="col-sm-6">
-                        <form className="card py-4 px-3 m-2 shadow">
+                        <form className="card py-4 px-3 m-2 shadow" onSubmit={onSendMessage}>
                             <h5 className="pb-3 border-bottom">Send a message</h5>
+
                             <div className="d-flex mt-4">
                                 <div className="col-sm-6">
                                     <div className="form-floating mx-2">
-                                        <input type="text" required className="form-control" id="fullName" placeholder="Jon" />
+                                        <input
+                                            type="text"
+                                            required
+                                            className="form-control"
+                                            id="fullName"
+                                            placeholder="Jon Doe"
+                                            onChange={(event) => setFullName(event.target.value)}
+                                        />
                                         <label htmlFor="fullName">Full Name</label>
                                     </div>
                                 </div>
+
                                 <div className="col-sm-6">
                                     <div className="form-floating mx-3">
-                                        <input type="email" required className="form-control" id="emailAddr" placeholder="name@example.com" />
+                                        <input
+                                            type="email"
+                                            required
+                                            className="form-control"
+                                            id="emailAddr"
+                                            placeholder="name@example.com"
+                                            onChange={(event) => setEmail(event.target.value)}
+                                        />
                                         <label htmlFor="emailAddr">Email address</label>
                                     </div>
                                 </div>
@@ -33,14 +81,22 @@ export default function Contact() {
 
                             <div className="col-12 mt-3">
                                 <div className="form-floating">
-                                    <textarea className="form-control" required placeholder="Message" id="message" style={{ height: "150px" }}></textarea>
+                                    <textarea
+                                        className="form-control"
+                                        required
+                                        placeholder="Message"
+                                        id="message"
+                                        style={{ height: "150px" }}
+                                        onChange={(event) => setMessage(event.target.value)}
+                                    ></textarea>
                                     <label htmlFor="message">Message</label>
                                 </div>
                             </div>
 
-                            <button className="btn btn-lg btn-success border_none bg_primary mt-3">
-                                Send
-                            </button>
+                            {sending
+                                ? <Loader />
+                                : <button type="submit" className="btn btn-lg btn-success border_none bg_primary mt-3">Submit</button>
+                            }
                         </form>
                     </div>
                     <div className="col-sm-6">

@@ -54,6 +54,7 @@ export default function Signup() {
                             toast.success("User signed up");
                         })
                         .catch((error) => {
+                            setLoading(false);
                             toast.error(`Error while signing User up: ${error}`);
                         });
 
