@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from '@/components/nav/navbar/Navbar.module.css'
 import { Bag2, CloseSquare, Heart, Home, Menu, People, SearchNormal, ShoppingCart, User } from 'iconsax-react'
 import { useAuth } from '@/firebase/fire_auth_context';
+import SearchBox from '@/components/search/search';
 
 export default function CollapsedNavbar({ totalCart }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -51,15 +52,7 @@ export default function CollapsedNavbar({ totalCart }) {
                     </div>
                 </div>
 
-                <form className={`${styles.search_form} me-auto mb-2 mb-md-0`}>
-                    <input className={`form-control me-2 ${styles.input_search}`} type="search" placeholder="Search" aria-label="Search" />
-                    <button className={`btn btn-lg btn-success ${styles.btn_nav} shadow px-3 py-2`} type="button">
-                        <span className="d-flex">
-                            <span className={styles.show_search_text}>SEARCH</span>
-                            <SearchNormal size="24" className="mx-2" />
-                        </span>
-                    </button>
-                </form>
+                <SearchBox />
             </div>
 
             {/* overlay */}

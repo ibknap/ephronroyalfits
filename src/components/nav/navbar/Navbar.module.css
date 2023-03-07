@@ -3,16 +3,6 @@
     padding: .5rem;
 }
 
-.search_form {
-    display: flex;
-    width: 60%;
-}
-
-.input_search:focus {
-    border-color: #0c1a2a;
-    box-shadow: 0 0 0 0 rgb(0 0 0 / 0%) !important
-}
-
 .btn_nav {
     background: #f8c12a;
     border: none;
@@ -21,10 +11,6 @@
 .btn_nav:hover {
     background: #0c1a2a !important;
     border: none;
-}
-
-.show_search_text {
-    font-size: 18px;
 }
 
 .dropdown {
@@ -50,26 +36,6 @@
 
 .dropdown:focus {
     background: #f0f0f0;
-}
-
-@media only screen and (max-width: 868px)and (min-width: 768px) {
-    .search_form {
-        width: 80%;
-    }
-
-    .show_nav_text {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .search_form {
-        width: 100%;
-    }
-
-    .show_search_text {
-        display: none;
-    }
 }
 
 /* collapsed navbar */
