@@ -33,7 +33,8 @@
     }
 }
 
-.btn_nav {
+.btn_nav,
+.btn_nav:hover {
     background: #f8c12a;
     border: none;
 }
