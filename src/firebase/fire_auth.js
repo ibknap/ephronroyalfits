@@ -36,7 +36,7 @@ export default function useFireAuth() {
 
   const logOut = async () => {
     await signOut(auth).then(clear);
-    Cookies.remove("SignedIn");
+    Cookies.remove("NEFBSignedIn");
     toast.success("User logged out.");
   }
 

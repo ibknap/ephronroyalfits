@@ -176,3 +176,81 @@
 .product_saved_btn:hover {
     color: #0c1a2a;
 }
+
+.dashboard_sidebar {
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 15%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.dashboard_sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.dashboard_sidebar_header {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: #0c1a2a;
+    color: white;
+}
+
+.dashboard_sidebar_item {
+    width: 100%;
+    padding: 1.3rem 1rem;
+    text-decoration: none;
+}
+
+.dashboard_sidebar_item:hover {
+    background-color: #f8c12a;
+    color: white;
+}
+
+.dashboard_content {
+    position: absolute;
+    width: 85%;
+    height: 100vh;
+    max-height: 100vh;
+    left: 15%;
+    padding: 10px;
+    overflow: auto;
+    background-color: #fafafa;
+}
+
+@media (max-width: 992px) {
+    .dashboard_sidebar_item {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard_sidebar_item {
+        padding: 1rem 0.5rem;
+    }
+}
+
+@media (max-width: 568px) {
+    .dashboard_sidebar {
+        width: 20%;
+    }
+
+    .dashboard_content {
+        width: 80%;
+        left: 20%;
+    }
+
+    .dashboard_sidebar_item {
+        padding: 0.5rem 0.2rem;
+    }
+}

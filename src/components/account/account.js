@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { db } from '@/firebase/fire_config';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { toast } from "react-toastify";
+import Cookies from 'js-cookie';
 
 export default function Account() {
     const [user, setUser] = useState(null);
@@ -30,7 +31,7 @@ export default function Account() {
         }
     }, [authUser]);
 
-    if (!authUser) {
+    if (!authUser && !Cookies.get("NEFBSignedIn")) {
         return (
             <div className="container">
                 <div className="row my-5 justify-content-center">

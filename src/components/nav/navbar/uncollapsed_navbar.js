@@ -31,9 +31,11 @@ export default function UnCollapsedNavbar({ totalCart }) {
                             priority
                         />
                     </Link>
+
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
+                    
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <SearchBox />
 

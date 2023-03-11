@@ -117,15 +117,15 @@ export default function Contact() {
                             </div>
                             <div className="col-sm-6">
                                 <Link className="text-decoration-none secondary card card m-3 p-2 bg_primary_50"
-                                    href="mailto:info@northeastfoodbank.org"
-                                    as="mailto:info@northeastfoodbank.org"
+                                    href="mailto:northeastfoodbankorg@gmail.com"
+                                    as="mailto:northeastfoodbankorg@gmail.com"
                                     target="_blank"
                                 >
                                     <DirectSend className="mx-1" size="32" variant="Bold" />
                                     <div className="d-flex flex-column mx-1">
                                         email use
                                         <br />
-                                        info@northeastfoodbank.org
+                                        northeastfoodbankorg@gmail.com
                                     </div>
                                 </Link>
                             </div>

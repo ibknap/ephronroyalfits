@@ -60,11 +60,11 @@ export default function Footer() {
                             <div className="d-flex flex-column mx-1">
                                 email us
                                 <Link className="text-decoration-none primary"
-                                    href="mailto:info@northeastfoodbank.org"
-                                    as="mailto:info@northeastfoodbank.org"
+                                    href="mailto:northeastfoodbankorg@gmail.com"
+                                    as="mailto:northeastfoodbankorg@gmail.com"
                                     target="_blank"
                                 >
-                                    info@northeastfoodbank.org
+                                    northeastfoodbankorg@gmail.com
                                 </Link>
                             </div>
                         </div>

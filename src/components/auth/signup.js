@@ -8,6 +8,7 @@ import Loader from '@/components/loader/loader';
 import { doc, setDoc, collection } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { Back, Information } from 'iconsax-react';
+import Cookies from 'js-cookie';
 
 export default function Signup() {
     const [formIndex, setFormIndex] = useState(0);
@@ -77,7 +78,7 @@ export default function Signup() {
         if (formIndex > 0) setFormIndex(formIndex - 1);
     }
 
-    if (authUser) {
+    if (authUser && Cookies.get("NEFBSignedIn")) {
         return (
             <div className="container">
                 <div className="row my-5 justify-content-center">

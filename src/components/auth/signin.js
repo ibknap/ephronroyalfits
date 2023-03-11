@@ -29,9 +29,17 @@ export default function Signin() {
                 getDoc(profileRef)
                     .then((docSnapshot) => {
                         if (docSnapshot.exists()) {
-                            Cookies.set("SignedIn", true, { expires: 7 });
-                            router.push("/");
-                            toast.success("User signed in");
+                            const isUserAdmin = docSnapshot.data().isAdmin;
+
+                            if (isUserAdmin) {
+                                Cookies.set("NEFBSignedIn", true, { expires: 14 });
+                                router.push("/dashboard");
+                                toast.success("Welcome Back Admin");
+                            } else {
+                                Cookies.set("NEFBSignedIn", true, { expires: 7 });
+                                router.push("/");
+                                toast.success("User signed in");
+                            }
                         } else {
                             toast.error("User not found");
                         }
@@ -53,7 +61,7 @@ export default function Signin() {
             });
     };
 
-    if (authUser) {
+    if (authUser && Cookies.get("NEFBSignedIn")) {
         return (
             <div className="container">
                 <div className="row my-5 justify-content-center">

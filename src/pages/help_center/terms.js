@@ -53,7 +53,7 @@ export default function TermsPage() {
             addressCountry: "NG"
         },
         "+234-703-318-0897",
-        "info@northeastfoodbank.org",
+        "northeastfoodbankorg@gmail.com",
         baseURL,
         `${baseURL}/images/logo.png`,
         "Cash, Credit Card, Transfer",
