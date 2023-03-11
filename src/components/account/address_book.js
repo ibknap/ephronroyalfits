@@ -38,7 +38,7 @@ export default function AddressBook({ user }) {
                 toast.error("User not found");
                 setLoading(false);
             } else {
-                toast.error(`Something is wrong: ${error.code}`);
+                toast.error(`Something is wrong: ${error.message}`);
                 setLoading(false);
             }
         });;

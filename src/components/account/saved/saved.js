@@ -12,7 +12,6 @@ import { useState, useEffect } from 'react';
 import { db } from '@/firebase/fire_config';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { toast } from "react-toastify";
-import Cookies from 'js-cookie';
 
 export default function Saved() {
     const { savedItems, removeSavedItem } = useSaved();
@@ -35,7 +34,7 @@ export default function Saved() {
         }
     }, [authUser]);
 
-    if (!authUser && !Cookies.get("NEFBSignedIn")) {
+    if (!authUser) {
         return (
             <div className="container">
                 <div className="row my-5 justify-content-center">

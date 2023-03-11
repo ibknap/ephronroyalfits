@@ -10,7 +10,6 @@ import { doc, collection, query, onSnapshot, where } from 'firebase/firestore';
 import { toast } from "react-toastify";
 import { Gift, Information } from 'iconsax-react';
 import Link from 'next/link';
-import Cookies from 'js-cookie';
 
 export default function Donate() {
     const [user, setUser] = useState(null);
@@ -62,7 +61,7 @@ export default function Donate() {
         return () => { unsubscribe(); };
     }, [user, myDonations]);
 
-    if (!authUser && !Cookies.get("NEFBSignedIn")) {
+    if (!authUser) {
         return (
             <div className="container">
                 <div className="row my-5 justify-content-center">

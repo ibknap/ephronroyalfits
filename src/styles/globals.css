@@ -213,7 +213,7 @@
 }
 
 .dashboard_sidebar_item:hover {
-    background-color: #f8c12a;
+    background-color: #f8c12a80;
     color: white;
 }
 
@@ -223,7 +223,7 @@
     height: 100vh;
     max-height: 100vh;
     left: 15%;
-    padding: 10px;
+    padding-top: 1rem;
     overflow: auto;
     background-color: #fafafa;
 }

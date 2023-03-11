@@ -39,6 +39,7 @@ export default function Signup() {
                         email: email,
                         myDonations: [],
                         isAdmin: false,
+                        isActive: true,
                         addressBook: {
                             firstName: firstName,
                             lastName: lastName,
@@ -57,7 +58,7 @@ export default function Signup() {
                         })
                         .catch((error) => {
                             setLoading(false);
-                            toast.error(`Error while signing User up: ${error}`);
+                            toast.error(`Error while signing User up: ${error.message}`);
                         });
 
                 }).catch(error => {
@@ -68,7 +69,7 @@ export default function Signup() {
                         toast.error("User already exists");
                     }
                     else {
-                        toast.error(`Error while signing User up: ${error.code}`);
+                        toast.error(`Error while signing User up: ${error.message}`);
                     }
                 });
         }

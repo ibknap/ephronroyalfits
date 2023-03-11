@@ -30,7 +30,7 @@ export default function Contact() {
             })
             .catch((error) => {
                 setSending(false);
-                toast.error(`Error while sending message: ${error}`);
+                toast.error(`Error while sending message: ${error.message}`);
             });
     }
 

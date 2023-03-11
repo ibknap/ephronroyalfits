@@ -30,12 +30,16 @@ export default function Signin() {
                     .then((docSnapshot) => {
                         if (docSnapshot.exists()) {
                             const isUserAdmin = docSnapshot.data().isAdmin;
+                            const isUserActive = docSnapshot.data().isActive;
 
-                            if (isUserAdmin) {
+                            if (!isUserActive) {
+                                toast.warning("User Has been disabled! contact NEFB");
+                            } else if (isUserAdmin && isUserActive) {
                                 Cookies.set("NEFBSignedIn", true, { expires: 14 });
                                 router.push("/dashboard");
                                 toast.success("Welcome Back Admin");
-                            } else {
+                            }
+                            else {
                                 Cookies.set("NEFBSignedIn", true, { expires: 7 });
                                 router.push("/");
                                 toast.success("User signed in");
@@ -45,7 +49,7 @@ export default function Signin() {
                         }
                     })
                     .catch((error) => {
-                        toast.error(`Error while getting User data: ${error}`);
+                        toast.error(`Error while getting User data: ${error.message}`);
                     });
             })
             .catch(error => {
@@ -56,7 +60,7 @@ export default function Signin() {
                     toast.error("Wrong password");
                 }
                 else {
-                    toast.error(`Something is wrong: ${error.code}`);
+                    toast.error(`Something is wrong: ${error.message}`);
                 }
             });
     };

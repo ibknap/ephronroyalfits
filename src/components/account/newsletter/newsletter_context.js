@@ -29,7 +29,7 @@ export function NewsletterProvider({ children }) {
                 toast.success(`${email} subscribed.`);
             }
         } catch (error) {
-            toast.error(`Error subscribing to newsletter: ${error}`);
+            toast.error(`Error subscribing to newsletter: ${error.message}`);
         }
     };
 
@@ -54,7 +54,7 @@ export function NewsletterProvider({ children }) {
                 toast.success(`${email} unsubscribed.`);
             }
         } catch (error) {
-            toast.error(`Error unsubscribing from newsletter: ${error}`);
+            toast.error(`Error unsubscribing from newsletter: ${error.message}`);
         }
     };
 
