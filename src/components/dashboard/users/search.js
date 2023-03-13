@@ -38,7 +38,7 @@ export default function UserSearch() {
         <>
             <div className={`${styles.search_form} me-auto mb-2 mb-md-0`}>
                 <input
-                    className={`form-control me-2 ${styles.input_search}`}
+                    className={`form-control ${styles.input_search}`}
                     type="search"
                     placeholder="Search User By First Name"
                     aria-label="Search User By First Name"
