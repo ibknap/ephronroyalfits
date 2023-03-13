@@ -4,10 +4,13 @@ import { db } from '@/firebase/fire_config';
 import { toast } from "react-toastify";
 import Loader from '@/components/loader/loader';
 import { doc, updateDoc } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+const storage = getStorage();
 
 export default function UpdateProduct({ product }) {
     const [loading, setLoading] = useState(false);
-    const [image, setImage] = useState(null);
+    const [loadingMsg, setLoadingMsg] = useState("");
+    const [selectedImage, setSelectedImage] = useState(null);
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [isHealth, setIsHealth] = useState(null);
@@ -16,27 +19,41 @@ export default function UpdateProduct({ product }) {
     const onUpdateProduct = async event => {
         event.preventDefault();
         setLoading(true);
+        setLoadingMsg("uploading image")
 
-        const docRef = doc(db, "products", product.id);
+        const imageRef = ref(storage, `product_images/${selectedImage.name}`);
+        await uploadBytes(imageRef, selectedImage);
 
-        await updateDoc(docRef, {
-            "image": image != null ? image : product.image,
-            "name": name.length <= 0 ? product.name : name,
-            "name_query": name.length <= 0 ? product.name_query : name.toLowerCase(),
-            "price": price.length <= 0 ? product.price : price,
-            "isHealth": isHealth != null ? isHealth : product.isHealth,
-            "description": description.length <= 0 ? product.description : description,
-        }).then(() => {
-            toast.success(`Updated ${name.length <= 0 && product.name}`);
-            setLoading(false);
+        await getDownloadURL(imageRef).then(async (image) => {
+            setLoadingMsg("updating product")
+
+            const docRef = doc(db, "products", product.id);
+            await updateDoc(docRef, {
+                "image": image != null ? image : product.image,
+                "name": name.length <= 0 ? product.name : name,
+                "name_query": name.length <= 0 ? product.name_query : name.toLowerCase(),
+                "price": price.length <= 0 ? product.price : price,
+                "isHealth": isHealth != null ? isHealth : product.isHealth,
+                "description": description.length <= 0 ? product.description : description,
+            }).then(() => {
+                toast.success(`Updated ${name.length <= 0 && product.name}`);
+                setLoading(false);
+                setLoadingMsg("");
+            }).catch((error) => {
+                if (error.code == "not-found") {
+                    toast.error("Product not found");
+                    setLoading(false);
+                    setLoadingMsg("");
+                } else {
+                    toast.error(`Something is wrong: ${error.message}`);
+                    setLoading(false);
+                    setLoadingMsg("");
+                }
+            });
         }).catch((error) => {
-            if (error.code == "not-found") {
-                toast.error("Product not found");
-                setLoading(false);
-            } else {
-                toast.error(`Something is wrong: ${error.message}`);
-                setLoading(false);
-            }
+            toast.error(`Something is wrong: ${error.message}`);
+            setLoading(false);
+            setLoadingMsg("");
         });
     };
 
@@ -53,11 +70,11 @@ export default function UpdateProduct({ product }) {
                             <div className="row">
                                 <div className="col-6">
                                     <div className="form-floating">
-                                        <input type="text"
+                                        <input type="file"
                                             className="form-control"
                                             id="image"
                                             placeholder="Image (option)"
-                                            onChange={(event) => setImage(event.target.value)}
+                                            onChange={(event) => setSelectedImage(event.target.files[0])}
                                         />
                                         <label htmlFor="image">Image (option)</label>
                                     </div>
@@ -119,7 +136,12 @@ export default function UpdateProduct({ product }) {
 
                         <div className="modal-footer">
                             <button type="submit" className={`btn btn-lg btn-success ${styles.btn_nav}`}>
-                                {loading ? <Loader /> : "Add Product"}
+                                {loading
+                                    ? <div className="d-flex">
+                                        <small className="white mx-2">{loadingMsg}</small> <Loader />
+                                    </div>
+                                    : "Update Product"
+                                }
                             </button>
                         </div>
                     </form>

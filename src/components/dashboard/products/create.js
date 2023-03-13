@@ -4,10 +4,13 @@ import { db } from '@/firebase/fire_config';
 import { toast } from "react-toastify";
 import Loader from '@/components/loader/loader';
 import { doc, setDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+const storage = getStorage();
 
 export default function CreateProduct() {
     const [loading, setLoading] = useState(false);
-    const [image, setImage] = useState(null);
+    const [loadingMsg, setLoadingMsg] = useState("");
+    const [selectedImage, setSelectedImage] = useState(null);
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [isHealth, setIsHealth] = useState(false);
@@ -16,27 +19,41 @@ export default function CreateProduct() {
     const onCreateProduct = async event => {
         event.preventDefault();
         setLoading(true);
+        setLoadingMsg("uploading image")
 
-        const docRef = doc(collection(db, "products"))
-        const newProduct = {
-            id: docRef.id,
-            image: image,
-            name: name,
-            name_query: name.toLowerCase(),
-            price: parseFloat(price),
-            isHealth: isHealth,
-            numOfDonation: 0,
-            description: description,
-            addedOn: serverTimestamp(),
+        const imageRef = ref(storage, `product_images/${selectedImage.name}`);
+        await uploadBytes(imageRef, selectedImage);
 
-        };
+        await getDownloadURL(imageRef).then(async (image) => {
+            setLoadingMsg("adding product")
 
-        await setDoc(docRef, newProduct).then(() => {
-            toast.success(`Added New Product ${name}`);
-            setLoading(false);
+            const docRef = doc(collection(db, "products"))
+            const newProduct = {
+                id: docRef.id,
+                image: image,
+                name: name,
+                name_query: name.toLowerCase(),
+                price: parseFloat(price),
+                isHealth: isHealth,
+                numOfDonation: 0,
+                description: description,
+                addedOn: serverTimestamp(),
+
+            };
+
+            await setDoc(docRef, newProduct).then(() => {
+                toast.success(`Added New Product ${name}`);
+                setLoading(false);
+                setLoadingMsg("");
+            }).catch((error) => {
+                toast.error(`Something is wrong: ${error.message}`);
+                setLoading(false);
+                setLoadingMsg("");
+            });
         }).catch((error) => {
             toast.error(`Something is wrong: ${error.message}`);
             setLoading(false);
+            setLoadingMsg("");
         });
     };
 
@@ -53,12 +70,12 @@ export default function CreateProduct() {
                             <div className="row">
                                 <div className="col-6">
                                     <div className="form-floating">
-                                        <input type="text"
+                                        <input type="file"
                                             className="form-control"
                                             required
                                             id="image"
                                             placeholder="Image"
-                                            onChange={(event) => setImage(event.target.value)}
+                                            onChange={(event) => setSelectedImage(event.target.files[0])}
                                         />
                                         <label htmlFor="image">Image</label>
                                     </div>
@@ -125,7 +142,12 @@ export default function CreateProduct() {
 
                         <div className="modal-footer">
                             <button type="submit" className={`btn btn-lg btn-success ${styles.btn_nav}`}>
-                                {loading ? <Loader /> : "Add Product"}
+                                {loading
+                                    ? <div className="d-flex">
+                                        <small className="white mx-2">{loadingMsg}</small> <Loader />
+                                    </div>
+                                    : "Add Product"
+                                }
                             </button>
                         </div>
                     </form>
