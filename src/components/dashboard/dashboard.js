@@ -1,10 +1,9 @@
 import { Box1, Gift, Edit2, Trash, People, Eye, Lock, UserOctagon, Folder, DirectInbox } from 'iconsax-react';
 import Link from 'next/link';
-import Loader from '@/components/loader/loader';
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
 import toCurrency from '@/components/utils/toCurrency'
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot, limit, getDocs } from 'firebase/firestore';
 
 export default function Dashboard() {
     const [users, setUsers] = useState([]);
@@ -18,14 +17,20 @@ export default function Dashboard() {
 
     // listening to users
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
-            const dataSize = snapshot.size;
+        const q = query(collection(db, "users"), limit(10));
+
+        const unsubscribe = onSnapshot(q, async (snapshot) => {
             const data = snapshot.docs.map((doc) => {
                 return { id: doc.id, ...doc.data() };
             });
 
-            setTotalUsers(dataSize);
             setUsers(data);
+
+            const totalUsersRef = collection(db, "users");
+            const totalUsersQuery = query(totalUsersRef);
+            const totalUsersSnapshot = await getDocs(totalUsersQuery);
+            const totalUsersSize = totalUsersSnapshot.size;
+            setTotalUsers(totalUsersSize);
         });
 
         return () => { unsubscribe(); };
@@ -33,9 +38,9 @@ export default function Dashboard() {
 
     // listening to product
     useEffect(() => {
-        const q = query(collection(db, "products"), orderBy("addedOn", "desc"));
-        const unsubscribe = onSnapshot(q, (snapshot) => {
-            const dataSize = snapshot.size;
+        const q = query(collection(db, "products"), orderBy("addedOn", "desc"), limit(10));
+
+        const unsubscribe = onSnapshot(q, async (snapshot) => {
             const data = snapshot.docs.map((doc) => {
                 return {
                     id: doc.id,
@@ -44,16 +49,25 @@ export default function Dashboard() {
                 };
             });
 
-            setTotalProducts(dataSize);
             setProducts(data);
+
+            const totalProductsRef = collection(db, "products");
+            const totalProductsQuery = query(totalProductsRef);
+            const totalProductsSnapshot = await getDocs(totalProductsQuery);
+            const totalProductsSize = totalProductsSnapshot.size;
+            setTotalProducts(totalProductsSize);
         });
+
+
 
         return () => { unsubscribe(); };
     }, []);
 
     // listening to contact us
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, "contactUs"), (snapshot) => {
+        const q = query(collection(db, "contactUs"), limit(10));
+
+        const unsubscribe = onSnapshot(q, (snapshot) => {
             const data = snapshot.docs.map((doc) => {
                 return { id: doc.id, ...doc.data() };
             });
@@ -65,7 +79,9 @@ export default function Dashboard() {
 
     // listening to newsletters
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, "newsletterSubscribers"), (snapshot) => {
+        const q = query(collection(db, "newsletterSubscribers"), limit(10));
+
+        const unsubscribe = onSnapshot(q, (snapshot) => {
             const data = snapshot.docs.map((doc) => {
                 return { id: doc.id, ...doc.data() };
             });
@@ -84,7 +100,6 @@ export default function Dashboard() {
 
         return () => { unsubscribe(); };
     }, []);
-
 
     return (
         <div className="dashboard_content">
@@ -281,7 +296,7 @@ export default function Dashboard() {
                                 </div>
                             }
 
-                            <Link href="/dashboard/products" className="text-decoration-none text-center secondary p-2">
+                            <Link href="/dashboard/contact_us" className="text-decoration-none text-center secondary p-2">
                                 View More
                             </Link>
                         </div>

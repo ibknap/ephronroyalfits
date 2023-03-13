@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Navbar from '@/components/nav/navbar/navbar';
-import Footer from '@/components/nav/footer/footer';
+import Navbar from '@/components/navigation/navbar/navbar';
+import Footer from '@/components/navigation/footer/footer';
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
 import Contact from '@/components/help_center/contact';
 

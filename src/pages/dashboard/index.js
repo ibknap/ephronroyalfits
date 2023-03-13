@@ -3,11 +3,17 @@ import Sidebar from '@/components/dashboard/sidebar'
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
 import Dashboard from '@/components/dashboard/dashboard'
 import { useAuth } from '@/firebase/fire_auth_context';
-import { Information } from 'iconsax-react';
-import Link from 'next/link';
+import { db } from '@/firebase/fire_config';
+import { useState, useEffect } from 'react';
+import { onSnapshot, doc } from 'firebase/firestore';
+import NeedAuth from '@/components/restrictions/need_auth';
+import NeedAccess from '@/components/restrictions/need_access';
+import Loader from '@/components/loader/loader';
+import { toast } from 'react-toastify';
 
 export default function DashboardPage() {
     const { authUser } = useAuth();
+    const [isAdmin, setIsAdmin] = useState(null);
 
     // page default data
     const pageName = "NEFB - Dashboard";
@@ -62,21 +68,29 @@ export default function DashboardPage() {
         }
     );
 
-    if (!authUser) {
-        return (
-            <div className="container">
-                <div className="row my-5 justify-content-center">
-                    <div className="col-12 text-muted text-center">
-                        <Information variant="Bold" size={200} />
-                        <p>You need to be logged in to see this page.</p>
-                    </div>
-                    <Link href="/auth/signin" className={`btn btn-lg btn-success bg_primary border_none py-3 w-50 my-5`}>
-                        Signin here
-                    </Link>
-                </div>
-            </div>
-        );
-    }
+    // listening to user
+    useEffect(() => {
+        if (authUser) {
+            const userRef = doc(db, "users", authUser.email);
+
+            const unsubscribe = onSnapshot(userRef, (snapshot) => {
+                if (snapshot.exists()) {
+                    const data = snapshot.data();
+                    setIsAdmin(data.isAdmin);
+                } else {
+                    toast.error("User data not found");
+                }
+            });
+
+            return () => { unsubscribe(); };
+        }
+    }, [authUser]);
+
+    if (!authUser) return <NeedAuth fullHeight={true} />
+
+    if (isAdmin === null) return <Loader fullHeight={true} />
+
+    if (!isAdmin) return <NeedAccess fullHeight={true} />
 
     return (
         <>

@@ -1,6 +1,6 @@
 import { useMediaQuery } from "@chakra-ui/react";
-import CollapsedNavbar from "@/components/nav/navbar/collapsed_navbar";
-import UnCollapsedNavbar from "@/components/nav/navbar/uncollapsed_navbar";
+import CollapsedNavbar from "@/components/navigation/navbar/collapsed_navbar";
+import UnCollapsedNavbar from "@/components/navigation/navbar/uncollapsed_navbar";
 import { useCart } from '@/components/cart/cart_context';
 
 export default function Navbar() {

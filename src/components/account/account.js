@@ -1,5 +1,5 @@
 import styles from '@/components/account/Account.module.css'
-import { Edit, Information } from 'iconsax-react';
+import { Edit } from 'iconsax-react';
 import AccountNavbar from '@/components/account/navbar';
 import Newsletter from '@/components/account/newsletter/newsletter';
 import AddressBook from '@/components/account/address_book';
@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { db } from '@/firebase/fire_config';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { toast } from "react-toastify";
+import NeedAuth from '@/components/restrictions/need_auth';
 
 export default function Account() {
     const [user, setUser] = useState(null);
@@ -30,18 +31,7 @@ export default function Account() {
         }
     }, [authUser]);
 
-    if (!authUser) {
-        return (
-            <div className="container">
-                <div className="row my-5 justify-content-center">
-                    <div className="col-12 text-muted text-center">
-                        <Information variant="Bold" size={200} />
-                        <p>You need to be logged in to see this page.</p>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+    if (!authUser) return <NeedAuth />
 
     return (
         <div className="container">

@@ -55,14 +55,14 @@ export default function Sidebar() {
                     <Message className="mx-2" />
                     <span className="d-none d-lg-inline">Live Chat</span>
                 </Link>
-                <Link href="/dashboard/settings" as="/dashboard/settings" className={`dashboard_sidebar_item secondary ${router.asPath == "/dashboard/settings" && "bg_primary"}`}>
+                {/* <Link href="/dashboard/settings" as="/dashboard/settings" className={`dashboard_sidebar_item secondary ${router.asPath == "/dashboard/settings" && "bg_primary"}`}>
                     <Setting className="mx-2" />
                     <span className="d-none d-lg-inline">Settings</span>
                 </Link>
                 <Link href="/dashboard/profile" as="/dashboard/profile" className={`dashboard_sidebar_item secondary ${router.asPath == "/dashboard/profile" && "bg_primary"}`}>
                     <User className="mx-2" />
                     <span className="d-none d-lg-inline">Profile</span>
-                </Link>
+                </Link> */}
                 <button type="button" className="border_none trans text-start dashboard_sidebar_item secondary" onClick={logOut}>
                     <Logout className="mx-2" />
                     <span className="d-none d-lg-inline">Logout</span>

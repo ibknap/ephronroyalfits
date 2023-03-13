@@ -1,16 +1,25 @@
-import Head from 'next/head';
-import Navbar from '@/components/navigation/navbar/navbar';
-import Footer from '@/components/navigation/footer/footer';
+import Head from 'next/head'
+import Sidebar from '@/components/dashboard/sidebar'
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
-import Donate from '@/components/account/donate';
+import ContactUs from '@/components/dashboard/contact_us'
+import { useAuth } from '@/firebase/fire_auth_context';
+import { db } from '@/firebase/fire_config';
+import { useState, useEffect } from 'react';
+import { onSnapshot, doc } from 'firebase/firestore';
+import NeedAuth from '@/components/restrictions/need_auth';
+import NeedAccess from '@/components/restrictions/need_access';
+import Loader from '@/components/loader/loader';
+import { toast } from 'react-toastify';
 
-export default function DonatePage() {
+export default function DashboardContactUsPage() {
+    const { authUser } = useAuth();
+    const [isAdmin, setIsAdmin] = useState(null);
+
     // page default data
-    const pageName = "NEFB - My Donate";
-    const pageDesc = "North East Food Bank seeks to eliminate hunger and malnutrition among vulnerable populations in the Northeast. It is a livelihood programme developed by Big Family 360 Foundation Nigeria.";
+    const pageName = "NEFB - Dashboard Live Chat";
+    const pageDesc = "Get to learn more about us and how we work at NEFB, as we seek to eliminate hunger and malnutrition among vulnerable populations in the Northeast.";
     const baseURL = "https://northeastfoodbank.org";
-    const parentURL = "https://northeastfoodbank.org/account";
-    const pageURL = "https://northeastfoodbank.org/account/donate";
+    const pageURL = "https://northeastfoodbank.org/dashboard/contact_us";
 
     // web site schema
     const wSSchema = getWSSchema(pageURL);
@@ -30,12 +39,6 @@ export default function DonatePage() {
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "My Account",
-                "item": parentURL
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
                 "name": pageName,
                 "item": pageURL
             }
@@ -65,6 +68,30 @@ export default function DonatePage() {
         }
     );
 
+    // listening to user
+    useEffect(() => {
+        if (authUser) {
+            const userRef = doc(db, "users", authUser.email);
+
+            const unsubscribe = onSnapshot(userRef, (snapshot) => {
+                if (snapshot.exists()) {
+                    const data = snapshot.data();
+                    setIsAdmin(data.isAdmin);
+                } else {
+                    toast.error("User data not found");
+                }
+            });
+
+            return () => { unsubscribe(); };
+        }
+    }, [authUser]);
+
+    if (!authUser) return <NeedAuth fullHeight={true} />
+
+    if (isAdmin === null) return <Loader fullHeight={true} />
+
+    if (!isAdmin) return <NeedAccess fullHeight={true} />
+
     return (
         <>
             <Head>
@@ -92,10 +119,8 @@ export default function DonatePage() {
             </Head>
 
             {/* page content */}
-            <Navbar />
-            <div className="bottom_spacer" />
-            <Donate />
-            <Footer />
+            <Sidebar />
+            <ContactUs />
         </>
     )
 }

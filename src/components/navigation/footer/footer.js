@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from 'react';
-import styles from '@/components/nav/footer/Footer.module.css'
+import styles from '@/components/navigation/footer/Footer.module.css'
 import { Call, Camera, DirectSend, Location } from "iconsax-react";
 import Loader from '@/components/loader/loader';
 import { doc, setDoc, collection } from 'firebase/firestore';

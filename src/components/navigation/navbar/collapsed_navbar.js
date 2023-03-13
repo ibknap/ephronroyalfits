@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from "next/router";
 import { useState } from "react";
-import styles from '@/components/nav/navbar/Navbar.module.css'
-import { Bag2, CloseSquare, Heart, Home, Menu, People, SearchNormal, ShoppingCart, User } from 'iconsax-react'
+import styles from '@/components/navigation/navbar/Navbar.module.css'
+import { Bag2, CloseSquare, Heart, Home, Menu, People, ShoppingCart, User } from 'iconsax-react'
 import { useAuth } from '@/firebase/fire_auth_context';
 import SearchBox from '@/components/search/search';
 

@@ -33,10 +33,12 @@ export default function Signup() {
                     const collRef = collection(db, "users");
                     const userDoc = {
                         firstName: firstName,
+                        firstName_query: firstName.toLowerCase(),
                         lastName: lastName,
+                        lastName_query: lastName.toLowerCase(),
                         phoneNumber: phoneNumber,
                         gender: gender,
-                        email: email,
+                        email: email.toLowerCase(),
                         myDonations: [],
                         isAdmin: false,
                         isActive: true,
