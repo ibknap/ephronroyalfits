@@ -1,7 +1,7 @@
 import styles from '@/components/dashboard/Dashboard.module.css'
 import { query, where, getDocs, collection, orderBy, limit } from "firebase/firestore";
 import { useState } from "react";
-import { Eye, Lock, SearchNormal } from 'iconsax-react'
+import { Eye, Lock, SearchNormal, ShieldSecurity, UserOctagon } from 'iconsax-react'
 import { db } from '@/firebase/fire_config';
 import Link from 'next/link';
 
@@ -46,7 +46,7 @@ export default function UserSearch() {
                     onChange={onSearch}
                 />
 
-                <button
+                {/* <button
                     className={`btn btn-lg btn-success ${styles.btn_nav} px-3 py-2`}
                     type="button"
                     onClick={onSearch}
@@ -55,7 +55,7 @@ export default function UserSearch() {
                         <span className={styles.show_search_text}>SEARCH</span>
                         <SearchNormal size="24" className="mx-2" />
                     </span>
-                </button>
+                </button> */}
             </div>
 
             {searchResults.length > 0 && searchTerm.length > 0 &&
@@ -68,14 +68,15 @@ export default function UserSearch() {
                                 <th scope="col">Email</th>
                                 <th scope="col">Gender</th>
                                 <th scope="col">View</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Accessibility</th>
+                                <th scope="col">Visibility</th>
                             </tr>
                         </thead>
                         <tbody>
                             {searchResults.length > 0 && searchResults.map((result) => (
                                 <tr key={result.id}>
                                     <th scope="row">
-                                        <resultOctagon variant="Bold" className="secondary" size={50} />
+                                        <UserOctagon variant="Bold" className="secondary" size={50} />
                                     </th>
                                     <td className="d-table-cell align-middle">{result.firstName}</td>
                                     <td className="d-table-cell align-middle">{result.email}</td>
@@ -84,6 +85,11 @@ export default function UserSearch() {
                                         <Link href={`/dashboard/user_update/${result.email}`} className="text-decoration-none btn btn-sm border_none btn-warning">
                                             View <Eye />
                                         </Link>
+                                    </td>
+                                    <td className="d-table-cell align-middle">
+                                        <button onClick={() => { }} className={`text-decoration-none btn btn-sm border_none ${result.isAdmin ? "btn-info" : "btn-dark"}`}>
+                                            {result.isAdmin ? "Make User" : "Make Admin"} <ShieldSecurity />
+                                        </button>
                                     </td>
                                     <td className="d-table-cell align-middle">
                                         <button onClick={() => { }} className="text-decoration-none btn btn-sm border_none btn-danger">

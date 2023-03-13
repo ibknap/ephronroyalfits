@@ -51,7 +51,7 @@ export default function ProductSearch() {
                     onChange={onSearch}
                 />
 
-                <button
+                {/* <button
                     className={`btn btn-lg btn-success ${styles.btn_nav} px-3 py-2`}
                     type="button"
                     onClick={onSearch}
@@ -60,7 +60,7 @@ export default function ProductSearch() {
                         <span className={styles.show_search_text}>SEARCH</span>
                         <SearchNormal size="24" className="mx-2" />
                     </span>
-                </button>
+                </button> */}
             </div>
 
             {searchResults.length > 0 && searchTerm.length > 0 &&
