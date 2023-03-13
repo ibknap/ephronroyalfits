@@ -1,12 +1,16 @@
-import { Eye, Lock, ShieldSecurity, UserOctagon } from 'iconsax-react';
-import Link from 'next/link';
+import { Eye, Lock, ShieldSecurity, Unlock, UserOctagon } from 'iconsax-react';
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, doc, updateDoc } from 'firebase/firestore';
 import UserSearch from '@/components/dashboard/users/search';
+import { toast } from "react-toastify";
+import ViewUser from '@/components/dashboard/users/view';
+import CreateUser from '@/components/dashboard/users/create';
+import exportUsersAsCSV from '@/components/dashboard/users/export'
 
 export default function DashboardUsers() {
     const [users, setUsers] = useState([]);
+    const [selectedUser, setSelectedUser] = useState(null);
 
     // listening to users
     useEffect(() => {
@@ -21,6 +25,38 @@ export default function DashboardUsers() {
         return () => { unsubscribe(); };
     }, []);
 
+    const onUserAccessibility = async (id, isAdmin) => {
+        const docRef = doc(collection(db, "users"), id);
+
+        await updateDoc(docRef, {
+            "isAdmin": !isAdmin,
+        }).then(() => {
+            toast.success(isAdmin ? "Downgraded To User " : "Upgraded To Admin");
+        }).catch((error) => {
+            if (error.code == "not-found") {
+                toast.error("User not found");
+            } else {
+                toast.error(`Something is wrong: ${error.message}`);
+            }
+        });
+    };
+
+    const onUserVisibility = async (id, isActive) => {
+        const docRef = doc(collection(db, "users"), id);
+
+        await updateDoc(docRef, {
+            "isActive": !isActive,
+        }).then(() => {
+            toast.success(isActive ? "User Disabled" : "User Enabled");
+        }).catch((error) => {
+            if (error.code == "not-found") {
+                toast.error("User not found");
+            } else {
+                toast.error(`Something is wrong: ${error.message}`);
+            }
+        });
+    };
+
     return (
         <div className="dashboard_content">
             <div className="container mb-5">
@@ -34,10 +70,10 @@ export default function DashboardUsers() {
                                 </div>
 
                                 <div className="col-sm-6 text-end">
-                                    <button type="button" className="btn btn-info mx-1" onClick={() => { }}>
+                                    <button type="button" className="btn btn-info mx-1" onClick={() => { exportUsersAsCSV() }}>
                                         Export CSV
                                     </button>
-                                    <button type="button" className="btn btn-warning mx-1" onClick={() => { }}>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#createUser" className="btn btn-warning mx-1">
                                         Create User
                                     </button>
                                 </div>
@@ -84,20 +120,26 @@ export default function DashboardUsers() {
                                                     </th>
                                                     <td className="d-table-cell align-middle">{user.firstName}</td>
                                                     <td className="d-table-cell align-middle">{user.email}</td>
-                                                    <td className="d-table-cell align-middle">{user.gender}</td>
+                                                    <td className="d-table-cell align-middle">{user.gender.toUpperCase()}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <Link href={`/dashboard/user_update/${user.email}`} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewUser" onClick={() => { setSelectedUser(user) }} className="text-decoration-none btn btn-sm border_none btn-warning">
                                                             View <Eye />
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                     <td className="d-table-cell align-middle">
-                                                        <button onClick={() => { }} className={`text-decoration-none btn btn-sm border_none ${user.isAdmin ? "btn-info" : "btn-dark"}`}>
+                                                        <button
+                                                            onClick={() => { onUserAccessibility(user.id, user.isAdmin) }}
+                                                            className={`text-decoration-none btn btn-sm border_none ${user.isAdmin ? "btn-info" : "btn-dark"}`}
+                                                        >
                                                             {user.isAdmin ? "Make User" : "Make Admin"} <ShieldSecurity />
                                                         </button>
                                                     </td>
                                                     <td className="d-table-cell align-middle">
-                                                        <button onClick={() => { }} className="text-decoration-none btn btn-sm border_none btn-danger">
-                                                            Disable <Lock />
+                                                        <button
+                                                            onClick={() => { onUserVisibility(user.id, user.isActive) }}
+                                                            className={`text-decoration-none btn btn-sm border_none ${user.isActive ? "btn-danger" : "btn-success"}`}
+                                                        >
+                                                            {user.isActive ? <>{"Disable"} <Lock /></> : <>{"Enable"} <Unlock /></>}
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -111,6 +153,9 @@ export default function DashboardUsers() {
                     </div>
                 </div>
             </div>
+
+            <CreateUser />
+            <ViewUser user={selectedUser} />
         </div>
     )
 }

@@ -53,7 +53,7 @@ export default function Account() {
                                             <span className="text-muted mb-2">{user.firstName} {user.lastName}</span>
                                             <span className="text-muted mb-2">{user.email}</span>
                                             <span className="text-muted mb-2">{user.phoneNumber}</span>
-                                            <span className="text-muted mb-2">{user.gender}</span>
+                                            <span className="text-muted mb-2">{user.gender.toUpperCase()}</span>
                                         </div>
                                     </div>
                                     <div className="col-sm-6">

@@ -26,7 +26,6 @@ export default function UpdateProduct({ product }) {
             "price": price.length <= 0 ? product.price : price,
             "isHealth": isHealth != null ? isHealth : product.isHealth,
             "description": description.length <= 0 ? product.description : description,
-
         }).then(() => {
             toast.success(`Updated ${name.length <= 0 && product.name}`);
             setLoading(false);
@@ -42,7 +41,7 @@ export default function UpdateProduct({ product }) {
     };
 
     return (
-        <div className="modal fade" id="updateProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="updateProductLabel" aria-hidden="true" style={{ zIndex: 99999 }}>
+        <div className="modal fade" id="updateProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="updateProductLabel" aria-hidden="true" >
             <div className="modal-dialog modal-lg modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">

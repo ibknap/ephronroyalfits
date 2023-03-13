@@ -1,6 +1,6 @@
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
-import { collection, query, onSnapshot, limit } from 'firebase/firestore';
+import { collection, query, onSnapshot, limit, getDocs } from 'firebase/firestore';
 import { Folder } from 'iconsax-react';
 
 export default function Newsletter() {
@@ -20,6 +20,24 @@ export default function Newsletter() {
         return () => { unsubscribe(); };
     }, []);
 
+    async function exportAsCSV() {
+        const newsletterCol = collection(db, 'newsletterSubscribers');
+        const snapshot = await getDocs(newsletterCol);
+
+        const csv = snapshot.docs.map(doc => Object.values(doc.data()).join(',')).join('\n');
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'newsletter.csv');
+        link.setAttribute('target', '_blank');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <div className="dashboard_content">
             <div className="container mb-5">
@@ -33,7 +51,7 @@ export default function Newsletter() {
                                 </div>
 
                                 <div className="col-sm-6 text-end">
-                                    <button type="button" className="btn btn-info" onClick={() => { }}>
+                                    <button type="button" className="btn btn-info" onClick={() => { exportAsCSV() }}>
                                         Export CSV
                                     </button>
                                 </div>

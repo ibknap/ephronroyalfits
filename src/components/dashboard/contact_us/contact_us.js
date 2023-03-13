@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import { collection, query, onSnapshot, limit } from 'firebase/firestore';
 import { DirectInbox, DirectSend, Eye } from 'iconsax-react';
 import Link from 'next/link';
+import ViewContactMessage from '@/components/dashboard/contact_us/view';
 
 export default function ContactUs() {
     const [contactUs, setContactUs] = useState([]);
+    const [selectedMessage, setSelectedMessage] = useState(null);
 
     // listening to contact us
     useEffect(() => {
@@ -66,9 +68,9 @@ export default function ContactUs() {
                                                     <td className="d-table-cell align-middle">{contact.fullName}</td>
                                                     <td className="d-table-cell align-middle">{contact.email}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <Link href={`/dashboard/contact_us_update/${contact.email}`} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewContactMessage" onClick={() => { setSelectedMessage(contact.message) }} className="text-decoration-none btn btn-sm border_none btn-warning">
                                                             View <Eye />
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                     <td className="d-table-cell align-middle">
                                                         <Link href={`mailto:${contact.email}`} target="_blank" className="text-decoration-none btn btn-sm border_none btn-info">
@@ -86,6 +88,8 @@ export default function ContactUs() {
                     </div>
                 </div>
             </div>
+
+            <ViewContactMessage message={selectedMessage} />
         </div>
     )
 }

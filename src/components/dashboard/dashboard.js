@@ -228,7 +228,7 @@ export default function Dashboard() {
                                                     </th>
                                                     <td className="d-table-cell align-middle">{user.firstName}</td>
                                                     <td className="d-table-cell align-middle">{user.email}</td>
-                                                    <td className="d-table-cell align-middle">{user.gender}</td>
+                                                    <td className="d-table-cell align-middle">{user.gender.toUpperCase()}</td>
                                                     <td className="d-table-cell align-middle">
                                                         <Link href={`/dashboard/user_update/${user.email}`} className="text-decoration-none btn btn-sm border_none btn-warning">
                                                             View <Eye />

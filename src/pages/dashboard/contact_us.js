@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Sidebar from '@/components/dashboard/sidebar'
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
-import ContactUs from '@/components/dashboard/contact_us'
+import ContactUs from '@/components/dashboard/contact_us/contact_us'
 import { useAuth } from '@/firebase/fire_auth_context';
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';

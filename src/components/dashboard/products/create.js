@@ -41,7 +41,7 @@ export default function CreateProduct() {
     };
 
     return (
-        <div className="modal fade" id="createProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="createProductLabel" aria-hidden="true" style={{ zIndex: 99999 }}>
+        <div className="modal fade" id="createProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="createProductLabel" aria-hidden="true" >
             <div className="modal-dialog modal-lg modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
