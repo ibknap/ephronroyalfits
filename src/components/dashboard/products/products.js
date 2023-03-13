@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import toCurrency from '@/components/utils/toCurrency'
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import ProductSearch from '@/components/dashboard/products/search';
+import CreateProduct from '@/components/dashboard/products/create';
 
 export default function DashboardProducts() {
     const [products, setProducts] = useState([]);
@@ -16,8 +17,7 @@ export default function DashboardProducts() {
             const data = snapshot.docs.map((doc) => {
                 return {
                     id: doc.id,
-                    ...doc.data(),
-                    addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
+                    ...doc.data()
                 };
             });
 
@@ -40,7 +40,11 @@ export default function DashboardProducts() {
                                 </div>
 
                                 <div className="col-sm-6 text-end">
-                                    <button type="button" className="btn btn-warning" onClick={() => { }}>
+                                    <button type="button"
+                                        className="btn btn-warning"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#createProduct"
+                                    >
                                         Create Product
                                     </button>
                                 </div>
@@ -116,6 +120,8 @@ export default function DashboardProducts() {
                     </div>
                 </div>
             </div>
+
+            <CreateProduct />
         </div>
     )
 }
