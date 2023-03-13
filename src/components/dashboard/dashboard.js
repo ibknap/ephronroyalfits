@@ -171,7 +171,6 @@ export default function Dashboard() {
                                                             height={50}
                                                             style={{ objectFit: "cover" }}
                                                             className="rounded border"
-                                                            crossOrigin="anonymous"
                                                         />
                                                     </th>
                                                     <td className="d-table-cell align-middle">{product.name}</td>

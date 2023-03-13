@@ -23,9 +23,9 @@ export default function AddressBook({ user }) {
 
         const docRef = doc(db, "users", authUser.email);
         await updateDoc(docRef, {
-            "addressBook.firstName": firstName.length === 0 && user.firstName,
-            "addressBook.lastName": lastName.length === 0 && user.lastName,
-            "addressBook.phoneNumber": phoneNumber.length === 0 && user.phoneNumber,
+            "addressBook.firstName": firstName.length <= 0 ? user.firstName : firstName,
+            "addressBook.lastName": lastName.length <= 0 ? user.lastName : lastName,
+            "addressBook.phoneNumber": phoneNumber.length <= 0 ? user.phoneNumber : phoneNumber,
             "addressBook.additionalPhoneNumber": additionalPhoneNumber,
             "addressBook.address": address,
             "addressBook.additionalInformation": additionalInformation,
@@ -41,7 +41,7 @@ export default function AddressBook({ user }) {
                 toast.error(`Something is wrong: ${error.message}`);
                 setLoading(false);
             }
-        });;
+        });
     };
 
     return (

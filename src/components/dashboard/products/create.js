@@ -13,12 +13,6 @@ export default function CreateProduct() {
     const [isHealth, setIsHealth] = useState(false);
     const [description, setDescription] = useState("");
 
-    function onKeyDown(event) {
-        const keyCode = event.which || event.keyCode;
-        const keyValue = String.fromCharCode(keyCode);
-        if (/\D/.test(keyValue)) event.preventDefault();
-    }
-
     const onCreateProduct = async event => {
         event.preventDefault();
         setLoading(true);
@@ -47,7 +41,7 @@ export default function CreateProduct() {
     };
 
     return (
-        <div className="modal fade" id="createProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="createProductLabel" aria-hidden="true">
+        <div className="modal fade" id="createProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="createProductLabel" aria-hidden="true" style={{ zIndex: 99999 }}>
             <div className="modal-dialog modal-lg modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -56,11 +50,12 @@ export default function CreateProduct() {
                     </div>
                     <form onSubmit={onCreateProduct}>
                         <div className="modal-body">
-                            <div className="d-flex">
-                                <div className="col-sm-6">
-                                    <div className="form-floating mx-2">
+                            <div className="row">
+                                <div className="col-6">
+                                    <div className="form-floating">
                                         <input type="text"
                                             className="form-control"
+                                            required
                                             id="image"
                                             placeholder="Image"
                                             onChange={(event) => setImage(event.target.value)}
@@ -69,10 +64,11 @@ export default function CreateProduct() {
                                     </div>
                                 </div>
 
-                                <div className="col-sm-6">
-                                    <div className="form-floating mx-2">
+                                <div className="col-6">
+                                    <div className="form-floating">
                                         <input type="text"
                                             className="form-control"
+                                            required
                                             id="name"
                                             placeholder="Name"
                                             onChange={(event) => setName(event.target.value)}
@@ -82,22 +78,22 @@ export default function CreateProduct() {
                                 </div>
                             </div>
 
-                            <div className="d-flex mt-3">
-                                <div className="col-sm-6">
-                                    <div className="form-floating mx-2">
+                            <div className="row mt-3">
+                                <div className="col-6">
+                                    <div className="form-floating">
                                         <input type="text"
                                             className="form-control"
+                                            required
                                             id="price"
                                             placeholder="Price"
                                             onChange={(event) => setPrice(event.target.value)}
-                                            onKeyDown={onKeyDown}
                                         />
                                         <label htmlFor="price">Price</label>
                                     </div>
                                 </div>
 
-                                <div className="col-sm-6">
-                                    <div className="form-floating mx-2">
+                                <div className="col-6">
+                                    <div className="form-floating">
                                         <select
                                             className="form-select"
                                             required
@@ -114,7 +110,8 @@ export default function CreateProduct() {
 
                             <div className="col-12 mt-3">
                                 <div className="form-floating">
-                                    <textarea className="form-control"
+                                    <textarea
+                                        className="form-control"
                                         required
                                         placeholder="Description"
                                         id="description"

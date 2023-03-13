@@ -1,14 +1,19 @@
 import { Edit2, Trash } from 'iconsax-react';
-import Link from 'next/link';
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
 import toCurrency from '@/components/utils/toCurrency'
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot, doc, deleteDoc } from 'firebase/firestore';
 import ProductSearch from '@/components/dashboard/products/search';
 import CreateProduct from '@/components/dashboard/products/create';
+import UpdateProduct from '@/components/dashboard/products/update';
+import Loader from '@/components/loader/loader';
+import { toast } from "react-toastify";
+import Link from 'next/link';
 
 export default function DashboardProducts() {
+    const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     // listening to product
     useEffect(() => {
@@ -27,6 +32,25 @@ export default function DashboardProducts() {
         return () => { unsubscribe(); };
     }, []);
 
+    const onDeleteProduct = async id => {
+        setLoading(true);
+
+        const docRef = doc(collection(db, "products"), id);
+
+        await deleteDoc(docRef).then(() => {
+            toast.success(`Deleted Product With ID ${id}`);
+            setLoading(false);
+        }).catch((error) => {
+            if (error.code == "not-found") {
+                toast.error("Product not found");
+                setLoading(false);
+            } else {
+                toast.error(`Something is wrong: ${error.message}`);
+                setLoading(false);
+            }
+        });
+    };
+
     return (
         <div className="dashboard_content">
             <div className="container mb-5">
@@ -40,11 +64,7 @@ export default function DashboardProducts() {
                                 </div>
 
                                 <div className="col-sm-6 text-end">
-                                    <button type="button"
-                                        className="btn btn-warning"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#createProduct"
-                                    >
+                                    <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#createProduct">
                                         Create Product
                                     </button>
                                 </div>
@@ -93,20 +113,21 @@ export default function DashboardProducts() {
                                                             height={50}
                                                             style={{ objectFit: "cover" }}
                                                             className="rounded border"
-                                                            crossOrigin="anonymous"
                                                         />
                                                     </th>
-                                                    <td className="d-table-cell align-middle">{product.name}</td>
+                                                    <td className="d-table-cell align-middle">
+                                                        <Link href={`/product/${product.id}`} target="_blank" className="text-decoration-none secondary">{product.name}</Link>
+                                                    </td>
                                                     <td className="d-table-cell align-middle">{toCurrency(product.price)}</td>
                                                     <td className="d-table-cell align-middle">{product.isHealth ? "Nutrition" : "Food"}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <Link href={`/dashboard/product_update/${product.id}`} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateProduct" onClick={() => { setSelectedProduct(product) }} className="text-decoration-none btn btn-sm border_none btn-warning">
                                                             Edit <Edit2 />
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                     <td className="d-table-cell align-middle">
-                                                        <button onClick={() => { }} className="text-decoration-none btn btn-sm border_none btn-danger">
-                                                            Delete <Trash />
+                                                        <button onClick={()=> {onDeleteProduct(product.id)}} className="text-decoration-none btn btn-sm border_none btn-danger">
+                                                            {loading ? <Loader /> : <>{"Delete"} <Trash /></>}
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -122,6 +143,7 @@ export default function DashboardProducts() {
             </div>
 
             <CreateProduct />
+            <UpdateProduct product={selectedProduct} />
         </div>
     )
 }

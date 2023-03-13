@@ -61,6 +61,7 @@ export default function Saved() {
                                                                 className="rounded border"
                                                                 width={100}
                                                                 height={100}
+                                                                style={{ objectFit: "cover" }}
                                                             />
                                                             <div className="w-75 mx-2 d-flex flex-column justify-content-between">
                                                                 <span className="secondary">{item.name}</span>

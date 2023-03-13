@@ -78,7 +78,8 @@
     border: none !important;
 }
 
-.form-control:focus {
+.form-control:focus,
+.form-select:focus {
     border-color: #0c1a2a;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 }
@@ -93,7 +94,8 @@
     }
 }
 
-.form-control:focus {
+.form-control:focus,
+.form-select:focus {
     border-color: #f8c12a !important;
 }
 

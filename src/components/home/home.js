@@ -142,7 +142,7 @@ export default function Home() {
                                     <img
                                         src={product.image}
                                         alt={product.name}
-                                        crossOrigin="anonymous"
+                                        style={{ objectFit: "cover" }}
                                     />
                                     <div className={styles.slider_body}>
                                         <span className={styles.slider_header}>{product.name}</span>
@@ -170,7 +170,7 @@ export default function Home() {
                                         <img
                                             src={product.image}
                                             alt={product.name}
-                                            crossOrigin="anonymous"
+                                            style={{ objectFit: "cover" }}
                                         />
                                     </Link>
 
@@ -211,7 +211,7 @@ export default function Home() {
                                         <img
                                             src={health.image}
                                             alt={health.name}
-                                            crossOrigin="anonymous"
+                                            style={{ objectFit: "cover" }}
                                         />
                                     </Link>
 

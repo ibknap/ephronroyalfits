@@ -22,7 +22,7 @@ export default function Product({ product }) {
                                         width="100%"
                                         height={350}
                                         className="rounded shadow"
-                                        crossOrigin="anonymous"
+                                        style={{ objectFit: "cover" }}
                                     />
                                 </div>
                                 <div className="col-md-5 d-flex flex-column justify-content-between">

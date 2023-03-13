@@ -33,6 +33,7 @@ export default function CartItem({ item }) {
                                 className="rounded border"
                                 width={100}
                                 height={100}
+                                style={{ objectFit: "cover" }}
                             />
                             <div className="d-flex flex-column w-75 px-2">
                                 <span className="secondary ">{item.name}</span>
