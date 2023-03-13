@@ -1,4 +1,4 @@
-import { Eye, Lock, UserOctagon } from 'iconsax-react';
+import { Eye, Lock, ShieldSecurity, UserOctagon } from 'iconsax-react';
 import Link from 'next/link';
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
@@ -72,7 +72,8 @@ export default function DashboardUsers() {
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Gender</th>
                                                 <th scope="col">View</th>
-                                                <th scope="col">Action</th>
+                                                <th scope="col">Accessibility</th>
+                                                <th scope="col">Visibility</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -88,6 +89,11 @@ export default function DashboardUsers() {
                                                         <Link href={`/dashboard/user_update/${user.email}`} className="text-decoration-none btn btn-sm border_none btn-warning">
                                                             View <Eye />
                                                         </Link>
+                                                    </td>
+                                                    <td className="d-table-cell align-middle">
+                                                        <button onClick={() => { }} className={`text-decoration-none btn btn-sm border_none ${user.isAdmin ? "btn-info" : "btn-dark"}`}>
+                                                            {user.isAdmin ? "Make User" : "Make Admin"} <ShieldSecurity />
+                                                        </button>
                                                     </td>
                                                     <td className="d-table-cell align-middle">
                                                         <button onClick={() => { }} className="text-decoration-none btn btn-sm border_none btn-danger">
