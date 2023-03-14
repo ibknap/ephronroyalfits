@@ -79,6 +79,7 @@ export default function ProductDetailPage({ product }) {
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wSSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wPSchema) }} />
             </Head>
+            <Script src="https://js.paystack.co/v1/inline.js" />
 
             {/* page content */}
             <Navbar />

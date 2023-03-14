@@ -94,13 +94,11 @@ export default function Cart() {
                                 </div>
 
                                 <form onSubmit={makeDonation}>
-                                    <Script src="https://js.paystack.co/v1/inline.js" />
                                     <button type="submit" className={`w-100 my-3 btn btn-lg btn-success ${styles.btn_nav}`}>
                                         <Heart variant="Bold" />
                                         Donate
                                     </button>
                                 </form>
-
                             </div>
                         </div>
                     </div>
