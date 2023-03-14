@@ -45,7 +45,7 @@ export default function Product({ product }) {
             email: authUser.email,
             amount: product.price,
             isCompleted: isCompleted ? true : false,
-            status: isCompleted ? "pending" : "cancelled",
+            status: isCompleted ? "delivered" : "cancelled",
             addedOn: serverTimestamp(),
         };
 

@@ -123,7 +123,7 @@ export default function DashboardUsers() {
                                                     <td className="d-table-cell align-middle">{user.email}</td>
                                                     <td className="d-table-cell align-middle">{user.gender.toUpperCase()}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewUser" onClick={() => { setSelectedUser(user) }} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewUser" onClick={() => { setSelectedUser(user) }} className="btn btn-sm border_none btn-warning">
                                                             View <Eye />
                                                         </button>
                                                     </td>

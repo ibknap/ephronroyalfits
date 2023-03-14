@@ -121,12 +121,12 @@ export default function DashboardProducts() {
                                                     <td className="d-table-cell align-middle">{toCurrency(product.price)}</td>
                                                     <td className="d-table-cell align-middle">{product.isHealth ? "Nutrition" : "Food"}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateProduct" onClick={() => { setSelectedProduct(product) }} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateProduct" onClick={() => { setSelectedProduct(product) }} className="btn btn-sm border_none btn-warning">
                                                             Edit <Edit2 />
                                                         </button>
                                                     </td>
                                                     <td className="d-table-cell align-middle">
-                                                        <button onClick={()=> {onDeleteProduct(product.id)}} className="text-decoration-none btn btn-sm border_none btn-danger">
+                                                        <button onClick={()=> {onDeleteProduct(product.id)}} className="btn btn-sm border_none btn-danger">
                                                             {loading ? <Loader /> : <>{"Delete"} <Trash /></>}
                                                         </button>
                                                     </td>

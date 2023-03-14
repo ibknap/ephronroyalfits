@@ -68,7 +68,7 @@ export default function ContactUs() {
                                                     <td className="d-table-cell align-middle">{contact.fullName}</td>
                                                     <td className="d-table-cell align-middle">{contact.email}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewContactMessage" onClick={() => { setSelectedMessage(contact.message) }} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewContactMessage" onClick={() => { setSelectedMessage(contact.message) }} className="btn btn-sm border_none btn-warning">
                                                             View <Eye />
                                                         </button>
                                                     </td>

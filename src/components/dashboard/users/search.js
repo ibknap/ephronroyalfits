@@ -92,7 +92,7 @@ export default function UserSearch() {
                                         </button>
                                     </td>
                                     <td className="d-table-cell align-middle">
-                                        <button onClick={() => { }} className="text-decoration-none btn btn-sm border_none btn-danger">
+                                        <button onClick={() => { }} className="btn btn-sm border_none btn-danger">
                                             Disable <Lock />
                                         </button>
                                     </td>

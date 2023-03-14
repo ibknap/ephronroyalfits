@@ -98,7 +98,7 @@ export default function ProductSearch() {
                                         </Link>
                                     </td>
                                     <td className="d-table-cell align-middle">
-                                        <button onClick={() => { }} className="text-decoration-none btn btn-sm border_none btn-danger">
+                                        <button onClick={() => { }} className="btn btn-sm border_none btn-danger">
                                             Delete <Trash />
                                         </button>
                                     </td>
