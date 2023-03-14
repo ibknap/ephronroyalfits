@@ -19,17 +19,50 @@ export default function UpdateProduct({ product }) {
     const onUpdateProduct = async event => {
         event.preventDefault();
         setLoading(true);
-        setLoadingMsg("uploading image")
 
-        const imageRef = ref(storage, `product_images/${selectedImage.name}`);
-        await uploadBytes(imageRef, selectedImage);
+        if (selectedImage != null) {
+            setLoadingMsg("uploading image")
 
-        await getDownloadURL(imageRef).then(async (image) => {
+            const imageRef = ref(storage, `product_images/${selectedImage.name}`);
+            await uploadBytes(imageRef, selectedImage);
+
+            await getDownloadURL(imageRef).then(async (image) => {
+                setLoadingMsg("updating product")
+
+                const docRef = doc(db, "products", product.id);
+                await updateDoc(docRef, {
+                    "image": image != null ? image : product.image,
+                    "name": name.length <= 0 ? product.name : name,
+                    "name_query": name.length <= 0 ? product.name_query : name.toLowerCase(),
+                    "price": price.length <= 0 ? product.price : price,
+                    "isHealth": isHealth != null ? isHealth : product.isHealth,
+                    "description": description.length <= 0 ? product.description : description,
+                }).then(() => {
+                    toast.success(`Updated ${name.length <= 0 && product.name}`);
+                    setLoading(false);
+                    setLoadingMsg("");
+                }).catch((error) => {
+                    if (error.code == "not-found") {
+                        toast.error("Product not found");
+                        setLoading(false);
+                        setLoadingMsg("");
+                    } else {
+                        toast.error(`Something is wrong: ${error.message}`);
+                        setLoading(false);
+                        setLoadingMsg("");
+                    }
+                });
+            }).catch((error) => {
+                toast.error(`Something is wrong: ${error.message}`);
+                setLoading(false);
+                setLoadingMsg("");
+            });
+        } else {
             setLoadingMsg("updating product")
 
             const docRef = doc(db, "products", product.id);
             await updateDoc(docRef, {
-                "image": image != null ? image : product.image,
+                "image": product.image,
                 "name": name.length <= 0 ? product.name : name,
                 "name_query": name.length <= 0 ? product.name_query : name.toLowerCase(),
                 "price": price.length <= 0 ? product.price : price,
@@ -50,11 +83,7 @@ export default function UpdateProduct({ product }) {
                     setLoadingMsg("");
                 }
             });
-        }).catch((error) => {
-            toast.error(`Something is wrong: ${error.message}`);
-            setLoading(false);
-            setLoadingMsg("");
-        });
+        }
     };
 
     return (
@@ -86,7 +115,7 @@ export default function UpdateProduct({ product }) {
                                             className="form-control"
                                             id="name"
                                             placeholder="Name (option)"
-                                            value={product === null ? name : product.name}
+                                            defaultValue={product?.name ?? name}
                                             onChange={(event) => setName(event.target.value)}
                                         />
                                         <label htmlFor="name">Name (option)</label>
@@ -101,7 +130,7 @@ export default function UpdateProduct({ product }) {
                                             className="form-control"
                                             id="price"
                                             placeholder="Price (option)"
-                                            value={product === null ? price : product.price}
+                                            defaultValue={product?.price ?? price}
                                             onChange={(event) => setPrice(event.target.value)}
                                         />
                                         <label htmlFor="price">Price (option)</label>
@@ -113,7 +142,7 @@ export default function UpdateProduct({ product }) {
                                         <select
                                             className="form-select"
                                             id="type"
-                                            value={product === null ? isHealth : product.isHealth}
+                                            defaultValue={product?.isHealth ?? isHealth}
                                             onChange={(event) => setIsHealth(event.target.value === "true")}
                                         >
                                             <option value={false}>Food</option>
@@ -130,7 +159,7 @@ export default function UpdateProduct({ product }) {
                                         placeholder="Description (option)"
                                         id="description"
                                         style={{ height: "200px" }}
-                                        value={product === null ? description : product.description}
+                                        defaultValue={product?.description ?? description}
                                         onChange={(event) => setDescription(event.target.value)}
                                     ></textarea>
                                     <label htmlFor="description">Description (option)</label>
