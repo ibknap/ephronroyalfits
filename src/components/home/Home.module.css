@@ -42,10 +42,15 @@
 }
 
 @media (max-width: 968px) {
+    .hero_img {
+        top: 40%;
+    }
+
     .hero_text_container {
         width: 100%;
+        top: 80%;
         text-align: center;
-        text-shadow: 2px 2px 4px #000000;
+        /* text-shadow: 2px 2px 4px #000000; */
     }
 
     .hero_text {
