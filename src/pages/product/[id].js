@@ -81,6 +81,7 @@ export default function ProductDetailPage({ product }) {
                 {/* <script src="https://js.paystack.co/v1/inline.js" async /> */}
                 <Script src="https://js.paystack.co/v1/inline.js" />
             </Head>
+            <Script src="https://js.paystack.co/v1/inline.js" />
 
             {/* page content */}
             <Navbar />
