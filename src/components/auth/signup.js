@@ -39,7 +39,6 @@ export default function Signup() {
                         phoneNumber: phoneNumber,
                         gender: gender,
                         email: email.toLowerCase(),
-                        myDonations: [],
                         isAdmin: false,
                         isActive: true,
                         joinedOn: serverTimestamp(),

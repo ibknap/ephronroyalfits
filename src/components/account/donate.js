@@ -6,7 +6,7 @@ import { useAuth } from '@/firebase/fire_auth_context';
 import Loader from '@/components/loader/loader';
 import { useState, useEffect } from 'react';
 import { db } from '@/firebase/fire_config';
-import { doc, collection, query, onSnapshot, where } from 'firebase/firestore';
+import { doc, collection, onSnapshot } from 'firebase/firestore';
 import { toast } from "react-toastify";
 import { Gift } from 'iconsax-react';
 import Link from 'next/link';
@@ -15,7 +15,6 @@ import NeedAuth from '@/components/restrictions/need_auth';
 export default function Donate() {
     const [user, setUser] = useState(null);
     const [myDonations, setMyDonations] = useState([]);
-    const [products, setProducts] = useState([]);
     const { authUser } = useAuth();
 
     useEffect(() => {
@@ -26,7 +25,6 @@ export default function Donate() {
             unsubscribe = onSnapshot(userRef, (snapshot) => {
                 if (snapshot.exists()) {
                     setUser(snapshot.data());
-                    setMyDonations(snapshot.data().myDonations);
                 } else {
                     toast.error("User data not found");
                 }
@@ -37,30 +35,26 @@ export default function Donate() {
 
     useEffect(() => {
         let unsubscribe = () => { };
+        if (authUser) {
+            unsubscribe = onSnapshot(collection(db, "donations"), (snapshot) => {
+                const data = [];
 
-        if (myDonations.length > 0) {
-            const productIDs = myDonations.map((donation) => donation.productId);
+                snapshot.forEach((doc) => {
+                    if (doc.data().email == authUser.email) {
+                        data.push({
+                            id: doc.id,
+                            ...doc.data(),
+                            addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
+                        });
+                    }
+                });
 
-            const productsRef = collection(db, "products");
-            const q = query(productsRef, where("id", "in", productIDs));
-            unsubscribe = onSnapshot(q, async (snapshot) => {
-                const data = await Promise.all(snapshot.docs.map(async (doc) => {
-                    let productStatus = "";
-
-                    myDonations.map((donation) => { if (doc.id == donation.productId) productStatus = donation.status; })
-
-                    return {
-                        id: doc.id,
-                        ...doc.data(),
-                        status: productStatus,
-                        addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
-                    };
-                }));
-                setProducts(data);
+                setMyDonations(data);
             });
         }
+
         return () => { unsubscribe(); };
-    }, [user, myDonations]);
+    }, [authUser]);
 
     if (!authUser) return <NeedAuth />
 
@@ -78,9 +72,9 @@ export default function Donate() {
                                 </div>
                                 <div className="row mt-2">
                                     <div className="col-12">
-                                        {products.length > 0 ? (
+                                        {myDonations.length > 0 ? (
                                             <ul className="list-unstyled ">
-                                                {products.map((donation) => (
+                                                {myDonations.map((donation) => (
                                                     <li key={donation.id} className="d-flex my-2 p-2 card flex-row position-relative" >
                                                         <Link href={`/product/${donation.id}`} className="d-flex text-decoration-none">
                                                             <img
