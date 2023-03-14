@@ -17,8 +17,8 @@ export default function Cart() {
 
         if (authUser) {
             let handler = PaystackPop.setup({
-                key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY,
-                // key: process.env.NEXT_PUBLIC_PAYSTACK_LIVE_PUBLIC_KEY,
+                // key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY,
+                key: process.env.NEXT_PUBLIC_PAYSTACK_LIVE_PUBLIC_KEY,
                 email: authUser.email,
                 amount: totalPrice * 100,
                 ref: `${Math.floor((Math.random() * 1000000000) + 1)}`,
