@@ -40,7 +40,12 @@ export function CartProvider({ children }) {
         toast.success(`Removed item with ID ${id} from cart`);
     }
 
-    const value = { items, addItem, updateQuantity, removeItem };
+    const clearCart = () => {
+        setItems([]);
+        toast.success('Cart cleared!');
+    }
+    
+    const value = { items, addItem, updateQuantity, removeItem, clearCart };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

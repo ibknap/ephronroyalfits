@@ -4,10 +4,45 @@ import Link from 'next/link';
 import { useCart } from '@/components/cart/cart_context';
 import CartItem from '@/components/cart/cart_item';
 import toCurrency from '@/components/utils/toCurrency'
+import { useAuth } from '@/firebase/fire_auth_context';
+import { toast } from "react-toastify";
 
 export default function Cart() {
-    const { items } = useCart();
+    const { items, clearCart } = useCart();
     const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const { authUser } = useAuth();
+
+    const makeDonation = event => {
+        event.preventDefault();
+
+        if (authUser) {
+            let handler = PaystackPop.setup({
+                key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY,
+                email: authUser.email,
+                amount: totalPrice * 100,
+                ref: `${Math.floor((Math.random() * 1000000000) + 1)}`,
+                label: "NEFB Donation",
+                onClose: () => { onCreateDonation(false); },
+                callback: () => { onCreateDonation(true); }
+            });
+
+            handler.openIframe();
+        } else {
+            toast.error("Sign in to make donations.");
+        }
+    }
+
+    const onCreateDonation = (isCompleted) => {
+        console.log(isCompleted);
+
+        if (isCompleted) {
+            toast.success("Donation Completed!");
+            clearCart();
+        } else {
+            toast.error("Payment Page Closed!");
+        }
+
+    };
 
     return (
         <>
@@ -57,10 +92,13 @@ export default function Cart() {
                                     <small className="text-muted">Delivery fees not included</small>
                                 </div>
 
-                                <Link href="#" as="#" className={`w-100 my-3 btn btn-lg btn-success ${styles.btn_nav}`}>
-                                    <Heart variant="Bold" />
-                                    Donate
-                                </Link>
+                                <form onSubmit={makeDonation}>
+                                    <button type="submit" className={`w-100 my-3 btn btn-lg btn-success ${styles.btn_nav}`}>
+                                        <Heart variant="Bold" />
+                                        Donate
+                                    </button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
