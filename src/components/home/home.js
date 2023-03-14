@@ -122,7 +122,7 @@ export default function Home() {
                 </div>
             }
 
-            <div className={`container mb-5 ${styles.hero}`}>
+            <div className={`container my-5 ${styles.hero}`}>
                 <div className="row">
                     <div className="col-sm-8">
                         <div className={`m-2 p-3 shadow-sm rounded ${styles.hero_badge} position-relative`}>
