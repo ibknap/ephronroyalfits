@@ -74,43 +74,6 @@ export default function Home() {
 
     return (
         <>
-            <div className={`container mb-5 ${styles.hero}`}>
-                <div className="row">
-                    <div className="col-sm-8">
-                        <div className={`m-2 p-3 shadow-sm rounded ${styles.hero_badge} position-relative`}>
-                            <div className="d-flex justify-content-between">
-                                <div className={styles.hero_text_container}>
-                                    <h1 className={`primary ${styles.hero_text}`}>Affordable</h1>
-                                    <h1 className={`secondary ${styles.hero_text}`}>Food for all</h1>
-                                </div>
-                                <div className={styles.hero_img}>
-                                    <Image
-                                        src="/images/hero.png"
-                                        alt="NEFB"
-                                        fill
-                                        sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
-                                        priority
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-4">
-                        <div className="m-2">
-                            <div className="d-flex flex-column justify-content-between">
-                                <Link href="#foodBank" className={`mb-2 bg_primary secondary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
-                                    <h3 className="fw-light">Looking for healthy food?</h3>
-                                </Link>
-
-                                <Link href="#nutrition" className={`mt-2 bg_secondary primary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
-                                    <h3 className="fw-light">Come explore our health bank marketplace.</h3>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             {/* most donated */}
             {mdProducts &&
                 <div className={`w-100 ${styles.slider_container}`}>
@@ -158,6 +121,43 @@ export default function Home() {
                     </Swiper>
                 </div>
             }
+
+            <div className={`container mb-5 ${styles.hero}`}>
+                <div className="row">
+                    <div className="col-sm-8">
+                        <div className={`m-2 p-3 shadow-sm rounded ${styles.hero_badge} position-relative`}>
+                            <div className="d-flex justify-content-between">
+                                <div className={styles.hero_text_container}>
+                                    <h1 className={`primary ${styles.hero_text}`}>Affordable</h1>
+                                    <h1 className={`secondary ${styles.hero_text}`}>Food for all</h1>
+                                </div>
+                                <div className={styles.hero_img}>
+                                    <Image
+                                        src="/images/hero.png"
+                                        alt="NEFB"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw"
+                                        priority
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-4">
+                        <div className="m-2">
+                            <div className="d-flex flex-column justify-content-between">
+                                <Link href="#foodBank" className={`mb-2 bg_primary secondary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
+                                    <h3 className="fw-light">Looking for healthy food?</h3>
+                                </Link>
+
+                                <Link href="#nutrition" className={`mt-2 bg_secondary primary p-3 shadow-sm border rounded ${styles.hero_badge_sm}`}>
+                                    <h3 className="fw-light">Come explore our health bank marketplace.</h3>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             {/* food bank */}
             {products &&
