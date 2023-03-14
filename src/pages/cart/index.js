@@ -3,6 +3,7 @@ import Navbar from '@/components/navigation/navbar/navbar';
 import Footer from '@/components/navigation/footer/footer';
 import { getWSSchema, getWPSchema, getLBSchema } from '@/components/schema';
 import Cart from '@/components/cart/cart';
+import Script from 'next/script';
 
 export default function CartPage() {
     // page default data
@@ -82,7 +83,8 @@ export default function CartPage() {
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wSSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wPSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(lBSchema) }} />
-                <script src="https://js.paystack.co/v1/inline.js" async />
+                {/* <script src="https://js.paystack.co/v1/inline.js" async /> */}
+                <Script src="https://js.paystack.co/v1/inline.js" />
             </Head>
 
             {/* page content */}

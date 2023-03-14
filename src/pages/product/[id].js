@@ -5,6 +5,7 @@ import { getWSSchema, getWPSchema } from '@/components/schema';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase/fire_config';
 import Product from '@/components/product/product';
+import Script from 'next/script';
 
 export async function getServerSideProps({ params }) {
     const id = params.id;
@@ -77,7 +78,8 @@ export default function ProductDetailPage({ product }) {
 
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wSSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wPSchema) }} />
-                <script src="https://js.paystack.co/v1/inline.js" async />
+                {/* <script src="https://js.paystack.co/v1/inline.js" async /> */}
+                <Script src="https://js.paystack.co/v1/inline.js" />
             </Head>
 
             {/* page content */}
