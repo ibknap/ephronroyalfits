@@ -86,6 +86,7 @@ export default function UpdateProduct({ product }) {
                                             className="form-control"
                                             id="name"
                                             placeholder="Name (option)"
+                                            value={product === null ? name : product.name}
                                             onChange={(event) => setName(event.target.value)}
                                         />
                                         <label htmlFor="name">Name (option)</label>
@@ -100,6 +101,7 @@ export default function UpdateProduct({ product }) {
                                             className="form-control"
                                             id="price"
                                             placeholder="Price (option)"
+                                            value={product === null ? price : product.price}
                                             onChange={(event) => setPrice(event.target.value)}
                                         />
                                         <label htmlFor="price">Price (option)</label>
@@ -111,6 +113,7 @@ export default function UpdateProduct({ product }) {
                                         <select
                                             className="form-select"
                                             id="type"
+                                            value={product === null ? isHealth : product.isHealth}
                                             onChange={(event) => setIsHealth(event.target.value === "true")}
                                         >
                                             <option value={false}>Food</option>
@@ -127,6 +130,7 @@ export default function UpdateProduct({ product }) {
                                         placeholder="Description (option)"
                                         id="description"
                                         style={{ height: "200px" }}
+                                        value={product === null ? description : product.description}
                                         onChange={(event) => setDescription(event.target.value)}
                                     ></textarea>
                                     <label htmlFor="description">Description (option)</label>
