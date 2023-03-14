@@ -4,6 +4,8 @@ import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
 import toCurrency from '@/components/utils/toCurrency'
 import { collection, query, orderBy, onSnapshot, limit, getDocs } from 'firebase/firestore';
+import ViewUser from '@/components/dashboard/users/view';
+import UpdateProduct from '@/components/dashboard/products/update';
 
 export default function Dashboard() {
     const [users, setUsers] = useState([]);
@@ -15,9 +17,12 @@ export default function Dashboard() {
     const [totalProducts, setTotalProducts] = useState(0);
     const [totalDonations, setTotalDonations] = useState(0);
 
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
     // listening to users
     useEffect(() => {
-        const q = query(collection(db, "users"), limit(10));
+        const q = query(collection(db, "users"), limit(5));
 
         const unsubscribe = onSnapshot(q, async (snapshot) => {
             const data = snapshot.docs.map((doc) => {
@@ -38,7 +43,7 @@ export default function Dashboard() {
 
     // listening to product
     useEffect(() => {
-        const q = query(collection(db, "products"), orderBy("addedOn", "desc"), limit(10));
+        const q = query(collection(db, "products"), orderBy("addedOn", "desc"), limit(5));
 
         const unsubscribe = onSnapshot(q, async (snapshot) => {
             const data = snapshot.docs.map((doc) => {
@@ -65,7 +70,7 @@ export default function Dashboard() {
 
     // listening to contact us
     useEffect(() => {
-        const q = query(collection(db, "contactUs"), limit(10));
+        const q = query(collection(db, "contactUs"), limit(5));
 
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const data = snapshot.docs.map((doc) => {
@@ -79,7 +84,7 @@ export default function Dashboard() {
 
     // listening to newsletters
     useEffect(() => {
-        const q = query(collection(db, "newsletterSubscribers"), limit(10));
+        const q = query(collection(db, "newsletterSubscribers"), limit(5));
 
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const data = snapshot.docs.map((doc) => {
@@ -100,6 +105,26 @@ export default function Dashboard() {
 
         return () => { unsubscribe(); };
     }, []);
+
+
+    const onDeleteProduct = async id => {
+        setLoading(true);
+
+        const docRef = doc(collection(db, "products"), id);
+
+        await deleteDoc(docRef).then(() => {
+            toast.success(`Deleted Product With ID ${id}`);
+            setLoading(false);
+        }).catch((error) => {
+            if (error.code == "not-found") {
+                toast.error("Product not found");
+                setLoading(false);
+            } else {
+                toast.error(`Something is wrong: ${error.message}`);
+                setLoading(false);
+            }
+        });
+    };
 
     return (
         <div className="dashboard_content">
@@ -177,12 +202,12 @@ export default function Dashboard() {
                                                     <td className="d-table-cell align-middle">{toCurrency(product.price)}</td>
                                                     <td className="d-table-cell align-middle">{product.isHealth ? "Nutrition" : "Food"}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <Link href={`/dashboard/product_update/${product.id}`} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateProduct" onClick={() => { setSelectedProduct(product) }} className="text-decoration-none btn btn-sm border_none btn-warning">
                                                             Edit <Edit2 />
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                     <td className="d-table-cell align-middle">
-                                                        <button onClick={() => { }} className="text-decoration-none btn btn-sm border_none btn-danger">
+                                                        <button onClick={() => { onDeleteProduct(product.id) }} className="text-decoration-none btn btn-sm border_none btn-danger">
                                                             Delete <Trash />
                                                         </button>
                                                     </td>
@@ -217,7 +242,6 @@ export default function Dashboard() {
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Gender</th>
                                                 <th scope="col">View</th>
-                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -230,13 +254,8 @@ export default function Dashboard() {
                                                     <td className="d-table-cell align-middle">{user.email}</td>
                                                     <td className="d-table-cell align-middle">{user.gender.toUpperCase()}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <Link href={`/dashboard/user_update/${user.email}`} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewUser" onClick={() => { setSelectedUser(user) }} className="text-decoration-none btn btn-sm border_none btn-warning">
                                                             View <Eye />
-                                                        </Link>
-                                                    </td>
-                                                    <td className="d-table-cell align-middle">
-                                                        <button onClick={() => { }} className="text-decoration-none btn btn-sm border_none btn-danger">
-                                                            Disable <Lock />
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -341,6 +360,9 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+
+            <UpdateProduct product={selectedProduct} />
+            <ViewUser user={selectedUser} />
         </div>
     )
 }
