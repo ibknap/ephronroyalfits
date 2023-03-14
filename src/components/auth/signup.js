@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useAuth } from '@/firebase/fire_auth_context';
 import { toast } from "react-toastify";
 import Loader from '@/components/loader/loader';
-import { doc, setDoc, collection } from 'firebase/firestore';
+import { doc, setDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { Back, Information } from 'iconsax-react';
 import Cookies from 'js-cookie';
@@ -42,6 +42,7 @@ export default function Signup() {
                         myDonations: [],
                         isAdmin: false,
                         isActive: true,
+                        joinedOn: serverTimestamp(),
                         addressBook: {
                             firstName: firstName,
                             lastName: lastName,

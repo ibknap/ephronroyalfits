@@ -1,4 +1,4 @@
-import { Box1, Gift, Edit2, Trash, People, Eye, Lock, UserOctagon, Folder, DirectInbox } from 'iconsax-react';
+import { Box1, Gift, Edit2, Trash, People, Eye, UserOctagon, Folder, DirectInbox } from 'iconsax-react';
 import Link from 'next/link';
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
@@ -6,6 +6,7 @@ import toCurrency from '@/components/utils/toCurrency'
 import { collection, query, orderBy, onSnapshot, limit, getDocs } from 'firebase/firestore';
 import ViewUser from '@/components/dashboard/users/view';
 import UpdateProduct from '@/components/dashboard/products/update';
+import ViewContactMessage from '@/components/dashboard/contact_us/view';
 
 export default function Dashboard() {
     const [users, setUsers] = useState([]);
@@ -19,10 +20,11 @@ export default function Dashboard() {
 
     const [selectedUser, setSelectedUser] = useState(null);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [selectedMessage, setSelectedMessage] = useState(null);
 
     // listening to users
     useEffect(() => {
-        const q = query(collection(db, "users"), limit(5));
+        const q = query(collection(db, "users"), orderBy("joinedOn", "desc"), limit(5));
 
         const unsubscribe = onSnapshot(q, async (snapshot) => {
             const data = snapshot.docs.map((doc) => {
@@ -302,9 +304,9 @@ export default function Dashboard() {
                                                     <td className="d-table-cell align-middle">{contact.fullName}</td>
                                                     <td className="d-table-cell align-middle">{contact.email}</td>
                                                     <td className="d-table-cell align-middle">
-                                                        <Link href={`/dashboard/contact_us_update/${contact.email}`} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewContactMessage" onClick={() => { setSelectedMessage(contact.message) }} className="text-decoration-none btn btn-sm border_none btn-warning">
                                                             View <Eye />
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             ))
@@ -363,6 +365,7 @@ export default function Dashboard() {
 
             <UpdateProduct product={selectedProduct} />
             <ViewUser user={selectedUser} />
+            <ViewContactMessage message={selectedMessage} />
         </div>
     )
 }

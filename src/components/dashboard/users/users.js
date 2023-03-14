@@ -1,7 +1,7 @@
 import { Eye, Lock, ShieldSecurity, Unlock, UserOctagon } from 'iconsax-react';
 import { db } from '@/firebase/fire_config';
 import { useState, useEffect } from 'react';
-import { collection, onSnapshot, doc, updateDoc } from 'firebase/firestore';
+import { collection, onSnapshot, doc, updateDoc, query, orderBy } from 'firebase/firestore';
 import UserSearch from '@/components/dashboard/users/search';
 import { toast } from "react-toastify";
 import ViewUser from '@/components/dashboard/users/view';
@@ -14,7 +14,8 @@ export default function DashboardUsers() {
 
     // listening to users
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
+        const q = query(collection(db, "users"), orderBy("joinedOn", "desc"));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
             const data = snapshot.docs.map((doc) => {
                 return { id: doc.id, ...doc.data() };
             });

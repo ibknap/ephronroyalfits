@@ -38,7 +38,6 @@ export default function CreateProduct() {
                 numOfDonation: 0,
                 description: description,
                 addedOn: serverTimestamp(),
-
             };
 
             await setDoc(docRef, newProduct).then(() => {
