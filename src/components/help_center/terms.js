@@ -54,14 +54,14 @@ export default function Terms() {
                             <div className="mb-5">
                                 <h4>Your Content</h4>
                                 <p>
-                                    In these Website Standard Terms and Conditions, "Your Content" shall mean any audio, video text,
+                                    In these Website Standard Terms and Conditions, &apos;Your Content&apos; shall mean any audio, video text,
                                     images or other material you choose to display on this Website. By displaying Your Content, you
                                     grant Big Family 360 Foundation a non-exclusive, worldwide irrevocable, sub licensable license
                                     to use, reproduce, adapt, publish, translate and distribute it in any and all media.
                                 </p>
 
                                 <p>
-                                    Your Content must be your own and must not be invading any third-party's rights. Big Family
+                                    Your Content must be your own and must not be invading any third-party&apos;s rights. Big Family
                                     360 Foundation reserves the right to remove any of Your Content from this Website at any time without notice.
                                 </p>
                             </div>
@@ -76,7 +76,7 @@ export default function Terms() {
                             <div className="mb-5">
                                 <h4>No warranties</h4>
                                 <p>
-                                    This Website is provided "as is," with all faults, and Big Family 360 Foundation express no
+                                    This Website is provided &apos;as is,&apos; with all faults, and Big Family 360 Foundation express no
                                     representations or warranties, of any kind related to this Website or the materials contained
                                     on this Website. Also, nothing contained on this Website shall be interpreted as advising you.
                                 </p>

@@ -73,9 +73,9 @@ export default function Privacy() {
                                 <p>
                                     Cookies are a feature of the web browser software that allows web servers to recognize
                                     the computer used to access a website. Cookies are small pieces of data that are stored
-                                    by a user's web browser on the user's hard drive. Cookies can remember what information
+                                    by a user&apos;s web browser on the user&apos;s hard drive. Cookies can remember what information
                                     a user accesses on one web page to simplify subsequent interactions with that website by
-                                    the same user or to use the information to streamline the user's transactions on related
+                                    the same user or to use the information to streamline the user&apos;s transactions on related
                                     web pages. This makes it easier for a user to move from web page to web page and to
                                     complete commercial transactions over the internet. Cookies should make your online
                                     experience and easier and more.
@@ -86,7 +86,7 @@ export default function Privacy() {
                                 <h4>Use Information We Collect from Cookies</h4>
                                 <p>
                                     We use website browser software tools such as cookies and web server logs to gather information
-                                    about our website's users' browsing activities, in order to constantly improve our website and
+                                    about our website&apos;s users&apos; browsing activities, in order to constantly improve our website and
                                     better serve our customers. This information assists us to design and arrange our web pages in
                                     the most user-friendly manner and to continually improve our website to better meet the needs
                                     of our customers and prospective customers.
@@ -95,7 +95,7 @@ export default function Privacy() {
                                 <p>
                                     Cookies help us collect important business and technical statistics. The information in the cookies
                                     lets us trace the paths followed by users to our website as they move from one page to another. Web
-                                    server logs allow us to count how many people visit our website and evaluate our website's visitor
+                                    server logs allow us to count how many people visit our website and evaluate our website&apos;s visitor
                                     capacity. We do not use these technologies to capture your individual e-mail address or any
                                     personally identifying information about you.
                                 </p>
