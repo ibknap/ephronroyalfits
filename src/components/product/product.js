@@ -6,6 +6,7 @@ import { useAuth } from '@/firebase/fire_auth_context';
 import { toast } from "react-toastify";
 import { doc, collection, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
+import Script from "next/script";
 
 export default function Product({ product }) {
     const { addItem } = useCart();
@@ -128,6 +129,7 @@ export default function Product({ product }) {
                         </div>
 
                         <form onSubmit={makeDonation}>
+                            <Script src="https://js.paystack.co/v1/inline.js" />
                             <button type="submit" className="w-100 my-3 btn btn-lg btn-outline-success outline-primary btn_nav">
                                 <Heart variant="Bold" />
                                 Donate
