@@ -83,7 +83,6 @@ export default function CartPage() {
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wSSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wPSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(lBSchema) }} />
-                {/* <script src="https://js.paystack.co/v1/inline.js" async /> */}
             </Head>
             <Script src="https://js.paystack.co/v1/inline.js" />
 
