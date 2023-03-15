@@ -6,6 +6,8 @@ import CartItem from '@/components/cart/cart_item';
 import toCurrency from '@/components/utils/toCurrency'
 import { useAuth } from '@/firebase/fire_auth_context';
 import { toast } from "react-toastify";
+import { doc, collection, serverTimestamp, setDoc } from "firebase/firestore";
+import { db } from "@/firebase/fire_config";
 
 export default function Cart() {
     const { items, clearCart } = useCart();
@@ -17,14 +19,14 @@ export default function Cart() {
 
         if (authUser) {
             let handler = PaystackPop.setup({
-                // key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY,
-                key: process.env.NEXT_PUBLIC_PAYSTACK_LIVE_PUBLIC_KEY,
+                key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY,
+                // key: process.env.NEXT_PUBLIC_PAYSTACK_LIVE_PUBLIC_KEY,
                 email: authUser.email,
                 amount: totalPrice * 100,
                 ref: `${Math.floor((Math.random() * 1000000000) + 1)}`,
                 label: "NEFB Donation",
                 onClose: () => { onCreateDonation(false); },
-                callback: () => { onCreateDonation(true); }
+                callback: (res) => { onCreateDonation(true, res.reference); }
             });
 
             handler.openIframe();
@@ -33,17 +35,29 @@ export default function Cart() {
         }
     }
 
-    const onCreateDonation = (isCompleted) => {
+    const onCreateDonation = async (isCompleted, ref) => {
+        const docRef = doc(collection(db, "donations"));
         console.log(isCompleted);
 
-        if (isCompleted) {
+        const donationDoc = {
+            id: ref,
+            image: "https://northeastfoodbank.org/images/fav_logo_trans.png",
+            name: "Cart Purchase",
+            email: authUser.email,
+            amount: totalPrice,
+            isCompleted: isCompleted ? true : false,
+            status: isCompleted ? "delivered" : "cancelled",
+            items: items,
+            addedOn: serverTimestamp(),
+        };
+
+        await setDoc(docRef, donationDoc).then(async () => {
             toast.success("Donation Completed!");
             clearCart();
-        } else {
-            toast.error("Payment Page Closed!");
-        }
-
-    };
+        }).catch((error) => {
+            toast.error(`Something is wrong: ${error.message}`);
+        });
+    }
 
     return (
         <>

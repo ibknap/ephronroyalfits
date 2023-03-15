@@ -1,3 +1,0 @@
-- refactor application
-- comment application
-- redesign donation history for cart. to show more details

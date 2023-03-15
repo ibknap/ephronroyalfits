@@ -3,7 +3,7 @@ import { Call, DirectInbox, Location, Lock, Man, Note, ShieldSecurity, UserOctag
 export default function ViewUser({ user }) {
     if (!user) {
         return (
-            <div className="modal fade" id="viewUser" tabIndex="-1" aria-labelledby="viewUserLabel" aria-hidden="true">
+            <div className="modal fade" id="viewUser" tabIndex="-1" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
 

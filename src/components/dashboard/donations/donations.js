@@ -1,14 +1,13 @@
 import Link from 'next/link';
-import Loader from '@/components/loader/loader';
-import { toast } from "react-toastify";
 import { db } from '@/firebase/fire_config';
-import { collection, query, orderBy, onSnapshot, doc, updateDoc } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import toCurrency from '@/components/utils/toCurrency'
 import { useState, useEffect } from 'react';
+import ViewCartDonation from '@/components/dashboard/donations/view';
 
 export default function DashboardDonations() {
-    const [loading, setLoading] = useState(false);
     const [donations, setDonations] = useState([]);
+    const [selectedDonation, setSelectedDonation] = useState(null);
 
     // listening to donation
     useEffect(() => {
@@ -97,11 +96,15 @@ export default function DashboardDonations() {
                                                         </button>
                                                     </td>
                                                     <td className="d-table-cell align-middle">
-                                                        <Link href={`/product/${donation.id}`} target="_blank" className="primary">{donation.id}</Link>
+                                                        {donation.items
+                                                            ? <button type="button" data-bs-toggle="modal" data-bs-target="#viewCartDonation" onClick={() => { setSelectedDonation(donation) }} className="btn btn-dark">
+                                                                View Items
+                                                            </button>
+                                                            : <Link href={`/product/${donation.id}`} target="_blank" className="primary">{donation.id}</Link>
+                                                        }
                                                     </td>
                                                 </tr>
-                                            ))
-                                            }
+                                            ))}
                                         </tbody>
                                     </table>
                                 </div>
@@ -110,6 +113,17 @@ export default function DashboardDonations() {
                     </div>
                 </div>
             </div>
+
+            <ViewCartDonation donation={selectedDonation} />
+            {/* <div className="modal fade" id="viewCartDonation" tabIndex="-1" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div> */}
         </div>
     )
 }
