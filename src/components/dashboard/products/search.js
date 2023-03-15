@@ -1,14 +1,18 @@
 import styles from '@/components/dashboard/Dashboard.module.css'
 import { query, where, getDocs, collection, orderBy, limit } from "firebase/firestore";
 import { useState } from "react";
-import { Edit2, SearchNormal, Trash } from 'iconsax-react'
+import { Edit2, Trash } from 'iconsax-react'
 import { db } from '@/firebase/fire_config';
 import toCurrency from '@/components/utils/toCurrency'
 import Link from 'next/link';
+import UpdateSearchProduct from '@/components/dashboard/products/update_search';
+import Loader from '@/components/loader/loader';
 
 export default function ProductSearch() {
+    const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     const onSearch = async (e) => {
         setSearchTerm(e.target.value)
@@ -39,6 +43,25 @@ export default function ProductSearch() {
         }
     };
 
+    const onDeleteProduct = async id => {
+        setLoading(true);
+
+        const docRef = doc(collection(db, "products"), id);
+
+        await deleteDoc(docRef).then(() => {
+            toast.success(`Deleted Product With ID ${id}`);
+            setLoading(false);
+        }).catch((error) => {
+            if (error.code == "not-found") {
+                toast.error("Product not found");
+                setLoading(false);
+            } else {
+                toast.error(`Something is wrong: ${error.message}`);
+                setLoading(false);
+            }
+        });
+    };
+
     return (
         <>
             <div className={`${styles.search_form} me-auto mb-2 mb-md-0`}>
@@ -50,17 +73,6 @@ export default function ProductSearch() {
                     value={searchTerm}
                     onChange={onSearch}
                 />
-
-                {/* <button
-                    className={`btn btn-lg btn-success ${styles.btn_nav} px-3 py-2`}
-                    type="button"
-                    onClick={onSearch}
-                >
-                    <span className="d-flex">
-                        <span className={styles.show_search_text}>SEARCH</span>
-                        <SearchNormal size="24" className="mx-2" />
-                    </span>
-                </button> */}
             </div>
 
             {searchResults.length > 0 && searchTerm.length > 0 &&
@@ -89,17 +101,19 @@ export default function ProductSearch() {
                                             className="rounded border"
                                         />
                                     </th>
-                                    <td className="d-table-cell align-middle">{result.name}</td>
+                                    <td className="d-table-cell align-middle">
+                                        <Link href={`/product/${result.id}`} target="_blank" className="text-decoration-none secondary">{result.name}</Link>
+                                    </td>
                                     <td className="d-table-cell align-middle">{toCurrency(result.price)}</td>
                                     <td className="d-table-cell align-middle">{result.isHealth ? "Nutrition" : "Food"}</td>
                                     <td className="d-table-cell align-middle">
-                                        <Link href={`/dashboard/product_update/${result.id}`} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateSearchProduct" onClick={() => { setSelectedProduct(result) }} className="btn btn-sm border_none btn-warning">
                                             Edit <Edit2 />
-                                        </Link>
+                                        </button>
                                     </td>
                                     <td className="d-table-cell align-middle">
-                                        <button onClick={() => { }} className="btn btn-sm border_none btn-danger">
-                                            Delete <Trash />
+                                        <button onClick={() => { onDeleteProduct(result.id) }} className="btn btn-sm border_none btn-danger">
+                                            {loading ? <Loader /> : <>{"Delete"} <Trash /></>}
                                         </button>
                                     </td>
                                 </tr>
@@ -109,6 +123,8 @@ export default function ProductSearch() {
                     </table>
                 </div>
             }
+
+            <UpdateSearchProduct product={selectedProduct} />
         </>
     )
 }

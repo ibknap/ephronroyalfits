@@ -1,13 +1,15 @@
 import styles from '@/components/dashboard/Dashboard.module.css'
-import { query, where, getDocs, collection, orderBy, limit } from "firebase/firestore";
 import { useState } from "react";
-import { Eye, Lock, SearchNormal, ShieldSecurity, UserOctagon } from 'iconsax-react'
+import { Eye, Lock, ShieldSecurity, Unlock, UserOctagon } from 'iconsax-react';
 import { db } from '@/firebase/fire_config';
-import Link from 'next/link';
+import { where, getDocs, collection, limit, query, orderBy } from 'firebase/firestore';
+import { toast } from "react-toastify";
+import ViewSearchUser from '@/components/dashboard/users/view_search';
 
 export default function UserSearch() {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const [selectedUser, setSelectedUser] = useState(null);
 
     const onSearch = async (e) => {
         setSearchTerm(e.target.value)
@@ -34,6 +36,14 @@ export default function UserSearch() {
         }
     };
 
+    const onUserAccessibility = async () => {
+        toast.info("You can't change user accessibility via search");
+    };
+
+    const onUserVisibility = async () => {
+        toast.info("You can't change user visibility via search");
+    };
+
     return (
         <>
             <div className={`${styles.search_form} me-auto mb-2 mb-md-0`}>
@@ -45,17 +55,6 @@ export default function UserSearch() {
                     value={searchTerm}
                     onChange={onSearch}
                 />
-
-                {/* <button
-                    className={`btn btn-lg btn-success ${styles.btn_nav} px-3 py-2`}
-                    type="button"
-                    onClick={onSearch}
-                >
-                    <span className="d-flex">
-                        <span className={styles.show_search_text}>SEARCH</span>
-                        <SearchNormal size="24" className="mx-2" />
-                    </span>
-                </button> */}
             </div>
 
             {searchResults.length > 0 && searchTerm.length > 0 &&
@@ -80,20 +79,26 @@ export default function UserSearch() {
                                     </th>
                                     <td className="d-table-cell align-middle">{result.firstName}</td>
                                     <td className="d-table-cell align-middle">{result.email}</td>
-                                    <td className="d-table-cell align-middle">{result.gender}</td>
+                                    <td className="d-table-cell align-middle">{result.gender.toUpperCase()}</td>
                                     <td className="d-table-cell align-middle">
-                                        <Link href={`/dashboard/user_update/${result.email}`} className="text-decoration-none btn btn-sm border_none btn-warning">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#viewSearchUser" onClick={() => { setSelectedUser(result) }} className="btn btn-sm border_none btn-warning">
                                             View <Eye />
-                                        </Link>
-                                    </td>
-                                    <td className="d-table-cell align-middle">
-                                        <button onClick={() => { }} className={`text-decoration-none btn btn-sm border_none ${result.isAdmin ? "btn-info" : "btn-dark"}`}>
-                                            {result.isAdmin ? "Make User" : "Make Admin"} <ShieldSecurity />
                                         </button>
                                     </td>
                                     <td className="d-table-cell align-middle">
-                                        <button onClick={() => { }} className="btn btn-sm border_none btn-danger">
-                                            Disable <Lock />
+                                        <button
+                                            onClick={() => { onUserAccessibility() }}
+                                            className="text-decoration-none btn btn-sm border_none btn-dark"
+                                        >
+                                            Change <ShieldSecurity />
+                                        </button>
+                                    </td>
+                                    <td className="d-table-cell align-middle">
+                                        <button
+                                            onClick={() => { onUserVisibility() }}
+                                            className="text-decoration-none btn btn-sm border_none btn-dark"
+                                        >
+                                            Change <Lock />
                                         </button>
                                     </td>
                                 </tr>
@@ -102,6 +107,8 @@ export default function UserSearch() {
                     </table>
                 </div>
             }
+
+            <ViewSearchUser user={selectedUser} />
         </>
     )
 }
