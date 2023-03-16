@@ -29,7 +29,7 @@ export default function Home() {
                 return {
                     id: doc.id,
                     ...doc.data(),
-                    addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
+                    addedOn: doc.data().addedOn.toDate().toLocaleDateString()
                 };
             });
             setProducts(data);
@@ -46,7 +46,7 @@ export default function Home() {
                 return {
                     id: doc.id,
                     ...doc.data(),
-                    addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
+                    addedOn: doc.data().addedOn.toDate().toLocaleDateString()
                 };
             });
             setMdProducts(data);
@@ -63,7 +63,7 @@ export default function Home() {
                 return {
                     id: doc.id,
                     ...doc.data(),
-                    addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
+                    addedOn: doc.data().addedOn.toDate().toLocaleDateString()
                 };
             });
             setHealths(data);

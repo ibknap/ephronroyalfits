@@ -18,7 +18,7 @@ export async function getServerSideProps({ params }) {
             product: {
                 id: id,
                 ...product,
-                addedOn: product.addedOn.toDate().toLocaleTimeString()
+                addedOn: product.addedOn.toDate().toLocaleDateString()
             },
         }
     };

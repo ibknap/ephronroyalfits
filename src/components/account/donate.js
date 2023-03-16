@@ -44,7 +44,7 @@ export default function Donate() {
                         data.push({
                             id: doc.id,
                             ...doc.data(),
-                            addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
+                            addedOn: doc.data().addedOn.toDate().toLocaleDateString()
                         });
                     }
                 });

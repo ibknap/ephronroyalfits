@@ -52,7 +52,7 @@ export default function Dashboard() {
                 return {
                     id: doc.id,
                     ...doc.data(),
-                    addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
+                    addedOn: doc.data().addedOn.toDate().toLocaleDateString()
                 };
             });
 

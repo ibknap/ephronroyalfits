@@ -33,7 +33,7 @@ export default function ProductSearch() {
                 results.push({
                     id: doc.id,
                     ...doc.data(),
-                    addedOn: doc.data().addedOn.toDate().toLocaleTimeString()
+                    addedOn: doc.data().addedOn.toDate().toLocaleDateString()
                 });
             });
 
