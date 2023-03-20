@@ -110,6 +110,10 @@ export default function Home() {
                                     <div className={styles.slider_body}>
                                         <span className={styles.slider_header}>{product.name}</span>
                                         <b>{toCurrency(product.price)}</b>
+
+                                        <button className="product_add_btn" onClick={() => addItem(product)}>
+                                            <Add /> Add To Cart
+                                        </button>
                                     </div>
                                 </Link>
                             </SwiperSlide>
