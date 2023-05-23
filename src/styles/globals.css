@@ -112,11 +112,12 @@
     border-radius: 0.375rem;
     margin: 1rem 0 !important;
     background: white;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
     color: #0c1a2a !important;
 }
 
 .product_card:hover {
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border: 1px solid #0c1a2a;
 }
 
 .product_card>a>img {
@@ -152,9 +153,9 @@
 }
 
 .product_add_btn {
-    background: transparent;
+    background: #0c1a2a;
     border: 1px #0c1a2a solid;
-    color: #0c1a2a;
+    color: white;
     border-radius: 0.375rem;
     padding: .5rem 0;
     margin-top: .5rem;
@@ -168,11 +169,12 @@
 
 .product_saved_btn {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 0;
     background: transparent;
     border: none;
-    color: #898989;
+    color: #f8c12a;
+    padding: 2.5px 5px 0 0;
 }
 
 .product_saved_btn:hover {

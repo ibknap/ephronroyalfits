@@ -76,7 +76,7 @@ export default function Home() {
         <>
             {/* most donated */}
             {mdProducts &&
-                <div className={`w-100 ${styles.slider_container}`}>
+                <div className="container">
                     <span className="h4 fw-normal">Most Donated</span>
                     <Swiper
                         modules={[Navigation]}
@@ -166,7 +166,7 @@ export default function Home() {
 
             {/* food bank */}
             {products &&
-                <div id="foodBank" className="container-fluid py-5 px-lg-5 bg_grey">
+                <div id="foodBank" className="container-fluid pb-5 px-lg-5">
                     <div className="row">
                         {products.length > 0 ? products.map((product) => (
                             <div key={product.id} className="col-6 col-md-3 col-lg-2">
