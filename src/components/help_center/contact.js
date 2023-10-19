@@ -123,7 +123,7 @@ export default function Contact() {
                                 >
                                     <DirectSend className="mx-1" size="32" variant="Bold" />
                                     <div className="d-flex flex-column mx-1">
-                                        email use
+                                        email us
                                         <br />
                                         northeastfoodbankorg@gmail.com
                                     </div>

@@ -16,7 +16,7 @@ export default function DashboardNewslettersPage() {
     const [isAdmin, setIsAdmin] = useState(null);
 
     // page default data
-    const pageName = "NEFB - Dashboard Live Chat";
+    const pageName = "NEFB - Dashboard Newsletters";
     const pageDesc = "Get to learn more about us and how we work at NEFB, as we seek to eliminate hunger and malnutrition among vulnerable populations in the Northeast.";
     const baseURL = "https://northeastfoodbank.org";
     const pageURL = "https://northeastfoodbank.org/dashboard/newsletters";
