@@ -102,7 +102,7 @@ export default function HomePage() {
 
             <div className="col-md-4 mt-3 text-center">
               <div className=" alert alert-dark border-0 rounded-0">
-                <b>Ephron Royal Fit's</b> currently under development
+                <b>Ephron Royal Fit&apos;s</b> currently under development
               </div>
             </div>
           </div>
