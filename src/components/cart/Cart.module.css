@@ -6,12 +6,12 @@
 }
 
 .btn_nav {
-    background: #f8c12a;
+    background: #947f57;
     border: none;
 }
 
 .btn_nav:hover {
-    background: #0c1a2a !important;
+    background: #E8E8E8 !important;
     border: none;
 }
 

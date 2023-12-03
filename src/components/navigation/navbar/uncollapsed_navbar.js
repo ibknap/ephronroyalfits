@@ -83,7 +83,6 @@ export default function UnCollapsedNavbar({ totalCart }) {
                         <Link
                           className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
                           href="/auth/signin"
-                          as="/auth/signin"
                         >
                           Sign In
                         </Link>
@@ -98,7 +97,6 @@ export default function UnCollapsedNavbar({ totalCart }) {
                           <Link
                             className={styles.dropdown_item}
                             href="/account"
-                            as="/account"
                           >
                             <span className="d-flex ">
                               <User className="mx-1" variant="Bold" />
@@ -112,7 +110,6 @@ export default function UnCollapsedNavbar({ totalCart }) {
                           <Link
                             className={styles.dropdown_item}
                             href="/account/donate"
-                            as="/account/donate"
                           >
                             <span className="d-flex ">
                               <Bag2 className="mx-1" variant="Bold" />
@@ -126,7 +123,6 @@ export default function UnCollapsedNavbar({ totalCart }) {
                           <Link
                             className={styles.dropdown_item}
                             href="/account/saved"
-                            as="/account/saved"
                           >
                             <span className="d-flex ">
                               <Heart className="mx-1" variant="Bold" />
@@ -161,7 +157,6 @@ export default function UnCollapsedNavbar({ totalCart }) {
                       <Link
                         className={styles.dropdown_item}
                         href="/help_center"
-                        as="/help_center"
                       >
                         <span className="d-flex ">
                           <People className="mx-1" variant="Bold" />
@@ -194,7 +189,6 @@ export default function UnCollapsedNavbar({ totalCart }) {
                       : "secondary"
                   } position-relative`}
                   href="/cart"
-                  as="/cart"
                 >
                   <ShoppingCart className="mx-1" variant="Bold" />
                   <span className={styles.show_nav_text}>Cart</span>

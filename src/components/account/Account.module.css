@@ -6,12 +6,12 @@
 }
 
 .btn_nav {
-    background: #f8c12a;
+    background: #947f57;
     border: none;
 }
 
 .btn_nav:hover {
-    background: #0c1a2a !important;
+    background: #E8E8E8 !important;
     border: none;
 }
 
@@ -28,7 +28,7 @@
     right: 10px;
     font-size: 14px;
     border-radius: 0.25rem;
-    background: #f8c12a !important;
+    background: #947f57 !important;
     border: none !important;
 }
 

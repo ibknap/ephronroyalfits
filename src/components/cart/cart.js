@@ -79,7 +79,6 @@ export default function Cart() {
                 <p className="text-muted">Browse and start donating!</p>
                 <Link
                   href="/"
-                  as="/"
                   className="my-4 btn btn-lg bg_primary white shadow border_none"
                 >
                   Start Donating

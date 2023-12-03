@@ -4,17 +4,17 @@
 }
 
 .btn_nav {
-    background: #f8c12a;
+    background: #947f57;
     border: none;
 }
 
 .btn_nav:hover {
-    background: #0c1a2a !important;
+    background: #E8E8E8 !important;
     border: none;
 }
 
 .dropdown {
-    color: #0c1a2a;
+    color: #E8E8E8;
     padding: .5rem .25rem;
     border-radius: .25rem;
     background: transparent;
@@ -22,7 +22,7 @@
 }
 
 .dropdown_item {
-    color: #0c1a2a;
+    color: #E8E8E8;
     border-radius: .25rem;
     background: transparent;
     border: none !important;
@@ -31,7 +31,7 @@
 
 .dropdown:hover,
 .dropdown_item:hover {
-    color: #f8c12a;
+    color: #947f57;
 }
 
 .dropdown:focus {
@@ -72,7 +72,7 @@
 }
 
 .collapsed_menu_header {
-    color: #f8c12a;
+    color: #947f57;
     padding-bottom: 1rem;
     border-bottom: 1px solid #f0f0f0;
 }

@@ -96,7 +96,7 @@ export default function CollapsedNavbar({ totalCart }) {
           <ul className={styles.collapsed_menu}>
             <li className={`m-2 ${styles.collapsed_menu_header}`}>Ephron</li>
             <li className="m-2">
-              <Link className={styles.dropdown_item} href="/" as="/">
+              <Link className={styles.dropdown_item} href="/">
                 <span className="d-flex ">
                   <Home className="mx-1" variant="Bold" />
                   Home
@@ -109,11 +109,7 @@ export default function CollapsedNavbar({ totalCart }) {
                   Account
                 </li>
                 <li className="m-2">
-                  <Link
-                    className={styles.dropdown_item}
-                    href="/account"
-                    as="/account"
-                  >
+                  <Link className={styles.dropdown_item} href="/account">
                     <span className="d-flex ">
                       <User className="mx-1" variant="Bold" />
                       My Account
@@ -121,11 +117,7 @@ export default function CollapsedNavbar({ totalCart }) {
                   </Link>
                 </li>
                 <li className="m-2">
-                  <Link
-                    className={styles.dropdown_item}
-                    href="/account/donate"
-                    as="/account/donate"
-                  >
+                  <Link className={styles.dropdown_item} href="/account/donate">
                     <span className="d-flex ">
                       <Bag2 className="mx-1" variant="Bold" />
                       My Donations
@@ -133,11 +125,7 @@ export default function CollapsedNavbar({ totalCart }) {
                   </Link>
                 </li>
                 <li className="m-2">
-                  <Link
-                    className={styles.dropdown_item}
-                    href="/account/saved"
-                    as="/account/saved"
-                  >
+                  <Link className={styles.dropdown_item} href="/account/saved">
                     <span className="d-flex ">
                       <Heart className="mx-1" variant="Bold" />
                       Saved Items
@@ -158,7 +146,6 @@ export default function CollapsedNavbar({ totalCart }) {
                 <Link
                   className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
                   href="/auth/signin"
-                  as="/auth/signin"
                 >
                   Sign In
                 </Link>
@@ -166,11 +153,7 @@ export default function CollapsedNavbar({ totalCart }) {
             </li>
             <li className={`m-2 ${styles.collapsed_menu_header}`}>Help</li>
             <li className="m-2">
-              <Link
-                className={styles.dropdown_item}
-                href="/help_center"
-                as="/help_center"
-              >
+              <Link className={styles.dropdown_item} href="/help_center">
                 <span className="d-flex ">
                   <People className="mx-1" variant="Bold" />
                   Help Center
@@ -187,7 +170,7 @@ export default function CollapsedNavbar({ totalCart }) {
               </a>
             </li>
             <li className="m-2 text-center">
-              <Link className="grey_dark text-decoration-none" href="/" as="/">
+              <Link className="grey_dark text-decoration-none" href="/">
                 All rights reserved © www.ephronroyalfits.com
               </Link>
             </li>
