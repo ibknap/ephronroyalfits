@@ -27,7 +27,7 @@ export default function Cart() {
         email: authUser.email,
         amount: totalPrice * 100,
         ref: `${Math.floor(Math.random() * 1000000000 + 1)}`,
-        label: "NEFB Donation",
+        label: "Ephron Donation",
         onClose: () => {
           onCreateDonation(false);
         },
@@ -47,7 +47,7 @@ export default function Cart() {
 
     const donationDoc = {
       id: ref,
-      image: "https://northeastfoodbank.org/images/fav_logo_trans.png",
+      image: "https://ephronroyalfits.com/logo/png/logo_trans.png",
       name: "Cart Purchase",
       email: authUser.email,
       amount: totalPrice,

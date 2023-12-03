@@ -7,7 +7,7 @@ export function CartProvider({ children }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("NEFBCart"));
+    const savedCart = JSON.parse(localStorage.getItem("EphronCart"));
     if (savedCart) {
       setItems(savedCart);
     }
@@ -22,12 +22,12 @@ export function CartProvider({ children }) {
         quantity: newItems[itemIndex].quantity + (item.quantity || 1),
       };
       setItems(newItems);
-      localStorage.setItem("NEFBCart", JSON.stringify(newItems));
+      localStorage.setItem("EphronCart", JSON.stringify(newItems));
       toast.success(`Added ${item.name} to cart`);
     } else {
       setItems([...items, { ...item, quantity: item.quantity || 1 }]);
       localStorage.setItem(
-        "NEFBCart",
+        "EphronCart",
         JSON.stringify([
           ...items,
           { ...item, cartQuantity: item.cartQuantity || 1 },
@@ -46,7 +46,7 @@ export function CartProvider({ children }) {
         quantity: quantity,
       };
       setItems(newItems);
-      localStorage.setItem("NEFBCart", JSON.stringify(newItems));
+      localStorage.setItem("EphronCart", JSON.stringify(newItems));
       toast.success(
         `Updated quantity of ${newItems[itemIndex].name} to ${quantity}`
       );
@@ -56,7 +56,7 @@ export function CartProvider({ children }) {
   const removeItem = (id) => {
     setItems((prevItems) => prevItems.filter((item) => item.id !== id));
     localStorage.setItem(
-      "NEFBCart",
+      "EphronCart",
       JSON.stringify(items.filter((item) => item.id !== id))
     );
     toast.success(`Removed item with ID ${id} from cart`);
@@ -68,7 +68,7 @@ export function CartProvider({ children }) {
 
   const clearCart = () => {
     setItems([]);
-    localStorage.setItem("NEFBCart", JSON.stringify([]));
+    localStorage.setItem("EphronCart", JSON.stringify([]));
     toast.success("Cart cleared!");
   };
 

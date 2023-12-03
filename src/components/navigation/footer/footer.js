@@ -60,11 +60,11 @@ export default function Footer() {
                             <div className="d-flex flex-column mx-1">
                                 email us
                                 <Link className="text-decoration-none primary"
-                                    href="mailto:northeastfoodbankorg@gmail.com"
-                                    as="mailto:northeastfoodbankorg@gmail.com"
+                                    href="mailto:ephronroyalfits@gmail.com"
+                                    as="mailto:ephronroyalfits@gmail.com"
                                     target="_blank"
                                 >
-                                    northeastfoodbankorg@gmail.com
+                                    ephronroyalfits@gmail.com
                                 </Link>
                             </div>
                         </div>
@@ -149,7 +149,7 @@ export default function Footer() {
                 <div className="row mt-5">
                     <div className="col text-center">
                         <Link className="grey_dark text-decoration-none" href="/" as="/">
-                            All rights reserved © www.northeastfoodbank.org
+                            All rights reserved © www.ephronroyalfits.com
                         </Link>
                     </div>
                 </div>
