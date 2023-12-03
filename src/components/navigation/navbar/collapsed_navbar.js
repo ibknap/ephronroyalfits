@@ -90,7 +90,7 @@ export default function CollapsedNavbar({ totalCart }) {
 
           <ul className={styles.collapsed_menu}>
             <li className={`my-2 ${styles.collapsed_menu_header}`}>
-              Ephron Royal Fit's
+              Ephron Royal Fit&apos;s
             </li>
             <li className="my-2">
               <Link className={styles.dropdown_item} href="/">
