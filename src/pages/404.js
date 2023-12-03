@@ -4,10 +4,11 @@ import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
 import { Inter } from "next/font/google";
 import { Setting2 } from "iconsax-react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function HomePage() {
+export default function NotFoundPage() {
   // page default data
   const pageName = "Ephron Royal Fit's | Art & Fashion";
   const pageDesc =
@@ -91,25 +92,22 @@ export default function HomePage() {
       </Head>
 
       <main className={inter.className}>
-        <Navbar />
-        <div className="bottom_spacer" />
+        <div className="page-not-found">
+          <div className="bg">
+            <img src="/logo/svg/logo_text_trans.svg" width={200} />
+            <h2 className="fw-bold primary">404</h2>
+            <h5>Oops! Page Not Found</h5>
 
-        <div className="container my-5">
-          <div className="row justify-content-center">
-            <div className="col-12 text-center">
-              <Setting2 size={200} />
-            </div>
-
-            <div className="col-md-4 mt-3 text-center">
-              <div className=" alert alert-dark border-0 rounded-0">
-                <b>Ephron Royal Fit's</b> currently under development
-              </div>
+            <div className="mt-4">
+              <Link
+                href="/"
+                className="btn btn-lg rounded-0 border-0 bg_primary white"
+              >
+                Go Back
+              </Link>
             </div>
           </div>
         </div>
-
-        {/* <Home /> */}
-        <Footer />
       </main>
     </>
   );

@@ -121,7 +121,7 @@ export default function Cart() {
                     type="submit"
                     className={`w-100 my-3 btn btn-lg btn-success ${styles.btn_nav}`}
                   >
-                    <Heart variant="Bold" />
+                    <Heart variant="Bulk" />
                     Donate
                   </button>
                 </form>

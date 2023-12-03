@@ -39,7 +39,7 @@ export default function AccountNavbar() {
                   href="/account"
                 >
                   <span className="d-flex ">
-                    <User className="mx-1" variant="Bold" />
+                    <User className="mx-1" variant="Bulk" />
                     My Account
                   </span>
                 </Link>
@@ -54,7 +54,7 @@ export default function AccountNavbar() {
                   href="/account/donate"
                 >
                   <span className="d-flex ">
-                    <Bag2 className="mx-1" variant="Bold" />
+                    <Bag2 className="mx-1" variant="Bulk" />
                     My Donations
                   </span>
                 </Link>
@@ -69,7 +69,7 @@ export default function AccountNavbar() {
                   href="/account/saved"
                 >
                   <span className="d-flex ">
-                    <Heart className="mx-1" variant="Bold" />
+                    <Heart className="mx-1" variant="Bulk" />
                     Saved Items
                   </span>
                 </Link>

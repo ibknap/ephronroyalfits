@@ -32,10 +32,10 @@ export default function CollapsedNavbar({ totalCart }) {
 
   return (
     <>
-      <div className="container fixed-top bg-white shadow-sm">
+      <div className="container fixed-top bg-white">
         <div className="row justify-content-between">
           <div className="col">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center py-3">
               <Link className="navbar-brand" href="/">
                 <img
                   src="/logo/png/logo_long_trans.png"
@@ -49,27 +49,23 @@ export default function CollapsedNavbar({ totalCart }) {
                   className={`nav-link ${
                     router.asPath == "/cart"
                       ? "nav-link primary bg_grey rounded"
-                      : "secondary"
+                      : "text-dark"
                   }`}
                   href="/cart"
                 >
-                  <ShoppingCart className="mx-1" variant="Bold" />
+                  <ShoppingCart className="me-1" variant="Bulk" />
                   <span className={styles.show_nav_text}>Cart</span>
-                  <span className="secondary mx-2 text-danger fw-bold">
-                    {totalCart}
-                  </span>
+                  <span className="ms-2 text-danger fw-bold">{totalCart}</span>
                 </Link>
                 <Menu
                   className={`mx-3 ${styles.toggler}`}
-                  variant="Bold"
+                  variant="Bulk"
                   onClick={toggleNavbar}
                 />
               </div>
             </div>
           </div>
         </div>
-
-        <SearchBox />
       </div>
 
       {/* overlay */}
@@ -88,53 +84,54 @@ export default function CollapsedNavbar({ totalCart }) {
       >
         <div className={styles.collapsed_container}>
           <CloseSquare
-            size="24"
             className={`m-2 ${styles.toggler}`}
             onClick={toggleNavbar}
           />
 
           <ul className={styles.collapsed_menu}>
-            <li className={`m-2 ${styles.collapsed_menu_header}`}>Ephron</li>
-            <li className="m-2">
+            <li className={`my-2 ${styles.collapsed_menu_header}`}>
+              Ephron Royal Fit's
+            </li>
+            <li className="my-2">
               <Link className={styles.dropdown_item} href="/">
                 <span className="d-flex ">
-                  <Home className="mx-1" variant="Bold" />
+                  <Home className="mx-1" variant="Bulk" />
                   Home
                 </span>
               </Link>
             </li>
             {!loading && authUser && (
               <>
-                <li className={`m-2 ${styles.collapsed_menu_header}`}>
+                <li className={`my-2 ${styles.collapsed_menu_header}`}>
                   Account
                 </li>
-                <li className="m-2">
+                <li className="my-2">
                   <Link className={styles.dropdown_item} href="/account">
                     <span className="d-flex ">
-                      <User className="mx-1" variant="Bold" />
+                      <User className="mx-1" variant="Bulk" />
                       My Account
                     </span>
                   </Link>
                 </li>
-                <li className="m-2">
+                <li className="my-2">
                   <Link className={styles.dropdown_item} href="/account/donate">
                     <span className="d-flex ">
-                      <Bag2 className="mx-1" variant="Bold" />
+                      <Bag2 className="mx-1" variant="Bulk" />
                       My Donations
                     </span>
                   </Link>
                 </li>
-                <li className="m-2">
+                <li className="my-2">
                   <Link className={styles.dropdown_item} href="/account/saved">
                     <span className="d-flex ">
-                      <Heart className="mx-1" variant="Bold" />
+                      <Heart className="mx-1" variant="Bulk" />
                       Saved Items
                     </span>
                   </Link>
                 </li>
               </>
             )}
-            <li className="m-2">
+            <li className="my-2">
               {!loading && authUser ? (
                 <button
                   className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
@@ -151,16 +148,16 @@ export default function CollapsedNavbar({ totalCart }) {
                 </Link>
               )}
             </li>
-            <li className={`m-2 ${styles.collapsed_menu_header}`}>Help</li>
-            <li className="m-2">
+            <li className={`my-2 ${styles.collapsed_menu_header}`}>Help</li>
+            <li className="my-2">
               <Link className={styles.dropdown_item} href="/help_center">
                 <span className="d-flex ">
-                  <People className="mx-1" variant="Bold" />
+                  <People className="mx-1" variant="Bulk" />
                   Help Center
                 </span>
               </Link>
             </li>
-            <li className="m-2">
+            <li className="my-2">
               <a
                 className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
                 href="#!"
@@ -169,7 +166,7 @@ export default function CollapsedNavbar({ totalCart }) {
                 Live Chat
               </a>
             </li>
-            <li className="m-2 text-center">
+            <li className="my-2 text-center">
               <Link className="grey_dark text-decoration-none" href="/">
                 All rights reserved © www.ephronroyalfits.com
               </Link>

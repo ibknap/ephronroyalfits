@@ -99,7 +99,7 @@ export default function Donate() {
                                             </ul>
                                         ) : (
                                             <div className="text-center text-muted">
-                                                <Gift size={100} variant="Bold" />
+                                                <Gift size={100} variant="Bulk" />
                                                 <h5>No donation made yet.</h5>
                                             </div>
                                         )}

@@ -27,15 +27,15 @@ export default function UnCollapsedNavbar({ totalCart }) {
   return (
     <>
       <nav
-        className={`${styles.navbar} navbar navbar-expand-md navbar-light fixed-top shadow-sm`}
+        className={`${styles.navbar} navbar navbar-expand-md navbar-light fixed-top`}
       >
-        <div className="container">
+        <div className="container-fluid">
           <Link className="navbar-brand" href="/">
             <img
-              src="/logo/png/logo_long_trans.png"
+              src="/logo/svg/logo_long_trans.svg"
               alt="logo"
               className="rounded"
-              width={128}
+              width={150}
             />
           </Link>
 
@@ -65,9 +65,9 @@ export default function UnCollapsedNavbar({ totalCart }) {
                     aria-expanded="false"
                   >
                     <span className="d-flex ">
-                      <User className="mx-1" variant="Bold" />
+                      <User className="mx-1" variant="Bulk" />
                       <span className={styles.show_nav_text}>Account</span>
-                      <ArrowDown3 size="16" className="mx-1" variant="Bold" />
+                      <ArrowDown3 size="16" className="mx-1" variant="Bulk" />
                     </span>
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="accountMenu">
@@ -99,7 +99,7 @@ export default function UnCollapsedNavbar({ totalCart }) {
                             href="/account"
                           >
                             <span className="d-flex ">
-                              <User className="mx-1" variant="Bold" />
+                              <User className="mx-1" variant="Bulk" />
                               <span className={styles.show_nav_text}>
                                 My Account
                               </span>
@@ -112,7 +112,7 @@ export default function UnCollapsedNavbar({ totalCart }) {
                             href="/account/donate"
                           >
                             <span className="d-flex ">
-                              <Bag2 className="mx-1" variant="Bold" />
+                              <Bag2 className="mx-1" variant="Bulk" />
                               <span className={styles.show_nav_text}>
                                 My Donations
                               </span>
@@ -125,7 +125,7 @@ export default function UnCollapsedNavbar({ totalCart }) {
                             href="/account/saved"
                           >
                             <span className="d-flex ">
-                              <Heart className="mx-1" variant="Bold" />
+                              <Heart className="mx-1" variant="Bulk" />
                               <span className={styles.show_nav_text}>
                                 Saved Items
                               </span>
@@ -147,9 +147,9 @@ export default function UnCollapsedNavbar({ totalCart }) {
                     aria-expanded="false"
                   >
                     <span className="d-flex ">
-                      <Warning2 className="mx-1" variant="Bold" />
+                      <Warning2 className="mx-1" variant="Bulk" />
                       <span className={styles.show_nav_text}>Help</span>
-                      <ArrowDown3 size="16" className="mx-1" variant="Bold" />
+                      <ArrowDown3 size="16" className="mx-1" variant="Bulk" />
                     </span>
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="helpMenu">
@@ -159,7 +159,7 @@ export default function UnCollapsedNavbar({ totalCart }) {
                         href="/help_center"
                       >
                         <span className="d-flex ">
-                          <People className="mx-1" variant="Bold" />
+                          <People className="mx-1" variant="Bulk" />
                           <span className={styles.show_nav_text}>
                             Help Center
                           </span>
@@ -186,13 +186,13 @@ export default function UnCollapsedNavbar({ totalCart }) {
                   className={`nav-link ${
                     router.asPath == "/cart"
                       ? "nav-link primary bg_grey rounded"
-                      : "secondary"
+                      : "text-dark"
                   } position-relative`}
                   href="/cart"
                 >
-                  <ShoppingCart className="mx-1" variant="Bold" />
+                  <ShoppingCart className="me-1" variant="Bulk" />
                   <span className={styles.show_nav_text}>Cart</span>
-                  <span className="secondary mx-2 text-danger fw-bold">
+                  <span className="ms-2 text-danger fw-bold">
                     {totalCart}
                   </span>
                 </Link>
