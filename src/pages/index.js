@@ -4,10 +4,15 @@ import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
 import { Inter } from "next/font/google";
 import { Setting2 } from "iconsax-react";
+import { useState } from "react";
+import SearchBox from "@/components/search/search";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function HomePage() {
+  const [showSearch, setShowSearch] = useState(false);
+  const handleShowSearch = (state) => setShowSearch(state);
+
   // page default data
   const pageName = "Ephron Royal 'fits | Art & Fashion";
   const pageDesc =
@@ -91,7 +96,7 @@ export default function HomePage() {
       </Head>
 
       <main className={inter.className}>
-        <Navbar />
+        <Navbar emitShowSearch={handleShowSearch} />
         <div className="bottom_spacer" />
 
         <div className="container my-5">
@@ -111,6 +116,10 @@ export default function HomePage() {
         {/* <Home /> */}
         <Footer />
       </main>
+
+      {showSearch && (
+        <SearchBox show={showSearch} onHide={() => setShowSearch(false)} />
+      )}
     </>
   );
 }

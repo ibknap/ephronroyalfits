@@ -4,7 +4,6 @@ import { useState } from "react";
 import styles from "@/components/navigation/navbar/Navbar.module.css";
 import {
   Bag2,
-  CloseSquare,
   Heart,
   Home,
   Menu,
@@ -14,9 +13,11 @@ import {
   User,
 } from "iconsax-react";
 import { useAuth } from "@/firebase/fire_auth_context";
+import categories from "@/components/navigation/navbar/categories";
 
-export default function CollapsedNavbar({ totalCart }) {
+export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
   const [isOpen, setIsOpen] = useState(false);
+  // const [showSearch, setShowSearch] = useState(false);
   const router = useRouter();
   const { loading, authUser, logOut } = useAuth();
 
@@ -27,8 +28,8 @@ export default function CollapsedNavbar({ totalCart }) {
     <>
       <div className="container fixed-top bg-white">
         <div className="row justify-content-between">
-          <div className="col px-2">
-            <div className="d-flex justify-content-between align-items-center py-3">
+          <div className="col p-2">
+            <div className="d-flex justify-content-between align-items-center">
               <Link className="navbar-brand" href="/">
                 <img
                   src="/logo/png/logo_long_trans.png"
@@ -39,7 +40,10 @@ export default function CollapsedNavbar({ totalCart }) {
               </Link>
 
               <div className="d-flex">
-                <button className="btn nav-link me-2">
+                <button
+                  onClick={() => emitShowSearch(true)}
+                  className="btn nav-link me-2"
+                >
                   <SearchNormal1 variant="Bulk" />
                 </button>
 
@@ -81,8 +85,6 @@ export default function CollapsedNavbar({ totalCart }) {
         }`}
       >
         <div className={styles.collapsed_container}>
-          <CloseSquare className="pointer mt-3" onClick={toggleNavbar} />
-
           <ul className={styles.collapsed_menu}>
             <li className={`pb-1 pt-2 ${styles.collapsed_menu_header}`}>
               Ephron Royal &apos;fits
@@ -94,6 +96,52 @@ export default function CollapsedNavbar({ totalCart }) {
                 Home
               </Link>
             </li>
+
+            {categories.map((cat) =>
+              cat.sub.length > 0 ? (
+                <li key={`collapsed-${cat.id}`} className="my-2">
+                  <button
+                    className="w-100 text-start btn p-0 border-0 rounded-0"
+                    type="button"
+                    id={`cat${cat.id}`}
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    {cat.name}
+                  </button>
+
+                  <ul
+                    className="dropdown-menu rounded-0"
+                    aria-labelledby={`cat${cat.id}`}
+                  >
+                    {cat.sub.map((sub, index) => (
+                      <li
+                        key={`collapsed-${sub.id}`}
+                        className={`m-2 ${index === 0 && "mt-0"} ${
+                          index === cat.sub.length - 1 && "mb-0"
+                        }`}
+                      >
+                        <Link
+                          className={styles.dropdown_item}
+                          href={`/category/${sub.parentId}/${sub.id}`}
+                        >
+                          {sub.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <li className="my-2">
+                  <Link
+                    className={styles.dropdown_item}
+                    href={`/category/${cat.parentId}`}
+                  >
+                    {cat.name}
+                  </Link>
+                </li>
+              )
+            )}
 
             {!loading && !authUser && (
               <>
@@ -133,7 +181,7 @@ export default function CollapsedNavbar({ totalCart }) {
                 target="_blank"
               >
                 <People className="me-1" variant="Bulk" />
-                <span className={styles.show_nav_text}>Contact Us</span>
+                Contact Us
               </Link>
             </li>
 
