@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import styles from "@/components/navigation/footer/Footer.module.css";
-import { Call, Camera, DirectSend, Location } from "iconsax-react";
+import { Call, Camera, DirectSend, Instagram, Location } from "iconsax-react";
 import Loader from "@/components/loader/loader";
 import { doc, setDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
@@ -78,17 +78,14 @@ export default function Footer() {
             </div>
 
             <div className="d-flex my-3">
-              <Camera className="me-1" variant="Bulk" />
-              <div className="d-flex flex-column me-1">
-                follow us
-                <Link
-                  className="text-decoration-none primary"
-                  href="#"
-                  target="_blank"
-                >
-                  linkedin
-                </Link>
-              </div>
+              <Instagram className="me-1" variant="Bulk" />
+              <Link
+                className="text-decoration-none primary"
+                href="https://www.instagram.com/christ_our_pride/"
+                target="_blank"
+              >
+                christ_our_pride
+              </Link>
             </div>
           </div>
 

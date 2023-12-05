@@ -6,17 +6,21 @@
 .btn_nav {
   background: #947f57;
   border: none;
+  border-radius: 0;
+  color: white;
+  text-align: center;
 }
 
 .btn_nav:hover {
-  background: #141619 !important;
-  border: none;
+  background: white;
+  border: 1px solid #947f57;
+  color: #947f57;
 }
 
 .dropdown {
   color: #141619;
   padding: 0.5rem 0.25rem;
-  border-radius: 0.25rem;
+  border-radius: 0;
   background: transparent;
   border: none !important;
 }
@@ -91,8 +95,4 @@
 
 .overlay.show {
   opacity: 1;
-}
-
-.toggler {
-  cursor: pointer;
 }

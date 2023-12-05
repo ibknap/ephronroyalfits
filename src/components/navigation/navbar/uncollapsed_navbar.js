@@ -6,23 +6,15 @@ import {
   Bag2,
   Heart,
   People,
+  SearchNormal1,
   ShoppingCart,
   User,
-  Warning2,
 } from "iconsax-react";
 import { useAuth } from "@/firebase/fire_auth_context";
-import SearchBox from "@/components/search/search";
 
 export default function UnCollapsedNavbar({ totalCart }) {
   const router = useRouter();
   const { loading, authUser, logOut } = useAuth();
-
-  // toggle live chat
-  const liveChat = () => {
-    if (typeof window !== "undefined" && window.Tawk_API) {
-      window.Tawk_API.toggle();
-    }
-  };
 
   return (
     <>
@@ -52,9 +44,15 @@ export default function UnCollapsedNavbar({ totalCart }) {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarCollapse">
-            <SearchBox />
+            <div className="navbar-nav" />
 
-            <ul className="d-flex navbar-nav ">
+            <ul className="d-flex navbar-nav">
+              <li className="nav-item">
+                <button className="btn nav-link">
+                  <SearchNormal1 variant="Bulk" />
+                </button>
+              </li>
+
               <li className="nav-item">
                 <div className="dropdown">
                   <button
@@ -65,125 +63,94 @@ export default function UnCollapsedNavbar({ totalCart }) {
                     aria-expanded="false"
                   >
                     <span className="d-flex ">
-                      <User className="mx-1" variant="Bulk" />
+                      <User className="me-1" variant="Bulk" />
                       <span className={styles.show_nav_text}>Account</span>
-                      <ArrowDown3 size="16" className="mx-1" variant="Bulk" />
+                      <ArrowDown3 size="16" className="me-1" variant="Bulk" />
                     </span>
                   </button>
-                  <ul className="dropdown-menu" aria-labelledby="accountMenu">
+                  <ul
+                    className="dropdown-menu rounded-0"
+                    aria-labelledby="accountMenu"
+                  >
+                    {!loading && !authUser && (
+                      <>
+                        <li className="m-2 mt-0">
+                          <Link
+                            className={styles.dropdown_item}
+                            href="/account"
+                          >
+                            <User className="me-1" variant="Bulk" />
+                            <span className={styles.show_nav_text}>
+                              My Account
+                            </span>
+                          </Link>
+                        </li>
+
+                        <li className="m-2">
+                          <Link
+                            className={styles.dropdown_item}
+                            href="/account/orders"
+                          >
+                            <Bag2 className="me-1" variant="Bulk" />
+                            <span className={styles.show_nav_text}>
+                              My Orders
+                            </span>
+                          </Link>
+                        </li>
+
+                        <li className="m-2">
+                          <Link
+                            className={styles.dropdown_item}
+                            href="/account/saved"
+                          >
+                            <Heart className="me-1" variant="Bulk" />
+                            <span className={styles.show_nav_text}>
+                              Saved Items
+                            </span>
+                          </Link>
+                        </li>
+
+                        <li>
+                          <hr className="dropdown-divider" />
+                        </li>
+                      </>
+                    )}
+
                     <li className="m-2">
-                      {!loading && authUser ? (
+                      <Link
+                        className={styles.dropdown_item}
+                        href="https://wa.me/+2347063869144?text=I am contacting you from site to request for..."
+                        target="_blank"
+                      >
+                        <People className="me-1" variant="Bulk" />
+                        <span className={styles.show_nav_text}>Contact Us</span>
+                      </Link>
+                    </li>
+
+                    <li className="m-2 mb-0">
+                      {!loading && !authUser ? (
                         <button
-                          className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
+                          className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
                           onClick={logOut}
                         >
                           Log Out
                         </button>
                       ) : (
                         <Link
-                          className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
+                          className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
                           href="/auth/signin"
                         >
                           Sign In
                         </Link>
                       )}
                     </li>
-                    {!loading && authUser && (
-                      <>
-                        <li>
-                          <hr className="dropdown-divider" />
-                        </li>
-                        <li className="m-2">
-                          <Link
-                            className={styles.dropdown_item}
-                            href="/account"
-                          >
-                            <span className="d-flex ">
-                              <User className="mx-1" variant="Bulk" />
-                              <span className={styles.show_nav_text}>
-                                My Account
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
-                        <li className="m-2">
-                          <Link
-                            className={styles.dropdown_item}
-                            href="/account/donate"
-                          >
-                            <span className="d-flex ">
-                              <Bag2 className="mx-1" variant="Bulk" />
-                              <span className={styles.show_nav_text}>
-                                My Donations
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
-                        <li className="m-2">
-                          <Link
-                            className={styles.dropdown_item}
-                            href="/account/saved"
-                          >
-                            <span className="d-flex ">
-                              <Heart className="mx-1" variant="Bulk" />
-                              <span className={styles.show_nav_text}>
-                                Saved Items
-                              </span>
-                            </span>
-                          </Link>
-                        </li>
-                      </>
-                    )}
                   </ul>
                 </div>
               </li>
-              <li className="nav-item">
-                <div className="dropdown">
-                  <button
-                    className={styles.dropdown}
-                    type="button"
-                    id="helpMenu"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <span className="d-flex ">
-                      <Warning2 className="mx-1" variant="Bulk" />
-                      <span className={styles.show_nav_text}>Help</span>
-                      <ArrowDown3 size="16" className="mx-1" variant="Bulk" />
-                    </span>
-                  </button>
-                  <ul className="dropdown-menu" aria-labelledby="helpMenu">
-                    <li className="m-2">
-                      <Link
-                        className={styles.dropdown_item}
-                        href="/help_center"
-                      >
-                        <span className="d-flex ">
-                          <People className="mx-1" variant="Bulk" />
-                          <span className={styles.show_nav_text}>
-                            Help Center
-                          </span>
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li className="m-2">
-                      <a
-                        className={`dropdown-item btn btn-success ${styles.btn_nav} text-center white shadow-sm px-3 py-2`}
-                        href="#!"
-                        onClick={liveChat}
-                      >
-                        Live Chat
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${
+                  className={`nav-link rounded-0 ${
                     router.asPath == "/cart"
                       ? "nav-link primary bg_grey rounded"
                       : "text-dark"
@@ -192,9 +159,7 @@ export default function UnCollapsedNavbar({ totalCart }) {
                 >
                   <ShoppingCart className="me-1" variant="Bulk" />
                   <span className={styles.show_nav_text}>Cart</span>
-                  <span className="ms-2 text-danger fw-bold">
-                    {totalCart}
-                  </span>
+                  <span className="ms-2 text-danger fw-bold">{totalCart}</span>
                 </Link>
               </li>
             </ul>

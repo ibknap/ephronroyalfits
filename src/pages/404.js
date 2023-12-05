@@ -10,11 +10,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function NotFoundPage() {
   // page default data
-  const pageName = "Ephron Royal Fit's | Art & Fashion";
+  const pageName = "Ephron Royal 'fits | Art & Fashion";
   const pageDesc =
-    "Elevate your style with Ephron Royal Fit's, where art meets fashion in a harmonious blend of creativity and elegance. Explore our online store for a curated collection of unique art-inspired fashion pieces that allow you to express your individuality. Immerse yourself in a world where every garment tells a story, bringing together the realms of art and fashion seamlessly. Discover the perfect fusion of artistic expression and sartorial sophistication at Ephron Royal Fit's.";
+    "Elevate your style with Ephron Royal 'fits, where art meets fashion in a harmonious blend of creativity and elegance. Explore our online store for a curated collection of unique art-inspired fashion pieces that allow you to express your individuality. Immerse yourself in a world where every garment tells a story, bringing together the realms of art and fashion seamlessly. Discover the perfect fusion of artistic expression and sartorial sophistication at Ephron Royal 'fits.";
   const pageKeywords =
-    "Art-inspired fashion, Unique fashion pieces, Creative clothing, Fashion with a story, Wearable art, Eccentric style, Artistic expression in fashion, Fashion showcase, Individuality in clothing, Ephron Royal Fit's online store";
+    "Art-inspired fashion, Unique fashion pieces, Creative clothing, Fashion with a story, Wearable art, Eccentric style, Artistic expression in fashion, Fashion showcase, Individuality in clothing, Ephron Royal 'fits online store";
   const baseURL = "https://ephronroyalfits.com";
 
   // web site schema
@@ -67,7 +67,7 @@ export default function NotFoundPage() {
         <meta name="keywords" content={pageKeywords} />
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" type="image/x-icon" href="/logo/png/logo_trans.png" />
-        <meta name="author" content="Ephron Royal Fit's" />
+        <meta name="author" content="Ephron Royal 'fits" />
         <meta property="og:title" content={pageName} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/logo/png/logo_text.png" />
