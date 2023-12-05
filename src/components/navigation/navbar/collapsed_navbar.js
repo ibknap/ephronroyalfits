@@ -99,7 +99,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
 
             {categories.map((cat) =>
               cat.sub.length > 0 ? (
-                <li key={`collapsed-${cat.id}`} className="my-2">
+                <li key={cat.id} className="my-2">
                   <button
                     className="w-100 text-start btn p-0 border-0 rounded-0"
                     type="button"
@@ -116,7 +116,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                   >
                     {cat.sub.map((sub, index) => (
                       <li
-                        key={`collapsed-${sub.id}`}
+                        key={sub.id}
                         className={`m-2 ${index === 0 && "mt-0"} ${
                           index === cat.sub.length - 1 && "mb-0"
                         }`}
@@ -132,7 +132,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                   </ul>
                 </li>
               ) : (
-                <li className="my-2">
+                <li key={cat.id} className="my-2">
                   <Link
                     className={styles.dropdown_item}
                     href={`/category/${cat.parentId}`}

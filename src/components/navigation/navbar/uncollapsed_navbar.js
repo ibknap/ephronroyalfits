@@ -81,7 +81,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                     </ul>
                   </li>
                 ) : (
-                  <li className="nav-item">
+                  <li key={cat.id} className="nav-item">
                     <Link
                       className="nav-link rounded-0 text-dark"
                       href={`/category/${cat.parentId}`}
