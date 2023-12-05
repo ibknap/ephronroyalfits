@@ -71,9 +71,17 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                           }`}
                         >
                           <Link
-                            className={styles.dropdown_item}
+                            className={`${styles.dropdown_item} d-flex`}
                             href={`/category/${sub.parentId}/${sub.id}`}
                           >
+                            <img
+                              src={sub.image}
+                              alt={sub.name}
+                              className="rounded-circle me-2"
+                              width={30}
+                              height={30}
+                              style={{ objectFit: "cover" }}
+                            />
                             {sub.name}
                           </Link>
                         </li>

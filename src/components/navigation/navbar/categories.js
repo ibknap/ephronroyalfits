@@ -11,10 +11,17 @@ const categories = [
       {
         id: "sunglasses",
         parentId: "accessories",
+        image: "/images/glasses.png",
         name: "Sunglasses",
         sub: [],
       },
-      { id: "hairclips", parentId: "accessories", name: "Hair Clips", sub: [] },
+      {
+        id: "hairclips",
+        parentId: "accessories",
+        image: "/images/hairclips.png",
+        name: "Hair Clips",
+        sub: [],
+      },
     ],
   },
   {
@@ -22,8 +29,34 @@ const categories = [
     parentId: "gems",
     name: "Gems",
     sub: [
-      { id: "bracelets", parentId: "gems", name: "Bracelets", sub: [] },
-      { id: "rings", parentId: "gems", name: "Rings", sub: [] },
+      {
+        id: "bracelets",
+        parentId: "gems",
+        image: "/images/bracelets.png",
+        name: "Bracelets",
+        sub: [],
+      },
+      {
+        id: "rings",
+        parentId: "gems",
+        image: "/images/rings.png",
+        name: "Rings",
+        sub: [],
+      },
+      {
+        id: "earrings",
+        parentId: "gems",
+        image: "/images/earrings.png",
+        name: "Earrings",
+        sub: [],
+      },
+      {
+        id: "necklaces",
+        parentId: "gems",
+        image: "/images/necklaces.png",
+        name: "Necklaces",
+        sub: [],
+      },
     ],
   },
   {
@@ -31,14 +64,27 @@ const categories = [
     parentId: "essentials",
     name: "Essentials",
     sub: [
-      { id: "journals", parentId: "essentials", name: "Journals", sub: [] },
       {
-        id: "materials",
+        id: "journals",
         parentId: "essentials",
+        image: "/images/journals.png",
+        name: "Journals",
+        sub: [],
+      },
+      {
+        id: "writingmaterials",
+        parentId: "essentials",
+        image: "/images/writingmaterials.png",
         name: "Writing Materials",
         sub: [],
       },
-      { id: "tumblers", parentId: "essentials", name: "Tumblers", sub: [] },
+      {
+        id: "tumblers",
+        parentId: "essentials",
+        image: "/images/tumblers.png",
+        name: "Tumblers",
+        sub: [],
+      },
     ],
   },
 ];

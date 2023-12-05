@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "@/components/navigation/navbar/Navbar.module.css";
 import {
+  ArrowDown3,
   Bag2,
   Heart,
   Home,
@@ -107,7 +108,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    {cat.name}
+                    {cat.name} <ArrowDown3 size={12} variant="Bulk" />
                   </button>
 
                   <ul
@@ -122,9 +123,17 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                         }`}
                       >
                         <Link
-                          className={styles.dropdown_item}
+                          className={`${styles.dropdown_item} d-flex`}
                           href={`/category/${sub.parentId}/${sub.id}`}
                         >
+                          <img
+                            src={sub.image}
+                            alt={sub.name}
+                            className="rounded-circle me-2"
+                            width={30}
+                            height={30}
+                            style={{ objectFit: "cover" }}
+                          />
                           {sub.name}
                         </Link>
                       </li>
