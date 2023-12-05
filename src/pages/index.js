@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { Setting2 } from "iconsax-react";
 import { useState } from "react";
 import SearchBox from "@/components/search/search";
+import Hero from "@/components/home/hero";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -97,7 +98,8 @@ export default function HomePage() {
 
       <main className={inter.className}>
         <Navbar emitShowSearch={handleShowSearch} />
-        <div className="bottom_spacer" />
+
+        <Hero />
 
         <div className="container my-5">
           <div className="row justify-content-center">

@@ -28,7 +28,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
     <>
       <div className="container fixed-top bg-white">
         <div className="row justify-content-between">
-          <div className="col p-2">
+          <div className="col px-2 py-3">
             <div className="d-flex justify-content-between align-items-center">
               <Link className="navbar-brand" href="/">
                 <img
