@@ -18,7 +18,6 @@ import categories from "@/components/navigation/navbar/categories";
 
 export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
   const [isOpen, setIsOpen] = useState(false);
-  // const [showSearch, setShowSearch] = useState(false);
   const router = useRouter();
   const { loading, authUser, logOut } = useAuth();
 
