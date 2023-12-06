@@ -22,8 +22,8 @@ export default function Signup() {
   const { authUser, signUp } = useAuth();
   const router = useRouter();
 
-  const onSignup = async (event) => {
-    event.preventDefault();
+  const onSignup = async (e) => {
+    e.preventDefault();
     if (formIndex < 2) setFormIndex(formIndex + 1);
     if (formIndex == 2) {
       await signUp(email, password)
@@ -75,7 +75,7 @@ export default function Signup() {
 
   if (authUser && Cookies.get("EphronSignedIn")) {
     return (
-      <div className="page-not-found">
+      <div className="error-page-container">
         <div className="bg">
           <Information variant="Bulk" size={200} />
           <h5>You are already signed in</h5>
@@ -117,7 +117,7 @@ export default function Signup() {
                       className="form-control rounded-0 py-2"
                       id="firstName"
                       placeholder="First Name"
-                      onChange={(event) => setFirstName(event.target.value)}
+                      onChange={(e) => setFirstName(e.target.value)}
                     />
                   </div>
 
@@ -127,7 +127,7 @@ export default function Signup() {
                     className="form-control rounded-0 py-2"
                     id="lastName"
                     placeholder="Last Name"
-                    onChange={(event) => setLastName(event.target.value)}
+                    onChange={(e) => setLastName(e.target.value)}
                   />
                 </>
               )}
@@ -141,7 +141,7 @@ export default function Signup() {
                       className="form-control rounded-0 py-2"
                       id="phoneNumber"
                       placeholder="Phone Number"
-                      onChange={(event) => setPhoneNumber(event.target.value)}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                   </div>
 
@@ -149,7 +149,7 @@ export default function Signup() {
                     className="form-select rounded-0 py-2"
                     required
                     id="gender"
-                    onChange={(event) => setGender(event.target.value)}
+                    onChange={(e) => setGender(e.target.value)}
                   >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -166,7 +166,7 @@ export default function Signup() {
                       className="form-control rounded-0 py-2"
                       id="emailAddr"
                       placeholder="Email Address"
-                      onChange={(event) => setEmail(event.target.value)}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
 
@@ -176,7 +176,7 @@ export default function Signup() {
                     className="form-control rounded-0 py-2"
                     id="password"
                     placeholder="Password"
-                    onChange={(event) => setPassword(event.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </>
               )}
@@ -194,6 +194,7 @@ export default function Signup() {
 
                 <button
                   type="submit"
+                  disabled={loading}
                   className="btn btn-lg rounded-0 border-0 bg_primary white w-100"
                 >
                   {formIndex != 2 && !loading && "Next"}

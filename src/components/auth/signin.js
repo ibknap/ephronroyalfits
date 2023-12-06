@@ -17,8 +17,8 @@ export default function Signin() {
   const { authUser, signIn } = useAuth();
   const router = useRouter();
 
-  const onSignin = async (event) => {
-    event.preventDefault();
+  const onSignin = async (e) => {
+    e.preventDefault();
     setLoading(true);
 
     await signIn(email, password)
@@ -38,7 +38,7 @@ export default function Signin() {
                 toast.success("Welcome back admin");
               } else {
                 Cookies.set("EphronSignedIn", true, { expires: 7 });
-                router.push("/");
+                router.push("/account");
                 toast.success("User signed in");
               }
             } else toast.error("User not found");
@@ -49,7 +49,9 @@ export default function Signin() {
       })
       .catch((e) => {
         if (e.code === "auth/user-not-found") toast.error("User not found");
-        else if (e.code === "auth/wrong-password") {
+        else if (e.code === "auth/invalid-login-credentials") {
+          toast.error("Wrong email/password");
+        } else if (e.code === "auth/wrong-password") {
           toast.error("Wrong password");
         } else toast.error(`Something is wrong: ${e.message}`);
       })
@@ -58,7 +60,7 @@ export default function Signin() {
 
   if (authUser && Cookies.get("EphronSignedIn")) {
     return (
-      <div className="page-not-found">
+      <div className="error-page-container">
         <div className="bg">
           <Information variant="Bulk" size={200} />
           <h5>You are already signed in</h5>
@@ -98,7 +100,7 @@ export default function Signin() {
                   className="form-control rounded-0 py-2"
                   id="emailAddr"
                   placeholder="Email Address"
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
@@ -108,11 +110,12 @@ export default function Signin() {
                 className="form-control rounded-0 py-2"
                 id="password"
                 placeholder="Password"
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
 
               <button
                 type="submit"
+                disabled={loading}
                 className="btn btn-lg rounded-0 border-0 bg_primary white w-100 mt-4"
               >
                 {loading ? <Loader /> : "Signin"}

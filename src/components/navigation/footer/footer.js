@@ -13,8 +13,8 @@ export default function Footer() {
   const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
 
-  const onSendMessage = async (event) => {
-    event.preventDefault();
+  const onSendMessage = async (e) => {
+    e.preventDefault();
     setSending(true);
 
     const collRef = collection(db, "contactUs");
@@ -99,7 +99,7 @@ export default function Footer() {
                   className={`form-control ${styles.form_field}`}
                   required
                   placeholder="Full Name"
-                  onChange={(event) => setFullName(event.target.value)}
+                  onChange={(e) => setFullName(e.target.value)}
                 />
               </div>
 
@@ -109,7 +109,7 @@ export default function Footer() {
                   className={`form-control ${styles.form_field}`}
                   required
                   placeholder="Email Address"
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
@@ -120,7 +120,7 @@ export default function Footer() {
                   required
                   placeholder="Message"
                   style={{ height: "150px" }}
-                  onChange={(event) => setMessage(event.target.value)}
+                  onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
               </div>
 

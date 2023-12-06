@@ -74,7 +74,7 @@ export default function ResetPasswordPage() {
         <meta property="og:image" content="/logo/png/logo_text.png" />
         <meta property="og:image:width" content="1277" />
         <meta property="og:image:height" content="473" />
-        <meta property="og:url" content={baseURL} />
+        <meta property="og:url" content={pageURL} />
         <meta property="og:description" content={pageDesc} />
         <meta property="og:site_name" content={pageName} />
 

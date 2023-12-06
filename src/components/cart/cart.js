@@ -17,8 +17,8 @@ export default function Cart() {
   );
   const { authUser } = useAuth();
 
-  const makeDonation = (event) => {
-    event.preventDefault();
+  const makeOrder = (e) => {
+    e.preventDefault();
 
     if (authUser) {
       let handler = PaystackPop.setup({
@@ -27,25 +27,19 @@ export default function Cart() {
         email: authUser.email,
         amount: totalPrice * 100,
         ref: `${Math.floor(Math.random() * 1000000000 + 1)}`,
-        label: "Ephron Donation",
-        onClose: () => {
-          onCreateDonation(false);
-        },
-        callback: (res) => {
-          onCreateDonation(true, res.reference);
-        },
+        label: "Ephron Order",
+        onClose: () => onCreateOrder(false),
+        callback: (res) => onCreateOrder(true, res.reference),
       });
 
       handler.openIframe();
-    } else {
-      toast.error("Sign in to make donations.");
-    }
+    } else toast.error("Sign in to place order.");
   };
 
-  const onCreateDonation = async (isCompleted, ref) => {
-    const docRef = doc(collection(db, "donations"));
+  const onCreateOrder = async (isCompleted, ref) => {
+    const docRef = doc(collection(db, "orders"));
 
-    const donationDoc = {
+    const orderDoc = {
       id: ref,
       image: "https://ephronroyalfits.com/logo/png/logo_trans.png",
       name: "Cart Purchase",
@@ -57,14 +51,12 @@ export default function Cart() {
       addedOn: serverTimestamp(),
     };
 
-    await setDoc(docRef, donationDoc)
+    await setDoc(docRef, orderDoc)
       .then(async () => {
-        toast.success("Donation Completed!");
+        toast.success("Order Placed!");
         clearCart();
       })
-      .catch((error) => {
-        toast.error(`Something is wrong: ${error.message}`);
-      });
+      .catch((e) => toast.error(`Something is wrong: ${e.message}`));
   };
 
   return (
@@ -116,13 +108,13 @@ export default function Cart() {
                   </small>
                 </div>
 
-                <form onSubmit={makeDonation}>
+                <form onSubmit={makeOrder}>
                   <button
                     type="submit"
                     className={`w-100 my-3 btn btn-lg btn-success ${styles.btn_nav}`}
                   >
                     <Heart variant="Bulk" />
-                    Donate
+                    Order
                   </button>
                 </form>
               </div>

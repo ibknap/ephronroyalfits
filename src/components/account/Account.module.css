@@ -1,44 +1,33 @@
 .card_header {
-    font-weight: bold;
-    font-size: 18px;
-    border-bottom: 1px gray solid;
-    padding-bottom: 1rem;
+  font-weight: 500;
+  border-bottom: 1px gray solid;
+  padding-bottom: 1rem;
 }
 
-.btn_nav {
-    background: #947f57;
-    border: none;
+.order_status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
 }
 
-.btn_nav:hover {
-    background: #E8E8E8 !important;
-    border: none;
-}
-
-.donate_status {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 12px;
-}
-
-.saved_donate {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 14px;
-    border-radius: 0.25rem;
-    background: #947f57 !important;
-    border: none !important;
+.saved_order {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
+  border-radius: 0.25rem;
+  background: #947f57 !important;
+  border: none !important;
 }
 
 .saved_remove,
 .saved_remove:hover {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 14px;
-    background: transparent !important;
-    border: none !important;
-    color: red !important;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+  background: transparent !important;
+  border: none !important;
+  color: red !important;
 }

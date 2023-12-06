@@ -10,8 +10,8 @@ export default function ResetPassword() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
 
-  const onForgotPassword = async (event) => {
-    event.preventDefault();
+  const onForgotPassword = async (e) => {
+    e.preventDefault();
     setLoading(true);
 
     sendPasswordResetEmail(auth, email)
@@ -48,11 +48,12 @@ export default function ResetPassword() {
                 className="form-control rounded-0 py-2"
                 id="emailAddr"
                 placeholder="Email Address"
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
 
               <button
                 type="submit"
+                disabled={loading}
                 className="btn btn-lg rounded-0 border-0 bg_primary white w-100 mt-4"
               >
                 {loading ? <Loader /> : "Send Email"}

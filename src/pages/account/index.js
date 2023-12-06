@@ -1,19 +1,21 @@
 import Head from "next/head";
+import Navbar from "@/components/navigation/navbar/navbar";
+import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
-import Signup from "@/components/auth/signup";
+import Account from "@/components/account/account";
 
-export default function SignupPage() {
+export default function AccountPage() {
   // page default data
-  const pageName = "Ephron - Signup";
+  const pageName = "Ephron Royal 'fits - My Account";
   const pageDesc =
-    "Signup for your Ephron Royal 'fits account and start shopping.";
+    "Elevate your style with Ephron Royal 'fits, where art meets fashion in a harmonious blend of creativity and elegance. Explore our online store for a curated collection of unique art-inspired fashion pieces that allow you to express your individuality. Immerse yourself in a world where every garment tells a story, bringing together the realms of art and fashion seamlessly. Discover the perfect fusion of artistic expression and sartorial sophistication at Ephron Royal 'fits.";
   const pageKeywords =
     "Art-inspired fashion, Unique fashion pieces, Creative clothing, Fashion with a story, Wearable art, Eccentric style, Artistic expression in fashion, Fashion showcase, Individuality in clothing, Ephron Royal 'fits online store";
   const baseURL = "https://ephronroyalfits.com";
-  const pageURL = "https://ephronroyalfits.com/auth/signup";
+  const pageURL = "https://ephronroyalfits.com/account";
 
   // web site schema
-  const wSSchema = getWSSchema(baseURL);
+  const wSSchema = getWSSchema(pageURL);
 
   // web page schema
   const wPSchema = getWPSchema(pageName, pageDesc, pageURL, [
@@ -93,7 +95,10 @@ export default function SignupPage() {
       </Head>
 
       {/* page content */}
-      <Signup />
+      <Navbar />
+      <div className="bottom_spacer" />
+      <Account />
+      <Footer />
     </>
   );
 }

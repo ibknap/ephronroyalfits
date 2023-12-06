@@ -89,7 +89,7 @@ export default function NotFoundPage() {
       </Head>
 
       <main className={inter.className}>
-        <div className="page-not-found">
+        <div className="error-page-container">
           <div className="bg">
             <img src="/logo/svg/logo_text_trans.svg" width={200} />
             <h2 className="fw-bold primary">404</h2>
