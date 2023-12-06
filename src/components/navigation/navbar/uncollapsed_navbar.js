@@ -130,7 +130,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                   className="dropdown-menu rounded-0"
                   aria-labelledby="accountMenu"
                 >
-                  {!loading && !authUser && (
+                  {!loading && authUser && (
                     <>
                       <li className="m-2 mt-0">
                         <Link className={styles.dropdown_item} href="/account">
@@ -177,7 +177,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                   </li>
 
                   <li className="m-2 mb-0">
-                    {!loading && !authUser ? (
+                    {!loading && authUser ? (
                       <button
                         className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
                         onClick={logOut}

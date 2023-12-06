@@ -151,7 +151,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
               )
             )}
 
-            {!loading && !authUser && (
+            {!loading && authUser && (
               <>
                 <li className={`pb-1 pt-2 ${styles.collapsed_menu_header}`}>
                   Account
