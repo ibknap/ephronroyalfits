@@ -81,7 +81,7 @@ export default function Footer() {
               <Instagram className="me-1" variant="Bulk" />
               <Link
                 className="text-decoration-none primary"
-                href="https://www.instagram.com/christ_our_pride/"
+                href="https://www.instagram.com/ephron_royal_fits/"
                 target="_blank"
               >
                 christ_our_pride
