@@ -1,28 +1,47 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 const SavedContext = createContext();
 
 export function SavedProvider({ children }) {
-    const [savedItems, setSavedItems] = useState([]);
+  const [savedItems, setSavedItems] = useState([]);
 
-    const addSavedItem = (item) => {
-        if (!savedItems.some((savedItem) => savedItem.id === item.id)) {
-            setSavedItems((prevSavedItems) => [...prevSavedItems, item]);
-            toast.success(`Added ${item.name} to saved`);
-        } else {
-            toast.warning('Item is already saved!');
-        }
-    };
+  useEffect(() => {
+    const savedProducts = JSON.parse(localStorage.getItem("ephronSaved"));
+    if (savedProducts) {
+      setSavedItems(savedProducts);
+    }
+  }, []);
 
-    const removeSavedItem = (id) => {
-        setSavedItems((prevItems) => prevItems.filter((item) => item.id !== id));
-        toast.success(`Removed item with ID ${id} from saved`);
-    };
+  const addSavedItem = (item) => {
+    setSavedItems([...savedItems, { ...item, addedOn: new Date() }]);
+    localStorage.setItem(
+      "ephronSaved",
+      JSON.stringify([...savedItems, { ...item, addedOn: new Date() }])
+    );
+    toast.success("Product saved");
+  };
 
-    const value = { savedItems, addSavedItem, removeSavedItem };
+  const removeSavedItem = (id) => {
+    setSavedItems(savedItems.filter((item) => item.id !== id));
+    localStorage.setItem(
+      "ephronSaved",
+      JSON.stringify(savedItems.filter((item) => item.id !== id))
+    );
+    toast.success("Product removed from saved");
+  };
 
-    return <SavedContext.Provider value={value}>{children}</SavedContext.Provider>;
+  const isInSaved = (id) => {
+    return savedItems.some((item) => item.id === id);
+  };
+
+  const value = { savedItems, addSavedItem, removeSavedItem, isInSaved };
+
+  return (
+    <SavedContext.Provider value={value}>{children}</SavedContext.Provider>
+  );
 }
 
-export function useSaved() { return useContext(SavedContext); }
+export function useSaved() {
+  return useContext(SavedContext);
+}

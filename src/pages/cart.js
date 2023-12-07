@@ -3,11 +3,11 @@ import Navbar from "@/components/navigation/navbar/navbar";
 import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
 import { Inter } from "next/font/google";
-import { Setting2 } from "iconsax-react";
 import { useState } from "react";
 import SearchBox from "@/components/search/search";
 import Hero from "@/components/home/hero";
 import Products from "@/components/products/products";
+import Cart from "@/components/cart/cart";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,12 +16,13 @@ export default function HomePage() {
   const handleShowSearch = (state) => setShowSearch(state);
 
   // page default data
-  const pageName = "Ephron Royal 'fits | Art & Fashion";
+  const pageName = "Ephron Royal 'fits - Cart";
   const pageDesc =
     "Elevate your style with Ephron Royal 'fits, where art meets fashion in a harmonious blend of creativity and elegance. Explore our online store for a curated collection of unique art-inspired fashion pieces that allow you to express your individuality. Immerse yourself in a world where every garment tells a story, bringing together the realms of art and fashion seamlessly. Discover the perfect fusion of artistic expression and sartorial sophistication at Ephron Royal 'fits.";
   const pageKeywords =
     "Art-inspired fashion, Unique fashion pieces, Creative clothing, Fashion with a story, Wearable art, Eccentric style, Artistic expression in fashion, Fashion showcase, Individuality in clothing, Ephron Royal 'fits online store";
-  const baseURL = "https://ephronroyalfits.com";
+  const baseURL = "https://ephronroyalfits.com/";
+  const pageURL = "https://ephronroyalfits.com/cart";
 
   // web site schema
   const wSSchema = getWSSchema(baseURL);
@@ -33,6 +34,12 @@ export default function HomePage() {
       position: 1,
       name: "Home",
       item: baseURL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: pageName,
+      item: pageURL,
     },
   ]);
 
@@ -100,9 +107,8 @@ export default function HomePage() {
       <main className={inter.className}>
         <Navbar emitShowSearch={handleShowSearch} />
 
-        <Hero />
+        <Cart />
 
-        <Products length={8} title="NEW ARRIVALS" tag="new" />
         <Footer />
       </main>
 

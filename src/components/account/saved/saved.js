@@ -12,8 +12,11 @@ import { db } from "@/firebase/fire_config";
 import { doc, onSnapshot } from "firebase/firestore";
 import { toast } from "react-toastify";
 import NeedAuth from "@/components/restrictions/need_auth";
+import { useCart } from "@/components/cart/cart_context";
+import { truncate } from "@/components/utils/truncate";
 
 export default function Saved() {
+  const { addItem, isInCart } = useCart();
   const { savedItems, removeSavedItem } = useSaved();
   const [user, setUser] = useState(null);
   const { authUser } = useAuth();
@@ -21,18 +24,12 @@ export default function Saved() {
   useEffect(() => {
     if (authUser) {
       const userRef = doc(db, "users", authUser.email);
-
       const unsubscribe = onSnapshot(userRef, (snapshot) => {
-        if (snapshot.exists()) {
-          setUser(snapshot.data());
-        } else {
-          toast.error("User data not found");
-        }
+        if (snapshot.exists()) setUser(snapshot.data());
+        else toast.error("User not found");
       });
 
-      return () => {
-        unsubscribe();
-      };
+      return () => unsubscribe();
     }
   }, [authUser]);
 
@@ -55,7 +52,7 @@ export default function Saved() {
                         {savedItems.map((item) => (
                           <li
                             key={item.id}
-                            className="d-flex my-2 p-2 card position-relative"
+                            className="d-flex my-2 p-2 card rounded-0 position-relative"
                           >
                             <Link
                               href={`/product/${item.id}`}
@@ -64,30 +61,36 @@ export default function Saved() {
                               <img
                                 src={item.image}
                                 alt={item.name}
-                                className="rounded border"
                                 width={100}
                                 height={100}
                                 style={{ objectFit: "cover" }}
                               />
                               <div className="w-75 mx-2 d-flex flex-column justify-content-between">
-                                <span className="secondary">{item.name}</span>
+                                <span className="text-dark">
+                                  {truncate(item.name, 40)}
+                                </span>
                                 <span className="text-muted">
                                   {toCurrency(item.price)}
                                 </span>
                                 <span className="text-muted">
-                                  On: {item.addedOn}
+                                  On:{" "}
+                                  {/* {item.addedOn.toDate().toLocaleDateString()} */}
                                 </span>
                               </div>
                             </Link>
+                            {!isInCart(item.id) && (
+                              <button
+                                type="button"
+                                onClick={() => addItem(item)}
+                                className={`btn btn-dark rounded-0 border-0 ${styles.saved_order}`}
+                              >
+                                Order
+                              </button>
+                            )}
+
                             <button
                               type="button"
-                              className={`btn btn-lg btn-success shadow-sm ${styles.saved_order}`}
-                            >
-                              Order
-                            </button>
-                            <button
-                              type="button"
-                              className={`btn btn-lg btn-success ${styles.saved_remove}`}
+                              className={`btn ${styles.saved_remove}`}
                               onClick={() => removeSavedItem(item.id)}
                             >
                               Remove

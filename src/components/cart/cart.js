@@ -1,5 +1,5 @@
 import styles from "@/components/cart/Cart.module.css";
-import { Heart, ShoppingCart } from "iconsax-react";
+import { ShoppingCart } from "iconsax-react";
 import Link from "next/link";
 import { useCart } from "@/components/cart/cart_context";
 import CartItem from "@/components/cart/cart_item";
@@ -12,18 +12,16 @@ import { db } from "@/firebase/fire_config";
 export default function Cart() {
   const { items, clearCart } = useCart();
   const totalPrice = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.price * item.cartQuantity,
     0
   );
   const { authUser } = useAuth();
 
-  const makeOrder = (e) => {
-    e.preventDefault();
-
+  const makeOrder = () => {
     if (authUser) {
       let handler = PaystackPop.setup({
-        // key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY,
-        key: process.env.NEXT_PUBLIC_PAYSTACK_LIVE_PUBLIC_KEY,
+        key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY,
+        // key: process.env.NEXT_PUBLIC_PAYSTACK_LIVE_PUBLIC_KEY,
         email: authUser.email,
         amount: totalPrice * 100,
         ref: `${Math.floor(Math.random() * 1000000000 + 1)}`,
@@ -60,68 +58,64 @@ export default function Cart() {
   };
 
   return (
-    <>
+    <div style={{ marginTop: "6rem" }}>
       {items.length == 0 && (
-        <div className="container">
+        <div className="container my-5">
           <div className="row justify-content-center">
-            <div className="col-sm-10">
-              <div className="shadow my-5 mx-2 p-2 text-center rounded">
-                <ShoppingCart className="primary" size="200" />
+            <div className="col-sm-10 text-center">
+              <ShoppingCart variant="Bulk" size="200" />
+
+              <div className="my-4">
                 <h4>Your cart is empty!</h4>
-                <p className="text-muted">Browse and start donating!</p>
-                <Link
-                  href="/"
-                  className="my-4 btn btn-lg bg_primary white shadow border_none"
-                >
-                  Start Donating
-                </Link>
+                <p className="text-muted m-0">
+                  Browse and start ordering with a click.
+                </p>
               </div>
+
+              <Link
+                href="/"
+                className="my-4 btn btn-lg btn-dark border-0 rounded-0"
+              >
+                Start Shopping
+              </Link>
             </div>
           </div>
         </div>
       )}
 
       {items.length > 0 && (
-        <div className="container">
+        <div className="container my-5">
           <div className="row">
             <div className="col-sm-8">
-              <div className="m-2 shadow-sm p-3 rounded">
-                <div className={styles.card_header}>Shopping Cart</div>
-                <div className="row mt-2">
-                  {items.map((item) => (
-                    <CartItem key={item.id} item={item} />
-                  ))}
-                </div>
+              <div className={styles.card_header}>Shopping Cart</div>
+              <div className="row mt-2">
+                {items.map((item, index) => (
+                  <CartItem key={index} item={item} />
+                ))}
               </div>
             </div>
 
-            <div className="col-md-3">
-              <div className="m-2 p-2 shadow-sm rounded">
+            <div className="col-md-4">
+              <div className="m-2 p-2 shadow-sm">
                 <div className={styles.card_header}>Summary</div>
                 <div className="d-flex flex-column py-3 border-bottom justify-content-between">
                   <div className="d-flex justify-content-between">
                     <b>Total</b>
                     <b>{toCurrency(totalPrice)}</b>
                   </div>
-                  <small className="text-muted">
-                    Delivery fees not included
-                  </small>
                 </div>
 
-                <form onSubmit={makeOrder}>
-                  <button
-                    type="submit"
-                    className={`w-100 my-3 btn btn-lg btn-success ${styles.btn_nav}`}
-                  >
-                    <Heart variant="Bulk" />
-                    Order
-                  </button>
-                </form>
+                <button
+                  onClick={() => makeOrder()}
+                  className="btn btn-lg btn-dark border-0 rounded-0 w-100 mt-4"
+                >
+                  Place Order
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
