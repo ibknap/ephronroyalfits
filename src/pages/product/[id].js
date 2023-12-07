@@ -5,8 +5,6 @@ import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
 import { Inter } from "next/font/google";
 import { useState } from "react";
 import SearchBox from "@/components/search/search";
-import Hero from "@/components/home/hero";
-import Products from "@/components/products/products";
 import { useRouter } from "next/router";
 import Product from "@/components/products/product";
 
@@ -16,15 +14,15 @@ export default function ProductPage() {
   const [showSearch, setShowSearch] = useState(false);
   const handleShowSearch = (state) => setShowSearch(state);
   const router = useRouter();
-  const { sku, product_name } = router.query;
+  const { id, product_name } = router.query;
 
   // page default data
-  const pageName = "Ephron Royal 'fits | Art & Fashion";
+  const pageName = "Ephron Royal 'fits";
   const pageDesc =
     "Elevate your style with Ephron Royal 'fits, where art meets fashion in a harmonious blend of creativity and elegance. Explore our online store for a curated collection of unique art-inspired fashion pieces that allow you to express your individuality. Immerse yourself in a world where every garment tells a story, bringing together the realms of art and fashion seamlessly. Discover the perfect fusion of artistic expression and sartorial sophistication at Ephron Royal 'fits.";
   const pageKeywords =
     "Art-inspired fashion, Unique fashion pieces, Creative clothing, Fashion with a story, Wearable art, Eccentric style, Artistic expression in fashion, Fashion showcase, Individuality in clothing, Ephron Royal 'fits online store";
-  const baseURL = `https://ephronroyalfits.com/${sku}`;
+  const baseURL = `https://ephronroyalfits.com/${id}`;
 
   // web site schema
   const wSSchema = getWSSchema(baseURL);
@@ -100,9 +98,15 @@ export default function ProductPage() {
         />
       </Head>
 
-      <Navbar />
-      <Product sku={sku} />
-      <Footer />
+      <main className={inter.className}>
+        <Navbar emitShowSearch={handleShowSearch} />
+        <Product id={id} />
+        <Footer />
+      </main>
+
+      {showSearch && (
+        <SearchBox show={showSearch} onHide={() => setShowSearch(false)} />
+      )}
     </>
   );
 }

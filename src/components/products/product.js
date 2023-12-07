@@ -7,25 +7,24 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
 import { toast } from "react-toastify";
 
-export default function Product({ sku }) {
+export default function Product({ id }) {
   const { items, removeItem, isInCart, addItem, getItem, updateQuantity } =
     useCart();
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
 
   useEffect(() => {
-    if (sku) {
-      const docRef = doc(db, "products", sku);
+    if (id) {
+      const docRef = doc(db, "products", id);
 
       const unsubscribe = onSnapshot(docRef, (snap) => {
         if (snap.exists()) setProduct(snap.data());
-
-        toast.error("Product not found");
+        else toast.error("Product not found");
       });
 
       return () => unsubscribe();
     }
-  }, [sku]);
+  }, [id]);
 
   if (!product) return <Loader fullHeight={true} />;
 
@@ -62,7 +61,7 @@ export default function Product({ sku }) {
         <div className="col-md-4">
           <div className="mb-2 px-2">
             <h5 className="fw-normal">{product.name}</h5>
-            <small className="fw-bold">sku: {product.sku}</small>
+            <small className="fw-bold">id: {product.id}</small>
 
             <h4 className="primary mt-3">{toCurrency(product.price)}</h4>
             <p className="fw-bold">Adet: {product.quantity}</p>
@@ -95,18 +94,18 @@ export default function Product({ sku }) {
               </div>
             </div>
 
-            {isInCart(product.sku) ? (
+            {isInCart(product.id) ? (
               <div className="d-flex my-3">
                 <button
                   className="border_none mx-2 bg_black rounded-0 white shadow-sm"
-                  onClick={() => decreaseQuantity(product.sku)}
+                  onClick={() => decreaseQuantity(product.id)}
                 >
                   <Minus />
                 </button>
                 <p className="centered-text">{getItem(product).cartQuantity}</p>
                 <button
                   className="border_none mx-2 bg_black rounded-0 white shadow-sm"
-                  onClick={() => increaseQuantity(product.sku)}
+                  onClick={() => increaseQuantity(product.id)}
                 >
                   <Add />
                 </button>

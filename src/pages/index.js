@@ -98,7 +98,6 @@ export default function HomePage() {
 
       <main className={inter.className}>
         <Navbar emitShowSearch={handleShowSearch} />
-
         <Hero />
 
         <Products length={8} title="NEW ARRIVALS" tag="new" />

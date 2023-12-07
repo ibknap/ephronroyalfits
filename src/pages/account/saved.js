@@ -3,8 +3,15 @@ import Navbar from "@/components/navigation/navbar/navbar";
 import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
 import Saved from "@/components/account/saved/saved";
+import { Inter } from "next/font/google";
+import { useState } from "react";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function SavedPage() {
+  const [showSearch, setShowSearch] = useState(false);
+  const handleShowSearch = (state) => setShowSearch(state);
+
   // page default data
   const pageName = "Ephron Royal 'fits - Saved";
   const pageDesc =
@@ -102,10 +109,16 @@ export default function SavedPage() {
       </Head>
 
       {/* page content */}
-      <Navbar />
-      <div className="bottom_spacer" />
-      <Saved />
-      <Footer />
+      <main className={inter.className}>
+        <Navbar emitShowSearch={handleShowSearch} />
+        <div className="bottom_spacer" />
+        <Saved />
+        <Footer />
+      </main>
+
+      {showSearch && (
+        <SearchBox show={showSearch} onHide={() => setShowSearch(false)} />
+      )}
     </>
   );
 }
