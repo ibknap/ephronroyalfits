@@ -5,6 +5,7 @@ import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
 import Account from "@/components/account/account";
 import { Inter } from "next/font/google";
 import { useState } from "react";
+import SearchBox from "@/components/search/search";
 
 const inter = Inter({ subsets: ["latin"] });
 
