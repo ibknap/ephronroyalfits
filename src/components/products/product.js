@@ -1,7 +1,7 @@
 import { useCart } from "@/components/cart/cart_context";
 import { useState, useEffect } from "react";
 import toCurrency from "@/components/utils/toCurrency";
-import { Add, Minus, ShoppingCart } from "iconsax-react";
+import { Add, Minus, Setting2, ShoppingCart } from "iconsax-react";
 import Loader from "@/components/loader/loader";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
@@ -42,16 +42,22 @@ export default function Product({ id }) {
   return (
     <div className="container mt-5">
       <div className="row">
+        <div className="col-12 my-5 text-center">
+          <Setting2 size={200} />
+          <p>Working on next...</p>
+        </div>
+      </div>
+      {/* <div className="row">
         <div className="col-md-8">
           <div className="mb-2 rounded-0 card shadow">
             <div className="row d-flex">
               <div className="col-12">
                 <img
-                  src={product?.image}
+                  src={product.image}
                   alt={product.name}
                   width="100%"
                   className="rounded-0"
-                  style={{ objectFit: "cover", minHeight: 350 }}
+                  style={{ objectFit: "cover", height: 350 }}
                 />
               </div>
             </div>
@@ -128,7 +134,7 @@ export default function Product({ id }) {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
