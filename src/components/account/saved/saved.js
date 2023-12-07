@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import NeedAuth from "@/components/restrictions/need_auth";
 import { useCart } from "@/components/cart/cart_context";
 import { truncate } from "@/components/utils/truncate";
+import { formatTimestamp } from "@/components/utils/format_timestamp";
 
 export default function Saved() {
   const { addItem, isInCart } = useCart();
@@ -73,8 +74,7 @@ export default function Saved() {
                                   {toCurrency(item.price)}
                                 </span>
                                 <span className="text-muted">
-                                  On:{" "}
-                                  {/* {item.addedOn.toDate().toLocaleDateString()} */}
+                                  On: {formatTimestamp(item.addedOn)}
                                 </span>
                               </div>
                             </Link>

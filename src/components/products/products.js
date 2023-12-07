@@ -4,37 +4,25 @@ import toCurrency from "@/components/utils/toCurrency";
 import Link from "next/link";
 import { useSaved } from "@/components/account/saved/saved_context";
 import { useCart } from "@/components/cart/cart_context";
-import { useState } from "react";
-
-const products = [
-  {
-    id: "1",
-    image:
-      "https://elevatedfaith.com/cdn/shop/files/Highs-and-Lows-Blue-Unisex-Tee_01_720x.jpg",
-    otherImages: [
-      "https://elevatedfaith.com/cdn/shop/files/Highs-and-Lows-Blue-Unisex-Tee_02_720x.jpg",
-      "https://elevatedfaith.com/cdn/shop/files/Highs-and-Lows-Blue-Unisex-Tee_03_720x.jpg",
-      "https://elevatedfaith.com/cdn/shop/files/Highs-and-Lows-Blue-Unisex-Tee_04_720x.jpg",
-    ],
-    name: "GOD IS NOT DONE YET UNISEX HOODIE",
-    price: "20770.90",
-    description:
-      "And I am sure of this, that he who began a good work in you will bring it to completion at the day of Jesus Christ.",
-    specifications: [
-      { Size: `Model is 5'10" and wearing a size Medium.` },
-      { Fit: "Relaxed, Unisex Fit" },
-      { Color: "Custard" },
-      { Compostion: "70% Cotton, 30% Polyester" },
-      { Features: "Super Soft, Pre-Shrunk" },
-    ],
-    addedOn: "",
-  },
-];
+import { useEffect, useState } from "react";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { db } from "@/firebase/fire_config";
 
 export default function Products({ length = 0, title = "", tag = "all" }) {
   const { addItem, isInCart, removeItem } = useCart();
   const { addSavedItem, isInSaved, removeSavedItem } = useSaved();
   const [hoveredProductId, setHoveredProductId] = useState(null);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const q = query(collection(db, "products"), orderBy("addedOn"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const data = snapshot.docs.map((doc) => doc.data());
+      setProducts(data);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const changeImg = (id, isHover) => {
     const product = products.find((p) => p.id === id);
@@ -70,7 +58,7 @@ export default function Products({ length = 0, title = "", tag = "all" }) {
 
                 <div className="product-body">
                   <Link
-                    href={`/products/${product.id}`}
+                    href={`/product/${product.id}`}
                     className="text-decoration-none text-dark"
                   >
                     <h1>{truncate(product.name.toUpperCase(), 35)}</h1>
