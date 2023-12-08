@@ -34,7 +34,7 @@ export default function Signin() {
                 toast.warning("User Has been disabled! contact Ephron");
               } else if (isUserAdmin && isUserActive) {
                 Cookies.set("EphronSignedIn", true, { expires: 14 });
-                router.push("/dashboard");
+                router.push("/dashboard/orders");
                 toast.success("Welcome back admin");
               } else {
                 Cookies.set("EphronSignedIn", true, { expires: 7 });

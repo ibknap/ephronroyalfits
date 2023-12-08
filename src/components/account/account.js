@@ -63,7 +63,7 @@ export default function Account() {
                         ADDRESS BOOK
                         <button
                           type="button"
-                          className="primary trans border_none"
+                          className="primary trans border-0"
                           data-bs-toggle="modal"
                           data-bs-target="#addressBookModal"
                         >

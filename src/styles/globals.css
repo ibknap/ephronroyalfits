@@ -88,7 +88,7 @@
 }
 
 /* others */
-.border_none {
+.border-0 {
   border: none !important;
 }
 
@@ -201,7 +201,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: black;
   width: 15%;
   top: 0;
   left: 0;
@@ -218,11 +218,24 @@
 
 .dashboard_sidebar_header {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   padding: 2rem 1rem;
-  text-align: center;
-  background-color: #e8e8e8;
+  text-align: left;
+  background-color: black;
   color: white;
+}
+
+.dashboard_sidebar_header > img {
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 768px) {
+  .dashboard_sidebar_header {
+    padding: 10px 0;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 .dashboard_sidebar_item {
