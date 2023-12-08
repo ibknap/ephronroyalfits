@@ -17,18 +17,13 @@ export default function Account() {
   useEffect(() => {
     if (authUser) {
       const userRef = doc(db, "users", authUser.email);
-
       const unsubscribe = onSnapshot(userRef, (snapshot) => {
         if (snapshot.exists()) {
           setUser(snapshot.data());
-        } else {
-          toast.error("User data not found");
-        }
+        } else toast.error("User data not found");
       });
 
-      return () => {
-        unsubscribe();
-      };
+      return () => unsubscribe();
     }
   }, [authUser]);
 

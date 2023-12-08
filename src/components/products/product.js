@@ -1,17 +1,47 @@
 import { useCart } from "@/components/cart/cart_context";
 import { useState, useEffect } from "react";
 import toCurrency from "@/components/utils/toCurrency";
-import { Add, Minus, Setting2, ShoppingCart } from "iconsax-react";
+import { Add, HeartAdd, Minus, ShoppingCart, Trash } from "iconsax-react";
 import Loader from "@/components/loader/loader";
-import { doc, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
 import { toast } from "react-toastify";
+import { useSaved } from "@/components/account/saved/saved_context";
+import Link from "next/link";
+import { truncate } from "@/components/utils/truncate";
+import shuffleArray from "@/components/utils/shuffle_array";
 
 export default function Product({ id }) {
   const { items, removeItem, isInCart, addItem, getItem, updateQuantity } =
     useCart();
+  const { addSavedItem, removeSavedItem, isInSaved } = useSaved();
   const [product, setProduct] = useState(null);
-  const [selectedVariant, setSelectedVariant] = useState(null);
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [hoveredProductId, setHoveredProductId] = useState(null);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const q = query(collection(db, "products"), orderBy("addedOn"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const data = snapshot.docs.map((doc) => doc.data());
+      const shuffledProducts = shuffleArray(data);
+      setProducts(shuffledProducts);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const changeImg = (id, isHover) => {
+    const product = products.find((p) => p.id === id);
+    if (product) return isHover ? product.otherImages[0] : product.image;
+    return "";
+  };
 
   useEffect(() => {
     if (id) {
@@ -40,101 +70,181 @@ export default function Product({ id }) {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-12 my-5 text-center">
-          <Setting2 size={200} />
-          <p>Working on next...</p>
-        </div>
-      </div>
-      {/* <div className="row">
-        <div className="col-md-8">
-          <div className="mb-2 rounded-0 card shadow">
-            <div className="row d-flex">
-              <div className="col-12">
+    <>
+      <div className="bottom_spacer" />
+
+      <div className="container mt-2 mb-5">
+        <div className="row">
+          <div className="col-md-7">
+            <div className="row mb-3">
+              <div className="col-2 text-center pe-0">
+                <ul className="list-unstyled p-0 m-0">
+                  {[product.image, ...product.otherImages].map((img, index) => (
+                    <li
+                      key={index}
+                      onClick={() => setSelectedImg(img)}
+                      className="mb-3 pe-active"
+                    >
+                      <img
+                        src={img}
+                        alt={index}
+                        className="product-detail-other-img"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="col-10 position-relative">
                 <img
-                  src={product.image}
+                  src={selectedImg != null ? selectedImg : product.image}
                   alt={product.name}
-                  width="100%"
-                  className="rounded-0"
-                  style={{ objectFit: "cover", height: 350 }}
+                  className="product-detail-img"
+                />
+                <HeartAdd
+                  onClick={() =>
+                    isInSaved(product.id)
+                      ? removeSavedItem(product.id)
+                      : addSavedItem(product)
+                  }
+                  variant="Bulk"
+                  size={32}
+                  className={`product-saved pe-active me-3 ${
+                    isInSaved(product.id) ? "primary" : "text-dark"
+                  }`}
                 />
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="col-md-4">
-          <div className="mb-2 px-2">
-            <h5 className="fw-normal">{product.name}</h5>
-            <small className="fw-bold">id: {product.id}</small>
+          <div className="col-md-5">
+            <div className="mb-2 px-2">
+              <h5 className="fw-normal">{product.name}</h5>
+              <small className="fw-bold">id: {product.id}</small>
 
-            <h4 className="primary mt-3">{toCurrency(product.price)}</h4>
-            <p className="fw-bold">Adet: {product.quantity}</p>
-            <p>Barkod: {product.barcode}</p>
+              <h4 className="primary mt-4 fw-bold">
+                {toCurrency(product.price)}
+              </h4>
 
-            <div className="d-flex flex-column py-3 border-bottom justify-content-between">
-              {product.variation && (
-                <div className="mb-3">
-                  <b>Varyasyonlar</b>
-                  {product.variation.map((variation) => (
-                    <button
-                      key={variation.id} // Add a unique key to each button
-                      onClick={() => setSelectedVariant(variation)}
-                      className={`d-flex justify-content-between btn btn-sm ${
-                        selectedVariant === variation
-                          ? "btn-dark"
-                          : "btn-outline-dark"
-                      } my-2 w-100`}
-                    >
-                      {variation.name}
-                      <span>{variation.value}</span>
-                    </button>
-                  ))}
-                </div>
+              <p className="fw-bold mt-4">Quantity: {product.quantity}</p>
+
+              {product.specifications && product.specifications.length > 0 && (
+                <ul className="list-unstyled my-4">
+                  {product.specifications.map((spec) =>
+                    Object.keys(spec).map((name, index) => (
+                      <li key={index}>
+                        <strong>{name}: </strong>
+                        {spec[name]}
+                      </li>
+                    ))
+                  )}
+                </ul>
               )}
 
-              <div className="d-flex justify-content-between">
-                <b>Toplam</b>
-                <b>{toCurrency(product.price)}</b>
-              </div>
-            </div>
+              <p>{product.description}</p>
 
-            {isInCart(product.id) ? (
-              <div className="d-flex my-3">
+              {isInCart(product.id) ? (
+                <div className="d-flex mt-5 mb-3 justify-content-between align-items-center">
+                  <button
+                    className="btn btn-dark rounded-0"
+                    onClick={() => decreaseQuantity(product.id)}
+                  >
+                    <Minus />
+                  </button>
+                  {getItem(product).cartQuantity}
+                  <button
+                    className="btn btn-dark rounded-0"
+                    onClick={() => increaseQuantity(product.id)}
+                  >
+                    <Add />
+                  </button>
+                </div>
+              ) : (
                 <button
-                  className="border_none mx-2 bg_black rounded-0 white shadow-sm"
-                  onClick={() => decreaseQuantity(product.id)}
+                  onClick={() => addItem(product)}
+                  disabled={parseInt(product.quantity) === 0}
+                  className="w-100 mt-5 mb-3 btn btn-lg btn-outline-success rounded-0 outline-primary btn_nav"
                 >
-                  <Minus />
+                  <ShoppingCart variant="Bulk" className="me-2" />
+                  Add to cart
                 </button>
-                <p className="centered-text">{getItem(product).cartQuantity}</p>
-                <button
-                  className="border_none mx-2 bg_black rounded-0 white shadow-sm"
-                  onClick={() => increaseQuantity(product.id)}
-                >
-                  <Add />
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={() =>
-                  addItem({
-                    ...product,
-                    variantName: selectedVariant.name,
-                    variantValue: selectedVariant.value,
-                  })
-                }
-                disabled={product.quantity === 0 || product.quantity === "0"}
-                className="w-100 my-3 btn btn-lg btn-outline-success rounded-0 outline-primary btn_nav"
-              >
-                <ShoppingCart variant="Bulk" />
-                Sepete Ekle
-              </button>
-            )}
+              )}
+            </div>
           </div>
         </div>
-      </div> */}
-    </div>
+      </div>
+
+      <div className="container mb-5">
+        <div className="row mb-3">
+          <div className="col-12">
+            <h4>Check out</h4>
+          </div>
+        </div>
+
+        {products.length > 0 ? (
+          <div className="row">
+            {products.map((product, index) => (
+              <div
+                key={index}
+                className="col-md-3"
+                onMouseEnter={() => setHoveredProductId(product.id)}
+                onMouseLeave={() => setHoveredProductId(null)}
+              >
+                <div className="product-card mb-3">
+                  <img
+                    src={changeImg(product.id, product.id === hoveredProductId)}
+                    alt={product.name}
+                    className="product-img"
+                  />
+
+                  <div className="product-body">
+                    <Link
+                      href={`/product/${product.id}`}
+                      className="text-decoration-none text-dark"
+                    >
+                      <h1>{truncate(product.name.toUpperCase(), 35)}</h1>
+                    </Link>
+
+                    <div className="d-flex justify-content-between align-items-center">
+                      <b>{toCurrency(product.price)}</b>
+                      <button
+                        onClick={() =>
+                          isInCart(product.id)
+                            ? removeItem(product.id)
+                            : addItem(product)
+                        }
+                        className="btn btn-dark border-0 rounded-0"
+                      >
+                        {isInCart(product.id) ? "Remove" : "Add to cart"}
+                      </button>
+                    </div>
+                  </div>
+
+                  <HeartAdd
+                    onClick={() =>
+                      isInSaved(product.id)
+                        ? removeSavedItem(product.id)
+                        : addSavedItem(product)
+                    }
+                    variant="Bulk"
+                    size={28}
+                    className={`product-saved pe-active ${
+                      isInSaved(product.id) ? "primary" : "text-dark"
+                    }`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="row">
+            <div className="col-12 text-center">
+              <Trash size={200} variant="Bulk" />
+              <p className="m-0">No products added yet.</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

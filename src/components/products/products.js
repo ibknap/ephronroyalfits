@@ -1,4 +1,4 @@
-import { Heart, HeartAdd, Trash } from "iconsax-react";
+import { HeartAdd, Trash } from "iconsax-react";
 import { truncate } from "@/components/utils/truncate";
 import toCurrency from "@/components/utils/toCurrency";
 import Link from "next/link";

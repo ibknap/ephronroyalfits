@@ -84,7 +84,7 @@ export default function Saved() {
                                 onClick={() => addItem(item)}
                                 className={`btn btn-dark rounded-0 border-0 ${styles.saved_order}`}
                               >
-                                Order
+                                Add
                               </button>
                             )}
 

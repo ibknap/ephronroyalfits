@@ -12,6 +12,8 @@ import toCurrency from "@/components/utils/toCurrency";
 import Link from "next/link";
 import { Modal } from "react-bootstrap";
 import { Trash } from "iconsax-react";
+import { formatTimestamp } from "../utils/format_timestamp";
+import { truncate } from "../utils/truncate";
 
 export default function SearchBox({ show, onHide }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -71,11 +73,11 @@ export default function SearchBox({ show, onHide }) {
                 />
 
                 {searchResults.length > 0 && searchTerm.length > 0 && (
-                  <ul className="list-unstyled card">
+                  <ul className="list-unstyled mt-3">
                     {searchResults.map((result) => (
                       <li
                         key={result.id}
-                        className="d-flex my-2 p-2 card rounded-0 position-relative"
+                        className="d-flex mb-2 rounded-0 position-relative"
                       >
                         <Link
                           href={`/product/${result.id}`}
@@ -84,19 +86,18 @@ export default function SearchBox({ show, onHide }) {
                           <img
                             src={result.image}
                             alt={result.name}
-                            className="rounded border"
                             width={100}
                             height={100}
                             style={{ objectFit: "cover" }}
                           />
                           <div className="w-75 mx-2 d-flex flex-column justify-content-between">
-                            <span className="secondary">{result.name}</span>
-                            <span className="text-muted">
+                            <span className="text-dark">{truncate(result.name, 30)}</span>
+                            <span className="text-dark fw-bold">
                               {toCurrency(result.price)}
                             </span>
-                            <span className="text-muted">
-                              On: {result.addedOn}
-                            </span>
+                            <small className="text-muted">
+                              On: {formatTimestamp(result.addedOn)}
+                            </small>
                           </div>
                         </Link>
                       </li>
