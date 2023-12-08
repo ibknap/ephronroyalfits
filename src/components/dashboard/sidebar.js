@@ -22,7 +22,7 @@ export default function Sidebar() {
           <div className="d-none d-lg-block text-start">
             Ephron Admin
             <p className="text-muted">
-              <small>Royal 'fits</small>
+              <small>Royal &apos;fits</small>
             </p>
           </div>
         </div>
