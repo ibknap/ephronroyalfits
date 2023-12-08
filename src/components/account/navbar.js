@@ -1,4 +1,3 @@
-import styles from "@/components/account/Account.module.css";
 import { useMediaQuery } from "@chakra-ui/react";
 import { Bag2, HambergerMenu, Heart, User } from "iconsax-react";
 import Link from "next/link";
