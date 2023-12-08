@@ -100,7 +100,18 @@ export default function HomePage() {
         <Navbar emitShowSearch={handleShowSearch} />
         <Hero />
 
-        <Products length={8} title="NEW ARRIVALS" tag="new" />
+        <Products length={8} title="NEW ARRIVALS" tag="new" category={null} />
+
+        <Products
+          length={4}
+          title="ACCESSORIES"
+          tag={null}
+          category="accessories"
+        />
+
+        <hr className="mx-5 p-0 m-0" />
+
+        <Products length={0} title={null} tag={null} category={null} />
         <Footer />
       </main>
 

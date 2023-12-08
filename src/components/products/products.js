@@ -5,24 +5,50 @@ import Link from "next/link";
 import { useSaved } from "@/components/account/saved/saved_context";
 import { useCart } from "@/components/cart/cart_context";
 import { useEffect, useState } from "react";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
 
-export default function Products({ length = 0, title = "", tag = "all" }) {
+export default function Products({ length, title, tag, category }) {
   const { addItem, isInCart, removeItem } = useCart();
   const { addSavedItem, isInSaved, removeSavedItem } = useSaved();
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, "products"), orderBy("addedOn"));
+    let q;
+    if (category && length > 0) {
+      q = query(
+        collection(db, "products"),
+        where("category", "==", category),
+        orderBy("addedOn"),
+        limit(length)
+      );
+    } else if (category) {
+      q = query(
+        collection(db, "products"),
+        where("category", "==", category),
+        orderBy("addedOn")
+      );
+    } else if (length > 0) {
+      q = query(collection(db, "products"), orderBy("addedOn"), limit(length));
+    } else {
+      q = query(collection(db, "products"), orderBy("addedOn"));
+    }
+
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => doc.data());
       setProducts(data);
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [length, title, tag, category]);
 
   const changeImg = (id, isHover) => {
     const product = products.find((p) => p.id === id);
@@ -32,7 +58,7 @@ export default function Products({ length = 0, title = "", tag = "all" }) {
 
   return (
     <div className="container my-5">
-      {title.length > 0 && (
+      {title && (
         <div className="row mb-5">
           <div className="col-12 text-center">
             <h3>{title}</h3>
@@ -79,7 +105,7 @@ export default function Products({ length = 0, title = "", tag = "all" }) {
                   </div>
                 </div>
 
-                {tag !== "all" && <div className="product-tag">{tag}</div>}
+                {tag && <div className="product-tag">{tag}</div>}
 
                 <HeartAdd
                   onClick={() =>
