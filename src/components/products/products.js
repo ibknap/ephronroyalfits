@@ -14,8 +14,16 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
+import shuffleArray from "@/components/utils/shuffle_array";
 
-export default function Products({ length, title, tag, category }) {
+export default function Products({
+  length,
+  title,
+  tag,
+  category,
+  sub_category,
+  random,
+}) {
   const { addItem, isInCart, removeItem } = useCart();
   const { addSavedItem, isInSaved, removeSavedItem } = useSaved();
   const [hoveredProductId, setHoveredProductId] = useState(null);
@@ -36,6 +44,13 @@ export default function Products({ length, title, tag, category }) {
         where("category", "==", category),
         orderBy("addedOn")
       );
+    } else if (category && sub_category) {
+      q = query(
+        collection(db, "products"),
+        where("category", "==", category),
+        where("sub_category", "==", sub_category),
+        orderBy("addedOn")
+      );
     } else if (length > 0) {
       q = query(collection(db, "products"), orderBy("addedOn"), limit(length));
     } else {
@@ -44,7 +59,8 @@ export default function Products({ length, title, tag, category }) {
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => doc.data());
-      setProducts(data);
+      if (random) setProducts(shuffleArray(data));
+      else setProducts(data);
     });
 
     return () => unsubscribe();
