@@ -5,9 +5,8 @@ import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
 import { Inter } from "next/font/google";
 import { useState } from "react";
 import SearchBox from "@/components/search/search";
-import Hero from "@/components/home/hero";
-import Products from "@/components/products/products";
 import Cart from "@/components/cart/cart";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -103,6 +102,7 @@ export default function HomePage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(lBSchema) }}
         />
       </Head>
+      <Script src="https://js.paystack.co/v1/inline.js" />
 
       <main className={inter.className}>
         <Navbar emitShowSearch={handleShowSearch} />

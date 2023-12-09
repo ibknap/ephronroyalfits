@@ -8,8 +8,12 @@ import { useAuth } from "@/firebase/fire_auth_context";
 import { toast } from "react-toastify";
 import { doc, collection, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
+import { useState } from "react";
+import Loader from "@/components/loader/loader";
+import { v4 } from "uuid";
 
 export default function Cart() {
+  const [loading, setLoading] = useState(false);
   const { items, clearCart } = useCart();
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.cartQuantity,
@@ -18,15 +22,17 @@ export default function Cart() {
   const { authUser } = useAuth();
 
   const makeOrder = () => {
+    setLoading(true);
+
     if (authUser) {
+      const ref = v4();
       let handler = PaystackPop.setup({
         key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY,
-        // key: process.env.NEXT_PUBLIC_PAYSTACK_LIVE_PUBLIC_KEY,
         email: authUser.email,
         amount: totalPrice * 100,
         ref: `${Math.floor(Math.random() * 1000000000 + 1)}`,
         label: "Ephron Order",
-        onClose: () => onCreateOrder(false),
+        onClose: () => onCreateOrder(false, ref),
         callback: (res) => onCreateOrder(true, res.reference),
       });
 
@@ -36,15 +42,15 @@ export default function Cart() {
 
   const onCreateOrder = async (isCompleted, ref) => {
     const docRef = doc(collection(db, "orders"));
-
     const orderDoc = {
-      id: ref,
-      image: "https://ephronroyalfits.com/logo/png/logo_trans.png",
+      id: docRef.id,
+      ref: ref,
+      image: "https://ephronroyalfits.vercel.app/logo/png/logo_trans.png",
       name: "Cart Purchase",
       email: authUser.email,
       amount: totalPrice,
-      isCompleted: isCompleted ? true : false,
-      status: isCompleted ? "delivered" : "cancelled",
+      isCompleted: isCompleted,
+      status: isCompleted ? "placed" : "cancelled",
       items: items,
       addedOn: serverTimestamp(),
     };
@@ -52,9 +58,21 @@ export default function Cart() {
     await setDoc(docRef, orderDoc)
       .then(async () => {
         toast.success("Order Placed!");
+        try {
+          const response = await fetch(`/api/send_order_${"placed"}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ order: orderDoc, email: authUser.email }),
+          });
+          if (response.ok) toast.success("Order history created");
+          else toast.error("Email could not be sent. please try again later");
+        } catch (error) {
+          toast.error(`Something went wrong. Please try again later: ${error}`);
+        }
         clearCart();
       })
-      .catch((e) => toast.error(`Something is wrong: ${e.message}`));
+      .catch((e) => toast.error(`Something is wrong: ${e.message}`))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -107,9 +125,10 @@ export default function Cart() {
 
                 <button
                   onClick={() => makeOrder()}
+                  disabled={loading}
                   className="btn btn-lg btn-dark border-0 rounded-0 w-100 mt-4"
                 >
-                  Place Order
+                  {loading ? <Loader /> : "Place Order"}
                 </button>
               </div>
             </div>
