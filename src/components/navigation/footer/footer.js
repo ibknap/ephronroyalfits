@@ -84,7 +84,7 @@ export default function Footer() {
                 href="https://www.instagram.com/ephron_royal_fits/"
                 target="_blank"
               >
-                christ_our_pride
+                ephron_royal_fits
               </Link>
             </div>
           </div>
