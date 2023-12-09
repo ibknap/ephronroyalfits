@@ -45,6 +45,7 @@ export default function ViewCartDonation({ order }) {
                       >
                         <Link
                           href={`/product/${order.id}`}
+                          target="_blank"
                           className="d-flex text-decoration-none"
                         >
                           <img
