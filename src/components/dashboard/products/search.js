@@ -77,8 +77,8 @@ export default function ProductSearch() {
         <input
           className={`form-control ${styles.input_search}`}
           type="search"
-          placeholder="Search Product By Name"
-          aria-label="Search Product By Name"
+          placeholder="search product by name"
+          aria-label="search product by name"
           value={searchTerm}
           onChange={onSearch}
         />
@@ -116,7 +116,7 @@ export default function ProductSearch() {
                         target="_blank"
                         className="text-decoration-none text-dark"
                       >
-                        {truncate(product.name, 30)}
+                        {truncate(result.name, 30)}
                       </Link>
                     </td>
                     <td className="d-table-cell align-middle">

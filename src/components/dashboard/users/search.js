@@ -56,8 +56,8 @@ export default function UserSearch() {
         <input
           className={`form-control ${styles.input_search}`}
           type="search"
-          placeholder="Search User By First Name"
-          aria-label="Search User By First Name"
+          placeholder="search user by first name"
+          aria-label="search user by first name"
           value={searchTerm}
           onChange={onSearch}
         />
@@ -85,7 +85,7 @@ export default function UserSearch() {
                       <UserOctagon variant="Bulk" size={50} />
                     </th>
                     <td className="d-table-cell align-middle">
-                      {truncate(user.firstName, 25)}
+                      {truncate(result.firstName, 25)}
                     </td>
                     <td className="d-table-cell align-middle">
                       {result.email}
