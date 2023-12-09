@@ -23,13 +23,14 @@ export default function ProductSearch() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const onSearch = async (e) => {
-    setSearchTerm(e.target.value);
+    const value = e.target.value;
+    setSearchTerm(value);
 
-    if (searchTerm.length > 0) {
+    if (value.length > 0) {
       const q = query(
         collection(db, "products"),
-        where("name_query", ">=", searchTerm.toLowerCase()),
-        where("name_query", "<=", searchTerm.toLowerCase() + "\uf8ff"),
+        where("name_query", ">=", value.toLowerCase()),
+        where("name_query", "<=", value.toLowerCase() + "\uf8ff"),
         orderBy("name_query"),
         limit(10)
       );
@@ -45,9 +46,7 @@ export default function ProductSearch() {
       });
 
       setSearchResults(results);
-    } else {
-      setSearchResults([]);
-    }
+    } else setSearchResults([]);
   };
 
   const onDeleteProduct = async (id) => {
@@ -130,7 +129,10 @@ export default function ProductSearch() {
                         type="button"
                         data-bs-toggle="modal"
                         data-bs-target="#updateSearchProduct"
-                        onClick={() => setSelectedProduct(result)}
+                        onClick={() => {
+                          setSearchTerm("");
+                          setSelectedProduct(result);
+                        }}
                         className="btn btn-sm border-0 rounded-0 btn-warning"
                       >
                         Edit <Edit2 />
@@ -157,7 +159,7 @@ export default function ProductSearch() {
         </div>
       )}
 
-      <UpdateSearchProduct product={selectedProduct} />
+      {selectedProduct && <UpdateSearchProduct product={selectedProduct} />}
     </>
   );
 }

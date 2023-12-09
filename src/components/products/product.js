@@ -135,13 +135,13 @@ export default function Product({ id }) {
                 <Link
                   className="primary"
                   href={`/category/${product.category}/${
-                    product.sub_category && product.sub_category
+                    product.sub_category ? product.sub_category : ""
                   }`
                     .replace(/\s/g, "")
                     .toLowerCase()}
                 >
                   {`${product.category}/${
-                    product.sub_category && product.sub_category
+                    product.sub_category ? product.sub_category : ""
                   }`
                     .replace(/\s/g, "")
                     .toLowerCase()}
