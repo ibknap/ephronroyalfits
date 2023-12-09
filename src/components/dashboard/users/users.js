@@ -128,8 +128,8 @@ export default function DashboardUsers() {
                     </thead>
                     <tbody>
                       {users.length > 0 &&
-                        users.map((user) => (
-                          <tr key={user.id}>
+                        users.map((user, index) => (
+                          <tr key={index}>
                             <th scope="row">
                               <UserOctagon variant="Bulk" size={50} />
                             </th>

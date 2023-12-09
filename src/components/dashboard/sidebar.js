@@ -3,7 +3,6 @@ import {
   DirectInbox,
   Logout,
   People,
-  PresentionChart,
   ShoppingBag,
 } from "iconsax-react";
 import Link from "next/link";

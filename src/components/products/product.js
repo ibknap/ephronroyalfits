@@ -126,18 +126,32 @@ export default function Product({ id }) {
                 {toCurrency(product.price)}
               </h4>
 
-              <p className="fw-bold mt-4">Quantity: {product.quantity}</p>
+              <p className="mt-4">
+                <b>Quantity:</b> {product.quantity}
+              </p>
+
+              <p className="mt-4">
+                <b>Category: </b>
+                <Link
+                  className="primary"
+                  href={`/category/${product.category}/${product.sub_category}`
+                    .replace(/\s/g, "")
+                    .toLowerCase()}
+                >
+                  {`${product.category}/${product.sub_category}`
+                    .replace(/\s/g, "")
+                    .toLowerCase()}
+                </Link>
+              </p>
 
               {product.specifications && product.specifications.length > 0 && (
                 <ul className="list-unstyled my-4">
-                  {product.specifications.map((spec) =>
-                    Object.keys(spec).map((name, index) => (
-                      <li key={index}>
-                        <strong>{name}: </strong>
-                        {spec[name]}
-                      </li>
-                    ))
-                  )}
+                  {product.specifications.map((spec, index) => (
+                    <li key={index}>
+                      <strong>{spec.name}: </strong>
+                      {spec.value}
+                    </li>
+                  ))}
                 </ul>
               )}
 

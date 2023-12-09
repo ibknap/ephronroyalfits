@@ -14,7 +14,7 @@ import {
   User,
 } from "iconsax-react";
 import { useAuth } from "@/firebase/fire_auth_context";
-import categories from "@/components/navigation/navbar/categories";
+import categories from "@/components/utils/categories";
 
 export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
   const [isOpen, setIsOpen] = useState(false);
