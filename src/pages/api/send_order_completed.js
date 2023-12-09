@@ -16,7 +16,7 @@ export default async (req, res) => {
     });
 
     const mailOptions = {
-      from: "ephronroyalfits@gmail.com",
+      from: "Ephron Royal 'fits <ephronroyalfits@gmail.com>",
       to: email,
       subject: "Order completed - Ephron Royal 'fits",
       html: `
@@ -37,11 +37,20 @@ export default async (req, res) => {
               ${order.items
                 .map(
                   (item) => `
-                <li style="border-bottom: 1px solid #ccc;">
-                  <h4 style="margin: 0;">${item.name}</h4>
-                  <p style="font-weight: bold;">Adet: ${item.cartQuantity}</p>
-                  <h5 style="color: gray;">Fiyat: ${toCurrency(item.price)}</h5>
-                </li>
+                  <li style="border-bottom: 1px solid #ccc;display: flex;object-fit: cover;">
+                    <img src=${
+                      item.image
+                    } alt="image" width="100px" height="100px"/>
+                    <div style="margin-left: 1rem;">
+                      <h4 style="margin: 0;">${item.name}</h4>
+                      <p style="font-weight: bold;">Adet: ${
+                        item.cartQuantity
+                      }</p>
+                      <h5 style="color: gray;">Fiyat: ${toCurrency(
+                        item.price
+                      )}</h5>
+                    </div>
+                  </li>
               `
                 )
                 .join("")}
