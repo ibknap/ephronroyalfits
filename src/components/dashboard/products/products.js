@@ -60,7 +60,7 @@ export default function DashboardProducts() {
       <div className="container mb-5">
         <div className="row">
           <div className="col-12">
-            <div className="m-2 p-2 border-0 rounded-0 card shadow-sm">
+            <div className="mb-2 p-2 border-0 rounded-0 card shadow-sm">
               <div className="row justify-content-between">
                 <div className="col-sm-6 text-start">
                   <h4>Products</h4>
@@ -86,7 +86,7 @@ export default function DashboardProducts() {
 
         <div className="row justify-content-center">
           <div className="col-12">
-            <div className="m-2 p-2 border-0 rounded-0 card shadow-sm">
+            <div className="mb-2 p-2 border-0 rounded-0 card shadow-sm">
               <ProductSearch />
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function DashboardProducts() {
 
         <div className="row">
           <div className="col-12">
-            <div className="m-2 p-2 border-0 rounded-0 card shadow-sm">
+            <div className="p-2 border-0 rounded-0 card shadow-sm">
               <div>
                 All Products
                 <hr />

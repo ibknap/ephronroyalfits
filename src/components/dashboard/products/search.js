@@ -73,7 +73,7 @@ export default function ProductSearch() {
 
   return (
     <>
-      <div className={`${styles.search_form} me-auto mb-2 mb-md-0`}>
+      <div className={`${styles.search_form} me-auto mb-md-0`}>
         <input
           className={`form-control ${styles.input_search}`}
           type="search"

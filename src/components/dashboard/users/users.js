@@ -72,7 +72,7 @@ export default function DashboardUsers() {
       <div className="container mb-5">
         <div className="row">
           <div className="col-12">
-            <div className="m-2 p-2 border-0 rounded-0 card shadow-sm">
+            <div className="mb-2 p-2 border-0 rounded-0 card shadow-sm">
               <div className="row justify-content-between">
                 <div className="col-sm-6 text-start">
                   <h4>Users</h4>
@@ -98,7 +98,7 @@ export default function DashboardUsers() {
 
         <div className="row justify-content-center">
           <div className="col-12">
-            <div className="m-2 p-2 border-0 rounded-0 card shadow-sm">
+            <div className="mb-2 p-2 border-0 rounded-0 card shadow-sm">
               <UserSearch />
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function DashboardUsers() {
 
         <div className="row">
           <div className="col-12">
-            <div className="m-2 p-2 border-0 rounded-0 card shadow-sm">
+            <div className="p-2 border-0 rounded-0 card shadow-sm">
               <div>
                 All Users
                 <hr />
