@@ -30,7 +30,7 @@ export default function ContactUs() {
             <div className="m-2 p-2 border-0 rounded-0 card shadow-sm">
               <div className="row justify-content-between">
                 <div className="col-sm-6 text-start">
-                  <h4>Contact Us</h4>
+                  <h4>Contact us</h4>
                   <small className="text-muted">view and reply messages</small>
                 </div>
               </div>
