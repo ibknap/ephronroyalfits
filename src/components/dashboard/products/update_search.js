@@ -117,7 +117,6 @@ export default function UpdateSearchProduct({ product }) {
     formRef.current?.reset();
   };
   const handleEmitedImage = (images) => setRawImages(images);
-  const handleEmitedSpecification = (specs) => setSpecifications(specs);
 
   return (
     <div
@@ -266,7 +265,6 @@ export default function UpdateSearchProduct({ product }) {
               <ProductSpecification
                 specifications={specifications}
                 setSpecifications={setSpecifications}
-                emitedSpecification={handleEmitedSpecification}
               />
 
               <div className="col-12 mt-3">

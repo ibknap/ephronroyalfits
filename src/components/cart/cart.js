@@ -57,19 +57,24 @@ export default function Cart() {
 
     await setDoc(docRef, orderDoc)
       .then(async () => {
-        toast.success("Order Placed!");
         try {
-          const response = await fetch(`/api/send_order_${"placed"}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ order: orderDoc, email: authUser.email }),
-          });
-          if (response.ok) toast.success("Order history created");
-          else toast.error("Email could not be sent. please try again later");
+          const response = await fetch(
+            `/api/send_order_${isCompleted ? "placed" : "cancelled"}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ order: orderDoc, email: authUser.email }),
+            }
+          );
+          if (response.ok && !isCompleted) toast.error("Order cancelled");
+
+          if (response.ok && isCompleted) {
+            toast.success("Order placed");
+            clearCart();
+          }
         } catch (error) {
           toast.error(`Something went wrong. Please try again later: ${error}`);
         }
-        clearCart();
       })
       .catch((e) => toast.error(`Something is wrong: ${e.message}`))
       .finally(() => setLoading(false));

@@ -1,5 +1,3 @@
-"use client";
-
 const ProductImages = ({ rawImages, setRawImages }) => {
   return (
     <div className="p-0 mb-3">

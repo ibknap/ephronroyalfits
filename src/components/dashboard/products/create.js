@@ -110,7 +110,7 @@ export default function CreateProduct() {
     setDescription("");
     formRef.current?.reset();
   };
-  const handleEmitedImage = (images) => setRawImages(images);
+
   const handleEmitedSpecification = (specs) => setSpecifications(specs);
 
   return (
@@ -170,7 +170,6 @@ export default function CreateProduct() {
               <ProductImages
                 rawImages={rawImages}
                 setRawImages={setRawImages}
-                emitedImage={handleEmitedImage}
               />
 
               <div className="row mt-3">

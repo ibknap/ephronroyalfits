@@ -30,7 +30,7 @@ export default async (req, res) => {
           </div>
 
           <div>
-            <h6 style="color:#947f57;">SİPARİŞ VERİLEN ÜRÜNLER</h6>
+            <h6 style="color:#947f57;">ORDERED PRODUCTS</h6>
             <hr />
 
             <ul style="list-style: none; padding: 0;">
@@ -55,7 +55,7 @@ export default async (req, res) => {
                 )
                 .join("")}
             </ul>
-            <h6>TOPLAM: ${toCurrency(order.amount)}</h6>
+            <h6>TOTAL: ${toCurrency(order.amount)}</h6>
           </div>
         </div>
       `,

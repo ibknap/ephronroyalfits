@@ -55,7 +55,7 @@ export default async (req, res) => {
                 )
                 .join("")}
             </ul>
-            <h6>TOPLAM: ${toCurrency(order.amount)}</h6>
+            <h6>TOTAL: ${toCurrency(order.amount)}</h6>
           </div>
         </div>
       `,
