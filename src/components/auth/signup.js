@@ -49,7 +49,7 @@ export default function Signup() {
             },
           };
 
-          setDoc(doc(collRef, email), userDoc)
+          setDoc(doc(collRef, email.toLowerCase()), userDoc)
             .then(() => {
               router.push("/auth/signin");
               toast.success("User signed up");
