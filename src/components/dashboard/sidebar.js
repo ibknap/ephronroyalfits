@@ -1,10 +1,4 @@
-import {
-  Box1,
-  DirectInbox,
-  Logout,
-  People,
-  ShoppingBag,
-} from "iconsax-react";
+import { Box1, DirectInbox, Logout, People, ShoppingBag } from "iconsax-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "@/firebase/fire_auth_context";
@@ -25,7 +19,6 @@ export default function Sidebar() {
             </p>
           </div>
         </div>
-     
 
         <Link
           href="/dashboard/orders"
@@ -69,6 +62,17 @@ export default function Sidebar() {
         >
           <DirectInbox className="mx-2" />
           <span className="d-none d-lg-inline">Contact Us</span>
+        </Link>
+
+        <Link
+          href="/"
+          as="/"
+          className={`dashboard_sidebar_item secondary ${
+            router.asPath == "/" && "bg_primary"
+          }`}
+        >
+          <DirectInbox className="mx-2" />
+          <span className="d-none d-lg-inline">Go Home</span>
         </Link>
 
         <button
