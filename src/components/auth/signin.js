@@ -21,7 +21,7 @@ export default function Signin() {
     e.preventDefault();
     setLoading(true);
 
-    await signIn(email, password)
+    await signIn(email.toLowerCase(), password)
       .then((data) => {
         const profileRef = doc(db, "users", data.user.email);
         getDoc(profileRef)
