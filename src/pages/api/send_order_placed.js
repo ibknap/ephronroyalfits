@@ -11,7 +11,7 @@ export default async (req, res) => {
       secure: true,
       auth: {
         user: "ephronroyalfits@gmail.com",
-        pass: process.env.NEXT_PUBLIC_FIREBASE_GMAIL_APP_KEY,
+        pass: "pgvevuzsvvavncrs",
       },
     });
 
