@@ -129,7 +129,7 @@ export default function Products({
                       ? removeSavedItem(product.id)
                       : addSavedItem(product)
                   }
-                  variant="Bulk"
+                  variant="Outline"
                   size={28}
                   className={`product-saved pe-active ${
                     isInSaved(product.id) ? "primary" : "text-dark"
@@ -142,7 +142,7 @@ export default function Products({
       ) : (
         <div className="row">
           <div className="col-12 text-center">
-            <Trash size={200} variant="Bulk" />
+            <Trash size={200} variant="Outline" />
             <p className="m-0">No products added yet.</p>
           </div>
         </div>

@@ -107,7 +107,7 @@ export default function Product({ id }) {
                       ? removeSavedItem(product.id)
                       : addSavedItem(product)
                   }
-                  variant="Bulk"
+                  variant="Outline"
                   size={32}
                   className={`product-saved pe-active me-3 ${
                     isInSaved(product.id) ? "primary" : "text-dark"
@@ -189,7 +189,7 @@ export default function Product({ id }) {
                   disabled={parseInt(product.quantity) === 0}
                   className="w-100 mt-5 mb-3 btn btn-lg btn-outline-success rounded-0 outline-primary btn_nav"
                 >
-                  <ShoppingCart variant="Bulk" className="me-2" />
+                  <ShoppingCart variant="Outline" className="me-2" />
                   Add to cart
                 </button>
               )}
@@ -250,7 +250,7 @@ export default function Product({ id }) {
                         ? removeSavedItem(product.id)
                         : addSavedItem(product)
                     }
-                    variant="Bulk"
+                    variant="Outline"
                     size={28}
                     className={`product-saved pe-active ${
                       isInSaved(product.id) ? "primary" : "text-dark"
@@ -263,7 +263,7 @@ export default function Product({ id }) {
         ) : (
           <div className="row">
             <div className="col-12 text-center">
-              <Trash size={200} variant="Bulk" />
+              <Trash size={200} variant="Outline" />
               <p className="m-0">No products added yet.</p>
             </div>
           </div>

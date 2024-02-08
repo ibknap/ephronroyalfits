@@ -44,36 +44,36 @@ export default function ViewSearchUser({ user }) {
 
               <div className="col-sm-6">
                 <div className="mb-4">
-                  <UserOctagon variant="Bulk" /> {user.firstName}{" "}
+                  <UserOctagon variant="Outline" /> {user.firstName}{" "}
                   {user.lastName}
                 </div>
 
                 <div className="mb-4">
                   {user.gender.toLowerCase() == "male" ? (
-                    <Man variant="Bulk" />
+                    <Man variant="Outline" />
                   ) : (
-                    <Woman variant="Bulk" />
+                    <Woman variant="Outline" />
                   )}{" "}
                   {user.gender.toUpperCase()}
                 </div>
 
                 <div className="mb-4">
-                  <DirectInbox variant="Bulk" /> {user.email}
+                  <DirectInbox variant="Outline" /> {user.email}
                 </div>
               </div>
 
               <div className="col-sm-6">
                 <div className="mb-4">
-                  <ShieldSecurity variant="Bulk" />{" "}
+                  <ShieldSecurity variant="Outline" />{" "}
                   {user.isAdmin ? "Admin Role" : "User Role"}
                 </div>
                 <div className="mb-4">
-                  <Lock variant="Bulk" />{" "}
+                  <Lock variant="Outline" />{" "}
                   {user.isActive ? "Active Account" : "Disabled Account"}
                 </div>
 
                 <div className="mb-4">
-                  <Call variant="Bulk" /> {user.phoneNumber}
+                  <Call variant="Outline" /> {user.phoneNumber}
                 </div>
               </div>
             </div>
@@ -86,29 +86,29 @@ export default function ViewSearchUser({ user }) {
 
               <div className="col-sm-6">
                 <div className="mb-4">
-                  <UserOctagon variant="Bulk" /> {user.addressBook.firstName}{" "}
+                  <UserOctagon variant="Outline" /> {user.addressBook.firstName}{" "}
                   {user.addressBook.lastName}
                 </div>
 
                 <div className="mb-4">
-                  <Call variant="Bulk" /> {user.addressBook.phoneNumber}
+                  <Call variant="Outline" /> {user.addressBook.phoneNumber}
                 </div>
               </div>
 
               <div className="col-sm-6">
                 <div className="mb-4">
-                  <Location variant="Bulk" /> {user.addressBook.address}
+                  <Location variant="Outline" /> {user.addressBook.address}
                 </div>
 
                 <div className="mb-4">
-                  <Call variant="Bulk" />{" "}
+                  <Call variant="Outline" />{" "}
                   {user.addressBook.additionalPhoneNumber}
                 </div>
               </div>
 
               <div className="col-12">
                 <div className="mb-4">
-                  <Note variant="Bulk" />{" "}
+                  <Note variant="Outline" />{" "}
                   {user.addressBook.additionalInformation}
                 </div>
               </div>

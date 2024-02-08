@@ -100,7 +100,7 @@ export default function Saved() {
                       </ul>
                     ) : (
                       <div className="text-center text-muted">
-                        <Heart size={100} variant="Bulk" />
+                        <Heart size={100} variant="Outline" />
                         <h5>No saved items yet.</h5>
                       </div>
                     )}

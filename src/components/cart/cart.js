@@ -86,7 +86,7 @@ export default function Cart() {
         <div className="container my-5">
           <div className="row justify-content-center">
             <div className="col-sm-10 text-center">
-              <ShoppingCart variant="Bulk" size="200" />
+              <ShoppingCart variant="Outline" size="200" />
 
               <div className="my-4">
                 <h4>Your cart is empty!</h4>

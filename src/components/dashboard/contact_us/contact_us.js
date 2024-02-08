@@ -63,7 +63,7 @@ export default function ContactUs() {
                         contactUs.map((contact) => (
                           <tr key={contact.id}>
                             <th scope="row">
-                              <DirectInbox variant="Bulk" size={50} />
+                              <DirectInbox variant="Outline" size={50} />
                             </th>
                             <td className="d-table-cell align-middle">
                               {truncate(contact.fullName, 25)}

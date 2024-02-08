@@ -44,7 +44,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                   onClick={() => emitShowSearch(true)}
                   className="btn nav-link me-2"
                 >
-                  <SearchNormal1 variant="Bulk" />
+                  <SearchNormal1 variant="Outline" />
                 </button>
 
                 <Link
@@ -55,13 +55,13 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                   }`}
                   href="/cart"
                 >
-                  <ShoppingCart className="me-1" variant="Bulk" />
+                  <ShoppingCart className="me-1" variant="Outline" />
                   <span className="text-danger fw-bold">{totalCart}</span>
                 </Link>
 
                 <Menu
                   className="pointer"
-                  variant="Bulk"
+                  variant="Outline"
                   onClick={toggleNavbar}
                 />
               </div>
@@ -92,7 +92,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
 
             <li className="my-2">
               <Link className={styles.dropdown_item} href="/">
-                <Home className="me-1" variant="Bulk" />
+                <Home className="me-1" variant="Outline" />
                 Home
               </Link>
             </li>
@@ -107,7 +107,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    {cat.name} <ArrowDown3 size={12} variant="Bulk" />
+                    {cat.name} <ArrowDown3 size={12} variant="Outline" />
                   </button>
 
                   <ul
@@ -159,21 +159,21 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
 
                 <li className="my-2">
                   <Link className={styles.dropdown_item} href="/account">
-                    <User className="me-1" variant="Bulk" />
+                    <User className="me-1" variant="Outline" />
                     My Account
                   </Link>
                 </li>
 
                 <li className="my-2">
                   <Link className={styles.dropdown_item} href="/account/order">
-                    <Bag2 className="me-1" variant="Bulk" />
+                    <Bag2 className="me-1" variant="Outline" />
                     My Orders
                   </Link>
                 </li>
 
                 <li className="my-2">
                   <Link className={styles.dropdown_item} href="/account/saved">
-                    <Heart className="me-1" variant="Bulk" />
+                    <Heart className="me-1" variant="Outline" />
                     Saved Items
                   </Link>
                 </li>
@@ -188,7 +188,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                 href="https://wa.me/+2347063869144?text=I am contacting you from site to request for..."
                 target="_blank"
               >
-                <People className="me-1" variant="Bulk" />
+                <People className="me-1" variant="Outline" />
                 Contact Us
               </Link>
             </li>

@@ -62,7 +62,7 @@ export default function Signin() {
     return (
       <div className="error-page-container">
         <div className="bg">
-          <Information variant="Bulk" size={200} />
+          <Information variant="Outline" size={200} />
           <h5>You are already signed in</h5>
 
           <div className="mt-4">

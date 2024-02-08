@@ -38,7 +38,7 @@ export default function AccountNavbar() {
                     className="text-dark text-decoration-none"
                     href="/dashboard/orders"
                   >
-                    <User className="me-2" variant="Bulk" />
+                    <User className="me-2" variant="Outline" />
                     Dashboard
                   </Link>
                 </li>
@@ -53,7 +53,7 @@ export default function AccountNavbar() {
                   className="text-dark text-decoration-none"
                   href="/account"
                 >
-                  <User className="me-2" variant="Bulk" />
+                  <User className="me-2" variant="Outline" />
                   My Account
                 </Link>
               </li>
@@ -66,7 +66,7 @@ export default function AccountNavbar() {
                   className="text-dark text-decoration-none"
                   href="/account/orders"
                 >
-                  <Bag2 className="me-2" variant="Bulk" />
+                  <Bag2 className="me-2" variant="Outline" />
                   My Orders
                 </Link>
               </li>
@@ -79,7 +79,7 @@ export default function AccountNavbar() {
                   className="text-dark text-decoration-none"
                   href="/account/saved"
                 >
-                  <Heart className="me-2" variant="Bulk" />
+                  <Heart className="me-2" variant="Outline" />
                   Saved Items
                 </Link>
               </li>

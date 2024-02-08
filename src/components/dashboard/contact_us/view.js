@@ -34,7 +34,7 @@ export default function ViewContactMessage({ message }) {
               </div>
 
               <div className="col-12">
-                <Note variant="Bulk" />
+                <Note variant="Outline" />
               </div>
 
               <div className="col-12">{message}</div>

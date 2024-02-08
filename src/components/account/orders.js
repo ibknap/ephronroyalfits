@@ -122,7 +122,7 @@ export default function Orders() {
                       </ul>
                     ) : (
                       <div className="text-center text-muted">
-                        <Bag2 size={100} variant="Bulk" />
+                        <Bag2 size={100} variant="Outline" />
                         <h5>No order made yet.</h5>
                       </div>
                     )}

@@ -107,7 +107,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                   onClick={() => emitShowSearch(true)}
                   className="btn nav-link"
                 >
-                  <SearchNormal1 variant="Bulk" />
+                  <SearchNormal1 variant="Outline" />
                 </button>
               </li>
 
@@ -120,9 +120,9 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                   aria-expanded="false"
                 >
                   <span className="d-flex">
-                    <User className="me-1" variant="Bulk" />
+                    <User className="me-1" variant="Outline" />
                     Account
-                    <ArrowDown3 size="16" className="me-1" variant="Bulk" />
+                    <ArrowDown3 size="16" className="me-1" variant="Outline" />
                   </span>
                 </button>
 
@@ -134,7 +134,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                     <>
                       <li className="m-2 mt-0">
                         <Link className={styles.dropdown_item} href="/account">
-                          <User className="me-1" variant="Bulk" />
+                          <User className="me-1" variant="Outline" />
                           My Account
                         </Link>
                       </li>
@@ -144,7 +144,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                           className={styles.dropdown_item}
                           href="/account/orders"
                         >
-                          <Bag2 className="me-1" variant="Bulk" />
+                          <Bag2 className="me-1" variant="Outline" />
                           My Orders
                         </Link>
                       </li>
@@ -154,7 +154,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                           className={styles.dropdown_item}
                           href="/account/saved"
                         >
-                          <Heart className="me-1" variant="Bulk" />
+                          <Heart className="me-1" variant="Outline" />
                           Saved Items
                         </Link>
                       </li>
@@ -171,7 +171,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                       href="https://wa.me/+2347063869144?text=I am contacting you from site to request for..."
                       target="_blank"
                     >
-                      <People className="me-1" variant="Bulk" />
+                      <People className="me-1" variant="Outline" />
                       Contact Us
                     </Link>
                   </li>
@@ -205,7 +205,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                   } position-relative`}
                   href="/cart"
                 >
-                  <ShoppingCart className="me-1" variant="Bulk" />
+                  <ShoppingCart className="me-1" variant="Outline" />
                   Cart
                   <span className="ms-2 text-danger fw-bold">{totalCart}</span>
                 </Link>

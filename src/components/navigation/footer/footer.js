@@ -40,7 +40,7 @@ export default function Footer() {
             <hr />
 
             <div className="d-flex my-3">
-              <Call className="me-1" variant="Bulk" />
+              <Call className="me-1" variant="Outline" />
               <div className="d-flex flex-column me-1">
                 call us
                 <Link
@@ -54,7 +54,7 @@ export default function Footer() {
             </div>
 
             <div className="d-flex my-3">
-              <DirectSend className="me-1" variant="Bulk" />
+              <DirectSend className="me-1" variant="Outline" />
               <div className="d-flex flex-column me-1">
                 email us
                 <Link
@@ -68,7 +68,7 @@ export default function Footer() {
             </div>
 
             <div className="d-flex my-3">
-              <Location className="me-1" variant="Bulk" />
+              <Location className="me-1" variant="Outline" />
               <div className="d-flex flex-column me-1">
                 visit us
                 <span className="primary">
@@ -78,7 +78,7 @@ export default function Footer() {
             </div>
 
             <div className="d-flex my-3">
-              <Instagram className="me-1" variant="Bulk" />
+              <Instagram className="me-1" variant="Outline" />
               <Link
                 className="text-decoration-none primary"
                 href="https://www.instagram.com/ephron_royal_fits/"
