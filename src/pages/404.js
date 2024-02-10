@@ -1,9 +1,6 @@
 import Head from "next/head";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
-import { Inter } from "next/font/google";
 import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function NotFoundPage() {
   // page default data
@@ -88,7 +85,7 @@ export default function NotFoundPage() {
         />
       </Head>
 
-      <main className={inter.className}>
+      <main>
         <div className="error-page-container">
           <div className="bg">
             <img src="/logo/svg/logo_text_trans.svg" width={200} />

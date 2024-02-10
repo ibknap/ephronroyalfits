@@ -2,13 +2,13 @@ import Head from "next/head";
 import Navbar from "@/components/navigation/navbar/navbar";
 import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
-import { Inter } from "next/font/google";
+
 import { useState } from "react";
 import SearchBox from "@/components/search/search";
 import { useRouter } from "next/router";
 import Products from "@/components/products/products";
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export default function SubCategoryPage() {
   const [showSearch, setShowSearch] = useState(false);
@@ -100,7 +100,7 @@ export default function SubCategoryPage() {
         />
       </Head>
 
-      <main className={inter.className}>
+      <main>
         <Navbar emitShowSearch={handleShowSearch} />
         <div className="bottom_spacer" />
 

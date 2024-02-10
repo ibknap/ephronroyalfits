@@ -2,13 +2,13 @@ import Head from "next/head";
 import Navbar from "@/components/navigation/navbar/navbar";
 import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
-import { Inter } from "next/font/google";
+
 import { useState } from "react";
 import SearchBox from "@/components/search/search";
 import Cart from "@/components/cart/cart";
 import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export default function HomePage() {
   const [showSearch, setShowSearch] = useState(false);
@@ -104,7 +104,7 @@ export default function HomePage() {
       </Head>
       <Script src="https://js.paystack.co/v1/inline.js" />
 
-      <main className={inter.className}>
+      <main>
         <Navbar emitShowSearch={handleShowSearch} />
 
         <Cart />

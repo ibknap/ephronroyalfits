@@ -18,9 +18,8 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
   const { loading, authUser, logOut } = useAuth();
 
   return (
-    <>
       <nav
-        className={`${styles.navbar} navbar navbar-expand-md navbar-light fixed-top`}
+        className={`${styles.navbar} navbar navbar-expand-sm navbar-light fixed-top`}
       >
         <div className="container-fluid">
           <Link className="navbar-brand" href="/">
@@ -214,6 +213,5 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
           </div>
         </div>
       </nav>
-    </>
   );
 }

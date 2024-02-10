@@ -10,9 +10,9 @@ import NeedAuth from "@/components/restrictions/need_auth";
 import NeedAccess from "@/components/restrictions/need_access";
 import Loader from "@/components/loader/loader";
 import { toast } from "react-toastify";
-import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+
+
 
 export default function DashboardContactUsPage() {
   const { authUser } = useAuth();
@@ -119,7 +119,7 @@ export default function DashboardContactUsPage() {
         />
       </Head>
 
-      <main className={inter.className}>
+      <main>
         <Sidebar />
         <ContactUs />
       </main>

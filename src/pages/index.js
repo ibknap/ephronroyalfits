@@ -2,14 +2,11 @@ import Head from "next/head";
 import Navbar from "@/components/navigation/navbar/navbar";
 import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
-import { Inter } from "next/font/google";
 import { useState } from "react";
 import SearchBox from "@/components/search/search";
 import Hero from "@/components/home/hero";
 import Products from "@/components/products/products";
 import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function HomePage() {
   const [showSearch, setShowSearch] = useState(false);
@@ -97,7 +94,7 @@ export default function HomePage() {
         />
       </Head>
 
-      <main className={inter.className}>
+      <main>
         <Navbar emitShowSearch={handleShowSearch} />
         <Hero />
 

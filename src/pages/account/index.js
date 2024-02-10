@@ -3,11 +3,11 @@ import Navbar from "@/components/navigation/navbar/navbar";
 import Footer from "@/components/navigation/footer/footer";
 import { getWSSchema, getWPSchema, getLBSchema } from "@/components/schema";
 import Account from "@/components/account/account";
-import { Inter } from "next/font/google";
+
 import { useState } from "react";
 import SearchBox from "@/components/search/search";
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export default function AccountPage() {
   const [showSearch, setShowSearch] = useState(false);
@@ -103,7 +103,7 @@ export default function AccountPage() {
       </Head>
 
       {/* page content */}
-      <main className={inter.className}>
+      <main>
         <Navbar emitShowSearch={handleShowSearch} />
         <div className="bottom_spacer" />
         <Account />
