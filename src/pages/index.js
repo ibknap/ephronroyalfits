@@ -130,7 +130,7 @@ export default function HomePage() {
             <div className="col-12 text-center">
               <Link
                 href="/products"
-                className="btn btn-lg btn-dark border-0 rounded-0"
+                className="btn btn-lg btn-dark bg_blue border-0 rounded-0"
               >
                 View all products
               </Link>

@@ -18,200 +18,200 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
   const { loading, authUser, logOut } = useAuth();
 
   return (
-      <nav
-        className={`${styles.navbar} navbar navbar-expand-sm navbar-light fixed-top`}
-      >
-        <div className="container-fluid">
-          <Link className="navbar-brand" href="/">
-            <img
-              src="/logo/svg/logo_long_trans.svg"
-              alt="logo"
-              className="rounded"
-              width={150}
-            />
-          </Link>
+    <nav
+      className={`${styles.navbar} navbar navbar-expand-sm navbar-light fixed-top`}
+    >
+      <div className="container-fluid">
+        <Link className="navbar-brand" href="/">
+          <img
+            src="/logo/svg/logo_long_trans.svg"
+            alt="logo"
+            className="rounded"
+            width={150}
+          />
+        </Link>
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-          <div className="collapse navbar-collapse" id="navbarCollapse">
-            <ul className="navbar-nav me-auto mb-2 mb-md-0">
-              {categories.map((cat) =>
-                cat.sub.length > 0 ? (
-                  <li key={cat.id} className="nav-item dropdown">
-                    <button
-                      className={`nav-link rounded-0 text-dark ${styles.dropdown}`}
-                      type="button"
-                      id={`cat${cat.id}`}
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      {cat.name}
-                    </button>
+        <div className="collapse navbar-collapse" id="navbarCollapse">
+          <ul className="navbar-nav me-auto mb-2 mb-md-0">
+            {categories.map((cat) =>
+              cat.sub.length > 0 ? (
+                <li key={cat.id} className="nav-item dropdown">
+                  <button
+                    className={`nav-link rounded-0 blue ${styles.dropdown}`}
+                    type="button"
+                    id={`cat${cat.id}`}
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    {cat.name}
+                  </button>
 
-                    <ul
-                      className="dropdown-menu rounded-0"
-                      aria-labelledby={`cat${cat.id}`}
-                    >
-                      {cat.sub.map((sub, index) => (
-                        <li
-                          key={sub.id}
-                          className={`m-2 ${index === 0 && "mt-0"} ${
-                            index === cat.sub.length - 1 && "mb-0"
-                          }`}
-                        >
-                          <Link
-                            className={`${styles.dropdown_item} d-flex`}
-                            href={`/category/${sub.parentId}/${sub.id}`}
-                          >
-                            <img
-                              src={sub.image}
-                              alt={sub.name}
-                              className="rounded-circle me-2"
-                              width={30}
-                              height={30}
-                              style={{ objectFit: "cover" }}
-                            />
-                            {sub.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ) : (
-                  <li key={cat.id} className="nav-item">
-                    <Link
-                      className="nav-link rounded-0 text-dark"
-                      href={`/category/${cat.parentId}`}
-                    >
-                      {cat.name}
-                    </Link>
-                  </li>
-                )
-              )}
-            </ul>
-
-            <ul className="d-flex navbar-nav">
-              <li className="nav-item">
-                <button
-                  onClick={() => emitShowSearch(true)}
-                  className="btn nav-link"
-                >
-                  <SearchNormal1 variant="Outline" />
-                </button>
-              </li>
-
-              <li className="nav-item dropdown">
-                <button
-                  className={styles.dropdown}
-                  type="button"
-                  id="accountMenu"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span className="d-flex">
-                    <User className="me-1" variant="Outline" />
-                    Account
-                    <ArrowDown3 size="16" className="me-1" variant="Outline" />
-                  </span>
-                </button>
-
-                <ul
-                  className="dropdown-menu rounded-0"
-                  aria-labelledby="accountMenu"
-                >
-                  {!loading && authUser && (
-                    <>
-                      <li className="m-2 mt-0">
-                        <Link className={styles.dropdown_item} href="/account">
-                          <User className="me-1" variant="Outline" />
-                          My Account
-                        </Link>
-                      </li>
-
-                      <li className="m-2">
-                        <Link
-                          className={styles.dropdown_item}
-                          href="/account/orders"
-                        >
-                          <Bag2 className="me-1" variant="Outline" />
-                          My Orders
-                        </Link>
-                      </li>
-
-                      <li className="m-2">
-                        <Link
-                          className={styles.dropdown_item}
-                          href="/account/saved"
-                        >
-                          <Heart className="me-1" variant="Outline" />
-                          Saved Items
-                        </Link>
-                      </li>
-
-                      <li>
-                        <hr className="dropdown-divider" />
-                      </li>
-                    </>
-                  )}
-
-                  <li className="m-2">
-                    <Link
-                      className={styles.dropdown_item}
-                      href="https://wa.me/+2347063869144?text=I am contacting you from site to request for..."
-                      target="_blank"
-                    >
-                      <People className="me-1" variant="Outline" />
-                      Contact Us
-                    </Link>
-                  </li>
-
-                  <li className="m-2 mb-0">
-                    {!loading && authUser ? (
-                      <button
-                        className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
-                        onClick={logOut}
+                  <ul
+                    className="dropdown-menu rounded-0"
+                    aria-labelledby={`cat${cat.id}`}
+                  >
+                    {cat.sub.map((sub, index) => (
+                      <li
+                        key={sub.id}
+                        className={`m-2 blue ${index === 0 && "mt-0"} ${
+                          index === cat.sub.length - 1 && "mb-0"
+                        }`}
                       >
-                        Log Out
-                      </button>
-                    ) : (
-                      <Link
-                        className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
-                        href="/auth/signin"
-                      >
-                        Sign In
+                        <Link
+                          className={`${styles.dropdown_item} d-flex`}
+                          href={`/category/${sub.parentId}/${sub.id}`}
+                        >
+                          <img
+                            src={sub.image}
+                            alt={sub.name}
+                            className="rounded-circle me-2"
+                            width={30}
+                            height={30}
+                            style={{ objectFit: "cover" }}
+                          />
+                          {sub.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <li key={cat.id} className="nav-item">
+                  <Link
+                    className="nav-link rounded-0 blue"
+                    href={`/category/${cat.parentId}`}
+                  >
+                    {cat.name}
+                  </Link>
+                </li>
+              )
+            )}
+          </ul>
+
+          <ul className="d-flex navbar-nav">
+            <li className="nav-item">
+              <button
+                onClick={() => emitShowSearch(true)}
+                className="btn nav-link"
+              >
+                <SearchNormal1 variant="Bold" className="text-danger" />
+              </button>
+            </li>
+
+            <li className="nav-item dropdown">
+              <button
+                className={styles.dropdown}
+                type="button"
+                id="accountMenu"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span className="d-flex">
+                  <User className="me-1" variant="Outline" />
+                  Account
+                  <ArrowDown3 size="16" className="me-1" variant="Outline" />
+                </span>
+              </button>
+
+              <ul
+                className="dropdown-menu rounded-0"
+                aria-labelledby="accountMenu"
+              >
+                {!loading && authUser && (
+                  <>
+                    <li className="m-2 mt-0">
+                      <Link className={styles.dropdown_item} href="/account">
+                        <User className="me-1" variant="Outline" />
+                        My Account
                       </Link>
-                    )}
-                  </li>
-                </ul>
-              </li>
+                    </li>
 
-              <li className="nav-item">
-                <Link
-                  className={`nav-link rounded-0 ${
-                    router.asPath == "/cart"
-                      ? "nav-link primary bg_grey rounded"
-                      : "text-dark"
-                  } position-relative`}
-                  href="/cart"
-                >
-                  <ShoppingCart className="me-1" variant="Outline" />
-                  Cart
-                  <span className="ms-2 text-danger fw-bold">{totalCart}</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
+                    <li className="m-2">
+                      <Link
+                        className={styles.dropdown_item}
+                        href="/account/orders"
+                      >
+                        <Bag2 className="me-1" variant="Outline" />
+                        My Orders
+                      </Link>
+                    </li>
+
+                    <li className="m-2">
+                      <Link
+                        className={styles.dropdown_item}
+                        href="/account/saved"
+                      >
+                        <Heart className="me-1" variant="Outline" />
+                        Saved Items
+                      </Link>
+                    </li>
+
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                  </>
+                )}
+
+                <li className="m-2">
+                  <Link
+                    className={styles.dropdown_item}
+                    href="https://wa.me/+2347063869144?text=I am contacting you from site to request for..."
+                    target="_blank"
+                  >
+                    <People className="me-1" variant="Outline" />
+                    Contact Us
+                  </Link>
+                </li>
+
+                <li className="m-2 mb-0">
+                  {!loading && authUser ? (
+                    <button
+                      className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
+                      onClick={logOut}
+                    >
+                      Log Out
+                    </button>
+                  ) : (
+                    <Link
+                      className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
+                      href="/auth/signin"
+                    >
+                      Sign In
+                    </Link>
+                  )}
+                </li>
+              </ul>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                className={`nav-link rounded-0 ${
+                  router.asPath == "/cart"
+                    ? "nav-link primary bg_grey rounded"
+                    : "text-dark"
+                } position-relative`}
+                href="/cart"
+              >
+                <ShoppingCart className="me-1" variant="Outline" />
+                Cart
+                <span className="ms-2 text-danger fw-bold">{totalCart}</span>
+              </Link>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
   );
 }

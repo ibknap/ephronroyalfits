@@ -31,7 +31,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg_secondary py-5">
+    <footer className="bg_blue text-white py-5">
       <div className="container">
         <div className="row">
           <div className="col-sm-6">
@@ -40,11 +40,11 @@ export default function Footer() {
             <hr />
 
             <div className="d-flex my-3">
-              <Call className="me-1" variant="Outline" />
-              <div className="d-flex flex-column me-1">
+              <Call className="me-1 text-white" variant="Outline" />
+              <div className="d-flex flex-column text-white me-1">
                 call us
                 <Link
-                  className="text-decoration-none primary"
+                  className="text-decoration-none text-white"
                   href="tel:+2347063869144"
                   target="_blank"
                 >
@@ -54,11 +54,11 @@ export default function Footer() {
             </div>
 
             <div className="d-flex my-3">
-              <DirectSend className="me-1" variant="Outline" />
-              <div className="d-flex flex-column me-1">
+              <DirectSend className="me-1 text-white" variant="Outline" />
+              <div className="d-flex flex-column text-white me-1">
                 email us
                 <Link
-                  className="text-decoration-none primary"
+                  className="text-decoration-none text-white"
                   href="mailto:ephronroyalfits@gmail.com"
                   target="_blank"
                 >
@@ -68,19 +68,19 @@ export default function Footer() {
             </div>
 
             <div className="d-flex my-3">
-              <Location className="me-1" variant="Outline" />
-              <div className="d-flex flex-column me-1">
+              <Location className="me-1 text-white" variant="Outline" />
+              <div className="d-flex flex-column text-white me-1">
                 visit us
-                <span className="primary">
+                <span className="text-white">
                   Nill Ifesowapo crescent, Ado, Ekiti State
                 </span>
               </div>
             </div>
 
             <div className="d-flex my-3">
-              <Instagram className="me-1" variant="Outline" />
+              <Instagram className="me-1 text-white" variant="Outline" />
               <Link
-                className="text-decoration-none primary"
+                className="text-decoration-none text-white"
                 href="https://www.instagram.com/ephron_royal_fits/"
                 target="_blank"
               >
@@ -139,7 +139,7 @@ export default function Footer() {
 
         <div className="row mt-5">
           <div className="col text-center">
-            <Link className="grey_dark text-decoration-none" href="/">
+            <Link className="text-white text-decoration-none" href="/">
               All rights reserved © www.ephronroyalfits.com
             </Link>
           </div>

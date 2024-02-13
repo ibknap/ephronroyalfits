@@ -92,14 +92,14 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
 
             <li className="my-2">
               <Link className={styles.dropdown_item} href="/">
-                <Home className="me-1" variant="Outline" />
+                <Home className="me-1 blue" variant="Outline" />
                 Home
               </Link>
             </li>
 
             {categories.map((cat) =>
               cat.sub.length > 0 ? (
-                <li key={cat.id} className="my-2">
+                <li key={cat.id} className="my-2 blue">
                   <button
                     className="w-100 text-start btn p-0 border-0 rounded-0"
                     type="button"
@@ -122,7 +122,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                         }`}
                       >
                         <Link
-                          className={`${styles.dropdown_item} d-flex`}
+                          className={`${styles.dropdown_item} blue d-flex`}
                           href={`/category/${sub.parentId}/${sub.id}`}
                         >
                           <img

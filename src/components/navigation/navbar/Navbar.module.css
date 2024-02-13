@@ -4,7 +4,7 @@
 }
 
 .btn_nav {
-  background: #947f57;
+  background: #96acb7;
   border: none;
   border-radius: 0;
   color: white;
@@ -13,12 +13,12 @@
 
 .btn_nav:hover {
   background: white;
-  border: 1px solid #947f57;
-  color: #947f57;
+  border: 1px solid #96acb7;
+  color: #96acb7;
 }
 
 .dropdown {
-  color: #141619;
+  color: #96acb7;
   padding: 0.5rem 0.25rem;
   border-radius: 0;
   background: transparent;
@@ -26,7 +26,7 @@
 }
 
 .dropdown_item {
-  color: #141619;
+  color: #96acb7;
   border-radius: 0.25rem;
   background: transparent;
   border: none !important;
@@ -35,7 +35,7 @@
 
 .dropdown:hover,
 .dropdown_item:hover {
-  color: #947f57;
+  color: #96acb7;
 }
 
 .dropdown:focus {
@@ -83,7 +83,7 @@
 }
 
 .collapsed_menu_header {
-  color: #947f57;
+  color: #96acb7;
   padding-bottom: 1rem;
   border-bottom: 1px solid #f0f0f0;
 }

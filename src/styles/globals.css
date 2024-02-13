@@ -9,6 +9,14 @@
 }
 
 /* color, theme */
+.blue {
+  color: #96acb7 !important;
+}
+
+.bg_blue {
+  background: #96acb7 !important;
+}
+
 .primary {
   color: #947f57 !important;
 }
