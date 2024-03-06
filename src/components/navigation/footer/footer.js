@@ -39,7 +39,7 @@ export default function Footer() {
 
             <hr />
 
-            <div className="d-flex my-3">
+            <div className="d-flex my-2">
               <Call className="me-1 text-white" variant="Outline" />
               <div className="d-flex flex-column text-white me-1">
                 call us
@@ -53,7 +53,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="d-flex my-3">
+            <div className="d-flex my-2">
               <DirectSend className="me-1 text-white" variant="Outline" />
               <div className="d-flex flex-column text-white me-1">
                 email us
@@ -67,7 +67,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="d-flex my-3">
+            <div className="d-flex my-2">
               <Location className="me-1 text-white" variant="Outline" />
               <div className="d-flex flex-column text-white me-1">
                 visit us
@@ -77,7 +77,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="d-flex my-3">
+            <div className="d-flex my-2">
               <Instagram className="me-1 text-white" variant="Outline" />
               <Link
                 className="text-decoration-none text-white"
@@ -85,6 +85,18 @@ export default function Footer() {
                 target="_blank"
               >
                 ephron_royal_fits
+              </Link>
+            </div>
+
+            <div className="mt-2">
+              <Link className="text-decoration-none text-white" href="/privacy">
+                Privacy Policy
+              </Link>
+            </div>
+
+            <div className="mt-2">
+              <Link className="text-decoration-none text-white" href="/terms">
+                Terms And Conditions
               </Link>
             </div>
           </div>

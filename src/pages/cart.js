@@ -10,7 +10,7 @@ import Script from "next/script";
 
 
 
-export default function HomePage() {
+export default function CartPage() {
   const [showSearch, setShowSearch] = useState(false);
   const handleShowSearch = (state) => setShowSearch(state);
 
