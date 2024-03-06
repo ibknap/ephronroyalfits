@@ -206,7 +206,7 @@ export default function TermsPage() {
               </p>
 
               <p>
-                We'll ship using FedEx, Hiroshima, DHL, or another company.
+                We&apos;ll ship using FedEx, Hiroshima, DHL, or another company.
                 Although delivery windows cannot be guaranteed, deliveries
                 should arrive between one and five business days, depending on
                 your location.
@@ -236,7 +236,7 @@ export default function TermsPage() {
               <p>
                 If there is a need to resend your package because of
                 customer-related issues, there will be a redispatch fee. The
-                package's weight and destination may have an impact on this
+                package&apos;s weight and destination may have an impact on this
                 redispatch fee.
               </p>
 
@@ -245,8 +245,8 @@ export default function TermsPage() {
                 right to cancel it if we are unable to provide you with the
                 products you ordered. In the event that this happens, we will
                 notify you right away. If you would like to cancel your order on
-                your own, please email Ephronroyalfits@gmail.com and if there's
-                anything else.
+                your own, please email Ephronroyalfits@gmail.com and if
+                there&apos;s anything else.
               </p>
 
               <h5 className="mb-2 fw-bold">MISSING PRODUCT</h5>
@@ -281,8 +281,8 @@ export default function TermsPage() {
               <h5 className="mb-2 fw-bold">REFUND POLICY</h5>
               <p>
                 In the event that a cancelled order has already been charged to
-                the customer's credit card, Ephron will refund the client the
-                full amount within 10 business days.
+                the customer&apos;s credit card, Ephron will refund the client
+                the full amount within 10 business days.
               </p>
 
               <p>
@@ -291,9 +291,9 @@ export default function TermsPage() {
               </p>
 
               <p>
-                Its also important that you're aware of Paystack's gateway
-                strategies, which require that the receiving account number be
-                changed for every new transaction.
+                Its also important that you&apos;re aware of Paystack&apos;s
+                gateway strategies, which require that the receiving account
+                number be changed for every new transaction.
               </p>
 
               <p>
@@ -320,7 +320,7 @@ export default function TermsPage() {
 
               <p>
                 Ephron does not ask for private personal information, bank
-                account information, or details of any customer's
+                account information, or details of any customer&apos;s
                 identification.
               </p>
             </div>

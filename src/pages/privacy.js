@@ -106,7 +106,7 @@ export default function PrivacyPage() {
             <div className="col-md-8 text-start">
               <h4 className="fw-bold">RIVACY POLICY</h4>
               <p className="mb-3">
-                This Privacy Policy outlines how EPHRON ROYAL 'FITS collects,
+                This Privacy Policy outlines how EPHRON ROYAL &apos;FITS collects,
                 uses, discloses, and manages your personal information when you
                 visit our website or make a purchase. By using our website, you
                 consent to the terms outlined in this policy.
@@ -176,7 +176,7 @@ export default function PrivacyPage() {
                   <b>Analytics:</b>
                   <p>
                     We use browsing information to analyse trends, track user
-                    activity, and improve our website's performance.
+                    activity, and improve our website&apos;s performance.
                   </p>
                 </li>
               </ol>
@@ -260,7 +260,7 @@ export default function PrivacyPage() {
                 </li>
               </ol>
               
-              <b>Thank you for trusting EPHRON ROYAL 'FITS</b>
+              <b>Thank you for trusting EPHRON ROYAL &apos;FITS</b>
             </div>
           </div>
         </div>
