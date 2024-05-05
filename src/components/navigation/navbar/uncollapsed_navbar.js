@@ -21,7 +21,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
               href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
               target="_blank"
             >
-              CONTACT US FOR MORE ENQUIRY AND OTHERS RELATED TO <b>ERF</b>
+              <small>CONTACT US FOR MORE ENQUIRY AND OTHERS RELATED TO <b>ERF</b></small>
             </Link>
           </div>
         </div>

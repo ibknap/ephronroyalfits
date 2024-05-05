@@ -4,7 +4,6 @@ if (typeof window !== "undefined") window.$ = window.jQuery = require("jquery");
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import Link from "next/link";
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
@@ -40,12 +39,12 @@ export default function Hero() {
             </div>
 
             <div className="col-md-6 text-center px-md-5 mt-4 mt-md-0">
-              <h3 className="fw-bold">CLOTHES, JEWELRY, JOURNALS & MORE</h3>
+              <h3 className="fw-normal">CLOTHES, JEWELRY, JOURNALS & MORE</h3>
 
-              <h4 className="fw-normal mt-4">
+              <h5 className="fw-light mt-4">
                 With our wide range of quality best sellers and selling offers
                 you can shop limitless and timelessly.
-              </h4>
+              </h5>
 
               <Link
                 href="/products"

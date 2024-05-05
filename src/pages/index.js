@@ -98,7 +98,9 @@ export default function HomePage() {
         <Navbar emitShowSearch={handleShowSearch} />
         <Hero />
 
-        <Products
+        <div className="my-5" />
+
+        {/* <Products
           length={8}
           title="NEW ARRIVALS"
           tag="new"
@@ -112,11 +114,11 @@ export default function HomePage() {
           tag={null}
           category="accessories"
           random={false}
-        />
+        /> 
 
         <hr className="mx-5 p-0 m-0" />
 
-        <Products
+         <Products
           length={8}
           title={null}
           tag={null}
@@ -137,6 +139,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+         */}
 
         <Footer />
       </main>
