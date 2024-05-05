@@ -6,8 +6,9 @@ import { SavedProvider } from "@/components/account/saved/saved_context";
 import { FireAuthProvider } from "@/firebase/fire_auth_context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Julius_Sans_One } from "next/font/google";
-const julius = Julius_Sans_One({ subsets: ["latin"], weight: "400" });
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function App({ Component, pageProps }) {
     <FireAuthProvider>
       <CartProvider>
         <SavedProvider>
-          <main className={julius.className}>
+          <main className={inter.className}>
             <Component {...pageProps} />
             <ToastContainer position="bottom-left" autoClose={3000} />
           </main>

@@ -31,7 +31,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg_blue text-white py-5">
+    <footer className="bg_black text-white py-5">
       <div className="container">
         <div className="row">
           <div className="col-sm-6">

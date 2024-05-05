@@ -10,11 +10,23 @@
 
 /* color, theme */
 .blue {
-  color: #96acb7 !important;
+  color: #57aecf !important;
 }
 
 .bg_blue {
-  background: #96acb7 !important;
+  background: #57aecf !important;
+}
+
+.bg_blue_50 {
+  background: #57aecf80 !important;
+}
+
+.black {
+  color: #000000 !important;
+}
+
+.bg_black {
+  background: #000000 !important;
 }
 
 .primary {
@@ -96,6 +108,14 @@
 }
 
 /* others */
+.nav-link:hover {
+  background: #57adcf30;
+}
+
+.nav-link-none:hover {
+  background: transparent !important;
+}
+
 .border-0 {
   border: none !important;
 }

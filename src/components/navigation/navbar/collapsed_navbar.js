@@ -2,17 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "@/components/navigation/navbar/Navbar.module.css";
-import {
-  ArrowDown3,
-  Bag2,
-  Heart,
-  Home,
-  Menu,
-  People,
-  SearchNormal1,
-  ShoppingCart,
-  User,
-} from "iconsax-react";
+import { ArrowDown3, Bag2, Menu, SearchNormal1, User } from "iconsax-react";
 import { useAuth } from "@/firebase/fire_auth_context";
 import categories from "@/components/utils/categories";
 
@@ -27,6 +17,18 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
   return (
     <>
       <div className="container fixed-top bg-white">
+        <div className="row justify-content-center bg_blue_50">
+          <div className="col-12 text-center">
+            <Link
+              className="text-decoration-none black"
+              href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
+              target="_blank"
+            >
+              <small>CONTACT US FOR MORE ENQUIRY AND OTHERS RELATED TO <b>ERF</b></small>
+            </Link>
+          </div>
+        </div>
+
         <div className="row justify-content-between">
           <div className="col px-2 py-3">
             <div className="d-flex justify-content-between align-items-center">
@@ -39,24 +41,40 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                 />
               </Link>
 
-              <div className="d-flex">
+              <div className="d-flex align-items-center">
                 <button
                   onClick={() => emitShowSearch(true)}
                   className="btn nav-link me-2"
                 >
-                  <SearchNormal1 variant="Outline" />
+                  <SearchNormal1 className="black" variant="Bold" />
                 </button>
 
                 <Link
-                  className={`nav-link me-2 ${
-                    router.asPath == "/cart"
-                      ? "nav-link primary bg_grey rounded"
-                      : "text-dark"
+                  className={`nav-link nav-link-none me-2 ${
+                    router.asPath == "/account" ? "blue" : "black"
+                  }`}
+                  href={!loading && authUser ? "/account" : "/auth/signin"}
+                >
+                  <User variant="Outline" />
+                </Link>
+
+                <Link
+                  className={`nav-link nav-link-none me-2 position-relative ${
+                    router.asPath == "/cart" ? "blue" : "black"
                   }`}
                   href="/cart"
                 >
-                  <ShoppingCart className="me-1" variant="Outline" />
-                  <span className="text-danger fw-bold">{totalCart}</span>
+                  <Bag2 variant="Outline" />
+                  {parseInt(totalCart) > 0 && (
+                    <span
+                      class="position-absolute translate-middle bg_blue border border-light rounded-circle"
+                      style={{
+                        padding: "0.35rem",
+                        bottom: "-8px",
+                        right: "-8px",
+                      }}
+                    />
+                  )}
                 </Link>
 
                 <Menu
@@ -86,13 +104,12 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
       >
         <div className={styles.collapsed_container}>
           <ul className={styles.collapsed_menu}>
-            <li className={`pb-1 pt-2 ${styles.collapsed_menu_header}`}>
-              Ephron Royal &apos;fits
+            <li className={`mt-3 mb-2 py-2 ${styles.collapsed_menu_header}`}>
+              <b>Ephron Royal &apos;fits</b>
             </li>
 
             <li className="my-2">
               <Link className={styles.dropdown_item} href="/">
-                <Home className="me-1 blue" variant="Outline" />
                 Home
               </Link>
             </li>
@@ -151,69 +168,20 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
               )
             )}
 
-            {!loading && authUser && (
-              <>
-                <li className={`pb-1 pt-2 ${styles.collapsed_menu_header}`}>
-                  Account
-                </li>
-
-                <li className="my-2">
-                  <Link className={styles.dropdown_item} href="/account">
-                    <User className="me-1" variant="Outline" />
-                    My Account
-                  </Link>
-                </li>
-
-                <li className="my-2">
-                  <Link className={styles.dropdown_item} href="/account/order">
-                    <Bag2 className="me-1" variant="Outline" />
-                    My Orders
-                  </Link>
-                </li>
-
-                <li className="my-2">
-                  <Link className={styles.dropdown_item} href="/account/saved">
-                    <Heart className="me-1" variant="Outline" />
-                    Saved Items
-                  </Link>
-                </li>
-
-                <li className={`p-0 ${styles.collapsed_menu_header}`} />
-              </>
-            )}
-
             <li className="my-2">
               <Link
                 className={styles.dropdown_item}
-                href="https://wa.me/+2347063869144?text=I am contacting you from site to request for..."
-                target="_blank"
+                href={!loading && authUser ? "/account" : "/auth/signin"}
               >
-                <People className="me-1" variant="Outline" />
-                Contact Us
+                My Account
               </Link>
             </li>
 
-            <li className="my-2">
-              {!loading && authUser ? (
-                <button
-                  className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
-                  onClick={logOut}
-                >
-                  Log Out
-                </button>
-              ) : (
-                <Link
-                  className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
-                  href="/auth/signin"
-                >
-                  Sign In
-                </Link>
-              )}
-            </li>
+            <li className={`mb-3 ${styles.collapsed_menu_header}`} />
 
             <li className="my-2 text-center">
               <Link className="grey_dark text-decoration-none" href="/">
-                All rights reserved © www.ephronroyalfits.com
+                <small>All rights reserved © www.ephronroyalfits.com</small>
               </Link>
             </li>
           </ul>

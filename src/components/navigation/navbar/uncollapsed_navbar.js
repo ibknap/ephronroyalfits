@@ -1,27 +1,33 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "@/components/navigation/navbar/Navbar.module.css";
-import {
-  ArrowDown3,
-  Bag2,
-  Heart,
-  People,
-  SearchNormal1,
-  ShoppingCart,
-  User,
-} from "iconsax-react";
+import { Bag2, SearchNormal1, User } from "iconsax-react";
 import { useAuth } from "@/firebase/fire_auth_context";
 import categories from "@/components/utils/categories";
 
 export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
   const router = useRouter();
-  const { loading, authUser, logOut } = useAuth();
+  const { loading, authUser } = useAuth();
 
   return (
     <nav
-      className={`${styles.navbar} navbar navbar-expand-sm navbar-light fixed-top`}
+      className={`${styles.navbar} navbar navbar-expand-sm navbar-light fixed-top flex-column`}
     >
-      <div className="container-fluid">
+      <div className="container-fluid justify-content-center bg_blue_50">
+        <div className="row">
+          <div className="col-12">
+            <Link
+              className="text-decoration-none black"
+              href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
+              target="_blank"
+            >
+              CONTACT US FOR MORE ENQUIRY AND OTHERS RELATED TO <b>ERF</b>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid p-2">
         <Link className="navbar-brand" href="/">
           <img
             src="/logo/svg/logo_long_trans.svg"
@@ -49,7 +55,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
               cat.sub.length > 0 ? (
                 <li key={cat.id} className="nav-item dropdown">
                   <button
-                    className={`nav-link rounded-0 blue ${styles.dropdown}`}
+                    className={`nav-link rounded-0 black ${styles.dropdown}`}
                     type="button"
                     id={`cat${cat.id}`}
                     data-bs-toggle="dropdown"
@@ -90,7 +96,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
               ) : (
                 <li key={cat.id} className="nav-item">
                   <Link
-                    className="nav-link rounded-0 blue"
+                    className="nav-link rounded-0 black"
                     href={`/category/${cat.parentId}`}
                   >
                     {cat.name}
@@ -106,107 +112,35 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                 onClick={() => emitShowSearch(true)}
                 className="btn nav-link"
               >
-                <SearchNormal1 variant="Bold" className="text-danger" />
+                <SearchNormal1 className="black" variant="Bold" />
               </button>
-            </li>
-
-            <li className="nav-item dropdown">
-              <button
-                className={styles.dropdown}
-                type="button"
-                id="accountMenu"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span className="d-flex">
-                  <User className="me-1" variant="Outline" />
-                  Account
-                  <ArrowDown3 size="16" className="me-1" variant="Outline" />
-                </span>
-              </button>
-
-              <ul
-                className="dropdown-menu rounded-0"
-                aria-labelledby="accountMenu"
-              >
-                {!loading && authUser && (
-                  <>
-                    <li className="m-2 mt-0">
-                      <Link className={styles.dropdown_item} href="/account">
-                        <User className="me-1" variant="Outline" />
-                        My Account
-                      </Link>
-                    </li>
-
-                    <li className="m-2">
-                      <Link
-                        className={styles.dropdown_item}
-                        href="/account/orders"
-                      >
-                        <Bag2 className="me-1" variant="Outline" />
-                        My Orders
-                      </Link>
-                    </li>
-
-                    <li className="m-2">
-                      <Link
-                        className={styles.dropdown_item}
-                        href="/account/saved"
-                      >
-                        <Heart className="me-1" variant="Outline" />
-                        Saved Items
-                      </Link>
-                    </li>
-
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                  </>
-                )}
-
-                <li className="m-2">
-                  <Link
-                    className={styles.dropdown_item}
-                    href="https://wa.me/+2347063869144?text=I am contacting you from site to request for..."
-                    target="_blank"
-                  >
-                    <People className="me-1" variant="Outline" />
-                    Contact Us
-                  </Link>
-                </li>
-
-                <li className="m-2 mb-0">
-                  {!loading && authUser ? (
-                    <button
-                      className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
-                      onClick={logOut}
-                    >
-                      Log Out
-                    </button>
-                  ) : (
-                    <Link
-                      className={`dropdown-item btn ${styles.btn_nav} shadow-sm px-3 py-2`}
-                      href="/auth/signin"
-                    >
-                      Sign In
-                    </Link>
-                  )}
-                </li>
-              </ul>
             </li>
 
             <li className="nav-item">
               <Link
-                className={`nav-link rounded-0 ${
-                  router.asPath == "/cart"
-                    ? "nav-link primary bg_grey rounded"
-                    : "text-dark"
-                } position-relative`}
+                className={`nav-link nav-link-none ${
+                  router.asPath == "/account" ? "blue" : "black"
+                }`}
+                href={!loading && authUser ? "/account" : "/auth/signin"}
+              >
+                <User variant="Outline" />
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                className={`nav-link nav-link-none position-relative ${
+                  router.asPath == "/cart" ? "blue" : "black"
+                }`}
                 href="/cart"
               >
-                <ShoppingCart className="me-1" variant="Outline" />
-                Cart
-                <span className="ms-2 text-danger fw-bold">{totalCart}</span>
+                <Bag2 variant="Outline" />
+                {parseInt(totalCart) > 0 && (
+                  <span
+                    class="position-absolute bottom-0 end-0 translate-middle bg_blue border border-light rounded-circle"
+                    style={{ padding: "0.35rem" }}
+                  />
+                )}
               </Link>
             </li>
           </ul>
