@@ -69,7 +69,7 @@ export default function Footer() {
                     className={`form-control ${styles.form_field}`}
                     required
                     placeholder="Message"
-                    style={{ height: "100px" }}
+                    style={{ height: "80px" }}
                     onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
                 </div>

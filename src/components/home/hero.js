@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="row hero-m">
         <div className="col-12 black position-relative">
           <div className="row justify-content-center align-items-center border-top">
-            <div className="col-md-6 p-0">
+            <div className="col-md-12 p-0">
               <OwlCarousel {...heroConfig}>
                 {heroImages.map((image, index) => (
                   <img
@@ -38,20 +38,13 @@ export default function Hero() {
               </OwlCarousel>
             </div>
 
-            <div className="col-md-6 text-center px-md-5 mt-4 mt-md-0">
-              <h3 className="fw-normal">CLOTHES, JEWELRY, JOURNALS & MORE</h3>
+            <div className="hero-overlay text-center">
+              <h3 className="fw-bold">CLOTHES, JEWELRY, JOURNALS & MORE</h3>
 
-              <h5 className="fw-light mt-4">
+              <p className="fw-light mt-5">
                 With our wide range of quality best sellers and selling offers
                 you can shop limitless and timelessly.
-              </h5>
-
-              <Link
-                href="/products"
-                className="btn btn-lg btn-dark bg_blue border-0 rounded-0 mt-4"
-              >
-                BEST SELLERS
-              </Link>
+              </p>
             </div>
           </div>
         </div>

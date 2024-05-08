@@ -13,20 +13,6 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
     <nav
       className={`${styles.navbar} navbar navbar-expand-sm navbar-light fixed-top flex-column`}
     >
-      <div className="container-fluid justify-content-center bg_blue_50">
-        <div className="row">
-          <div className="col-12">
-            <Link
-              className="text-decoration-none black"
-              href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
-              target="_blank"
-            >
-              <small>CONTACT US FOR MORE ENQUIRY AND OTHERS RELATED TO <b>ERF</b></small>
-            </Link>
-          </div>
-        </div>
-      </div>
-
       <div className="container-fluid p-2">
         <Link className="navbar-brand" href="/">
           <img

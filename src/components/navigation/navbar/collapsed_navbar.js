@@ -17,18 +17,6 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
   return (
     <>
       <div className="container fixed-top bg-white">
-        <div className="row justify-content-center bg_blue_50">
-          <div className="col-12 text-center">
-            <Link
-              className="text-decoration-none black"
-              href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
-              target="_blank"
-            >
-              <small>CONTACT US FOR MORE ENQUIRY AND OTHERS RELATED TO <b>ERF</b></small>
-            </Link>
-          </div>
-        </div>
-
         <div className="row justify-content-between">
           <div className="col px-2 py-3">
             <div className="d-flex justify-content-between align-items-center">

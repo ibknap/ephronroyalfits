@@ -3,13 +3,11 @@
 .btn_nav:focus {
   background: white !important;
   border: none;
-  padding: 0.8rem 2.5rem !important;
   border-radius: 0;
   color: #000000;
 }
 
 .form_field {
-  padding: 0.7rem 0.75rem;
   border: none;
   border-radius: 0;
 }
