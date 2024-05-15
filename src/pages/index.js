@@ -104,7 +104,7 @@ export default function HomePage() {
           <div className="row p-0 m-0">
             <div className="col-6 col-md-3 p-0">
               <div className="position-relative me-1 mb-2">
-                <Link href="#">
+                <Link href="/category/accessories/sunglasses">
                   <img
                     src="images/sunglasses.png"
                     alt="image"
@@ -122,7 +122,7 @@ export default function HomePage() {
 
             <div className="col-6 col-md-3 p-0">
               <div className="position-relative ms-1 mb-2 mx-md-1">
-                <Link href="#">
+                <Link href="/category/tees">
                   <img
                     src="images/tee.png"
                     alt="image"
@@ -140,7 +140,7 @@ export default function HomePage() {
 
             <div className="col-6 col-md-3 p-0">
               <div className="position-relative me-1 mb-2 mx-md-1">
-                <Link href="#">
+                <Link href="/category/gems/rings">
                   <img
                     src="images/ring.png"
                     alt="image"
@@ -158,7 +158,7 @@ export default function HomePage() {
 
             <div className="col-6 col-md-3 p-0">
               <div className="position-relative ms-1 mb-2">
-                <Link href="#">
+                <Link href="/category/polos">
                   <img
                     src="images/polo.png"
                     alt="image"
