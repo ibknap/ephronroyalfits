@@ -86,10 +86,11 @@ export default function Cart() {
         <div className="container my-5">
           <div className="row justify-content-center">
             <div className="col-sm-10 text-center">
-              <ShoppingCart variant="Outline" size="200" />
+              <ShoppingCart variant="Bulk" size={100} color="#57aecf" />
 
               <div className="my-4">
                 <h4>Your cart is empty!</h4>
+
                 <p className="text-muted m-0">
                   Browse and start ordering with a click.
                 </p>
@@ -97,7 +98,7 @@ export default function Cart() {
 
               <Link
                 href="/"
-                className="my-4 btn btn-lg btn-dark border-0 rounded-0"
+                className="my-4 btn btn-lg btn-outline-primary rounded-0"
               >
                 Start Shopping
               </Link>
