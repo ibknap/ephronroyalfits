@@ -91,7 +91,9 @@ export default function SearchBox({ show, onHide }) {
                             style={{ objectFit: "cover" }}
                           />
                           <div className="w-75 mx-2 d-flex flex-column justify-content-between">
-                            <span className="text-dark">{truncate(result.name, 30)}</span>
+                            <span className="text-dark">
+                              {truncate(result.name, 30)}
+                            </span>
                             <span className="text-dark fw-bold">
                               {toCurrency(result.price)}
                             </span>
@@ -107,8 +109,8 @@ export default function SearchBox({ show, onHide }) {
 
                 {searchResults.length === 0 && searchTerm.length > 0 && (
                   <div className="mt-3 text-center text-muted">
-                    <Trash size={100} />
-                    <h5>No result</h5>
+                    <Trash size={50} className=" mb-3 primary" />
+                    <p>No Result</p>
                   </div>
                 )}
               </div>

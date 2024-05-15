@@ -98,9 +98,85 @@ export default function HomePage() {
         <Navbar emitShowSearch={handleShowSearch} />
         <Hero />
 
-        <div className="my-5" />
+        <div className="my-2" />
 
-        {/* <Products
+        <div className="container-fluid p-0">
+          <div className="row p-0 m-0">
+            <div className="col-6 col-md-3 p-0">
+              <div className="position-relative me-1 mb-2">
+                <Link href="#">
+                  <img
+                    src="images/sunglasses.png"
+                    alt="image"
+                    width="100%"
+                    height={250}
+                    className="object-fit-cover"
+                    style={{ objectPosition: "top" }}
+                  />
+                  <h5 className="position-absolute bottom-0 text-white fw-bold px-2">
+                    SUNGLASSES
+                  </h5>
+                </Link>
+              </div>
+            </div>
+
+            <div className="col-6 col-md-3 p-0">
+              <div className="position-relative ms-1 mb-2 mx-md-1">
+                <Link href="#">
+                  <img
+                    src="images/tee.png"
+                    alt="image"
+                    width="100%"
+                    height={250}
+                    className="object-fit-cover"
+                    style={{ objectPosition: "top" }}
+                  />
+                  <h5 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                    TEES
+                  </h5>
+                </Link>
+              </div>
+            </div>
+
+            <div className="col-6 col-md-3 p-0">
+              <div className="position-relative me-1 mb-2 mx-md-1">
+                <Link href="#">
+                  <img
+                    src="images/ring.png"
+                    alt="image"
+                    width="100%"
+                    height={250}
+                    className="object-fit-cover"
+                    style={{ objectPosition: "top" }}
+                  />
+                  <h5 className="position-absolute bottom-0 text-white fw-bold px-2">
+                    RINGS
+                  </h5>
+                </Link>
+              </div>
+            </div>
+
+            <div className="col-6 col-md-3 p-0">
+              <div className="position-relative ms-1 mb-2">
+                <Link href="#">
+                  <img
+                    src="images/polo.png"
+                    alt="image"
+                    width="100%"
+                    height={250}
+                    className="object-fit-cover"
+                    style={{ objectPosition: "top" }}
+                  />
+                  <h5 className="position-absolute bottom-0 text-white fw-bold px-2">
+                    POLOS
+                  </h5>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Products
           length={8}
           title="NEW ARRIVALS"
           tag="new"
@@ -114,11 +190,11 @@ export default function HomePage() {
           tag={null}
           category="accessories"
           random={false}
-        /> 
+        />
 
         <hr className="mx-5 p-0 m-0" />
 
-         <Products
+        <Products
           length={8}
           title={null}
           tag={null}
@@ -132,14 +208,13 @@ export default function HomePage() {
             <div className="col-12 text-center">
               <Link
                 href="/products"
-                className="btn btn-lg btn-dark bg_blue border-0 rounded-0"
+                className="btn btn-lg btn-outline-primary rounded-0"
               >
-                View all products
+                All products
               </Link>
             </div>
           </div>
         </div>
-         */}
 
         <Footer />
       </main>

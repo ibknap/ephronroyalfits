@@ -75,9 +75,9 @@ export default function Products({
   return (
     <div className="container my-5">
       {title && (
-        <div className="row mb-5">
+        <div className="row mb-4">
           <div className="col-12 text-center">
-            <h3>{title}</h3>
+            <h5 className="fw-bold">{title}</h5>
           </div>
         </div>
       )}
@@ -91,7 +91,7 @@ export default function Products({
               onMouseEnter={() => setHoveredProductId(product.id)}
               onMouseLeave={() => setHoveredProductId(null)}
             >
-              <div className="product-card mb-3">
+              <div className="product-card shadow-sm mb-3">
                 <img
                   src={changeImg(product.id, product.id === hoveredProductId)}
                   alt={product.name}
@@ -103,21 +103,23 @@ export default function Products({
                     href={`/product/${product.id}`}
                     className="text-decoration-none text-dark"
                   >
-                    <h1>{truncate(product.name.toUpperCase(), 35)}</h1>
+                    <h1>{truncate(product.name, 35)}</h1>
                   </Link>
 
-                  <div className="d-flex justify-content-between align-items-center">
-                    <b>{toCurrency(product.price)}</b>
-                    <button
-                      onClick={() =>
-                        isInCart(product.id)
-                          ? removeItem(product.id)
-                          : addItem(product)
-                      }
-                      className="btn btn-dark border-0 rounded-0"
-                    >
-                      {isInCart(product.id) ? "Remove" : "Add to cart"}
-                    </button>
+                  <div className="product-add-to-cart">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <b>{toCurrency(product.price)}</b>
+                      <button
+                        onClick={() =>
+                          isInCart(product.id)
+                            ? removeItem(product.id)
+                            : addItem(product)
+                        }
+                        className="btn btn-primary border-0 rounded-0"
+                      >
+                        {isInCart(product.id) ? "Remove" : "Add to cart"}
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -129,11 +131,12 @@ export default function Products({
                       ? removeSavedItem(product.id)
                       : addSavedItem(product)
                   }
-                  variant="Outline"
+                  variant={isInSaved(product.id) ? "Bold" : "Bulk"}
                   size={28}
-                  className={`product-saved pe-active ${
-                    isInSaved(product.id) ? "primary" : "text-dark"
-                  }`}
+                  className="product-saved pe-active"
+                  style={{
+                    color: isInSaved(product.id) ? "#57aecf" : "red",
+                  }}
                 />
               </div>
             </div>
@@ -142,7 +145,7 @@ export default function Products({
       ) : (
         <div className="row">
           <div className="col-12 text-center">
-            <Trash size={200} variant="Outline" />
+            <Trash size={100} variant="Bulk" className="mb-3 primary" />
             <p className="m-0">No products added yet.</p>
           </div>
         </div>
