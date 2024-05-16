@@ -109,7 +109,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                 }`}
                 href={!loading && authUser ? "/account" : "/auth/signin"}
               >
-                <User variant="Outline" />
+                <User variant="Bulk" />
               </Link>
             </li>
 
@@ -120,7 +120,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                 }`}
                 href="/cart"
               >
-                <Bag2 variant="Outline" />
+                <Bag2 variant="Bulk" />
                 {parseInt(totalCart) > 0 && (
                   <span
                     class="position-absolute bottom-0 end-0 translate-middle bg_blue border border-light rounded-circle"

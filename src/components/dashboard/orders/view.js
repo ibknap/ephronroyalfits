@@ -72,7 +72,7 @@ export default function ViewCartDonation({ order }) {
                   </ul>
                 ) : (
                   <div className="text-center text-muted">
-                    <Gift size={100} variant="Outline" />
+                    <Gift size={100} variant="Bulk" />
                     <h5>No order made yet.</h5>
                   </div>
                 )}

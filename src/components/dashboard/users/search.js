@@ -82,7 +82,7 @@ export default function UserSearch() {
                 searchResults.map((result) => (
                   <tr key={result.id}>
                     <th scope="row">
-                      <UserOctagon variant="Outline" size={50} />
+                      <UserOctagon variant="Bulk" size={50} />
                     </th>
                     <td className="d-table-cell align-middle">
                       {truncate(result.firstName, 25)}

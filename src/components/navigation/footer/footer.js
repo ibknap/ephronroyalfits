@@ -98,7 +98,7 @@ export default function Footer() {
               <hr />
 
               <div className="d-flex my-2">
-                <Call className="me-1 text-white" variant="Outline" />
+                <Call className="me-1 text-white" variant="Bulk" />
                 <div className="d-flex flex-column text-white me-1">
                   call us
                   <Link
@@ -112,7 +112,7 @@ export default function Footer() {
               </div>
 
               <div className="d-flex my-2">
-                <DirectSend className="me-1 text-white" variant="Outline" />
+                <DirectSend className="me-1 text-white" variant="Bulk" />
                 <div className="d-flex flex-column text-white me-1">
                   email us
                   <Link
@@ -126,7 +126,7 @@ export default function Footer() {
               </div>
 
               <div className="d-flex my-2">
-                <Location className="me-1 text-white" variant="Outline" />
+                <Location className="me-1 text-white" variant="Bulk" />
                 <div className="d-flex flex-column text-white me-1">
                   visit us
                   <span className="text-white">

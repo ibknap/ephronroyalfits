@@ -43,7 +43,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                   }`}
                   href={!loading && authUser ? "/account" : "/auth/signin"}
                 >
-                  <User variant="Outline" />
+                  <User variant="Bulk" />
                 </Link>
 
                 <Link
@@ -52,7 +52,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                   }`}
                   href="/cart"
                 >
-                  <Bag2 variant="Outline" />
+                  <Bag2 variant="Bulk" />
                   {parseInt(totalCart) > 0 && (
                     <span
                       class="position-absolute translate-middle bg_blue border border-light rounded-circle"
@@ -67,7 +67,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
 
                 <Menu
                   className="pointer"
-                  variant="Outline"
+                  variant="Bulk"
                   onClick={toggleNavbar}
                 />
               </div>
@@ -112,7 +112,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    {cat.name} <ArrowDown3 size={12} variant="Outline" />
+                    {cat.name} <ArrowDown3 size={12} variant="Bulk" />
                   </button>
 
                   <ul

@@ -170,16 +170,18 @@ export default function Product({ id }) {
               <p>{product.description}</p>
 
               {isInCart(product.id) ? (
-                <div className="d-flex mt-5 mb-3 justify-content-between align-items-center">
+                <div className="col-5 d-flex my-4 justify-content-between align-items-center">
                   <button
-                    className="btn btn-dark rounded-0"
+                    className="btn btn-primary rounded-0 border-0"
                     onClick={() => decreaseQuantity(product.id)}
                   >
                     <Minus />
                   </button>
+
                   {getItem(product).cartQuantity}
+
                   <button
-                    className="btn btn-dark rounded-0"
+                    className="btn btn-primary rounded-0 border-0"
                     onClick={() => increaseQuantity(product.id)}
                   >
                     <Add />
@@ -189,9 +191,9 @@ export default function Product({ id }) {
                 <button
                   onClick={() => addItem(product)}
                   disabled={parseInt(product.quantity) === 0}
-                  className="w-100 mt-5 mb-3 btn btn-lg btn-outline-success rounded-0 outline-primary btn_nav"
+                  className="btn btn-lg btn-primary border-0 rounded-0"
                 >
-                  <ShoppingCart variant="Outline" className="me-2" />
+                  <ShoppingCart variant="Bulk" className="me-2" />
                   Add to cart
                 </button>
               )}

@@ -26,7 +26,7 @@ export default function CreateProduct() {
   const onCreateProduct = async (e) => {
     e.preventDefault();
     setLoading(true);
-    toast.info("compressing images");
+    toast.info("Compressing images");
 
     const docRef = doc(collection(db, "products"));
     const newProduct = {
@@ -35,7 +35,7 @@ export default function CreateProduct() {
       name_query: name.toLowerCase(),
       price: price,
       quantity: quantity,
-      category: category.name,
+      category: category.name.toLowerCase(),
       sub_category: sub_category,
       specifications: specifications,
       description: description,
@@ -217,7 +217,7 @@ export default function CreateProduct() {
                         setCategory(selectedCategory);
                         setSubCategory(
                           selectedCategory.sub.length > 0 &&
-                            selectedCategory.sub[0].name
+                            selectedCategory.sub[0].name.toLowerCase()
                         );
                       }}
                     >

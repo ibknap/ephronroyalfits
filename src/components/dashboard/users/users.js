@@ -131,7 +131,7 @@ export default function DashboardUsers() {
                         users.map((user, index) => (
                           <tr key={index}>
                             <th scope="row">
-                              <UserOctagon variant="Outline" size={50} />
+                              <UserOctagon variant="Bulk" size={50} />
                             </th>
                             <td className="d-table-cell align-middle">
                               {truncate(user.firstName, 25)}
