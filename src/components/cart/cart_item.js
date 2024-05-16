@@ -26,41 +26,49 @@ export default function CartItem({ item }) {
             href={`/product/${item.id}`}
             className="text-decoration-none text-dark"
           >
-            <div className="d-flex position-relative">
+            <div className="d-flex justify-content-start align-items-center">
               <img
                 src={item.image}
                 alt={item.name}
                 width={100}
                 height={100}
-                style={{ objectFit: "cover" }}
+                className="me-2 object-fit-cover"
               />
-              <div className="d-flex flex-column w-75 px-2">
+
+              <div
+                className="d-flex flex-column px-2 justify-content-between"
+                style={{ height: 100 }}
+              >
                 {truncate(item.name, 30)}
-                <b>{toCurrency(item.price)}</b>
-                <span>
+
+                <div className="fw-bold">{toCurrency(item.price)}</div>
+
+                <div>
                   Qty: <b>{item.cartQuantity}</b>
-                </span>
+                </div>
               </div>
             </div>
           </Link>
 
           <div className="d-flex mt-2 justify-content-between">
             <button
-              className="btn btn-sm btn-outline-danger rounded-0 border-0 p-0"
+              className="btn btn-sm btn-outline-danger rounded-0"
               onClick={() => removeItem(item.id)}
             >
               <Trash />
               Remove
             </button>
+
             <div className="d-flex">
               <button
-                className="btn btn-sm btn-dark rounded-0 border-0 shadow-sm me-2"
+                className="btn btn-sm btn-primary rounded-0 border-0 shadow-sm me-2"
                 onClick={() => decreaseQuantity(item.id)}
               >
                 <Minus />
               </button>
+
               <button
-                className="btn btn-sm btn-dark rounded-0 border-0 shadow-sm"
+                className="btn btn-sm btn-primary rounded-0 border-0 shadow-sm"
                 onClick={() => increaseQuantity(item.id)}
               >
                 <Add />

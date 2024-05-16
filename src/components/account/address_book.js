@@ -136,7 +136,7 @@ export default function AddressBook({ user }) {
               </div>
             </div>
             <div className="modal-footer border-0 mt-0 pt-0">
-              <button type="submit" className="btn btn-dark rounded-0 border-0">
+              <button type="submit" className="btn btn-primary rounded-0 border-0">
                 {loading ? <Loader /> : "Save Address"}
               </button>
             </div>

@@ -93,7 +93,7 @@ export default function Orders() {
                                 style={{ objectFit: "cover" }}
                               />
                               <div className="w-75 mx-2 d-flex flex-column justify-content-between">
-                                <span className="secondary">{order.name}</span>
+                                <span className="primary fw-bold">{order.name}</span>
                                 <span className="text-muted">
                                   ID: {order.id}
                                 </span>

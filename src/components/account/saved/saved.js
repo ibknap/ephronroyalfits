@@ -82,7 +82,7 @@ export default function Saved() {
                               <button
                                 type="button"
                                 onClick={() => addItem(item)}
-                                className={`btn btn-dark rounded-0 border-0 ${styles.saved_order}`}
+                                className={`btn btn-primary rounded-0 border-0 ${styles.saved_order}`}
                               >
                                 Add
                               </button>
@@ -100,8 +100,12 @@ export default function Saved() {
                       </ul>
                     ) : (
                       <div className="text-center text-muted">
-                        <Heart size={100} variant="Outline" />
-                        <h5>No saved items yet.</h5>
+                        <Heart
+                          size={100}
+                          variant="Bulk"
+                          className="primary mb-3"
+                        />
+                        <p>No saved items yet.</p>
                       </div>
                     )}
                   </div>
