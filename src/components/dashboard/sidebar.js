@@ -1,4 +1,4 @@
-import { Box1, DirectInbox, Logout, People, ShoppingBag } from "iconsax-react";
+import { Box1, DirectInbox, Folder, Logout, People, ShoppingBag } from "iconsax-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "@/firebase/fire_auth_context";
@@ -71,7 +71,7 @@ export default function Sidebar() {
             router.asPath == "/" && "bg_primary"
           }`}
         >
-          <DirectInbox className="mx-2" />
+          <Folder className="mx-2" />
           <span className="d-none d-lg-inline">Go Home</span>
         </Link>
 
