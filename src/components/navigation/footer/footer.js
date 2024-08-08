@@ -6,6 +6,9 @@ import Loader from "@/components/loader/loader";
 import { doc, setDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase/fire_config";
 import { toast } from "react-toastify";
+import { Julius_Sans_One } from "next/font/google";
+
+const font = Julius_Sans_One({ subsets: ["latin"], weight: "400" });
 
 export default function Footer() {
   const [sending, setSending] = useState(false);
@@ -31,7 +34,7 @@ export default function Footer() {
   };
 
   return (
-    <footer>
+    <footer className={font.className} style={{ fontSize: 14 }}>
       <section className="pt-3 mb-5">
         <div className="container">
           <div className="row justify-content-center align-items-center">
@@ -92,7 +95,7 @@ export default function Footer() {
       <section style={{ background: "#f4f4f4" }} className="black mt-5 py-5">
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-4">
               <h5>CONTACT</h5>
 
               <hr />
@@ -136,61 +139,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="col-md-3">
-              <h5>EXPLORE</h5>
-
-              <hr />
-
-              <ul className="list-unstyled">
-                <li className="mb-3">
-                  <Link
-                    className="text-decoration-none black"
-                    href="https://www.instagram.com/ephron_royal_fits/"
-                    target="_blank"
-                  >
-                    Shop Our Instagram
-                  </Link>
-                </li>
-
-                <li className="mb-3">
-                  <Link
-                    className="text-decoration-none black"
-                    href="/category/hoodies"
-                  >
-                    Hoodies
-                  </Link>
-                </li>
-
-                <li className="mb-3">
-                  <Link
-                    className="text-decoration-none black"
-                    href="/category/tees"
-                  >
-                    Tees
-                  </Link>
-                </li>
-
-                <li className="mb-3">
-                  <Link
-                    className="text-decoration-none black"
-                    href="/category/polos"
-                  >
-                    Polos
-                  </Link>
-                </li>
-
-                <li className="mb-3">
-                  <Link
-                    className="text-decoration-none black"
-                    href="/category/sweatshirts"
-                  >
-                    Sweatshirts
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-md-3">
+            <div className="col-md-4">
               <h5>COMPANY</h5>
 
               <hr />
@@ -207,19 +156,13 @@ export default function Footer() {
                 </li>
 
                 <li className="mb-3">
-                  <Link
-                    className="text-decoration-none black"
-                    href="/privacy"
-                  >
+                  <Link className="text-decoration-none black" href="/privacy">
                     Privacy Policy
                   </Link>
                 </li>
 
                 <li className="mb-3">
-                  <Link
-                    className="text-decoration-none black"
-                    href="/terms"
-                  >
+                  <Link className="text-decoration-none black" href="/terms">
                     Terms And Conditions
                   </Link>
                 </li>
