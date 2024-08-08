@@ -176,7 +176,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <Products
+        {/* <Products
           length={8}
           title="NEW ARRIVALS"
           tag="new"
@@ -201,17 +201,105 @@ export default function HomePage() {
           category={null}
           sub_category={null}
           random={true}
-        />
+        /> */}
 
         <div className="container my-5">
-          <div className="row mb-5">
+          <div className="row">
             <div className="col-12 text-center">
-              <Link
-                href="/products"
-                className="btn btn-lg btn-outline-primary rounded-0"
-              >
-                All products
-              </Link>
+              <img
+                src="images/vg.png"
+                alt="image"
+                width="175"
+                className="object-fit-cover me-3"
+              />
+              <img
+                src="images/hg.png"
+                alt="image"
+                width="175"
+                className="object-fit-cover me-3"
+              />
+              <img
+                src="images/ad.png"
+                alt="image"
+                width="175"
+                className="object-fit-cover"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="container-fluid mb-5">
+          <div className="row p-0 m-0">
+            <div className="col-6 col-md-3 p-0">
+              <div className="position-relative me-1 mb-2">
+                <Link href="/category/sweatshirts">
+                  <img
+                    src="images/sweatshirts.png"
+                    alt="image"
+                    width="100%"
+                    height={467}
+                    className="object-fit-cover"
+                    style={{ objectPosition: "top" }}
+                  />
+                  <h2 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                    SWEATSHIRTS
+                  </h2>
+                </Link>
+              </div>
+            </div>
+
+            <div className="col-6 col-md-3 p-0">
+              <div className="position-relative ms-1 mb-2 mx-md-1">
+                <Link href="/category/gems/necklaces">
+                  <img
+                    src="images/necklaces_2.png"
+                    alt="image"
+                    width="100%"
+                    height={467}
+                    className="object-fit-cover"
+                    style={{ objectPosition: "top" }}
+                  />
+                  <h2 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                    NECKLACES
+                  </h2>
+                </Link>
+              </div>
+            </div>
+
+            <div className="col-6 col-md-3 p-0">
+              <div className="position-relative me-1 mb-2 mx-md-1">
+                <Link href="/category/hoodies">
+                  <img
+                    src="images/hoodies.png"
+                    alt="image"
+                    width="100%"
+                    height={467}
+                    className="object-fit-cover"
+                    style={{ objectPosition: "top" }}
+                  />
+                  <h2 className="position-absolute bottom-0 text-white fw-bold px-2">
+                    HOODIES
+                  </h2>
+                </Link>
+              </div>
+            </div>
+
+            <div className="col-6 col-md-3 p-0">
+              <div className="position-relative ms-1 mb-2">
+                <Link href="/category/essentials/tumblers">
+                  <img
+                    src="images/tumblers_2.png"
+                    alt="image"
+                    width="100%"
+                    height={467}
+                    className="object-fit-cover"
+                    style={{ objectPosition: "top" }}
+                  />
+                  <h2 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                    TUMBLERS
+                  </h2>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

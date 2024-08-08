@@ -31,8 +31,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="">
-      <section className="bg_blue_50 py-3">
+    <footer>
+      <section className="pt-3 mb-5">
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="col-md-7 text-center">
@@ -46,7 +46,7 @@ export default function Footer() {
                 <div className="col-sm-6">
                   <input
                     type="text"
-                    className={`form-control ${styles.form_field}`}
+                    className="form-control rounded-0"
                     required
                     placeholder="Full Name"
                     onChange={(e) => setFullName(e.target.value)}
@@ -56,7 +56,7 @@ export default function Footer() {
                 <div className="col-sm-6">
                   <input
                     type="email"
-                    className={`form-control ${styles.form_field}`}
+                    className="form-control rounded-0"
                     required
                     placeholder="Email Address"
                     onChange={(e) => setEmail(e.target.value)}
@@ -66,7 +66,7 @@ export default function Footer() {
                 <div className="col-12 mt-3">
                   <textarea
                     type="text"
-                    className={`form-control ${styles.form_field}`}
+                    className="form-control rounded-0"
                     required
                     placeholder="Message"
                     style={{ height: "80px" }}
@@ -89,7 +89,7 @@ export default function Footer() {
         </div>
       </section>
 
-      <section className="bg_black text-white py-5">
+      <section style={{ background: "#f4f4f4" }} className="black mt-5 py-5">
         <div className="container">
           <div className="row">
             <div className="col-md-3">
@@ -98,11 +98,11 @@ export default function Footer() {
               <hr />
 
               <div className="d-flex my-2">
-                <Call className="me-1 text-white" variant="Bulk" />
-                <div className="d-flex flex-column text-white me-1">
+                <Call className="me-1 black" variant="Bulk" />
+                <div className="d-flex flex-column black me-1">
                   call us
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="tel:+2347063869144"
                     target="_blank"
                   >
@@ -112,11 +112,11 @@ export default function Footer() {
               </div>
 
               <div className="d-flex my-2">
-                <DirectSend className="me-1 text-white" variant="Bulk" />
-                <div className="d-flex flex-column text-white me-1">
+                <DirectSend className="me-1 black" variant="Bulk" />
+                <div className="d-flex flex-column black me-1">
                   email us
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="mailto:ephronroyalfits@gmail.com"
                     target="_blank"
                   >
@@ -126,10 +126,10 @@ export default function Footer() {
               </div>
 
               <div className="d-flex my-2">
-                <Location className="me-1 text-white" variant="Bulk" />
-                <div className="d-flex flex-column text-white me-1">
+                <Location className="me-1 black" variant="Bulk" />
+                <div className="d-flex flex-column black me-1">
                   visit us
-                  <span className="text-white">
+                  <span className="black">
                     Nill Ifesowapo crescent, Ado, Ekiti State
                   </span>
                 </div>
@@ -144,7 +144,7 @@ export default function Footer() {
               <ul className="list-unstyled">
                 <li className="mb-3">
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="https://www.instagram.com/ephron_royal_fits/"
                     target="_blank"
                   >
@@ -154,7 +154,7 @@ export default function Footer() {
 
                 <li className="mb-3">
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="/category/hoodies"
                   >
                     Hoodies
@@ -163,7 +163,7 @@ export default function Footer() {
 
                 <li className="mb-3">
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="/category/tees"
                   >
                     Tees
@@ -172,7 +172,7 @@ export default function Footer() {
 
                 <li className="mb-3">
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="/category/polos"
                   >
                     Polos
@@ -181,7 +181,7 @@ export default function Footer() {
 
                 <li className="mb-3">
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="/category/sweatshirts"
                   >
                     Sweatshirts
@@ -198,7 +198,7 @@ export default function Footer() {
               <ul className="list-unstyled">
                 <li className="mb-3">
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
                     target="_blank"
                   >
@@ -208,7 +208,7 @@ export default function Footer() {
 
                 <li className="mb-3">
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="/privacy"
                   >
                     Privacy Policy
@@ -217,7 +217,7 @@ export default function Footer() {
 
                 <li className="mb-3">
                   <Link
-                    className="text-decoration-none text-white"
+                    className="text-decoration-none black"
                     href="/terms"
                   >
                     Terms And Conditions
@@ -241,7 +241,7 @@ export default function Footer() {
 
           <div className="row mt-5">
             <div className="col text-center">
-              <Link className="text-white text-decoration-none" href="/">
+              <Link className="text-muted text-decoration-none" href="/">
                 All rights reserved © www.ephronroyalfits.com
               </Link>
             </div>

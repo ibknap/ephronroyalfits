@@ -1,13 +1,11 @@
 .btn_nav,
 .btn_nav:hover,
 .btn_nav:focus {
-  background: white !important;
+  width: 100%;
+  background: #57aecf80 !important;
   border: none;
   border-radius: 0;
   color: #000000;
 }
 
-.form_field {
-  border: none;
-  border-radius: 0;
-}
+
