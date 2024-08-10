@@ -22,7 +22,7 @@ export default function CollapsedNavbar({ totalCart, emitShowSearch }) {
             <div className="d-flex justify-content-between align-items-center">
               <Link className="navbar-brand" href="/">
                 <img
-                  src="/logo/png/logo_long_trans.png"
+                  src="/logo/png/logo_long.png"
                   alt="logo"
                   className="rounded"
                   width={118}

@@ -16,7 +16,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
       <div className="container-fluid p-2">
         <Link className="navbar-brand" href="/">
           <img
-            src="/logo/svg/logo_long_trans.svg"
+            src="/logo/png/logo_long.png"
             alt="logo"
             className="rounded"
             width={150}
