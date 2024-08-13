@@ -203,9 +203,12 @@ export default function HomePage() {
           random={true}
         /> */}
 
-        <div className="container my-5">
+        <div className="container">
           <div className="row">
-            <div className="col-12 text-center">
+            <div
+              className="col-12 text-center"
+              style={{ margin: "8rem 0rem" }}
+            >
               <img
                 src="images/vg.png"
                 alt="image"

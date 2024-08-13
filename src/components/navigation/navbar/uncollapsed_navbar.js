@@ -46,6 +46,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                     id={`cat${cat.id}`}
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
+                    style={{ marginBottom: 7 }}
                   >
                     {cat.name}
                   </button>
@@ -84,6 +85,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                   <Link
                     className="nav-link rounded-0 black"
                     href={`/category/${cat.parentId}`}
+                    style={{ marginBottom: 7 }}
                   >
                     {cat.name}
                   </Link>

@@ -405,7 +405,7 @@
 }
 
 .hero-m {
-  margin-top: 4.4rem !important;
+  margin-top: 3.4rem !important;
 }
 
 .hero-size {
@@ -415,7 +415,7 @@
 
 @media (max-width: 767px) {
   .hero-m {
-    margin-top: 4.1rem !important;
+    margin-top: 3.1rem !important;
   }
 
   .hero-size {
