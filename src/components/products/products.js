@@ -29,6 +29,7 @@ export default function Products({
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    console.log(title.toLowerCase());
     const q = query(
       collection(db, "products"),
       where("gender", "==", title.toLowerCase()),

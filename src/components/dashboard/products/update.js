@@ -73,6 +73,7 @@ export default function UpdateProduct({ product }) {
             name.length <= 0 ? product.name_query : name.toLowerCase(),
           price: price.length <= 0 ? product.price : price,
           quantity: quantity.length <= 0 ? product.quantity : quantity,
+          gender: gender.length <= 0 ? product.gender : gender,
           category: category === null ? product.category : category.name,
           sub_category:
             sub_category === "Select" ? product.sub_category : sub_category,

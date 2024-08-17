@@ -20,6 +20,7 @@ export default function CreateProduct() {
   const [quantity, setQuantity] = useState("");
   const [category, setCategory] = useState(null);
   const [sub_category, setSubCategory] = useState("Select");
+  const [gender, setGender] = useState("men");
   const [specifications, setSpecifications] = useState([{}]);
   const [description, setDescription] = useState("");
 
@@ -35,6 +36,7 @@ export default function CreateProduct() {
       name_query: name.toLowerCase(),
       price: price,
       quantity: quantity,
+      gender: gender.toLowerCase(),
       category: category.name.toLowerCase(),
       sub_category: sub_category,
       specifications: specifications,
