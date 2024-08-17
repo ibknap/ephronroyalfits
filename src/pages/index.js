@@ -176,15 +176,9 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* <Products
-          length={8}
-          title="NEW ARRIVALS"
-          tag="new"
-          category={null}
-          random={false}
-        />
+        <Products className="mt-5" length={8} title="MEN" category={null} random={true} />
 
-        <Products
+        {/* <Products
           length={4}
           title="ACCESSORIES"
           tag={null}
@@ -205,10 +199,7 @@ export default function HomePage() {
 
         <div className="container">
           <div className="row">
-            <div
-              className="col-12 text-center"
-              style={{ margin: "8rem 0rem" }}
-            >
+            <div className="col-12 text-center" style={{ margin: "8rem 0rem" }}>
               <img
                 src="images/vg.png"
                 alt="image"
@@ -231,6 +222,8 @@ export default function HomePage() {
           </div>
         </div>
 
+        <Products className="mb-5" length={8} title="WOMEN" category={null} random={true} />
+
         <div className="container-fluid mb-5">
           <div className="row p-0 m-0">
             <div className="col-6 col-md-3 p-0">
@@ -244,9 +237,9 @@ export default function HomePage() {
                     className="object-fit-cover"
                     style={{ objectPosition: "top" }}
                   />
-                  <h2 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                  <h3 className="position-absolute bottom-0 text-dark fw-bold px-2">
                     SWEATSHIRTS
-                  </h2>
+                  </h3>
                 </Link>
               </div>
             </div>
@@ -262,9 +255,9 @@ export default function HomePage() {
                     className="object-fit-cover"
                     style={{ objectPosition: "top" }}
                   />
-                  <h2 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                  <h3 className="position-absolute bottom-0 text-dark fw-bold px-2">
                     NECKLACES
-                  </h2>
+                  </h3>
                 </Link>
               </div>
             </div>
@@ -280,9 +273,9 @@ export default function HomePage() {
                     className="object-fit-cover"
                     style={{ objectPosition: "top" }}
                   />
-                  <h2 className="position-absolute bottom-0 text-white fw-bold px-2">
+                  <h3 className="position-absolute bottom-0 text-white fw-bold px-2">
                     HOODIES
-                  </h2>
+                  </h3>
                 </Link>
               </div>
             </div>
@@ -298,9 +291,9 @@ export default function HomePage() {
                     className="object-fit-cover"
                     style={{ objectPosition: "top" }}
                   />
-                  <h2 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                  <h3 className="position-absolute bottom-0 text-dark fw-bold px-2">
                     TUMBLERS
-                  </h2>
+                  </h3>
                 </Link>
               </div>
             </div>

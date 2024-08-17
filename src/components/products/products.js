@@ -17,6 +17,7 @@ import { db } from "@/firebase/fire_config";
 import shuffleArray from "@/components/utils/shuffle_array";
 
 export default function Products({
+  className,
   length,
   title,
   tag,
@@ -73,10 +74,10 @@ export default function Products({
   };
 
   return (
-    <div className="container my-5">
+    <div className={`container ${className}`}>
       {title && (
         <div className="row mb-4">
-          <div className="col-12 text-center">
+          <div className="col-12">
             <h5 className="fw-bold">{title}</h5>
           </div>
         </div>
@@ -91,7 +92,7 @@ export default function Products({
               onMouseEnter={() => setHoveredProductId(product.id)}
               onMouseLeave={() => setHoveredProductId(null)}
             >
-              <div className="product-card shadow-sm mb-3">
+              <div className="product-card mb-3">
                 <img
                   src={changeImg(product.id, product.id === hoveredProductId)}
                   alt={product.name}
@@ -103,24 +104,14 @@ export default function Products({
                     href={`/product/${product.id}`}
                     className="text-decoration-none text-dark"
                   >
-                    <h1>{truncate(product.name, 35)}</h1>
-                  </Link>
+                    <small className="text-muted">{product.category}</small>
 
-                  <div className="product-add-to-cart">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <b>{toCurrency(product.price)}</b>
-                      <button
-                        onClick={() =>
-                          isInCart(product.id)
-                            ? removeItem(product.id)
-                            : addItem(product)
-                        }
-                        className="btn btn-primary border-0 rounded-0"
-                      >
-                        {isInCart(product.id) ? "Remove" : "Add to cart"}
-                      </button>
-                    </div>
-                  </div>
+                    <h1 className="fw-bold">{truncate(product.name, 30)}</h1>
+
+                    <div>{toCurrency(product.price)}</div>
+
+                    <small className="text-muted">Available In: XL L S</small>
+                  </Link>
                 </div>
 
                 {tag && <div className="product-tag">{tag}</div>}
