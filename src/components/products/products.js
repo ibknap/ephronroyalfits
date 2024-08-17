@@ -3,7 +3,6 @@ import { truncate } from "@/components/utils/truncate";
 import toCurrency from "@/components/utils/toCurrency";
 import Link from "next/link";
 import { useSaved } from "@/components/account/saved/saved_context";
-import { useCart } from "@/components/cart/cart_context";
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -25,38 +24,17 @@ export default function Products({
   sub_category,
   random,
 }) {
-  const { addItem, isInCart, removeItem } = useCart();
   const { addSavedItem, isInSaved, removeSavedItem } = useSaved();
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    let q;
-    if (category && length > 0) {
-      q = query(
-        collection(db, "products"),
-        where("category", "==", category),
-        orderBy("addedOn"),
-        limit(length)
-      );
-    } else if (category) {
-      q = query(
-        collection(db, "products"),
-        where("category", "==", category),
-        orderBy("addedOn")
-      );
-    } else if (category && sub_category) {
-      q = query(
-        collection(db, "products"),
-        where("category", "==", category),
-        where("sub_category", "==", sub_category),
-        orderBy("addedOn")
-      );
-    } else if (length > 0) {
-      q = query(collection(db, "products"), orderBy("addedOn"), limit(length));
-    } else {
-      q = query(collection(db, "products"), orderBy("addedOn"));
-    }
+    const q = query(
+      collection(db, "products"),
+      where("gender", "==", title.toLowerCase()),
+      orderBy("addedOn"),
+      limit(length)
+    );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => doc.data());
@@ -66,6 +44,43 @@ export default function Products({
 
     return () => unsubscribe();
   }, [length, title, tag, category]);
+
+  // useEffect(() => {
+  //   let q;
+  //   if (category && length > 0) {
+  //     q = query(
+  //       collection(db, "products"),
+  //       where("category", "==", category),
+  //       orderBy("addedOn"),
+  //       limit(length)
+  //     );
+  //   } else if (category) {
+  //     q = query(
+  //       collection(db, "products"),
+  //       where("category", "==", category),
+  //       orderBy("addedOn")
+  //     );
+  //   } else if (category && sub_category) {
+  //     q = query(
+  //       collection(db, "products"),
+  //       where("category", "==", category),
+  //       where("sub_category", "==", sub_category),
+  //       orderBy("addedOn")
+  //     );
+  //   } else if (length > 0) {
+  //     q = query(collection(db, "products"), orderBy("addedOn"), limit(length));
+  //   } else {
+  //     q = query(collection(db, "products"), orderBy("addedOn"));
+  //   }
+
+  //   const unsubscribe = onSnapshot(q, (snapshot) => {
+  //     const data = snapshot.docs.map((doc) => doc.data());
+  //     if (random) setProducts(shuffleArray(data));
+  //     else setProducts(data);
+  //   });
+
+  //   return () => unsubscribe();
+  // }, [length, title, tag, category]);
 
   const changeImg = (id, isHover) => {
     const product = products.find((p) => p.id === id);
