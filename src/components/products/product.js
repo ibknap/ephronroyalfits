@@ -202,7 +202,7 @@ export default function Product({ id }) {
         </div>
       </div>
 
-      <div className="container mb-5">
+      {/* <div className="container mb-5">
         <div className="row mb-3">
           <div className="col-12">
             <h5 className="fw-bold">Check out</h5>
@@ -275,7 +275,7 @@ export default function Product({ id }) {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     </>
   );
 }
