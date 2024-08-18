@@ -50,7 +50,6 @@ export default function SearchBox({ show, onHide }) {
   return (
     <>
       <Modal
-        centered
         scrollable
         show={show}
         onHide={onHide}
