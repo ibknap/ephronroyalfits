@@ -186,18 +186,7 @@ export default function HomePage() {
           random={false}
         />
 
-        <hr className="mx-5 p-0 m-0" />
-
-        <Products
-          length={8}
-          title={null}
-          tag={null}
-          category={null}
-          sub_category={null}
-          random={true}
-        /> */}
-
-        <div className="container">
+        {/* <div className="container">
           <div className="row">
             <div className="col-12 text-center" style={{ margin: "8rem 0rem" }}>
               <img
@@ -220,7 +209,7 @@ export default function HomePage() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <Products className="mb-5" length={8} title="WOMEN" category={null} random={true} />
 
@@ -282,9 +271,9 @@ export default function HomePage() {
 
             <div className="col-6 col-md-3 p-0">
               <div className="position-relative ms-1 mb-2">
-                <Link href="/category/essentials/tumblers">
+                <Link href="/category/essentials/bags">
                   <img
-                    src="images/tumblers_2.png"
+                    src="images/bags.png"
                     alt="image"
                     width="100%"
                     height={467}
@@ -292,7 +281,7 @@ export default function HomePage() {
                     style={{ objectPosition: "top" }}
                   />
                   <h3 className="position-absolute bottom-0 text-dark fw-bold px-2">
-                    TUMBLERS
+                    BAGS
                   </h3>
                 </Link>
               </div>

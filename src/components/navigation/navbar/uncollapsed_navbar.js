@@ -94,13 +94,13 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
             )}
           </ul>
 
-          <ul className="d-flex navbar-nav">
+          <ul className="d-flex navbar-nav" style={{ marginBottom: 7 }}>
             <li className="nav-item">
               <button
                 onClick={() => emitShowSearch(true)}
                 className="btn nav-link"
               >
-                <SearchNormal1 className="black" variant="Bold" />
+                <SearchNormal1 className="black" size={20} variant="Bold" />
               </button>
             </li>
 
@@ -111,7 +111,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                 }`}
                 href={!loading && authUser ? "/account" : "/auth/signin"}
               >
-                <User variant="Bulk" />
+                <User size={20} variant="Bulk" />
               </Link>
             </li>
 
@@ -122,7 +122,7 @@ export default function UnCollapsedNavbar({ totalCart, emitShowSearch }) {
                 }`}
                 href="/cart"
               >
-                <Bag2 variant="Bulk" />
+                <Bag2 size={20} variant="Bulk" />
                 {parseInt(totalCart) > 0 && (
                   <span
                     class="position-absolute bottom-0 end-0 translate-middle bg_blue border border-light rounded-circle"

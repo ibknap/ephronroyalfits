@@ -79,10 +79,10 @@ const categories = [
         sub: [],
       },
       {
-        id: "tumblers",
+        id: "bags",
         parentId: "essentials",
-        image: "/images/tumblers.png",
-        name: "Tumblers",
+        image: "/images/bags.png",
+        name: "Bags",
         sub: [],
       },
     ],

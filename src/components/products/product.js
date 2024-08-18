@@ -128,6 +128,8 @@ export default function Product({ id }) {
                 {toCurrency(product.price)}
               </h4>
 
+              <img src="/images/nn.png" alt="nn" />
+
               <p className="mt-4">
                 <b>Quantity:</b> {product.quantity}
               </p>
