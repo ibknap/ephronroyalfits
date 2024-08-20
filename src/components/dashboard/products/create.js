@@ -53,13 +53,11 @@ export default function CreateProduct() {
             const image = new Image();
             image.onload = () => {
               const canvas = document.createElement("canvas");
-              const maxWidth = 800;
-              const scaleFactor = maxWidth / image.width;
-              canvas.width = maxWidth;
-              canvas.height = image.height * scaleFactor;
+              canvas.width = image.width;
+              canvas.height = image.height;
               const ctx = canvas.getContext("2d");
               ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-              canvas.toBlob(resolve, "image/jpeg", 0.8);
+              canvas.toBlob(resolve, "image/jpeg", 1);
             };
             image.src = reader.result;
           };
