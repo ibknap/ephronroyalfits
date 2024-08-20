@@ -18,6 +18,7 @@ export default function UpdateProduct({ product }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [gender, setGender] = useState("men");
   const [category, setCategory] = useState(null);
   const [sub_category, setSubCategory] = useState("Select");
   const [specifications, setSpecifications] = useState([]);
@@ -111,6 +112,7 @@ export default function UpdateProduct({ product }) {
     setName("");
     setPrice("");
     setQuantity("");
+    setGender("");
     setCategory(null);
     setSubCategory("Select");
     setSpecifications([]);
@@ -205,6 +207,20 @@ export default function UpdateProduct({ product }) {
                     />
                     <label htmlFor="quantity">Quantity</label>
                   </div>
+                </div>
+              </div>
+
+              <div className="row mt-3">
+                <div className="col-md-12">
+                  <select
+                    className="form-select rounded-0 py-2"
+                    id="gender"
+                    defaultValue={product?.gender ?? gender}
+                    onChange={(e) => setGender(e.target.value)}
+                  >
+                    <option value="men">men</option>
+                    <option value="women">women</option>
+                  </select>
                 </div>
               </div>
 

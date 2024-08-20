@@ -205,6 +205,20 @@ export default function CreateProduct() {
               </div>
 
               <div className="row mt-3">
+                <div className="col-md-12">
+                  <select
+                    className="form-select rounded-0 py-2"
+                    required
+                    id="gender"
+                    onChange={(e) => setGender(e.target.value)}
+                  >
+                    <option value="men">men</option>
+                    <option value="women">women</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="row mt-3">
                 <div className="col-md-6">
                   <div className="form-floating">
                     <select
