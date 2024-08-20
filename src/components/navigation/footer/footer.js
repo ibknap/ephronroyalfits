@@ -127,16 +127,6 @@ export default function Footer() {
                   </Link>
                 </div>
               </div>
-
-              <div className="d-flex my-2">
-                <Location className="me-1 black" variant="Bulk" />
-                <div className="d-flex flex-column black me-1">
-                  visit us
-                  <span className="black">
-                    Nill Ifesowapo crescent, Ado, Ekiti State
-                  </span>
-                </div>
-              </div>
             </div>
 
             <div className="col-md-4">
