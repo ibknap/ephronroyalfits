@@ -1,8 +1,40 @@
 const categories = [
-  { id: "hoodies", parentId: "hoodies", name: "Hoodies", sub: [] },
-  { id: "polos", parentId: "polos", name: "Polos", sub: [] },
-  { id: "tees", parentId: "tees", name: "Tees", sub: [] },
-  { id: "sweatshirts", parentId: "sweatshirts", name: "Sweatshirts", sub: [] },
+  {
+    id: "clothing",
+    parentId: "clothing",
+    name: "Clothing",
+    sub: [
+      {
+        id: "hoodies",
+        parentId: "clothing",
+        image: "/images/hoodies.png",
+        name: "Hoodies",
+        sub: [],
+      },
+      {
+        id: "polos",
+        parentId: "clothing",
+        image: "/images/polo.png",
+        name: "Polos",
+        sub: [],
+      },
+      {
+        id: "tees",
+        parentId: "clothing",
+        image: "/images/tee.png",
+        name: "Tees",
+        sub: [],
+      },
+      {
+        id: "sweatshirts",
+        parentId: "clothing",
+        image: "/images/sweatshirts.png",
+        name: "Sweatshirts",
+        sub: [],
+      },
+    ],
+  },
+  { id: "shoes", parentId: "shoes", name: "Shoes", sub: [] },
   {
     id: "accessories",
     parentId: "accessories",

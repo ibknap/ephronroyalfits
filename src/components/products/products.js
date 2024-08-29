@@ -29,22 +29,57 @@ export default function Products({
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log(title.toLowerCase());
-    const q = query(
-      collection(db, "products"),
-      where("gender", "==", title.toLowerCase()),
-      orderBy("addedOn"),
-      limit(length)
-    );
+    let q;
 
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map((doc) => doc.data());
-      if (random) setProducts(shuffleArray(data));
-      else setProducts(data);
-    });
+    if (title) {
+      if (title.toLowerCase() === "women" || title.toLowerCase() === "men") {
+        q = query(
+          collection(db, "products"),
+          where("gender", "==", title.toLowerCase()),
+          orderBy("addedOn", "desc"),
+          limit(length)
+        );
+      } else {
+        if (category !== null && sub_category === null && length > 0) {
+          q = query(
+            collection(db, "products"),
+            where("category", "==", category),
+            orderBy("addedOn", "desc"),
+            limit(length)
+          );
+        } else if (category !== null && sub_category === null) {
+          q = query(
+            collection(db, "products"),
+            where("category", "==", category),
+            orderBy("addedOn", "desc")
+          );
+        } else if (category !== null && sub_category !== null) {
+          q = query(
+            collection(db, "products"),
+            where("category", "==", category),
+            where("sub_category", "==", sub_category),
+            orderBy("addedOn", "desc")
+          );
+        } else if (length > 0) {
+          q = query(
+            collection(db, "products"),
+            orderBy("addedOn", "desc"),
+            limit(length)
+          );
+        } else {
+          q = query(collection(db, "products"), orderBy("addedOn"));
+        }
+      }
 
-    return () => unsubscribe();
-  }, [length, title, tag, category]);
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const data = snapshot.docs.map((doc) => doc.data());
+        if (random) setProducts(shuffleArray(data));
+        else setProducts(data);
+      });
+
+      return () => unsubscribe();
+    }
+  }, [length, title, tag, category, sub_category]);
 
   // useEffect(() => {
   //   let q;

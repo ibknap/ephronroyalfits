@@ -38,7 +38,7 @@ export default function CreateProduct() {
       quantity: quantity,
       gender: gender.toLowerCase(),
       category: category.name.toLowerCase(),
-      sub_category: sub_category,
+      sub_category: sub_category.toLowerCase(),
       specifications: specifications,
       description: description,
       numOfOrders: 0,
