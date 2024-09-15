@@ -92,21 +92,77 @@ export default function Footer() {
         </div>
       </section>
 
-      <section style={{ background: "#f4f4f4" }} className="black mt-5 py-5">
+      <section>
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-6 text-center">
+              <div className="py-4">medias here</div>
+            </div>
+
+            <div className="col-md-6 text-center">
+              <div className="py-4">
+                <img
+                  src="/images/paystack.png"
+                  alt="paystack"
+                  className="me-4"
+                  width={180}
+                />
+                <img src="/images/apple_pay.svg" alt="apple pay" height={40} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg_blue_50">
+        <div className="container">
+          <div className="row justify-content-center align-items-center">
+            <div className="col-md-4 text-center">
+              <div className="py-4 d-flex justify-content-center align-items-center">
+                icon
+                <h5 className="ms-2 fw-bold m-0">TOP FASHION</h5>
+              </div>
+            </div>
+
+            <div className="col-md-4 text-center">
+              <div className="py-4 d-flex justify-content-center align-items-center">
+                icon
+                <h5 className="ms-2 fw-bold m-0">SMOOTH DELIVERY</h5>
+              </div>
+            </div>
+
+            <div className="col-md-4 text-center">
+              <div className="py-4 d-flex justify-content-center align-items-center">
+                icon
+                <h5 className="ms-2 fw-bold m-0">EXELLENT SUPPORT</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="black mt-5 py-5">
         <div className="container">
           <div className="row">
+            <div className="col-md-3">
+              <img
+                src="/logo/png/logo_long.png"
+                alt="logo"
+                className="rounded"
+                width={218}
+              />
+            </div>
+
             <div className="col-md-4">
               <h5>CONTACT</h5>
 
-              <hr />
-
-              <div className="d-flex my-2">
+              <div className="mt-5 d-flex my-2">
                 <Call className="me-1 black" variant="Bulk" />
                 <div className="d-flex flex-column black me-1">
                   call us
                   <Link
                     className="text-decoration-none black"
-                    href="tel:+2347063869144"
+                    href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
                     target="_blank"
                   >
                     +234-706-386-9144
@@ -132,9 +188,7 @@ export default function Footer() {
             <div className="col-md-4">
               <h5>COMPANY</h5>
 
-              <hr />
-
-              <ul className="list-unstyled">
+              <ul className="mt-5 list-unstyled">
                 <li className="mb-3">
                   <Link
                     className="text-decoration-none black"
@@ -157,18 +211,6 @@ export default function Footer() {
                   </Link>
                 </li>
               </ul>
-            </div>
-
-            <div className="col-md-3">
-              <h5>EPHRON ROYAL &apos;FITS</h5>
-
-              <p className="mb-0 mt-4">
-                Elevate your style with Ephron Royal &apos;fits, where art meets
-                fashion in a harmonious blend of creativity and elegance.
-                Explore our online store for a curated collection of unique
-                art-inspired fashion pieces that allow you to express your
-                individuality.
-              </p>
             </div>
           </div>
 
