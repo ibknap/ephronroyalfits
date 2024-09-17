@@ -96,7 +96,31 @@ export default function Footer() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6 text-center">
-              <div className="py-4">medias here</div>
+              <div className="py-4">
+                <Link
+                  href="https://www.facebook.com/profile.php?id=61565968947843&mibextid=LQQJ4d"
+                  target="_blank"
+                  className="me-5"
+                >
+                  <img src="/images/facebook.png" alt="facebook" height={30} />
+                </Link>
+
+                <Link
+                  href="https://www.instagram.com/ephron_royal_fits"
+                  target="_blank"
+                  className="me-5"
+                >
+                  <img
+                    src="/images/instagram.png"
+                    alt="instagram"
+                    height={30}
+                  />
+                </Link>
+
+                <Link href="https://x.com/e_royalfits" target="_blank">
+                  <img src="/images/twitter.png" alt="twitter" height={30} />
+                </Link>
+              </div>
             </div>
 
             <div className="col-md-6 text-center">
@@ -119,22 +143,25 @@ export default function Footer() {
           <div className="row justify-content-center align-items-center">
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                icon
-                <h5 className="ms-2 fw-bold m-0">TOP FASHION</h5>
+                <img src="/images/fashion.png" alt="fashion" height={40} />
+
+                <h5 className="ms-3 fw-bold m-0">TOP FASHION</h5>
               </div>
             </div>
 
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                icon
-                <h5 className="ms-2 fw-bold m-0">SMOOTH DELIVERY</h5>
+                <img src="/images/delivery.png" alt="delivery" height={40} />
+
+                <h5 className="ms-3 fw-bold m-0">SMOOTH DELIVERY</h5>
               </div>
             </div>
 
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                icon
-                <h5 className="ms-2 fw-bold m-0">EXELLENT SUPPORT</h5>
+                <img src="/images/support.png" alt="support" height={40} />
+
+                <h5 className="ms-3 fw-bold m-0">EXELLENT SUPPORT</h5>
               </div>
             </div>
           </div>
