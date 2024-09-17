@@ -35,63 +35,6 @@ export default function Footer() {
 
   return (
     <footer className={font.className} style={{ fontSize: 14 }}>
-      <section className="pt-3 mb-5">
-        <div className="container">
-          <div className="row justify-content-center align-items-center">
-            <div className="col-md-7 text-center">
-              <h4>You can leave us a message here.</h4>
-
-              <p className="m-0">we will get back to you as soon as posible</p>
-            </div>
-
-            <div className="col-md-5">
-              <form className="row mt-3" onSubmit={onSendMessage}>
-                <div className="col-sm-6">
-                  <input
-                    type="text"
-                    className="form-control rounded-0"
-                    required
-                    placeholder="Full Name"
-                    onChange={(e) => setFullName(e.target.value)}
-                  />
-                </div>
-
-                <div className="col-sm-6">
-                  <input
-                    type="email"
-                    className="form-control rounded-0"
-                    required
-                    placeholder="Email Address"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-
-                <div className="col-12 mt-3">
-                  <textarea
-                    type="text"
-                    className="form-control rounded-0"
-                    required
-                    placeholder="Message"
-                    style={{ height: "80px" }}
-                    onChange={(e) => setMessage(e.target.value)}
-                  ></textarea>
-                </div>
-
-                <div className="col-12 mt-3">
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className={`btn ${styles.btn_nav}`}
-                  >
-                    {sending ? <Loader /> : "Submit"}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section>
         <div className="container">
           <div className="row align-items-center">
@@ -143,25 +86,25 @@ export default function Footer() {
           <div className="row justify-content-center align-items-center">
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <img src="/images/fashion.png" alt="fashion" height={40} />
+                <img src="/images/fashion.png" alt="fashion" height={20} />
 
-                <h5 className="ms-3 fw-bold m-0">TOP FASHION</h5>
+                <h6 className="ms-3 fw-bold m-0">TOP FASHION</h6>
               </div>
             </div>
 
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <img src="/images/delivery.png" alt="delivery" height={40} />
+                <img src="/images/delivery.png" alt="delivery" height={20} />
 
-                <h5 className="ms-3 fw-bold m-0">SMOOTH DELIVERY</h5>
+                <h6 className="ms-3 fw-bold m-0">SMOOTH DELIVERY</h6>
               </div>
             </div>
 
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <img src="/images/support.png" alt="support" height={40} />
+                <img src="/images/support.png" alt="support" height={20} />
 
-                <h5 className="ms-3 fw-bold m-0">EXELLENT SUPPORT</h5>
+                <h6 className="ms-3 fw-bold m-0">EXELLENT SUPPORT</h6>
               </div>
             </div>
           </div>
@@ -171,7 +114,7 @@ export default function Footer() {
       <section className="black mt-5 py-5">
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-2">
               <img
                 src="/logo/png/logo_long.png"
                 alt="logo"
@@ -181,12 +124,57 @@ export default function Footer() {
             </div>
 
             <div className="col-md-4">
+              <form className="row" onSubmit={onSendMessage}>
+                <div className="col-sm-6">
+                  <input
+                    type="text"
+                    className="form-control rounded-0"
+                    required
+                    placeholder="Full Name"
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                </div>
+
+                <div className="col-sm-6">
+                  <input
+                    type="email"
+                    className="form-control rounded-0"
+                    required
+                    placeholder="Email Address"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+
+                <div className="col-12 mt-3">
+                  <textarea
+                    type="text"
+                    className="form-control rounded-0"
+                    required
+                    placeholder="Message"
+                    style={{ height: "80px" }}
+                    onChange={(e) => setMessage(e.target.value)}
+                  ></textarea>
+                </div>
+
+                <div className="col-12 mt-3">
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className={`btn ${styles.btn_nav}`}
+                  >
+                    {sending ? <Loader /> : "Submit"}
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div className="col-md-3">
               <h5>CONTACT</h5>
 
               <div className="mt-5 d-flex my-2">
                 <Call className="me-1 black" variant="Bulk" />
                 <div className="d-flex flex-column black me-1">
-                  call us
+                  WhatsApp
                   <Link
                     className="text-decoration-none black"
                     href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
@@ -212,7 +200,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-3">
               <h5>COMPANY</h5>
 
               <ul className="mt-5 list-unstyled">

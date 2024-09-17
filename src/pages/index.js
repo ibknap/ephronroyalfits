@@ -226,9 +226,9 @@ export default function HomePage() {
                     className="object-fit-cover"
                     style={{ objectPosition: "top" }}
                   />
-                  <h3 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                  <h5 className="position-absolute bottom-0 text-dark fw-bold px-2">
                     SWEATSHIRTS
-                  </h3>
+                  </h5>
                 </Link>
               </div>
             </div>
@@ -244,9 +244,9 @@ export default function HomePage() {
                     className="object-fit-cover"
                     style={{ objectPosition: "top" }}
                   />
-                  <h3 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                  <h5 className="position-absolute bottom-0 text-dark fw-bold px-2">
                     NECKLACES
-                  </h3>
+                  </h5>
                 </Link>
               </div>
             </div>
@@ -262,9 +262,9 @@ export default function HomePage() {
                     className="object-fit-cover"
                     style={{ objectPosition: "top" }}
                   />
-                  <h3 className="position-absolute bottom-0 text-white fw-bold px-2">
+                  <h5 className="position-absolute bottom-0 text-white fw-bold px-2">
                     HOODIES
-                  </h3>
+                  </h5>
                 </Link>
               </div>
             </div>
@@ -280,9 +280,9 @@ export default function HomePage() {
                     className="object-fit-cover"
                     style={{ objectPosition: "top" }}
                   />
-                  <h3 className="position-absolute bottom-0 text-dark fw-bold px-2">
+                  <h5 className="position-absolute bottom-0 text-dark fw-bold px-2">
                     BAGS
-                  </h3>
+                  </h5>
                 </Link>
               </div>
             </div>
