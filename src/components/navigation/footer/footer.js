@@ -123,51 +123,6 @@ export default function Footer() {
               />
             </div>
 
-            <div className="col-md-4">
-              <form className="row" onSubmit={onSendMessage}>
-                <div className="col-sm-6">
-                  <input
-                    type="text"
-                    className="form-control rounded-0"
-                    required
-                    placeholder="Full Name"
-                    onChange={(e) => setFullName(e.target.value)}
-                  />
-                </div>
-
-                <div className="col-sm-6">
-                  <input
-                    type="email"
-                    className="form-control rounded-0"
-                    required
-                    placeholder="Email Address"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-
-                <div className="col-12 mt-3">
-                  <textarea
-                    type="text"
-                    className="form-control rounded-0"
-                    required
-                    placeholder="Message"
-                    style={{ height: "80px" }}
-                    onChange={(e) => setMessage(e.target.value)}
-                  ></textarea>
-                </div>
-
-                <div className="col-12 mt-3">
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className={`btn ${styles.btn_nav}`}
-                  >
-                    {sending ? <Loader /> : "Submit"}
-                  </button>
-                </div>
-              </form>
-            </div>
-
             <div className="col-md-3">
               <h5>CONTACT</h5>
 
@@ -226,6 +181,51 @@ export default function Footer() {
                   </Link>
                 </li>
               </ul>
+            </div>
+
+            <div className="col-md-4">
+              <form className="row" onSubmit={onSendMessage}>
+                <div className="col-sm-6">
+                  <input
+                    type="text"
+                    className="form-control rounded-0"
+                    required
+                    placeholder="Full Name"
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                </div>
+
+                <div className="col-sm-6">
+                  <input
+                    type="email"
+                    className="form-control rounded-0"
+                    required
+                    placeholder="Email Address"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+
+                <div className="col-12 mt-3">
+                  <textarea
+                    type="text"
+                    className="form-control rounded-0"
+                    required
+                    placeholder="Message"
+                    style={{ height: "80px" }}
+                    onChange={(e) => setMessage(e.target.value)}
+                  ></textarea>
+                </div>
+
+                <div className="col-12 mt-3">
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className={`btn ${styles.btn_nav}`}
+                  >
+                    {sending ? <Loader /> : "Submit"}
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
 
