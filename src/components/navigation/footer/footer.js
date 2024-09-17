@@ -119,17 +119,17 @@ export default function Footer() {
                 src="/logo/png/logo_long.png"
                 alt="logo"
                 className="rounded"
-                width={218}
+                width={150}
               />
             </div>
 
             <div className="col-md-3">
-              <h5>CONTACT</h5>
+              <h6 className="fw-bold">CONTACT</h6>
 
               <div className="mt-5 d-flex my-2">
                 <Call className="me-1 black" variant="Bulk" />
                 <div className="d-flex flex-column black me-1">
-                  WhatsApp
+                  <b>WhatsApp</b>
                   <Link
                     className="text-decoration-none black"
                     href="https://wa.me/+2347063869144?text=I am contacting you from ERF to enquire about..."
@@ -143,7 +143,7 @@ export default function Footer() {
               <div className="d-flex my-2">
                 <DirectSend className="me-1 black" variant="Bulk" />
                 <div className="d-flex flex-column black me-1">
-                  email us
+                  <b>Email Us</b>
                   <Link
                     className="text-decoration-none black"
                     href="mailto:ephronroyalfits@gmail.com"
@@ -156,7 +156,7 @@ export default function Footer() {
             </div>
 
             <div className="col-md-3">
-              <h5>COMPANY</h5>
+              <h6 className="fw-bold">COMPANY</h6>
 
               <ul className="mt-5 list-unstyled">
                 <li className="mb-3">
