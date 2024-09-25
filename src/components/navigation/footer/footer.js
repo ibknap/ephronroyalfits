@@ -86,25 +86,25 @@ export default function Footer() {
           <div className="row justify-content-center align-items-center">
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <img src="/images/fashion.png" alt="fashion" height={10} />
+                <img src="/images/fashion.png" alt="fashion" height={20} />
 
-                <h6 className="ms-3 fw-bold m-0">TOP FASHION</h6>
+                <p className="ms-3 text-white fw-bold m-0">TOP FASHION</p>
               </div>
             </div>
 
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <img src="/images/delivery.png" alt="delivery" height={10} />
+                <img src="/images/delivery.png" alt="delivery" height={20} />
 
-                <h6 className="ms-3 fw-bold m-0">SMOOTH DELIVERY</h6>
+                <p className="ms-3 text-white fw-bold m-0">SMOOTH DELIVERY</p>
               </div>
             </div>
 
             <div className="col-md-4 text-center">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <img src="/images/support.png" alt="support" height={10} />
+                <img src="/images/support.png" alt="support" height={20} />
 
-                <h6 className="ms-3 fw-bold m-0">EXELLENT SUPPORT</h6>
+                <p className="ms-3 text-white fw-bold m-0">EXELLENT SUPPORT</p>
               </div>
             </div>
           </div>
